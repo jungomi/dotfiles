@@ -5,6 +5,16 @@ DOTFILES=$HOME/.dotfiles
 force=false
 no_overwrite=false
 
+usage () {
+  cat << EOF
+Usage: $0 [-fny]
+where:
+  -f force linking
+  -n no to all, do not overwrite existing files
+  -y yes to all (same as -f)
+EOF
+}
+
 success () {
   echo -e "\r\033[2K  [ \033[00;32mOK\033[0m ] $1"
 }
@@ -58,5 +68,17 @@ link_dotfiles () {
     fi
   done
 }
+
+while getopts ":fyn" opt; do
+  case $opt in
+    f|y )
+      force=true;;
+    n )
+      no_overwrite=true;;
+    * )
+      usage
+      exit 0;;
+  esac
+done
 
 link_dotfiles
