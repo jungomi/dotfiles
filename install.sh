@@ -13,6 +13,7 @@ fail () {
 
   echo -e "\033[2K  [\033[0;31mFAIL\033[0m] $1"
 }
+
 link_file () {
   ln -sf $1 $2
   success "$( basename $1 ".symlink" ) linked to $2"
@@ -22,36 +23,40 @@ skip_file () {
   fail "$( basename $1 ".symlink" ) not linked"
 }
 
-echo "Installing dotfiles"
-linkables=$( find -H $DOTFILES -maxdepth 2 -name '*.symlink' )
-for file in $linkables; do
-  file_name=$( basename $file ".symlink" )
-  dest="$HOME/.$file_name"
+link_dotfiles () {
+  echo "Installing dotfiles"
+  linkables=$( find -H $DOTFILES -maxdepth 2 -name '*.symlink' )
+  for file in $linkables; do
+    file_name=$( basename $file ".symlink" )
+    dest="$HOME/.$file_name"
 
-  if [ -e $dest ] && [ "$force" == "false" ]; then
-    if [ "$no_overwrite" == "true" ]; then
-      skip_file $file
-      continue
+    if [ -e $dest ] && [ "$force" == "false" ]; then
+      if [ "$no_overwrite" == "true" ]; then
+        skip_file $file
+        continue
+      fi
+
+      read -n 1 -p "$file_name already exists, do you want to overwrite it? [y]es, [n]o, [Y]es to all, [N] to all: " action
+      echo ""
+
+      case "$action" in
+        y )
+          link_file $file $dest;;
+        Y )
+          force=true
+          link_file $file $dest;;
+        n )
+          skip_file $file;;
+        N )
+          no_overwrite=true
+          skip_file $file;;
+        * )
+          ;;
+      esac
+    else
+      link_file $file $dest
     fi
+  done
+}
 
-    read -n 1 -p "$file_name already exists, do you want to overwrite it? [y]es, [n]o, [Y]es to all, [N] to all: " action
-    echo ""
-
-    case "$action" in
-      y )
-        link_file $file $dest;;
-      Y )
-        force=true
-        link_file $file $dest;;
-      n )
-        skip_file $file;;
-      N )
-        no_overwrite=true
-        skip_file $file;;
-      * )
-        ;;
-    esac
-  else
-    link_file $file $dest
-  fi
-done
+link_dotfiles
