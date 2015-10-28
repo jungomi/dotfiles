@@ -1,0 +1,65 @@
+# remap prefix to C-a
+unbind C-b
+set-option -g prefix C-a
+bind-key C-a send-prefix
+
+# display in 256 color
+set -g default-terminal "screen-256color"
+set -g status-utf8 on
+
+set -g history-limit 1000
+
+# automaitcally renumber windows
+set -g renumber-windows on
+
+# resize to max window of any client connected
+setw -g aggressive-resize on
+
+# make delay shorter
+set -sg escape-time 0
+
+# start index at 1
+set -g base-index 1
+setw -g pane-base-index 1
+
+# set copy mode to vim style
+setw -g mode-keys vi
+unbind [
+bind Escape copy-mode
+unbind p
+bind p paste-buffer
+bind -t vi-copy 'v' begin-selection
+bind -t vi-copy 'y' copy-selection
+
+# Key Bindings
+# tile all windows
+bind = select-layout tiled
+
+# reload config file
+bind r source-file ~/.tmux.conf
+
+# synchronise all panes
+bind y setw synchronize-panes
+
+# create pane with current path
+bind t split-window -h -c "#{pane_current_path}"
+bind T split-window -v -c "#{pane_current_path}"
+
+# pane movement like vim
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+
+# move between windows
+bind -r C-h select-window -t :-
+bind -r C-l select-window -t :+
+
+# resize pane
+bind -r H resize-pane -L 10
+bind -r J resize-pane -D 10
+bind -r K resize-pane -U 10
+bind -r L resize-pane -R 10
+
+unbind n
+bind n new-window
