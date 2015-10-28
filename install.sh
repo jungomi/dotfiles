@@ -25,7 +25,10 @@ fail () {
 }
 
 link_file () {
-  ln -sTf $1 $2
+  if [ -d $2 ]; then
+    rm -rf $2
+  fi
+  ln -snf $1 $2
   success "$( basename $1 ".symlink" ) linked to $2"
 }
 
