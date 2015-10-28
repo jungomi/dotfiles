@@ -25,7 +25,7 @@ fail () {
 }
 
 link_file () {
-  ln -sf $1 $2
+  ln -sTf $1 $2
   success "$( basename $1 ".symlink" ) linked to $2"
 }
 
@@ -34,7 +34,6 @@ skip_file () {
 }
 
 link_dotfiles () {
-  echo "Installing dotfiles"
   linkables=$( find -H $DOTFILES -maxdepth 2 -name '*.symlink' )
   for file in $linkables; do
     file_name=$( basename $file ".symlink" )
@@ -81,4 +80,9 @@ while getopts ":fyn" opt; do
   esac
 done
 
+echo "Initializing submodules"
+git submodule update --init
+echo "Installing dotfiles"
 link_dotfiles
+echo "Installing vim plugins"
+vim +PluginInstall +qa
