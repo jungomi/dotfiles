@@ -5,19 +5,28 @@ DOTFILES=$HOME/.dotfiles
 force=false
 no_overwrite=false
 
+success () {
+  echo -e "\r\033[2K  [ \033[00;32mOK\033[0m ] $1"
+}
+
+fail () {
+
+  echo -e "\033[2K  [\033[0;31mFAIL\033[0m] $1"
+}
 link_file () {
   ln -sf $1 $2
-  echo "$1 linked to $2"
+  success "$( basename $1 ".symlink" ) linked to $2"
 }
 
 skip_file () {
-  echo "$1 not linked"
+  fail "$( basename $1 ".symlink" ) not linked"
 }
 
-echo "installing dotfiles"
+echo "Installing dotfiles"
 linkables=$( find -H $DOTFILES -maxdepth 2 -name '*.symlink' )
 for file in $linkables; do
-  dest="$HOME/.$( basename $file ".symlink" )"
+  file_name=$( basename $file ".symlink" )
+  dest="$HOME/.$file_name"
 
   if [ -e $dest ] && [ "$force" == "false" ]; then
     if [ "$no_overwrite" == "true" ]; then
@@ -25,8 +34,8 @@ for file in $linkables; do
       continue
     fi
 
-    echo "$dest already exists, do you want to overwrite it? [y]es, [n]o, [Y]es to all, [N] to all"
-    read -n 1 action
+    read -n 1 -p "$file_name already exists, do you want to overwrite it? [y]es, [n]o, [Y]es to all, [N] to all: " action
+    echo ""
 
     case "$action" in
       y )
