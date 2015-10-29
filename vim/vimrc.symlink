@@ -170,6 +170,8 @@ noremap Q <NOP>
 nnoremap <leader>w :w<CR>
 " search for word under the cursor
 nnoremap <leader>/ "fyiw :/<c-r>f<cr>
+" open bashrc file in split
+nnoremap <leader>eb :vsp ~/.bashrc<CR>
 " open tmux file in split
 nnoremap <leader>et :vsp ~/.tmux.conf<CR>
 " open gitconfig file in split
