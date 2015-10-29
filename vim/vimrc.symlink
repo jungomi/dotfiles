@@ -89,6 +89,8 @@ endif
 " file type specific settings
 if has('autocmd') && !exists('autocommands_loaded')
   let autocommands_loaded = 1
+  " resize panes when resizing window
+  autocmd VimResized * wincmd =
   " disable comment continuation when using 'o' or 'O'
   autocmd FileType * setlocal formatoptions-=o
   autocmd FileType java,python setlocal shiftwidth=4 softtabstop=4 expandtab
