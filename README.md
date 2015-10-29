@@ -3,7 +3,7 @@
 This is a collection of my configuration files.
 
 ## Installation
-```
+```bash
 git clone https://github.com/jungomi/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 ./install.sh
