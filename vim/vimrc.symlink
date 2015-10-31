@@ -9,6 +9,8 @@ let base16colorspace=256
 set t_Co=256
 set background=dark
 colorscheme base16-eighties
+" use custom colour column
+highlight ColorColumn ctermbg=239 guibg=#4e4e4e
 
 let mapleader = ","
 
