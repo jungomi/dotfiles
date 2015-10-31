@@ -131,6 +131,8 @@ let g:airline#extensions#tabline#left_alt_sep = ''
 let g:airline#extensions#tabline#show_close_button = 0
 " Fugitive
 set diffopt+=vertical
+" gitgutter
+let g:gitgutter_map_keys = 0
 " CtrlP
 let g:ctrlp_map = '<leader>f'
 let g:ctrlp_cmd = 'CtrlP'
