@@ -1,3 +1,6 @@
+# load theme
+source ~/.dotfiles/tmux/tmux_theme.conf
+
 # remap prefix to C-a
 unbind C-b
 set-option -g prefix C-a
