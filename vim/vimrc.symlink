@@ -198,6 +198,13 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+" resizing current split
+nnoremap <leader>j :resize +5<CR>
+nnoremap <leader>k :resize -5<CR>
+nnoremap <leader>h :vertical resize +5<CR>
+nnoremap <leader>l :vertical resize -5<CR>
+" resize all splits evenly
+nnoremap <leader>= <C-w>=
 " switch between last two files
 nnoremap <leader><leader> <C-^>
 " exit insert mode
