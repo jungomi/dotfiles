@@ -20,7 +20,6 @@ success () {
 }
 
 fail () {
-
   echo -e "\033[2K  [\033[0;31mFAIL\033[0m] $1"
 }
 
