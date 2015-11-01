@@ -33,6 +33,8 @@ Plugin 'jelera/vim-javascript-syntax'
 Plugin 'ap/vim-css-color'
 Plugin 'elzr/vim-json'
 Plugin 'suan/vim-instant-markdown'
+Plugin 'mattn/webapi-vim'
+Plugin 'mattn/gist-vim'
 call vundle#end()
 
 filetype plugin indent on
