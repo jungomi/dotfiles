@@ -183,6 +183,8 @@ vnoremap <F1> <nop>
 noremap Q <NOP>
 " save
 nnoremap <leader>w :w<CR>
+" sudo save, abuse tee
+nnoremap <leader>sw :w !sudo tee % > /dev/null<CR>
 " open bashrc file in split
 nnoremap <leader>eb :vsp ~/.bashrc<CR>
 " open tmux file in split
