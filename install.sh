@@ -87,4 +87,4 @@ git submodule update --init
 echo "Installing dotfiles"
 link_dotfiles
 echo "Installing vim plugins"
-vim +PluginInstall +qa
+vim -u ~/.vim/plugins.vim +PluginInstall +qa
