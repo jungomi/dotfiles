@@ -35,6 +35,7 @@ Plugin 'elzr/vim-json'
 Plugin 'suan/vim-instant-markdown'
 Plugin 'mattn/webapi-vim'
 Plugin 'mattn/gist-vim'
+Plugin 'artur-shaik/vim-javacomplete2'
 call vundle#end()
 
 filetype plugin indent on
