@@ -224,7 +224,7 @@ nnoremap <leader><leader> <C-^>
 "inoremap jj <ESC> " jj to exit inster mode
 
 " plugins
-nnoremap <leader>a :Ack 
+nnoremap <leader>a :Ack<space>
 nnoremap <leader>u :GundoToggle<CR>
 nnoremap <leader>nt :NERDTreeToggle<CR>
 " find current file in tree
