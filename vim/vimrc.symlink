@@ -214,6 +214,8 @@ nnoremap <leader>= <C-w>=
 nnoremap <leader><leader> <C-^>
 " exit insert mode
 "inoremap jj <ESC> " jj to exit inster mode
+" code completion with Ctrl-Space
+inoremap <C-@> <C-x><C-o>
 
 " plugins
 nnoremap <leader>a :Ack 
