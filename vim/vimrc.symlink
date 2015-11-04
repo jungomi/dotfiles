@@ -203,7 +203,7 @@ nnoremap <leader>/ "fyiw :/<c-r>f<cr>
 nnoremap <leader>v V`]
 " split windows
 " create horizontal split and switch to it
-nnoremap <leader>T <C-w>s<C-w>l
+nnoremap <leader>T <C-w>s<C-w>j
 " create vertical split and switch to it
 nnoremap <leader>t <C-w>v<C-w>l
 " navigation between windows
