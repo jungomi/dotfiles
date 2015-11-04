@@ -169,8 +169,6 @@ nnoremap <C-y> 3<C-y>
 " movement in suggestion window
 inoremap <expr> j pumvisible() ? "\<C-n>" : "j"
 inoremap <expr> k pumvisible() ? "\<C-p>" : "k"
-" select match in completion with Enter
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " cancel completion with Esc
 inoremap <expr> <Esc> pumvisible() ? "\<C-e>" : "\<Esc>"
 " code completion with Ctrl-Space
