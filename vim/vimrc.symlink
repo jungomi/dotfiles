@@ -226,7 +226,7 @@ nnoremap <leader>a :Ack<space>
 nnoremap <leader>u :GundoToggle<CR>
 nnoremap <leader>nt :NERDTreeToggle<CR>
 " find current file in tree
-nnoremap <leader>nf :NERDTreeFind<CR> 
+nnoremap <leader>nf :NERDTreeFind<CR>
 nnoremap <leader>nbc :Bookmark<CR>
 " syntastic
 nnoremap <leader>s :SyntasticToggleMode<cr>
