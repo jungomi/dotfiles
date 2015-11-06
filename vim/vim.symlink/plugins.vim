@@ -38,6 +38,8 @@ Plugin 'mattn/gist-vim'
 Plugin 'artur-shaik/vim-javacomplete2'
 " Javascript syntax and indentation
 Plugin 'pangloss/vim-javascript'
+" mustache and handlebars
+Plugin 'mustache/vim-mustache-handlebars'
 call vundle#end()
 
 filetype plugin indent on
