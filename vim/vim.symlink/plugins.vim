@@ -36,6 +36,8 @@ Plugin 'suan/vim-instant-markdown'
 Plugin 'mattn/webapi-vim'
 Plugin 'mattn/gist-vim'
 Plugin 'artur-shaik/vim-javacomplete2'
+" Javascript syntax and indentation
+Plugin 'pangloss/vim-javascript'
 call vundle#end()
 
 filetype plugin indent on
