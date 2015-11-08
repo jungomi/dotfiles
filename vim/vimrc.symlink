@@ -16,6 +16,8 @@ let mapleader = ","
 
 set number
 set encoding=utf-8
+" set spell check to British English
+set spelllang=en_gb
 " Tab is 2 spaces
 set tabstop=2
 set softtabstop=2
@@ -220,6 +222,8 @@ nnoremap <leader>= <C-w>=
 nnoremap <leader><leader> <C-^>
 " exit insert mode
 "inoremap jj <ESC> " jj to exit inster mode
+" toggle spell check
+nnoremap <leader>sc :set spell!<CR>
 
 " plugins
 nnoremap <leader>a :Ack<space>
