@@ -233,6 +233,6 @@ nnoremap <leader>nt :NERDTreeToggle<CR>
 nnoremap <leader>nf :NERDTreeFind<CR>
 nnoremap <leader>nbc :Bookmark<CR>
 " syntastic
-nnoremap <leader>s :SyntasticToggleMode<cr>
+nnoremap <leader>sy :SyntasticToggleMode<cr>
 " instant markdown preview
 nnoremap <leader>imp :InstantMarkdownPreview<CR>
