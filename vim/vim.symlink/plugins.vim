@@ -41,6 +41,11 @@ Plugin 'artur-shaik/vim-javacomplete2'
 Plugin 'pangloss/vim-javascript'
 " mustache and handlebars
 Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'tpope/vim-projectionist'
+" ruby
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-rake'
+Plugin 'tpope/vim-bundler'
 call vundle#end()
 
 filetype plugin indent on
