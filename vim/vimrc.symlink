@@ -198,7 +198,7 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 " strip trailing whitespace
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 " select pasted text
-nnoremap <leader>v V`]
+nnoremap <leader>v `[v`]
 " split windows
 " create horizontal split and switch to it
 nnoremap <leader>T <C-w>s<C-w>j
