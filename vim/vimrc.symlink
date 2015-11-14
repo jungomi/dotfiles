@@ -1,4 +1,4 @@
-" load plugins with vundle
+" load plugins
 source ~/.vim/plugins.vim
 
 set nocompatible              " be iMproved
