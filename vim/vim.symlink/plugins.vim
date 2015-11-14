@@ -1,51 +1,46 @@
 set nocompatible
 filetype off
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" let Vundle manage Vundle
-Plugin 'VundleVim/Vundle.vim'
+call plug#begin('~/.vim/plugged')
+Plug 'chriskempson/base16-vim'
 
-Plugin 'chriskempson/base16-vim'
-
-Plugin 'scrooloose/nerdtree'
-Plugin 'mileszs/ack.vim'
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
-Plugin 'honza/vim-snippets'
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-fugitive'
-Plugin 'sjl/gundo.vim', {'ŕtp': 'plugin/'}
-Plugin 'godlygeek/tabular'
-Plugin 'tpope/vim-rails'
-Plugin 'scrooloose/syntastic'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'bling/vim-airline'
-Plugin 'tpope/vim-dispatch'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'jelera/vim-javascript-syntax'
-Plugin 'ap/vim-css-color'
-Plugin 'elzr/vim-json'
-Plugin 'suan/vim-instant-markdown'
-Plugin 'mattn/webapi-vim'
-Plugin 'mattn/gist-vim'
-Plugin 'artur-shaik/vim-javacomplete2'
+Plug 'scrooloose/nerdtree'
+Plug 'mileszs/ack.vim'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
+Plug 'honza/vim-snippets'
+Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-fugitive'
+Plug 'sjl/gundo.vim', {'ŕtp': 'plugin/'}
+Plug 'godlygeek/tabular'
+Plug 'tpope/vim-rails'
+Plug 'scrooloose/syntastic'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'bling/vim-airline'
+Plug 'tpope/vim-dispatch'
+Plug 'airblade/vim-gitgutter'
+Plug 'plasticboy/vim-markdown'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-unimpaired'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'ap/vim-css-color'
+Plug 'elzr/vim-json'
+Plug 'suan/vim-instant-markdown'
+Plug 'mattn/webapi-vim'
+Plug 'mattn/gist-vim'
+Plug 'artur-shaik/vim-javacomplete2'
 " Javascript syntax and indentation
-Plugin 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript'
 " mustache and handlebars
-Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'tpope/vim-projectionist'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'tpope/vim-projectionist'
 " ruby
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'tpope/vim-rake'
-Plugin 'tpope/vim-bundler'
-call vundle#end()
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rake'
+Plug 'tpope/vim-bundler'
+call plug#end()
 
 filetype plugin indent on
