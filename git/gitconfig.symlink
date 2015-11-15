@@ -40,3 +40,7 @@ meta = yellow bold
 [grep]
   lineNumber = true
   extendRegexp = true
+[merge]
+	tool = fugitive
+[mergetool "fugitive"]
+	cmd = vim +Gdiff $MERGED
