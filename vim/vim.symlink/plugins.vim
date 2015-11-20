@@ -34,6 +34,7 @@ Plug 'artur-shaik/vim-javacomplete2', { 'for': 'java' }
 " Javascript syntax and indentation
 Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'moll/vim-node', { 'for': 'javascript' }
 " mustache and handlebars
 Plug 'mustache/vim-mustache-handlebars', { 'for': ['html.handlebars', 'html.mustache'] }
 Plug 'tpope/vim-projectionist'
