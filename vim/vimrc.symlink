@@ -155,6 +155,8 @@ let NERDTreeShowHidden=1
 let NERDTreeChDirMode=0 " never change working directory
 " instant markdown preview
 let g:instant_markdown_autostart = 0
+" disable concealing json
+let g:vim_json_syntax_conceal = 0
 
 " Mappings
 " Disable highlight
