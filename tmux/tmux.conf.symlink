@@ -66,3 +66,9 @@ bind -r L resize-pane -R 5
 
 unbind n
 bind n new-window -c "#{pane_current_path}"
+
+# unbind arrow keys
+unbind Up
+unbind Down
+unbind Left
+unbind Right
