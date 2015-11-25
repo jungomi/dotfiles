@@ -17,6 +17,9 @@ shopt -s histappend
 HISTSIZE=1000
 HISTFILESIZE=2000
 
+# disable software flow control
+stty -ixon
+
 # check the window size after each command
 shopt -s checkwinsize
 
