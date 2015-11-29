@@ -236,3 +236,7 @@ nnoremap <leader>nbc :Bookmark<CR>
 nnoremap <leader>sy :SyntasticToggleMode<cr>
 " instant markdown preview
 nnoremap <leader>imp :InstantMarkdownPreview<CR>
+" run rspec
+nnoremap <leader>rsa :call RunAllSpecs()<CR>
+nnoremap <leader>rsc :call RunCurrentSpecFile()<CR>
+

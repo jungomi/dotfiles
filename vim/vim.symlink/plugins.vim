@@ -42,6 +42,7 @@ Plug 'tpope/vim-projectionist'
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'tpope/vim-rake', { 'for': ['ruby', 'eruby'] }
 Plug 'tpope/vim-bundler', { 'for': ['ruby', 'eruby'] }
+Plug 'thoughtbot/vim-rspec', { 'for': ['ruby', 'eruby'] }
 " rails
 Plug 'tpope/vim-rails', { 'for': ['ruby', 'eruby'] }
 call plug#end()
