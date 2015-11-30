@@ -108,6 +108,7 @@ if has('autocmd') && !exists('autocommands_loaded')
   " are multiple windows open
   autocmd FileType qf wincmd J
   autocmd BufRead,BufNewFile *.md set filetype=markdown
+  autocmd FileType gitcommit,markdown,tex set spell
 endif
 
 " Plugins
@@ -236,6 +237,8 @@ nnoremap <leader>nbc :Bookmark<CR>
 nnoremap <leader>sy :SyntasticToggleMode<cr>
 " instant markdown preview
 nnoremap <leader>imp :InstantMarkdownPreview<CR>
+" instant latex preview
+nnoremap <leader>ilp :LLPStartPreview<CR>
 " run rspec
 nnoremap <leader>rsa :call RunAllSpecs()<CR>
 nnoremap <leader>rsc :call RunCurrentSpecFile()<CR>

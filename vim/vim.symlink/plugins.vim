@@ -45,6 +45,8 @@ Plug 'tpope/vim-bundler', { 'for': ['ruby', 'eruby'] }
 Plug 'thoughtbot/vim-rspec', { 'for': ['ruby', 'eruby'] }
 " rails
 Plug 'tpope/vim-rails', { 'for': ['ruby', 'eruby'] }
+" latex
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 call plug#end()
 
 filetype plugin indent on
