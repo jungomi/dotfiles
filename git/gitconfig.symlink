@@ -1,6 +1,6 @@
 [user]
-	name = Michael Jungo
-	email = michael.jungo@unifr.ch
+  name = Michael Jungo
+  email = michael.jungo@unifr.ch
 [github]
   user = jungomi
 [alias]
@@ -17,19 +17,19 @@
   # delete merged branches
   delete-merged-branches = "!f() { git checkout --quiet master && git branch -r --merged | grep --invert-match '\\*' | xargs -n 1 git branch --delete; git checkout --quiet @{-1}; }; f"
 [core]
-	editor = vim
-	autocrlf = input
-	safecrlf = warn
+  editor = vim
+  autocrlf = input
+  safecrlf = warn
 [color]
-	status = auto
-	branch = auto
+  status = auto
+  branch = auto
   diff = auto
 [color "branch"]
   current = green bold
   local = green
   remote = red bold
 [color "diff"]
-meta = yellow bold
+  meta = yellow bold
   frag = magenta bold
   old = red bold
   new = green bold
@@ -39,11 +39,11 @@ meta = yellow bold
   untracked = red
 [push]
   # only current branch
-	default = current
+  default = current
 [grep]
   lineNumber = true
   extendRegexp = true
 [merge]
-	tool = fugitive
+  tool = fugitive
 [mergetool "fugitive"]
-	cmd = vim +Gdiff $MERGED
+  cmd = vim +Gdiff $MERGED
