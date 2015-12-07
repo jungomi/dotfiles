@@ -102,7 +102,7 @@ if has('autocmd') && !exists('autocommands_loaded')
   " enable java completion
   autocmd FileType java set omnifunc=javacomplete#Complete
   " set special tab settings
-  autocmd FileType java,python setlocal shiftwidth=4 softtabstop=4 expandtab
+  autocmd FileType python setlocal shiftwidth=4 softtabstop=4 expandtab
   autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
   " make quickfix windows take all the lower section of the screen when there
   " are multiple windows open
