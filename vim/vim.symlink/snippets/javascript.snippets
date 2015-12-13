@@ -8,3 +8,19 @@ snippet iferr
 	if (err) {
 		return ${1:handle_error};
 	}
+snippet doc
+	/**
+	 * ${1}
+	 */
+snippet desc
+	describe('${1}', function(${2}) {
+		${3}
+	});
+snippet it
+	it('${1}', function(${2}) {
+		${3}
+	});
+snippet en
+	end(function(err, res) {
+		${1}
+	});
