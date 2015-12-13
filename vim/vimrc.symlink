@@ -226,6 +226,13 @@ nnoremap <leader><leader> <C-^>
 "inoremap jj <ESC> " jj to exit inster mode
 " toggle spell check
 nnoremap <leader>sc :set spell!<CR>
+" npm tests
+" all
+nnoremap <leader>npa :!npm run test<CR>
+nnoremap <leader>npda :Dispatch npm run test<CR>
+" current file only
+nnoremap <leader>npc :!npm run test:file %<CR>
+nnoremap <leader>npdc :Dispatch npm run test:file %<CR>
 
 " plugins
 nnoremap <leader>a :Ack<space>
