@@ -23,6 +23,8 @@ Plug 'tpope/vim-dispatch'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-unimpaired'
+" comment
+Plug 'tpope/vim-commentary'
 Plug 'ap/vim-css-color', { 'for': 'css' }
 Plug 'elzr/vim-json', { 'for': 'json' }
 " markdown
