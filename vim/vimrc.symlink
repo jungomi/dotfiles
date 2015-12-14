@@ -233,6 +233,8 @@ nnoremap <leader>npda :Dispatch npm run --silent test<CR>
 " current file only
 nnoremap <leader>npc :!npm run --silent test:file %<CR>
 nnoremap <leader>npdc :Dispatch npm --silent run test:file %<CR>
+" save to clipboard
+nnoremap <leader>y "+y
 
 " plugins
 nnoremap <leader>a :Ack<space>
