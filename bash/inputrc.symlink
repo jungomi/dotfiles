@@ -1,0 +1,14 @@
+# coloured completion list
+set colored-stats on
+
+# only match hidden files if beginning with a dot
+set match-hidden-files off
+
+# list all matches on multiple possible completions
+set show-all-if-ambiguous on
+
+# disable bell
+set bell-style none
+
+# append slash to symbolic linked directories on completion
+set mark-symlinked-directories
