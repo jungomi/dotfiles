@@ -1,3 +1,6 @@
+# vim mode
+set editing-mode vi
+
 # coloured completion list
 set colored-stats on
 
