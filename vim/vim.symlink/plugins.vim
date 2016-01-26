@@ -25,7 +25,9 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-unimpaired'
 " comment
 Plug 'tpope/vim-commentary'
+" css
 Plug 'ap/vim-css-color', { 'for': 'css' }
+Plug 'wavded/vim-stylus'
 Plug 'elzr/vim-json', { 'for': 'json' }
 " markdown
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
