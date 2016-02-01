@@ -27,7 +27,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-commentary'
 " css
 Plug 'ap/vim-css-color', { 'for': 'css' }
-Plug 'wavded/vim-stylus'
+Plug 'wavded/vim-stylus', { 'for': 'stylus' }
 Plug 'elzr/vim-json', { 'for': 'json' }
 " markdown
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
@@ -38,6 +38,8 @@ Plug 'artur-shaik/vim-javacomplete2', { 'for': 'java' }
 " Javascript syntax and indentation
 Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+" Coffescript
+Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 " mustache and handlebars
 Plug 'mustache/vim-mustache-handlebars', { 'for': ['html.handlebars', 'html.mustache'] }
 Plug 'tpope/vim-projectionist'
