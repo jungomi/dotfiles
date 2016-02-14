@@ -61,9 +61,9 @@ export LESS_TERMCAP_so=$'\E[38;5;0;43m'   # begin standout-mode - info box
 export LESS_TERMCAP_ue=$'\E[0m'           # end underline
 export LESS_TERMCAP_us=$'\E[04;38;5;140m' # begin underline
 
-# Base16 Shell
-BASE16_SHELL="$DOTFILES/bash/base16-shell/base16-eighties.dark.sh"
-[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+# Colour scheme
+COLOUR_SCHEME="$DOTFILES/bash/light-theme.sh"
+[[ -s $COLOUR_SCHEME ]] && source $COLOUR_SCHEME
 
 # source aliases
 if [ -f $DOTFILES/bash/bash_aliases ]; then
