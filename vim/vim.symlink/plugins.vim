@@ -18,7 +18,7 @@ Plug 'sjl/gundo.vim', {'ŕtp': 'plugin/'}
 Plug 'godlygeek/tabular'
 Plug 'scrooloose/syntastic'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'bling/vim-airline'
+Plug 'ap/vim-buftabline'
 Plug 'tpope/vim-dispatch'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-endwise'
