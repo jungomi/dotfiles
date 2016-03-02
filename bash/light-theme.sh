@@ -1,20 +1,20 @@
 #!/bin/sh
-# A light theme based on base16 colouschemes
+# A light theme based on base16 colourschemes
 
 if [ "${TERM%%-*}" = 'linux' ]; then
     # This script doesn't support linux console (use 'vconsole' template instead)
     return 2>/dev/null || exit 0
 fi
 
-color00="1b/19/18" # Base 00 - Black
-color01="f2/77/7a" # Base 08 - Red
-color02="5c/ba/5c" # Base 0B - Green
-color03="e0/ba/6d" # Base 0A - Yellow
-color04="68/87/ee" # Base 0D - Blue
-color05="a1/58/cc" # Base 0E - Magenta
+color00="ff/ff/df" # Base 00 - BG
+color01="df/5f/5f" # Base 08 - Red
+color02="5f/af/5f" # Base 0B - Green
+color03="b5/89/00" # Base 0A - Yellow
+color04="5f/87/d7" # Base 0D - Blue
+color05="af/5f/af" # Base 0E - Magenta
 color06="51/a1/a0" # Base 0C - Cyan
-color07="a8/a1/9f" # Base 05 - White
-color08="76/6e/6b" # Base 03 - Bright Black
+color07="c6/c6/c6" # Base 05 - White
+color08="9e/9e/9e" # Base 03 - Bright Black
 color09=$color01 # Base 08 - Bright Red
 color10=$color02 # Base 0B - Bright Green
 color11=$color03 # Base 0A - Bright Yellow
@@ -23,7 +23,7 @@ color13=$color05 # Base 0E - Bright Magenta
 color14=$color06 # Base 0C - Bright Cyan
 color15="fd/f6/e3" # Base 07 - Bright White
 color16="f9/91/57" # Base 09
-color17="d2/7b/53" # Base 0F
+color17="d2/7b/53" # Base 0F - Brown
 color18="39/39/39" # Base 01
 color19="51/51/51" # Base 02
 color20="a0/9f/93" # Base 04
