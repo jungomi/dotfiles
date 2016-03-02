@@ -9,7 +9,7 @@ let gui03 = "9e9e9e"  " Comment
 let gui04 = "a09f93"  " PMenu
 let gui05 = "555d60"  " Normal FG
 let gui06 = "e8e6df"  " unused
-let gui07 = "f2f0ec"  " unused
+let gui07 = "f2f0ec"  " White - unused
 let gui08 = "d75f5f"  " Red
 let gui09 = "d78700"  " Orange
 let gui0A = "b58900"  " Yellow
@@ -23,6 +23,9 @@ let guiWhite = "c6c6c6"
 let guiBlack = "121212"
 let guiCursorLine = "dfdfaf"
 let guiCursor = "666666"
+let guiDiffAdd = "dfffaf"
+let guiDiffChange = "87afd7"
+let guiDiffDelete = "ffdfdf"
 
 " Terminal color definitions
 let cterm00 = "230"   " BG
@@ -32,7 +35,7 @@ let cterm03 = "245"   " Comment
 let cterm04 = "20"    " PMenu
 let cterm05 = "240"   " Normal FG
 let cterm06 = "21"    " unused
-let cterm07 = "15"    " unused
+let cterm07 = "15"    " White - unused
 let cterm08 = "167"   " Red
 let cterm09 = "172"   " Orange
 let cterm0A = "136"   " Yellow
@@ -46,6 +49,9 @@ let ctermWhite = "251"
 let ctermBlack = "233"
 let ctermCursorLine = "187"
 let ctermCursor = "242"
+let ctermDiffAdd = "193"
+let ctermDiffChange = "110"
+let ctermDiffDelete = "224"
 
 " Theme setup
 hi clear
@@ -79,8 +85,8 @@ call <sid>hi("Directory",     gui0D, "", cterm0D, "", "")
 call <sid>hi("Error",         gui03, "", cterm03, "", "")
 call <sid>hi("ErrorMsg",      gui08, gui00, cterm08, cterm00, "")
 call <sid>hi("Exception",     gui08, "", cterm08, "", "")
-call <sid>hi("FoldColumn",    "", gui01, "", cterm01, "")
-call <sid>hi("Folded",        gui03, gui01, cterm03, cterm01, "")
+call <sid>hi("FoldColumn",    guiWhite, gui01, ctermWhite, cterm01, "")
+call <sid>hi("Folded",        gui05, guiWhite, cterm05, ctermWhite, "")
 call <sid>hi("IncSearch",     gui01, gui09, cterm01, cterm09, "none")
 call <sid>hi("Italic",        "", "", "", "", "none")
 call <sid>hi("Macro",         gui08, "", cterm08, "", "")
@@ -156,10 +162,10 @@ call <sid>hi("cssClassName",   gui0E, "", cterm0E, "", "")
 call <sid>hi("cssColor",       gui0C, "", cterm0C, "", "")
 
 " Diff highlighting
-call <sid>hi("DiffAdd",      gui0B, gui01,  cterm0B, cterm01, "")
-call <sid>hi("DiffChange",   gui03, gui01,  cterm03, cterm01, "")
-call <sid>hi("DiffDelete",   gui08, gui01,  cterm08, cterm01, "")
-call <sid>hi("DiffText",     gui0D, gui01,  cterm0D, cterm01, "")
+call <sid>hi("DiffAdd",      gui0B, guiDiffAdd,  cterm0B, ctermDiffAdd, "")
+call <sid>hi("DiffChange",   gui05, guiDiffChange,  cterm05, ctermDiffChange, "")
+call <sid>hi("DiffDelete",   gui08, guiDiffDelete,  cterm08, ctermDiffDelete, "")
+call <sid>hi("DiffText",     gui0D, guiDiffChange,  cterm0D, ctermDiffChange, "")
 call <sid>hi("DiffAdded",    gui0B, gui00,  cterm0B, cterm00, "")
 call <sid>hi("DiffFile",     gui08, gui00,  cterm08, cterm00, "")
 call <sid>hi("DiffNewFile",  gui0B, gui00,  cterm0B, cterm00, "")
