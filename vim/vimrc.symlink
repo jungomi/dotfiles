@@ -7,8 +7,9 @@ syntax on
 let base16colorspace=256
 " tell vim that termial supports 256 colours
 set t_Co=256
-set background=light
+" set background=light
 colorscheme light-theme
+" colorscheme dark-theme
 
 let mapleader = ","
 

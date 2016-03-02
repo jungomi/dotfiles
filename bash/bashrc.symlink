@@ -63,6 +63,7 @@ export LESS_TERMCAP_us=$'\E[04;38;5;140m' # begin underline
 
 # Colour scheme
 COLOUR_SCHEME="$DOTFILES/bash/light-theme.sh"
+# COLOUR_SCHEME="$DOTFILES/bash/base16-shell/base16-eighties.dark.sh"
 [[ -s $COLOUR_SCHEME ]] && source $COLOUR_SCHEME
 
 # source aliases
