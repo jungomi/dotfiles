@@ -196,7 +196,7 @@ nnoremap <leader>ev :vsp $MYVIMRC<CR>
 " load vimrc
 nnoremap <leader>sv :source $MYVIMRC<CR>
 " strip trailing whitespace
-nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
+nnoremap <leader>W :call <SID>StripTrailingWhitespaces()<CR>
 " select pasted text
 nnoremap <leader>v `[v`]
 " split windows
@@ -281,4 +281,17 @@ function! StatuslineTabWarning()
     endif
   endif
   return b:statusline_tab_warning
+endfunction
+
+" Taken from http://vimcasts.org/episodes/tidying-whitespace/
+function! <SID>StripTrailingWhitespaces()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " Do the business:
+    %s/\s\+$//e
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
 endfunction
