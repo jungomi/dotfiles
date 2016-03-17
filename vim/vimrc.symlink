@@ -45,6 +45,9 @@ set statusline=\ [%n]%m%r         " Buffer number, modified and read only flag
 set statusline+=\ %<%f            " Truncate point before path to file
 set statusline+=%=\ %{&ff}\ %y    " Right align, file type
 set statusline+=\ %(%l,%c\ %P\ %) " Line, column and percent of file
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%{StatuslineTrailingSpaceWarning()}
+set statusline+=%{StatuslineTabWarning()}
 set wildmenu                  " command line completion
 set wildmode=list:longest     " show list of options
 set wrap
@@ -113,6 +116,8 @@ if has('autocmd') && !exists('autocommands_loaded')
   autocmd FileType qf wincmd J
   autocmd BufRead,BufNewFile *.md set filetype=markdown
   autocmd FileType gitcommit,markdown,tex set spell
+  " Refresh trailing whitespace indicator
+  autocmd BufRead,BufWritePost,CursorHold * unlet!  b:statusline_trailing_space_warning
 endif
 
 " Plugins
@@ -120,7 +125,6 @@ endif
 let g:buftabline_numbers=1
 let g:buftabline_indicators=1
 " Syntastic
-set statusline+=%{SyntasticStatuslineFlag()}
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -245,3 +249,36 @@ nnoremap <leader>ilp :LLPStartPreview<CR>
 " run rspec
 nnoremap <leader>rsa :call RunAllSpecs()<CR>
 nnoremap <leader>rsc :call RunCurrentSpecFile()<CR>
+
+" Functions
+" Taken from https://www.reddit.com/r/vim/comments/e19bu/whats_your_status_line/
+" Shows [trailing] if trailing white space is detected
+function! StatuslineTrailingSpaceWarning()
+  if !exists("b:statusline_trailing_space_warning")
+    if search('\s\+$', 'nw') != 0
+      let b:statusline_trailing_space_warning = '[trailing]'
+    else
+      let b:statusline_trailing_space_warning = ''
+    endif
+  endif
+  return b:statusline_trailing_space_warning
+endfunction
+
+" Taken from https://www.reddit.com/r/vim/comments/e19bu/whats_your_status_line/
+" Shows [&et] if &et is set wrong
+" Shows [mixed-indenting] if spaces and tabs are used to indent
+function! StatuslineTabWarning()
+  if !exists("b:statusline_tab_warning")
+    let tabs = search('^\t', 'nw') != 0
+    let spaces = search('^ ', 'nw') != 0
+
+    if tabs && spaces
+      let b:statusline_tab_warning =  '[mixed-indenting]'
+    elseif (spaces && !&et) || (tabs && &et)
+      let b:statusline_tab_warning = '[&et]'
+    else
+      let b:statusline_tab_warning = ''
+    endif
+  endif
+  return b:statusline_tab_warning
+endfunction
