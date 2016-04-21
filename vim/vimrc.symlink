@@ -120,6 +120,8 @@ if has('autocmd') && !exists('autocommands_loaded')
   autocmd FileType gitcommit,markdown,tex set spell
   " Refresh trailing whitespace indicator
   autocmd BufRead,BufWritePost,CursorHold * unlet!  b:statusline_trailing_space_warning
+  " Syntax highlighting for C custom types
+  autocmd FileType c syntax match cType "\<\w\+_t\>"
 endif
 
 " Plugins
