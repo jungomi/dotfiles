@@ -240,8 +240,10 @@ xnoremap <leader>y "+y
 " Markdown table replace line with header separator
 nnoremap <leader>mth :let @m='lvt\|r-f\|@m'<CR>:normal @m<CR>
 " Go to definition of tag under cursor
+nnoremap <leader>gf <C-]>
+" Show definition of tag under cursor in preview window
 nnoremap <leader>gt <C-W>}
-" Show multiple definition of tag under cursor
+" Show multiple definition of tag under cursor in preview window
 nnoremap <leader>gT <C-W>g}
 
 " plugins
