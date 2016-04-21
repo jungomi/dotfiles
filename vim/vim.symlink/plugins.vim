@@ -53,6 +53,9 @@ Plug 'tpope/vim-rails', { 'for': ['ruby', 'eruby'] }
 " latex
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'gi1242/vim-tex-syntax', { 'for': 'tex' }
+" C
+Plug 'vim-scripts/a.vim', { 'for': ['c', 'cpp', 'objc', 'objcpp'] }
+Plug 'justinmk/vim-syntax-extra', { 'for': 'c' }
 call plug#end()
 
 filetype plugin indent on
