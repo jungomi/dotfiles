@@ -6,9 +6,8 @@ unbind C-b
 set-option -g prefix C-a
 bind-key C-a send-prefix
 
-# display in 256 color
-set -g default-terminal "screen-256color"
-set -g status-utf8 on
+# display in true colour (24-bit)
+set-option -g terminal-overrides ",xterm-256color:Tc"
 
 set -g history-limit 1000
 

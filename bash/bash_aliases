@@ -12,11 +12,9 @@ fi
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+alias .....='cd ../../../..'
 
 alias rmf='rm -rf'
-
-# tmux in 256 color mode
-alias tmux='tmux -2'
 
 # One of @janmoesen’s ProTip™s
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
