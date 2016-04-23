@@ -28,17 +28,17 @@ link_file () {
     rm -rf $2
   fi
   ln -snf $1 $2
-  success "$( basename $1 ".symlink" ) linked to $2"
+  success "$(basename $1 ".symlink") linked to $2"
 }
 
 skip_file () {
-  fail "$( basename $1 ".symlink" ) not linked"
+  fail "$(basename $1 ".symlink") not linked"
 }
 
 link_dotfiles () {
-  linkables=$( find -H $DOTFILES -maxdepth 2 -name '*.symlink' )
+  linkables=$(find -H $DOTFILES -maxdepth 2 -name '*.symlink')
   for file in $linkables; do
-    file_name=$( basename $file ".symlink" )
+    file_name=$(basename $file ".symlink")
     dest="$HOME/.$file_name"
 
     if [ -e $dest ] && [ "$force" == "false" ]; then
@@ -62,7 +62,7 @@ link_dotfiles () {
           no_overwrite=true
           skip_file $file;;
         * )
-          ;;
+          skip_file $file;;
       esac
     else
       link_file $file $dest
