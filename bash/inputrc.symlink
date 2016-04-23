@@ -1,17 +1,17 @@
-# vim mode
+# Use vim mode
 set editing-mode vi
 
-# coloured completion list
+# Coloured completion list
 set colored-stats on
 
-# only match hidden files if beginning with a dot
+# Only match hidden files if the pattern explicitely begins with a dot
 set match-hidden-files off
 
-# list all matches on multiple possible completions
+# List all matches on multiple possible completions
 set show-all-if-ambiguous on
 
-# disable bell
+# Disable bell
 set bell-style none
 
-# append slash to symbolic linked directories on completion
+# Append slash to symbolic linked directories on completion
 set mark-symlinked-directories

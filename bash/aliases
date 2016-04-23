@@ -1,28 +1,27 @@
 # vim: set filetype=sh:
 
-# color support
+# Color support
 if [ -x /usr/bin/dircolors ]; then
   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-  alias ls='ls --color=auto'
-  alias la='ls -la --color=auto'
-  alias grep='grep --color=auto'
-  alias fgrep='fgrep --color=auto'
-  alias egrep='egrep --color=auto'
+  alias ls="ls --color=auto"
+  alias la="ls -la --color=auto"
+  alias grep="grep --color=auto"
+  alias fgrep="fgrep --color=auto"
+  alias egrep="egrep --color=auto"
 fi
 
 # Enable sudo for aliases
 alias sudo="sudo "
 
-# file system
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-alias .....='cd ../../../..'
+# File system
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias rmf="rm -r"
 
 # Open file with its default application
 alias open="xdg-open"
-
-alias rmf='rm -rf'
 
 # One of @janmoesen’s ProTip™s
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do

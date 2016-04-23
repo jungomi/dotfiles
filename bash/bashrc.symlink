@@ -2,24 +2,24 @@
 
 # If not running interactively, don't do anything
 case $- in
-    *i*) ;;
-      *) return;;
+  *i*) ;;
+  *) return;;
 esac
 
-# append to the history file, don't overwrite it
+# Append to the history file, don't overwrite it
 shopt -s histappend
 
-# disable software flow control
-stty -ixon
-
-# check the window size after each command
+# Check the window size after each command
 shopt -s checkwinsize
 
-# If set, the pattern "**" used in a pathname expansion context will
+# The pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
 shopt -s globstar
 
-# enable programmable completion features
+# Disable software flow control
+stty -ixon
+
+# Enable programmable completion features
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion
