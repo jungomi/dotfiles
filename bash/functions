@@ -1,0 +1,60 @@
+# Create and change to directory
+mkcd() {
+  mkdir -p "$@"
+  cd "$@"
+}
+
+# Open git repository in browser
+browserepo() {
+  local giturl=$(git config --get remote.origin.url \
+                | sed -e "s/git@//g" -e "s/https:\/\///g" -e "s/:/\//g" \
+                  -e "s/.git$//")
+
+  if [[ -z "$giturl" ]]; then
+    echo "ERROR: No git url found"
+    return 1
+  fi
+
+  local gitbranch=$(git rev-parse --abbrev-ref HEAD)
+  giturl="https://${giturl}"
+  if [[ $gitbranch != "master" ]]; then
+    giturl="${giturl}/branch/${gitbranch}"
+  fi
+
+  echo "${giturl}"
+  open "${giturl}"
+}
+
+# Show all names listed in the SSL certificate of a domain
+certnames() {
+  if [ -z "${1}" ]; then
+    echo "ERROR: No domain specified"
+    return 1
+  fi
+
+  local request=$(openssl s_client -connect "${1}:443" < /dev/null 2>&1)
+  if [[ "${request}" != *"-----BEGIN CERTIFICATE-----"* ]]; then
+    echo "ERROR: No certificate found"
+    return 1
+  fi
+
+  local cert=$(echo "${request}" | openssl x509 -text)
+  echo "Common Name:"
+  echo ""
+  echo "${cert}" | grep "Subject:" | sed -e "s/^.*CN=//"
+  echo ""
+  echo "Subject Alternative Names:"
+  echo ""
+  echo "${cert}" | grep "DNS:" | sed -e "s/DNS://g" -e "s/ //g" -e "s/,/\n/g"
+  return 0
+}
+
+# IP addresses
+localip() {
+  ip address | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' \
+    | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'
+}
+
+publicip() {
+  dig +short myip.opendns.com @resolver1.opendns.com
+}
