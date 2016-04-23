@@ -15,3 +15,10 @@ set bell-style none
 
 # Append slash to symbolic linked directories on completion
 set mark-symlinked-directories
+
+# Consider the text after the cursor for autocompletion
+# "Makefile", cursor is after "e", becomes "Makefile" rather than "Makefilefile"
+set skip-completed-text on
+
+# Show all results of autocompletion at once
+set page-completions off
