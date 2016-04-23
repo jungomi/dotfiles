@@ -1,3 +1,5 @@
+# vim: set filetype=sh:
+
 # Create and change to directory
 mkcd() {
   mkdir -p "$@"

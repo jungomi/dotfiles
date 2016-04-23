@@ -1,3 +1,5 @@
+# vim: set filetype=sh:
+
 export DOTFILES=$HOME/.dotfiles
 export EDITOR=vim
 

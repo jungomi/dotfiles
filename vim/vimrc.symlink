@@ -1,3 +1,4 @@
+" vim: set filetype=vim:
 " load plugins
 source ~/.vim/plugins.vim
 
