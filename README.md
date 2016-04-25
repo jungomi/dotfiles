@@ -23,7 +23,7 @@ backup was made).
 $ make [targets]
 
   targets:
-            install      # Installs all dotfiles and plugins
+            default      # Installs all dotfiles and plugins
             safe         # Runs backup before installing
             backup       # Makes a backup of existing dotfiles
             link         # Creates symbolic links

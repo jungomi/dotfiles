@@ -1,4 +1,4 @@
-.PHONY: backup clean gitmodules linstall ink plugins restore safe
+.PHONY: backup clean gitmodules link plugins restore safe
 
 .SILENT:
 
@@ -10,11 +10,11 @@ FILE_NAME = $(basename $(notdir $<))
 SYMLINK_FILE = $(addprefix $(shell pwd)/, $<)
 
 SYMLINK := $(shell find -H . -maxdepth 2 -name "*.$(EXTENSION)")
-BACKUP := $(shell [[ -d $(BACKUP_DIR) ]] && find -H $(BACKUP_DIR) -name "*.bak")
+BACKUP := $(shell test -d $(BACKUP_DIR) && find -H $(BACKUP_DIR) -name "*.bak")
 
-install: link gitmodules plugins
+default: link gitmodules plugins
 
-safe: backup install
+safe: backup default
 
 link: $(addsuffix .link, $(basename $(SYMLINK)))
 	echo -e "\r\033[2K[ \033[00;32mDONE\033[0m ] Linking files"
