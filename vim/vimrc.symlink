@@ -1,97 +1,123 @@
 " vim: set filetype=vim:
-" load plugins
-source ~/.vim/plugins.vim
 
-set nocompatible              " be iMproved
+" === Load additional settings ===
+source ~/.vim/plugins.vim
+source ~/.vim/plugin_settings.vim
+source ~/.vim/autocmd.vim
+source ~/.vim/functions.vim
+source ~/.vim/mappings.vim
+
+" Be iMproved
+set nocompatible
+" Make backspace work as expected
+set backspace=indent,eol,start
+" Hide buffers instead of closing
+set hidden
+set history=10000
+
+" === Appearance ===
 syntax on
-" access colours present in 256 colourspace
-let base16colorspace=256
-" tell vim that termial supports 256 colours
+" Tell vim that the terminal supports 256 colours
 set t_Co=256
-" set background=light
 colorscheme light-theme
 " colorscheme dark-theme
-
-let mapleader = ","
-
 set number
+set showmode
+set showcmd
+" Smoother redrawing
+set ttyfast
+" Redraw only when needed
+set lazyredraw
+set noerrorbells
+
+" === File settings ===
 set encoding=utf-8
-" set spell check to British English
+" Set spell check to British English
 set spelllang=en_gb
-" Tab is 2 spaces
+" Detect when a file changed
+set autoread
+set title
+
+" === Indentation ===
+" Tab settings, always use 2 spaces (no tabs)
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set shiftround
 set expandtab
-set showmode
-set showcmd
-set title
-set ruler
-" Don't show the intro message when starting Vim
-set shortmess=atI
-" Detect when a file changed
-set autoread
 " Automatically indent
 set smartindent
 set cindent
 set autoindent
-" Show 3 lines around cursor
-set scrolloff=3
-set sidescrolloff=3
-set ttyfast
-" Status Line
-set laststatus=2                  " Always show status line
-set statusline=\ [%n]%m%r         " Buffer number, modified and read only flag
-set statusline+=\ %<%f            " Truncate point before path to file
-set statusline+=%=\ %{&ff}\ %y    " Right align, file type
-set statusline+=\ %(%l,%c\ %P\ %) " Line, column and percent of file
+
+" === Status Line ===
+" Always show status line
+set laststatus=2
+" Abbreviate status bar messages and disable startup page
+set shortmess=atI
+set ruler
+" Buffer number, modified and read only flag
+set statusline=\ [%n]%m%r
+" Truncate point before path to file
+set statusline+=\ %<%f
+" Right align, file type
+set statusline+=%=\ %{&ff}\ %y
+" Line, column and percent of file
+set statusline+=\ %(%l,%c\ %P\ %)
+" Warnings
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%{StatuslineTrailingSpaceWarning()}
 set statusline+=%{StatuslineTabWarning()}
-set wildmenu                  " command line completion
-set wildmode=list:longest     " show list of options
+
+
+" === Line settings ===
+" Visually wrap long lines
 set wrap
 set textwidth=80
 set colorcolumn=+1
 set formatoptions=qrn1
-" Make backspace work as expected
-set backspace=indent,eol,start
-" Disable error bells
-set noerrorbells
-" Show highlight current line
+" Show 3 lines around cursor
+set scrolloff=3
+set sidescrolloff=3
+" Highlight current line
 set cursorline
-" Hide buffers instead of closing
-set hidden
-set history=1000
-" Redraw only when needed
-set lazyredraw
-" search
+
+" === Search ===
 set ignorecase
+" Case sensitive when using uppercase
 set smartcase
-set gdefault
 set incsearch
 set showmatch
 set hlsearch
-" code folding
+" Enable 'g' flag in substitutions by default
+set gdefault
+set tags+=.tags
+
+" === Code folding ===
 set foldmethod=syntax
 set nofoldenable
 set foldlevel=10
-" use longest common for completion
+
+" === Completion ===
 set completeopt=longest,menuone
-" split Windows open below/right
+set wildmode=list:longest
+
+" === Splits ===
+" Split windows open below/right
 set splitbelow
 set splitright
+" Diff vertically
+set diffopt+=vertical
 set previewheight=5
-set tags+=.tags
-" keep undo history
+
+" === Backups ===
+" Keep undo history
 "set undofile
-" centralised backups
+" Centralised backups
 set backupdir=~/.vim/backups//
 set directory=~/.vim/swaps//
 set undodir=~/.vim/undo//
-
-" create directories if not already present
+" Create directories if not already present
 if !isdirectory('~/.vim/backups')
   :silent !mkdir -p ~/.vim/backups > /dev/null 2>&1
 endif
@@ -101,214 +127,3 @@ endif
 if !isdirectory('~/.vim/undo')
   :silent !mkdir -p ~/.vim/undo > /dev/null 2>&1
 endif
-
-" file type specific settings
-if has('autocmd') && !exists('autocommands_loaded')
-  let autocommands_loaded = 1
-  " resize panes when resizing window
-  autocmd VimResized * wincmd =
-  " disable comment continuation when using 'o' or 'O'
-  autocmd FileType * setlocal formatoptions-=o
-  " enable java completion
-  autocmd FileType java set omnifunc=javacomplete#Complete
-  " set special tab settings
-  autocmd FileType python setlocal shiftwidth=4 softtabstop=4 expandtab
-  autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
-  " make quickfix windows take all the lower section of the screen when there
-  " are multiple windows open
-  autocmd FileType qf wincmd J
-  autocmd BufRead,BufNewFile *.md set filetype=markdown
-  autocmd FileType gitcommit,markdown,tex set spell
-  " Refresh trailing whitespace indicator
-  autocmd BufRead,BufWritePost,CursorHold * unlet!  b:statusline_trailing_space_warning
-  " Syntax highlighting for C custom types
-  autocmd FileType c syntax match cType "\<\w\+_t\>"
-endif
-
-" Plugins
-" Buftabline
-let g:buftabline_numbers=1
-let g:buftabline_indicators=1
-" Syntastic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_error_symbol = "✗"
-let g:syntastic_warning_symbol = "⚠"
-let g:syntastic_loc_list_height = 5
-let g:syntastic_c_remove_include_errors = 1
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exec = 'eslint_d'
-" Fugitive
-set diffopt+=vertical
-" gitgutter
-let g:gitgutter_map_keys = 0
-" CtrlP
-let g:ctrlp_map = '<leader>f'
-let g:ctrlp_cmd = 'CtrlP'
-" Ignore some folders and files for CtrlP indexing
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.sass-cache$|\.hg$\|\.svn$\|\.yardoc\|public$|log\|tmp$',
-  \ 'file': '\.so$\|\.dat$'
-  \ }
-" NERDTree
-let NERDTreeShowBookmarks=1
-let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git$', '\.hg$', '\.svn$', '\.bzr$']
-let NERDTreeShowHidden=1
-let NERDTreeChDirMode=0 " never change working directory
-" instant markdown preview
-let g:instant_markdown_autostart = 0
-" disable concealing json
-let g:vim_json_syntax_conceal = 0
-
-" Mappings
-" Disable highlight
-nnoremap <leader><space> :noh<cr>
-" Use tab to move to matching brackets
-nnoremap <tab> %
-vnoremap <tab> %
-" Visual line movement
-nnoremap j gj
-nnoremap k gk
-" speed up scrolling
-nnoremap <C-e> 3<C-e>
-nnoremap <C-y> 3<C-y>
-" movement in suggestion window
-inoremap <expr> j pumvisible() ? "\<C-n>" : "j"
-inoremap <expr> k pumvisible() ? "\<C-p>" : "k"
-" cancel completion with Esc
-inoremap <expr> <Esc> pumvisible() ? "\<C-e>" : "\<Esc>"
-" code completion with Ctrl-Space
-inoremap <C-@> <C-x><C-o>
-" Remove help key
-inoremap <F1> <nop>
-nnoremap <F1> <nop>
-vnoremap <F1> <nop>
-" disable Ex mode
-noremap Q <NOP>
-" save
-nnoremap <leader>w :w<CR>
-" sudo save, abuse tee
-nnoremap <leader>sw :w !sudo tee % > /dev/null<CR>
-" open bashrc file in split
-nnoremap <leader>eb :vsp ~/.bashrc<CR>
-" open tmux file in split
-nnoremap <leader>et :vsp ~/.tmux.conf<CR>
-" open gitconfig file in split
-nnoremap <leader>eg :vsp ~/.gitconfig<CR>
-" open vimrc file in split
-nnoremap <leader>ev :vsp $MYVIMRC<CR>
-" load vimrc
-nnoremap <leader>sv :source $MYVIMRC<CR>
-" strip trailing whitespace
-nnoremap <leader>W :call <SID>StripTrailingWhitespaces()<CR>
-" select pasted text
-nnoremap <leader>v `[v`]
-" split windows
-" create horizontal split and switch to it
-nnoremap <leader>T <C-w>s<C-w>j
-" create vertical split and switch to it
-nnoremap <leader>t <C-w>v<C-w>l
-" navigation between windows
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-" resizing current split
-nnoremap <leader>j :resize +5<CR>
-nnoremap <leader>k :resize -5<CR>
-nnoremap <leader>l :vertical resize +5<CR>
-nnoremap <leader>h :vertical resize -5<CR>
-" resize all splits evenly
-nnoremap <leader>= <C-w>=
-" switch between last two files
-nnoremap <leader><leader> <C-^>
-" exit insert mode
-"inoremap jj <ESC> " jj to exit inster mode
-" toggle spell check
-nnoremap <leader>sc :set spell!<CR>
-" npm tests
-" all
-nnoremap <leader>npa :!npm run --silent test<CR>
-nnoremap <leader>npda :Dispatch npm run --silent test<CR>
-" current file only
-nnoremap <leader>npc :!npm run --silent test:file %<CR>
-nnoremap <leader>npdc :Dispatch npm --silent run test:file %<CR>
-" save to clipboard
-nnoremap <leader>y "+y
-xnoremap <leader>y "+y
-" Markdown table replace line with header separator
-nnoremap <leader>mth :let @m='lvt\|r-f\|@m'<CR>:normal @m<CR>
-" Go to definition of tag under cursor
-nnoremap <leader>gf <C-]>
-" Show definition of tag under cursor in preview window
-nnoremap <leader>gt <C-W>}
-" Show multiple definition of tag under cursor in preview window
-nnoremap <leader>gT <C-W>g}
-
-" plugins
-nnoremap <leader>a :Ack<space>
-nnoremap <leader>u :GundoToggle<CR>
-nnoremap <leader>nt :NERDTreeToggle<CR>
-" find current file in tree
-nnoremap <leader>nf :NERDTreeFind<CR>
-nnoremap <leader>nbc :Bookmark<CR>
-" syntastic
-nnoremap <leader>sy :SyntasticToggleMode<cr>
-" instant markdown preview
-nnoremap <leader>imp :InstantMarkdownPreview<CR>
-" instant latex preview
-nnoremap <leader>ilp :LLPStartPreview<CR>
-" run rspec
-nnoremap <leader>rsa :call RunAllSpecs()<CR>
-nnoremap <leader>rsc :call RunCurrentSpecFile()<CR>
-" CtrlP
-nnoremap <leader>ff :CtrlP<CR>
-nnoremap <leader>ft :CtrlPTag<CR>
-
-" Functions
-" Taken from https://www.reddit.com/r/vim/comments/e19bu/whats_your_status_line/
-" Shows [trailing] if trailing white space is detected
-function! StatuslineTrailingSpaceWarning()
-  if !exists("b:statusline_trailing_space_warning")
-    if search('\s\+$', 'nw') != 0
-      let b:statusline_trailing_space_warning = '[trailing]'
-    else
-      let b:statusline_trailing_space_warning = ''
-    endif
-  endif
-  return b:statusline_trailing_space_warning
-endfunction
-
-" Taken from https://www.reddit.com/r/vim/comments/e19bu/whats_your_status_line/
-" Shows [&et] if &et is set wrong
-" Shows [mixed-indenting] if spaces and tabs are used to indent
-function! StatuslineTabWarning()
-  if !exists("b:statusline_tab_warning")
-    let tabs = search('^\t', 'nw') != 0
-    let spaces = search('^ ', 'nw') != 0
-
-    if tabs && spaces
-      let b:statusline_tab_warning =  '[mixed-indenting]'
-    elseif (spaces && !&et) || (tabs && &et)
-      let b:statusline_tab_warning = '[&et]'
-    else
-      let b:statusline_tab_warning = ''
-    endif
-  endif
-  return b:statusline_tab_warning
-endfunction
-
-" Taken from http://vimcasts.org/episodes/tidying-whitespace/
-function! <SID>StripTrailingWhitespaces()
-    " Preparation: save last search, and cursor position.
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-    " Do the business:
-    %s/\s\+$//e
-    " Clean up: restore previous search history, and cursor position
-    let @/=_s
-    call cursor(l, c)
-endfunction
