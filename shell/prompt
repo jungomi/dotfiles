@@ -1,0 +1,17 @@
+# vim: set filetype=sh:
+
+export PROMPT_COMMAND=__draw_prompt
+__draw_prompt() {
+  local exit_code="$?"
+  local clear="\[\e[00m\]"
+  local red="\[\e[01;31m\]"
+  local green="\[\e[01;32m\]"
+  local blue="\[\e[01;34m\]"
+  local purple="\[\e[01;35m\]"
+  local arrow=$'\u279c'
+  local exit_colour="${green}"
+  if [ "$exit_code" -ne "0" ]; then
+    exit_colour="${red}"
+  fi
+  PS1="${exit_colour}[${exit_code}] ${blue}\w ${purple}${arrow}${clear}  "
+}
