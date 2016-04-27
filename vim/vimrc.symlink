@@ -19,8 +19,8 @@ set history=10000
 syntax on
 " Tell vim that the terminal supports 256 colours
 set t_Co=256
-colorscheme light-theme
-" colorscheme dark-theme
+set background=light
+colorscheme theme
 set number
 set showmode
 set showcmd
