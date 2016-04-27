@@ -1,30 +1,30 @@
-# load theme
+# Load theme
 source ~/.dotfiles/tmux/tmux_theme.conf
 
-# remap prefix to C-a
+# Remap prefix to C-a
 unbind C-b
 set-option -g prefix C-a
 bind-key C-a send-prefix
 
-# display in true colour (24-bit)
+# Display in true colour (24-bit)
 set-option -g terminal-overrides ",xterm-256color:Tc"
 
-set -g history-limit 1000
+set -g history-limit 10000
 
-# automaitcally renumber windows
+# Automatically renumber windows
 set -g renumber-windows on
 
-# resize to max window of any client connected
+# Resize to max window of any client connected
 setw -g aggressive-resize on
 
-# make delay shorter
+# Make delay shorter
 set -sg escape-time 0
 
-# start index at 1
+# Start index at 1
 set -g base-index 1
 setw -g pane-base-index 1
 
-# set copy mode to vim style
+# Set copy mode to vim style
 setw -g mode-keys vi
 unbind [
 bind v copy-mode
@@ -34,39 +34,39 @@ bind -t vi-copy 'v' begin-selection
 bind -t vi-copy 'y' copy-selection
 
 # Key Bindings
-# tile all windows
+# Tile all windows
 bind = select-layout tiled
 
-# reload config file
+# Reload config file
 bind r source-file ~/.tmux.conf
 
-# synchronise all panes
+# Synchronise all panes
 bind y setw synchronize-panes
 
-# create pane with current path
+# Always create pane with current path
 bind t split-window -h -c "#{pane_current_path}"
 bind T split-window -v -c "#{pane_current_path}"
+bind n new-window -c "#{pane_current_path}"
 
-# pane movement like vim
+# Pane movement like vim
 bind h select-pane -L
 bind j select-pane -D
 bind k select-pane -U
 bind l select-pane -R
 
-# move between windows
+# Cycle through windows
 bind -r C-h select-window -t :-
 bind -r C-l select-window -t :+
 
-# resize pane
+# Resize pane
 bind -r H resize-pane -L 5
 bind -r J resize-pane -D 5
 bind -r K resize-pane -U 5
 bind -r L resize-pane -R 5
 
 unbind n
-bind n new-window -c "#{pane_current_path}"
 
-# unbind arrow keys
+# Unbind arrow keys
 unbind Up
 unbind Down
 unbind Left
