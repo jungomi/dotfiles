@@ -2,16 +2,16 @@
 " Best used with light-theme.sh
 
 " GUI color definitions
-let gui00 = "ffffdf"  " BG
+let gui00 = "fdf6e3"  " BG
 let gui01 = "585858"  " Border
 let gui02 = "ffdf5f"  " Visual select
-let gui03 = "9e9e9e"  " Comment
+let gui03 = "8e8e8e"  " Comment
 let gui04 = "a09f93"  " PMenu
 let gui05 = "555d60"  " Normal FG
-let gui06 = "e8e6df"  " unused
-let gui07 = "f2f0ec"  " White - unused
-let gui08 = "d75f5f"  " Red
-let gui09 = "d78700"  " Orange
+let gui06 = "e8e6df"  " Grey
+let gui07 = "fdf6e3"  " White - unused
+let gui08 = "df5f5f"  " Red
+let gui09 = "f99157"  " Orange
 let gui0A = "b58900"  " Yellow
 let gui0B = "5faf5f"  " Green
 let gui0C = "6887ee"  " Bright Blue
@@ -21,36 +21,34 @@ let gui0F = "d27b53"  " Brown
 let guiColumnBg = "b2b2b2"
 let guiWhite = "c6c6c6"
 let guiBlack = "121212"
-let guiCursorLine = "dfdfaf"
 let guiCursor = "666666"
 let guiDiffAdd = "dfffaf"
-let guiDiffChange = "87afd7"
+let guiDiffChange = "eeeeee"
 let guiDiffDelete = "ffdfdf"
 
 " Terminal color definitions
-let cterm00 = "230"   " BG
-let cterm01 = "240"   " Border
+let cterm00 = "15"    " BG
+let cterm01 = "18"    " Border
 let cterm02 = "221"   " Visual select
-let cterm03 = "245"   " Comment
+let cterm03 = "08"    " Comment
 let cterm04 = "20"    " PMenu
-let cterm05 = "240"   " Normal FG
-let cterm06 = "21"    " unused
+let cterm05 = "00"    " Normal FG
+let cterm06 = "21"    " Grey
 let cterm07 = "15"    " White - unused
-let cterm08 = "167"   " Red
-let cterm09 = "172"   " Orange
-let cterm0A = "136"   " Yellow
-let cterm0B = "71"    " Green
-let cterm0C = "68"    " Bright Blue
-let cterm0D = "68"    " Blue
-let cterm0E = "133"   " Magenta
+let cterm08 = "01"    " Red
+let cterm09 = "16"    " Orange
+let cterm0A = "03"    " Yellow
+let cterm0B = "02"    " Green
+let cterm0C = "14"    " Bright Blue
+let cterm0D = "04"    " Blue
+let cterm0E = "13"    " Magenta
 let cterm0F = "17"    " Brown
 let ctermColumnBg = "249"
 let ctermWhite = "251"
 let ctermBlack = "233"
-let ctermCursorLine = "187"
 let ctermCursor = "242"
 let ctermDiffAdd = "193"
-let ctermDiffChange = "110"
+let ctermDiffChange = "255"
 let ctermDiffDelete = "224"
 
 " Theme setup
@@ -82,7 +80,7 @@ endfun
 call <sid>hi("Bold",          "", "", "", "", "bold")
 call <sid>hi("Debug",         gui08, "", cterm08, "", "")
 call <sid>hi("Directory",     gui0D, "", cterm0D, "", "")
-call <sid>hi("Error",         gui03, "", cterm03, "", "")
+call <sid>hi("Error",         gui01, "", cterm01, "", "")
 call <sid>hi("ErrorMsg",      gui08, gui00, cterm08, cterm00, "")
 call <sid>hi("Exception",     gui08, "", cterm08, "", "")
 call <sid>hi("FoldColumn",    guiWhite, gui01, ctermWhite, cterm01, "")
@@ -97,7 +95,7 @@ call <sid>hi("Question",      gui0D, "", cterm0D, "", "")
 call <sid>hi("Search",        "", gui02, "", cterm02,  "")
 call <sid>hi("SpecialKey",    gui03, "", cterm03, "", "")
 call <sid>hi("TooLong",       gui08, "", cterm08, "", "")
-call <sid>hi("Underlined",    gui08, "", cterm08, "", "")
+call <sid>hi("Underlined",    gui0C, "", cterm0C, "", "")
 call <sid>hi("Visual",        "", gui02, "", cterm02, "")
 call <sid>hi("VisualNOS",     gui08, "", cterm08, "", "")
 call <sid>hi("WarningMsg",    gui08, "", cterm08, "", "")
@@ -114,8 +112,8 @@ call <sid>hi("StatusLine",    guiWhite, guiBlack, ctermWhite, ctermBlack, "none"
 call <sid>hi("StatusLineNC",  gui03, gui01, cterm03, cterm01, "none")
 call <sid>hi("VertSplit",     gui0F, "", cterm0F, "", "none")
 call <sid>hi("ColorColumn",   "", guiColumnBg, "", ctermColumnBg, "none")
-call <sid>hi("CursorColumn",  "", guiCursorLine, "", ctermCursorLine, "none")
-call <sid>hi("CursorLine",    "", guiCursorLine, "", ctermCursorLine, "none")
+call <sid>hi("CursorColumn",  "", gui06, "", cterm06, "none")
+call <sid>hi("CursorLine",    "", gui06, "", cterm06, "none")
 call <sid>hi("CursorLineNr",  gui03, gui01, cterm03, cterm01, "")
 call <sid>hi("PMenu",         gui04, gui01, cterm04, cterm01, "none")
 call <sid>hi("PMenuSel",      gui01, guiColumnBg, cterm01, ctermColumnBg, "")
@@ -175,7 +173,7 @@ call <sid>hi("DiffRemoved",  gui08, gui00,  cterm08, cterm00, "")
 " Git highlighting
 call <sid>hi("gitCommitOverflow",  gui08, "", cterm08, "", "")
 call <sid>hi("gitCommitSummary",   gui0B, "", cterm0B, "", "")
-  
+
 " GitGutter highlighting
 call <sid>hi("GitGutterAdd",     gui0B, gui01, cterm0B, cterm01, "")
 call <sid>hi("GitGutterChange",  gui0D, gui01, cterm0D, cterm01, "")
@@ -251,5 +249,5 @@ call <sid>hi("SyntasticWarningSign",  gui02, gui01, cterm02, cterm01, "")
 delf <sid>hi
 
 " Remove color variables
-unlet gui00 gui01 gui02 gui03 gui04 gui05 gui06 gui07 gui08 gui09 gui0A gui0B gui0C gui0D gui0E gui0F guiColumnBg guiWhite guiBlack guiCursorLine guiCursor
-unlet cterm00 cterm01 cterm02 cterm03 cterm04 cterm05 cterm06 cterm07 cterm08 cterm09 cterm0A cterm0B cterm0C cterm0D cterm0E cterm0F ctermColumnBg ctermWhite ctermBlack ctermCursorLine ctermCursor
+unlet gui00 gui01 gui02 gui03 gui04 gui05 gui06 gui07 gui08 gui09 gui0A gui0B gui0C gui0D gui0E gui0F guiColumnBg guiWhite guiBlack guiCursor
+unlet cterm00 cterm01 cterm02 cterm03 cterm04 cterm05 cterm06 cterm07 cterm08 cterm09 cterm0A cterm0B cterm0C cterm0D cterm0E cterm0F ctermColumnBg ctermWhite ctermBlack ctermCursor

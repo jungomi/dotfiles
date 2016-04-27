@@ -14,7 +14,7 @@ color04="5f/87/d7" # Base 0D - Blue
 color05="af/5f/af" # Base 0E - Magenta
 color06="51/a1/a0" # Base 0C - Cyan
 color07="93/a1/a1" # Base 05 - White
-color08="9e/9e/9e" # Base 03 - Bright Black
+color08="8e/8e/8e" # Base 03 - Bright Black
 color09=$color01 # Base 08 - Bright Red
 color10=$color02 # Base 0B - Bright Green
 color11=$color03 # Base 0A - Bright Yellow
@@ -22,14 +22,14 @@ color12=$color04 # Base 0D - Bright Blue
 color13=$color05 # Base 0E - Bright Magenta
 color14=$color06 # Base 0C - Bright Cyan
 color15="fd/f6/e3" # Base 07 - Bright White
-color16="f9/91/57" # Base 09
+color16="f9/91/57" # Base 09 - Orange
 color17="d2/7b/53" # Base 0F - Brown
-color18="39/39/39" # Base 01
+color18="58/58/58" # Base 01
 color19="55/5d/60" # Base 02
 color20="a0/9f/93" # Base 04
-color21="e8/e6/df" # Base 06
+color21="ee/e8/d5" # Base 06
 color_foreground="55/5d/60" # Base 02
-color_background="ff/ff/df" # Base 07
+color_background="fd/f6/e3" # Base 07
 color_cursor="66/66/66" # Base 02
 
 if [ -n "$TMUX" ]; then
