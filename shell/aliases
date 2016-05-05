@@ -18,6 +18,7 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
+alias cdot="cd $DOTFILES"
 alias rmf="rm -rf"
 
 # Open file with its default application
