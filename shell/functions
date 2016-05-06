@@ -20,7 +20,7 @@ browserepo() {
   local gitbranch=$(git rev-parse --abbrev-ref HEAD)
   giturl="https://${giturl}"
   if [[ $gitbranch != "master" ]]; then
-    giturl="${giturl}/branch/${gitbranch}"
+    giturl="${giturl}/tree/${gitbranch}"
   fi
 
   echo "${giturl}"
