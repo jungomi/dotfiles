@@ -76,6 +76,8 @@ Plug 'tpope/vim-rake', { 'for': ['ruby', 'eruby'] }
 Plug 'tpope/vim-bundler', { 'for': ['ruby', 'eruby'] }
 Plug 'thoughtbot/vim-rspec', { 'for': ['ruby', 'eruby'] }
 Plug 'tpope/vim-rails', { 'for': ['ruby', 'eruby'] }
+" Rust
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 
 call plug#end()
 
