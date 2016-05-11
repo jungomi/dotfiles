@@ -11,6 +11,8 @@ if has('autocmd') && !exists('autocommands_loaded')
   autocmd FileType java set omnifunc=javacomplete#Complete
   " Activate spell checking for relevant files
   autocmd FileType gitcommit,markdown,tex set spell
+  " Use tags from ~/.tags/<filetype>
+  autocmd FileType * exec "setlocal tags+=~/.tags/" . &filetype
 
   " === Tab settings ===
   autocmd FileType python setlocal shiftwidth=4 softtabstop=4 expandtab
