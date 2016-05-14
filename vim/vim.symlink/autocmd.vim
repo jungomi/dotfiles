@@ -5,8 +5,6 @@ if has('autocmd') && !exists('autocommands_loaded')
   " === File type settings ===
   " Disable comment continuation when using 'o' or 'O'
   autocmd FileType * setlocal formatoptions-=o
-  " Syntax highlighting for C custom types
-  autocmd FileType c syntax match cType "\<\w\+_t\>"
   " Enable java completion
   autocmd FileType java set omnifunc=javacomplete#Complete
   " Activate spell checking for relevant files
