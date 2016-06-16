@@ -18,6 +18,8 @@ Plug 'ap/vim-buftabline'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-commentary'
+" Transform between single and multi line
+Plug 'AndrewRadev/splitjoin.vim'
 
 " === Navigation ===
 " File tree
