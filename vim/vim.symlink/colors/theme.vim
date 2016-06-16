@@ -89,7 +89,7 @@ else
   let gui07 = "fdf6e3"  " White - unused
   let gui08 = "df5f5f"  " Red
   let gui09 = "f99157"  " Orange
-  let gui0A = "b58900"  " Yellow
+  let gui0A = "d6a50b"  " Yellow
   let gui0B = "5faf5f"  " Green
   let gui0C = "6887ee"  " Bright Blue
   let gui0D = "5f87d7"  " Blue
