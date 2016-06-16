@@ -105,7 +105,7 @@ nnoremap <leader>gt <C-W>}
 nnoremap <leader>gT <C-W>g}
 
 " === Plugins ===
-nnoremap <leader>a :Ack<space>
+nnoremap <leader>a :Ag<space>
 nnoremap <leader>u :GundoToggle<CR>
 " Nerdtree
 nnoremap <leader>nt :NERDTreeToggle<CR>

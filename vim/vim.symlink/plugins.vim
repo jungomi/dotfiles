@@ -5,7 +5,7 @@ call plug#begin('~/.vim/plugged')
 " Colour schemes
 Plug 'chriskempson/base16-vim'
 
-Plug 'mileszs/ack.vim'
+Plug 'rking/ag.vim'
 " Manipulate surrounding parentheses, quotes, etc.
 Plug 'tpope/vim-surround'
 " Make plugin commands repeatable
