@@ -108,7 +108,8 @@ set splitbelow
 set splitright
 " Diff vertically
 set diffopt+=vertical
-set previewheight=5
+" Default size for quickfix window
+set previewheight=8
 
 " === Backups ===
 " Keep undo history
