@@ -11,6 +11,8 @@ source ~/.vim/mappings.vim
 set nocompatible
 " Make backspace work as expected
 set backspace=indent,eol,start
+" Disable mouse
+set mouse=
 " Hide buffers instead of closing
 set hidden
 set history=10000
