@@ -80,6 +80,8 @@ Plug 'thoughtbot/vim-rspec', { 'for': ['ruby', 'eruby'] }
 Plug 'tpope/vim-rails', { 'for': ['ruby', 'eruby'] }
 " Rust
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+" TypeScript
+Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 
 call plug#end()
 
