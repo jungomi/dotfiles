@@ -84,6 +84,8 @@ Plug 'tpope/vim-rails', { 'for': ['ruby', 'eruby'] }
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 " TypeScript
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
+" Vue
+Plug 'posva/vim-vue', { 'for': 'vue' }
 
 call plug#end()
 
