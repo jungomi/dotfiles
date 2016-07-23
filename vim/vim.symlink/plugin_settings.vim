@@ -42,3 +42,7 @@ let g:instant_markdown_autostart = 0
 " === JSON ===
 " Disable concealing json
 let g:vim_json_syntax_conceal = 0
+
+" === Emmet ===
+let g:user_emmet_leader_key = '<C-E>'
+let g:user_emmet_mode = 'i'

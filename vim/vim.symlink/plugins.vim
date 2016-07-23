@@ -38,7 +38,7 @@ Plug 'sjl/gundo.vim'
 Plug 'MarcWeber/vim-addon-mw-utils' | Plug 'tomtom/tlib_vim' | Plug 'garbas/vim-snipmate'
 Plug 'honza/vim-snippets'
 " Expand keywords to HTML
-Plug 'rstacruz/sparkup', { 'rtp': 'vim/' }
+Plug 'mattn/emmet-vim'
 
 " === Git ===
 " Wrapper
