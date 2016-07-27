@@ -82,6 +82,8 @@ Plug 'thoughtbot/vim-rspec', { 'for': ['ruby', 'eruby'] }
 Plug 'tpope/vim-rails', { 'for': ['ruby', 'eruby'] }
 " Rust
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+" TOML
+Plug 'cespare/vim-toml', { 'for': 'toml' }
 " TypeScript
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 " Vue
