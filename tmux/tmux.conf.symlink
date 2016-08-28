@@ -6,6 +6,7 @@ unbind C-b
 set-option -g prefix C-a
 bind-key C-a send-prefix
 
+set-option -g default-terminal "xterm-256color"
 # Display in true colour (24-bit)
 set-option -g terminal-overrides ",xterm-256color:Tc"
 
