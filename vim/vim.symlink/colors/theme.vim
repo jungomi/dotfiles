@@ -44,12 +44,14 @@ if &background == "dark"
   let guiColumnBg = "4e4e4e"
   let guiWhite = "c6c6c6"
   let guiBlack = "121212"
-  let guiSearch = "ffcc66"
   let guiDiffAdd = gui01
   let guiDiffChange = gui01
   let guiDiffDelete = gui01
   let guiSearch = gui0A
   let guiFolded = gui01
+  let guiBorderFg = gui03
+  let guiTabActiveBg = "d787d7"
+  let guiTabInactiveBg = gui04
 
   " Terminal colour definitions
   let cterm00 = "00"    " BG
@@ -76,6 +78,9 @@ if &background == "dark"
   let ctermDiffDelete = cterm01
   let ctermSearch = cterm0A
   let ctermFolded = cterm01
+  let ctermBorderFg = cterm03
+  let ctermTabActiveBg = "176"
+  let ctermTabInactiveBg = cterm04
 else
   " Light theme
   " GUI colour definitions
@@ -103,6 +108,9 @@ else
   let guiDiffDelete = "ffdfdf"
   let guiSearch = gui02
   let guiFolded = guiWhite
+  let guiBorderFg = guiColumnBg
+  let guiTabActiveBg = "d787d7"
+  let guiTabInactiveBg = gui06
 
   " Terminal colour definitions
   let cterm00 = "15"    " BG
@@ -128,7 +136,10 @@ else
   let ctermDiffChange = "255"
   let ctermDiffDelete = "224"
   let ctermSearch = "221"
-  let ctermFolded = ctermWhite
+  let ctermFolded = cterm06
+  let ctermBorderFg = ctermColumnBg
+  let ctermTabActiveBg = "176"
+  let ctermTabInactiveBg = cterm06
 endif
 
 " Theme setup
@@ -165,22 +176,22 @@ call <sid>hi("Conceal",       gui0D, gui00, cterm0D, cterm00, "")
 call <sid>hi("Cursor",        gui00, gui05, cterm00, cterm05, "")
 call <sid>hi("NonText",       gui03, "", cterm03, "", "")
 call <sid>hi("Normal",        gui05, gui00, cterm05, cterm00, "")
-call <sid>hi("LineNr",        gui03, gui01, cterm03, cterm01, "")
-call <sid>hi("SignColumn",    gui03, gui01, cterm03, cterm01, "")
+call <sid>hi("LineNr",        guiBorderFg, gui01, ctermBorderFg, cterm01, "")
+call <sid>hi("SignColumn",    guiBorderFg, gui01, ctermBorderFg, cterm01, "")
 call <sid>hi("SpecialKey",    gui03, "", cterm03, "", "")
 call <sid>hi("StatusLine",    guiWhite, guiBlack, ctermWhite, ctermBlack, "none")
-call <sid>hi("StatusLineNC",  gui03, gui01, cterm03, cterm01, "none")
+call <sid>hi("StatusLineNC",  guiBorderFg, gui01, ctermBorderFg, cterm01, "none")
 call <sid>hi("VertSplit",     gui0F, "", cterm0F, "", "none")
 call <sid>hi("ColorColumn",   "", guiColumnBg, "", ctermColumnBg, "none")
 call <sid>hi("CursorColumn",  "", gui06, "", cterm06, "none")
 call <sid>hi("CursorLine",    "", gui06, "", cterm06, "none")
-call <sid>hi("CursorLineNr",  gui03, gui01, cterm03, cterm01, "")
+call <sid>hi("CursorLineNr",  guiBorderFg, gui01, ctermBorderFg, cterm01, "")
 call <sid>hi("PMenu",         gui04, gui01, cterm04, cterm01, "none")
 call <sid>hi("PMenuSel",      gui01, guiSearch, cterm01, ctermSearch, "")
-call <sid>hi("TabLine",       gui03, gui01, cterm03, cterm01, "none")
-call <sid>hi("TabLineFill",   gui03, gui01, cterm03, cterm01, "none")
-call <sid>hi("TabLineSel",    gui01, gui0F, cterm01, cterm0F, "none")
-call <sid>hi("BufTabLineActive", gui01, guiWhite, cterm01, ctermWhite, "none")
+call <sid>hi("TabLine",       guiBorderFg, gui01, ctermBorderFg, cterm01, "none")
+call <sid>hi("TabLineFill",   guiBorderFg, gui01, ctermBorderFg, cterm01, "none")
+call <sid>hi("TabLineSel",    gui01, guiTabActiveBg, cterm01, ctermTabActiveBg, "none")
+call <sid>hi("BufTabLineActive", gui01, guiTabInactiveBg, cterm01, ctermTabInactiveBg, "none")
 
 " Standard syntax highlighting
 call <sid>hi("Boolean",      gui09, "", cterm09, "", "")
@@ -310,5 +321,5 @@ call <sid>hi("qfError",  gui08, "", cterm08, "", "")
 delf <sid>hi
 
 " Remove color variables
-unlet gui00 gui01 gui02 gui03 gui04 gui05 gui06 gui07 gui08 gui09 gui0A gui0B gui0C gui0D gui0E gui0F guiColumnBg guiWhite guiBlack
-unlet cterm00 cterm01 cterm02 cterm03 cterm04 cterm05 cterm06 cterm07 cterm08 cterm09 cterm0A cterm0B cterm0C cterm0D cterm0E cterm0F ctermColumnBg ctermWhite ctermBlack
+unlet gui00 gui01 gui02 gui03 gui04 gui05 gui06 gui07 gui08 gui09 gui0A gui0B gui0C gui0D gui0E gui0F guiColumnBg guiWhite guiBlack guiBorderFg guiTabActiveBg guiTabInactiveBg
+unlet cterm00 cterm01 cterm02 cterm03 cterm04 cterm05 cterm06 cterm07 cterm08 cterm09 cterm0A cterm0B cterm0C cterm0D cterm0E cterm0F ctermColumnBg ctermWhite ctermBlack ctermBorderFg ctermTabActiveBg ctermTabInactiveBg
