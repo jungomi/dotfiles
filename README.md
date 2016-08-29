@@ -3,6 +3,7 @@
 This is a collection of my configuration files.
 
 ## Installation
+
 ```bash
 git clone https://github.com/jungomi/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
@@ -32,3 +33,19 @@ $ make [targets]
             clean        # Removes the backup files
 ```
 
+## Screenshots
+
+### Light
+
+![Shell light][shell-light]
+![Vim light][vim-light]
+
+### Dark
+
+![Shell dark][shell-dark]
+![Vim dark][vim-dark]
+
+[shell-dark]: media/screenshot-shell-dark.png
+[shell-light]: media/screenshot-shell-light.png
+[vim-light]: media/screenshot-vim-light.png
+[vim-dark]: media/screenshot-vim-dark.png
