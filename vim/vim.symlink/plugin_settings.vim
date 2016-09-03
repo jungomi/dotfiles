@@ -44,6 +44,10 @@ let g:instant_markdown_autostart = 0
 " Disable concealing json
 let g:vim_json_syntax_conceal = 0
 
+" === JSX ===
+" Enable for all javascript files
+let g:jsx_ext_required = 0
+
 " === Emmet ===
 let g:user_emmet_leader_key = '<C-E>'
 let g:user_emmet_mode = 'i'

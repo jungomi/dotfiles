@@ -66,6 +66,8 @@ Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 " JSON
 Plug 'elzr/vim-json', { 'for': 'json' }
+" JSX
+Plug 'mxw/vim-jsx', { 'for': 'javascript' }
 " Markdown
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'suan/vim-instant-markdown', { 'for': 'markdown' }
