@@ -1,0 +1,5 @@
+highlight link jsThis jsReturn
+highlight link jsStorageClass jsClassKeywords
+highlight link jsModuleKeywords jsClassKeywords
+highlight link jsModuleOperators jsClassKeywords
+highlight link jsArrowFunction NONE
