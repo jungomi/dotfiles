@@ -62,7 +62,6 @@ Plug 'othree/html5.vim'
 " Java
 Plug 'artur-shaik/vim-javacomplete2', { 'for': 'java' }
 " JavaScript
-Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 " JSON
 Plug 'elzr/vim-json', { 'for': 'json' }
