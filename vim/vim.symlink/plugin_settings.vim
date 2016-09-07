@@ -24,7 +24,7 @@ let g:ctrlp_map = '<leader>f'
 let g:ctrlp_cmd = 'CtrlP'
 " Ignore some folders and files for CtrlP indexing
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.sass-cache$|\.hg$\|\.svn$\|\.yardoc\|public$|log\|tmp$',
+  \ 'dir':  '\.git$\|\.sass-cache$|\.hg$\|\.svn$\|\.yardoc\|public$|log\|tmp$\|node_modules$',
   \ 'file': '\.so$\|\.dat$'
   \ }
 
