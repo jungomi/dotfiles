@@ -51,3 +51,33 @@ let g:jsx_ext_required = 0
 " === Emmet ===
 let g:user_emmet_leader_key = '<C-E>'
 let g:user_emmet_mode = 'i'
+
+" === Projectionist ===
+let g:projectionist_heuristics = {
+  \   'package.json': {
+  \     'src/components/*.js': {
+  \       'type': "component",
+  \       'alternate': "test/components/{}.spec.js"
+  \     },
+  \     'src/containers/*.js': {
+  \       'type': 'container',
+  \       'alternate': 'test/containers/{}.spec.js'
+  \     },
+  \     'src/actions/*.js': {
+  \       'type': 'action',
+  \       'alternate': 'test/actions/{}.spec.js'
+  \     },
+  \     'src/reducers/*.js': {
+  \       'type': 'reducer',
+  \       'alternate': 'test/reducers/{}.spec.js'
+  \     },
+  \     'src/naps/*.js': {
+  \       'type': 'nap',
+  \       'alternate': 'test/naps/{}.spec.js'
+  \     },
+  \     'test/*.spec.js': {
+  \       'type': 'spec',
+  \       'alternate': 'src/{}.js'
+  \     }
+  \   }
+  \ }
