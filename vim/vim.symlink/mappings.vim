@@ -52,6 +52,8 @@ nnoremap <leader>w :w<CR>
 nnoremap <leader>sw :w !sudo tee % > /dev/null<CR>
 " Switch between last two files
 nnoremap <leader><leader> <C-^>
+" Create directory of current file
+nnoremap <leader>mkd :!mkdir -p %:h<CR><CR>
 
 " === Clipboard ===
 " Save
