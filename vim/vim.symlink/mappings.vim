@@ -93,8 +93,8 @@ nnoremap <leader>= <C-w>=
 nnoremap <leader>npa :!npm run --silent test<CR>
 nnoremap <leader>npda :Dispatch npm run --silent test<CR>
 " Current file only
-nnoremap <leader>npc :!npm run --silent test:file %<CR>
-nnoremap <leader>npdc :Dispatch npm --silent run test:file %<CR>
+nnoremap <leader>npc :!npm run --silent test %<CR>
+nnoremap <leader>npdc :Dispatch npm --silent run test %<CR>
 
 " === Tags ===
 " Go to definition under cursor
