@@ -31,7 +31,7 @@ Plug 'tpope/vim-unimpaired'
 " Navigation for projections.json configurations
 Plug 'tpope/vim-projectionist'
 " Undo Tree
-Plug 'sjl/gundo.vim'
+Plug 'mbbill/undotree'
 
 " === Snippets ===
 " Snippet engine

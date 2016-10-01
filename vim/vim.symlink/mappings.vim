@@ -106,7 +106,7 @@ nnoremap <leader>gT <C-W>g}
 
 " === Plugins ===
 nnoremap <leader>a :Ag<space>
-nnoremap <leader>u :GundoToggle<CR>
+nnoremap <leader>u :UndotreeToggle<CR>
 " Nerdtree
 nnoremap <leader>nt :NERDTreeToggle<CR>
 " Find current file in tree
