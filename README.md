@@ -10,7 +10,7 @@ cd ~/.dotfiles
 ./install.sh
 ```
 
-`install.sh` initializes the submodules used, creates symbolic links of every
+`install.sh` initialises the submodules used, creates symbolic links of every
 file with the `.symlink` extension and installs the vim plugins.
 If a target of the linking already exists, it will ask whether it should be
 overwritten. Additionally the options `-f` or `-y` can be given to always
@@ -26,11 +26,13 @@ $ make [targets]
   targets:
             default      # Installs all dotfiles and plugins
             safe         # Runs backup before installing
-            backup       # Makes a backup of existing dotfiles
             link         # Creates symbolic links
-            gitmodules   # Initializes git modules
-            plugins      # Installs vim plugins
+            backup       # Makes a backup of the existing dotfiles
+            restore      # Restores the backup files
             clean        # Removes the backup files
+            plugins      # Installs the vim plugins
+            gitmodules   # Initialises git submodules
+            help         # Shows this help message
 ```
 
 ## Screenshots
