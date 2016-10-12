@@ -121,8 +121,8 @@ nnoremap <leader>imp :InstantMarkdownPreview<CR>
 " Instant latex preview
 nnoremap <leader>ilp :LLPStartPreview<CR>
 " Run rspec
-nnoremap <leader>rsa :call RunAllSpecs()<CR>
-nnoremap <leader>rsc :call RunCurrentSpecFile()<CR>
+nnoremap <leader>rsa :Bundle exec rake test<CR>
+nnoremap <leader>rsc :Bundle exec rake test[%]<CR>
 " CtrlP
 nnoremap <leader>ff :CtrlP<CR>
 nnoremap <leader>ft :CtrlPTag<CR>
