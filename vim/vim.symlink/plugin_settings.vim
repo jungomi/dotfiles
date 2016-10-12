@@ -15,6 +15,7 @@ let g:syntastic_c_remove_include_errors = 1
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_eslint_exec = 'eslint_d'
 let g:syntastic_filetype_map = { 'vue': 'javascript' }
+let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 
 " === Gitgutter ===
 let g:gitgutter_map_keys = 0
