@@ -19,9 +19,6 @@ if has('autocmd') && !exists('autocommands_loaded')
   " === Pane settings ===
   " Resize panes when resizing window
   autocmd VimResized * wincmd =
-  " Make quickfix windows take all the lower section of the screen when there
-  " are multiple windows open
-  autocmd FileType qf wincmd J
 
   " === Buffer settings ===
   " Recognise markdown files properly
