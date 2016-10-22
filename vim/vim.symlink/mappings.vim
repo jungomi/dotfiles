@@ -92,11 +92,11 @@ nnoremap <leader>= <C-w>=
 
 " === npm tests ===
 " All
-nnoremap <leader>npa :!npm run --silent test<CR>
-nnoremap <leader>npda :Dispatch npm run --silent test<CR>
+nnoremap <leader>npa :!yarn test<CR>
+nnoremap <leader>npda :Dispatch yarn test<CR>
 " Current file only
-nnoremap <leader>npc :!npm run --silent test %<CR>
-nnoremap <leader>npdc :Dispatch npm --silent run test %<CR>
+nnoremap <leader>npc :!yarn test %<CR>
+nnoremap <leader>npdc :Dispatch yarn test %<CR>
 
 " === Tags ===
 " Go to definition under cursor
