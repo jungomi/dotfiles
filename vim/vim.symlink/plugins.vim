@@ -12,7 +12,8 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 " Align text
 Plug 'godlygeek/tabular'
-Plug 'scrooloose/syntastic'
+" Linter
+Plug 'neomake/neomake'
 Plug 'ap/vim-buftabline'
 " Asynchronous calls
 Plug 'tpope/vim-dispatch'

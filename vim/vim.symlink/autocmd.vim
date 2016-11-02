@@ -25,4 +25,6 @@ if has('autocmd') && !exists('autocommands_loaded')
   autocmd BufRead,BufNewFile *.md set filetype=markdown
   " Refresh trailing whitespace indicator
   autocmd BufRead,BufWritePost * unlet! b:statusline_trailing_space_warning
+  " Lint files automatically
+  autocmd BufRead,BufWritePost * Neomake
 endif

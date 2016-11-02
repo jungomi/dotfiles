@@ -2,20 +2,14 @@
 let g:buftabline_numbers = 1
 let g:buftabline_indicators = 1
 
-" === Syntastic ===
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_error_symbol = "✗"
-let g:syntastic_warning_symbol = "⚠"
-let g:syntastic_loc_list_height = 5
-let g:syntastic_c_remove_include_errors = 1
-" Linter
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exec = 'eslint_d'
-let g:syntastic_filetype_map = { 'vue': 'javascript' }
-let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+" Automatically toggle error list
+let g:neomake_open_list = 2
+let g:neomake_list_height = 5
+let g:neomake_verbose = 0
+let g:neomake_warning_sign = {
+  \ 'text': '⚑',
+  \ 'texthl': 'SyntasticWarningSign',
+  \ }
 
 " === Gitgutter ===
 let g:gitgutter_map_keys = 0

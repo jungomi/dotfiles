@@ -67,7 +67,6 @@ set statusline+=%=\ %{&ff}\ %y
 " Line, column and percent of file
 set statusline+=\ %(%l,%c\ %P\ %)
 " Warnings
-set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%{StatuslineTrailingSpaceWarning()}
 set statusline+=%{StatuslineTabWarning()}
 
