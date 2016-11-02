@@ -248,7 +248,7 @@ call <sid>hi("gitCommitSummary",   gui0B, "", cterm0B, "", "")
 
 " GitGutter highlighting
 call <sid>hi("GitGutterAdd",     gui0B, gui01, cterm0B, cterm01, "")
-call <sid>hi("GitGutterChange",  gui0D, gui01, cterm0D, cterm01, "")
+call <sid>hi("GitGutterChange",  gui02, gui01, cterm02, cterm01, "")
 call <sid>hi("GitGutterDelete",  gui08, gui01, cterm08, cterm01, "")
 call <sid>hi("GitGutterChangeDelete",  gui0E, gui01, cterm0E, cterm01, "")
 
