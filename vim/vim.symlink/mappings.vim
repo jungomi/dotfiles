@@ -112,8 +112,6 @@ nnoremap <leader>nt :NERDTreeToggle<CR>
 " Find current file in tree
 nnoremap <leader>nf :NERDTreeFind<CR>
 nnoremap <leader>nbc :Bookmark<CR>
-" Syntastic
-nnoremap <leader>sy :SyntasticToggleMode<cr>
 " Instant markdown preview
 nnoremap <leader>imp :InstantMarkdownPreview<CR>
 " Instant latex preview
