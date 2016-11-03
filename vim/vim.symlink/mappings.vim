@@ -90,11 +90,11 @@ nnoremap <leader>h :vertical resize -5<CR>
 " Resize all splits evenly
 nnoremap <leader>= <C-w>=
 
-" === npm tests ===
+" === tests ===
 " All
-nnoremap <leader>npa :call OpenQuickfix()<CR>:AsyncRun yarn test<CR>
+nnoremap <leader>rta :call RunTestAll()<CR>
 " Current file only
-nnoremap <leader>npc :call OpenQuickfix()<CR>:AsyncRun yarn test %<CR>
+nnoremap <leader>rtc :call RunTestCurrent()<CR>
 
 " === Tags ===
 " Go to definition under cursor
@@ -118,9 +118,6 @@ nnoremap <leader>sy :SyntasticToggleMode<cr>
 nnoremap <leader>imp :InstantMarkdownPreview<CR>
 " Instant latex preview
 nnoremap <leader>ilp :LLPStartPreview<CR>
-" Run rspec
-nnoremap <leader>rsa :call OpenQuickfix()<CR>:AsyncRun bundle exec rake test<CR>
-nnoremap <leader>rsc :call OpenQuickfix()<CR>:AsyncRun bundle  exec rake test[%]<CR>
 " CtrlP
 nnoremap <leader>ff :CtrlP<CR>
 nnoremap <leader>ft :CtrlPTag<CR>

@@ -7,6 +7,28 @@ function! OpenQuickfix()
   endif
 endfunction
 
+" Run all tests
+function! RunTestAll()
+  if &filetype == 'ruby'
+    call OpenQuickfix()
+    AsyncRun bundle exec rake test
+  elseif &filetype =~# 'javascript'
+    call OpenQuickfix()
+    AsyncRun yarn test
+  endif
+endfunction
+
+" Run the tests in the current file
+function! RunTestCurrent()
+  if &filetype == 'ruby'
+    call OpenQuickfix()
+    AsyncRun bundle exec rake test TEST='%'
+  elseif &filetype =~# 'javascript'
+    call OpenQuickfix()
+    AsyncRun yarn test %
+  endif
+endfunction
+
 " Taken from https://www.reddit.com/r/vim/comments/e19bu/whats_your_status_line/
 " Shows [trailing] if trailing white space is detected
 function! StatuslineTrailingSpaceWarning()
