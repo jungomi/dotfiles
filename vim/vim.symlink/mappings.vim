@@ -92,9 +92,9 @@ nnoremap <leader>= <C-w>=
 
 " === tests ===
 " All
-nnoremap <leader>rta :call RunTestAll()<CR>
+nnoremap <leader>rta :call RunTest()<CR>
 " Current file only
-nnoremap <leader>rtc :call RunTestCurrent()<CR>
+nnoremap <leader>rtc :call RunTest('%')<CR>
 
 " === Tags ===
 " Go to definition under cursor

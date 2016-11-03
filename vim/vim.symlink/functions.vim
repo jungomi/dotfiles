@@ -7,30 +7,23 @@ function! OpenQuickfix()
   endif
 endfunction
 
-" Run all tests
-function! RunTestAll()
+" Runs tests with the appropriate tool for the current filetype.
+" All given parameters are passed to the underlying test framework.
+" Example: RunTest('%', '--verbose') would run the tests for the current file
+" with a verbose output.
+function! RunTest(...)
   if &filetype == 'ruby'
-    call OpenQuickfix()
-    AsyncRun bundle exec rake test
+    let command = 'bundle exec rake test'
   elseif &filetype =~# 'javascript'
-    call OpenQuickfix()
-    AsyncRun yarn test
+    let command = 'yarn test'
   else
-    echo 'No test command found for filetype ' . &filetype
+    echo 'No test command found for current filetype ' . &filetype
+    return
   endif
-endfunction
-
-" Run the tests in the current file
-function! RunTestCurrent()
-  if &filetype == 'ruby'
-    call OpenQuickfix()
-    AsyncRun bundle exec rake test TEST='%'
-  elseif &filetype =~# 'javascript'
-    call OpenQuickfix()
-    AsyncRun yarn test %
-  else
-    echo 'No test command found for filetype ' . &filetype
-  endif
+  let args = empty(a:000) ? '' : ' -- ' . join(map(copy(a:000), 'expand(v:val)'))
+  call OpenQuickfix()
+  execute 'AsyncRun ' . command . args
+  echo 'Running: ' . command . args
 endfunction
 
 " Taken from https://www.reddit.com/r/vim/comments/e19bu/whats_your_status_line/
