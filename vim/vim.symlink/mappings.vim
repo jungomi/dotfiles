@@ -92,11 +92,9 @@ nnoremap <leader>= <C-w>=
 
 " === npm tests ===
 " All
-nnoremap <leader>npa :!yarn test<CR>
-nnoremap <leader>npda :call OpenQuickfix()<CR>:AsyncRun yarn test<CR>
+nnoremap <leader>npa :call OpenQuickfix()<CR>:AsyncRun yarn test<CR>
 " Current file only
-nnoremap <leader>npc :!yarn test %<CR>
-nnoremap <leader>npdc :call OpenQuickfix()<CR>:AsyncRun yarn test %<CR>
+nnoremap <leader>npc :call OpenQuickfix()<CR>:AsyncRun yarn test %<CR>
 
 " === Tags ===
 " Go to definition under cursor
@@ -121,8 +119,8 @@ nnoremap <leader>imp :InstantMarkdownPreview<CR>
 " Instant latex preview
 nnoremap <leader>ilp :LLPStartPreview<CR>
 " Run rspec
-nnoremap <leader>rsa :Bundle exec rake test<CR>
-nnoremap <leader>rsc :Bundle exec rake test[%]<CR>
+nnoremap <leader>rsa :call OpenQuickfix()<CR>:AsyncRun bundle exec rake test<CR>
+nnoremap <leader>rsc :call OpenQuickfix()<CR>:AsyncRun bundle  exec rake test[%]<CR>
 " CtrlP
 nnoremap <leader>ff :CtrlP<CR>
 nnoremap <leader>ft :CtrlPTag<CR>
