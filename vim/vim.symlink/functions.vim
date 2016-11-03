@@ -15,6 +15,8 @@ function! RunTestAll()
   elseif &filetype =~# 'javascript'
     call OpenQuickfix()
     AsyncRun yarn test
+  else
+    echo 'No test command found for filetype ' . &filetype
   endif
 endfunction
 
@@ -26,6 +28,8 @@ function! RunTestCurrent()
   elseif &filetype =~# 'javascript'
     call OpenQuickfix()
     AsyncRun yarn test %
+  else
+    echo 'No test command found for filetype ' . &filetype
   endif
 endfunction
 
