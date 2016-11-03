@@ -93,10 +93,10 @@ nnoremap <leader>= <C-w>=
 " === npm tests ===
 " All
 nnoremap <leader>npa :!yarn test<CR>
-nnoremap <leader>npda :Dispatch yarn test<CR>
+nnoremap <leader>npda :call OpenQuickfix()<CR>:AsyncRun yarn test<CR>
 " Current file only
 nnoremap <leader>npc :!yarn test %<CR>
-nnoremap <leader>npdc :Dispatch yarn test %<CR>
+nnoremap <leader>npdc :call OpenQuickfix()<CR>:AsyncRun yarn test %<CR>
 
 " === Tags ===
 " Go to definition under cursor

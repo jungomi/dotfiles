@@ -16,7 +16,7 @@ Plug 'godlygeek/tabular'
 Plug 'neomake/neomake'
 Plug 'ap/vim-buftabline'
 " Asynchronous calls
-Plug 'tpope/vim-dispatch'
+Plug 'skywind3000/asyncrun.vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-commentary'
 " Transform between single and multi line

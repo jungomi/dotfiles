@@ -1,3 +1,12 @@
+" Open quickfix window that occupies the full width without switching to it.
+function! OpenQuickfix()
+  let win = winnr()
+  botright copen
+  if win != winnr()
+    execute win . 'wincmd w'
+  endif
+endfunction
+
 " Taken from https://www.reddit.com/r/vim/comments/e19bu/whats_your_status_line/
 " Shows [trailing] if trailing white space is detected
 function! StatuslineTrailingSpaceWarning()
