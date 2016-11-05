@@ -112,8 +112,8 @@ nnoremap <leader>nt :NERDTreeToggle<CR>
 " Find current file in tree
 nnoremap <leader>nf :NERDTreeFind<CR>
 nnoremap <leader>nbc :Bookmark<CR>
-" Instant markdown preview
-nnoremap <leader>imp :InstantMarkdownPreview<CR>
+" Markdown preview
+nnoremap <leader>mp :LivedownPreview<CR>
 " Instant latex preview
 nnoremap <leader>ilp :LLPStartPreview<CR>
 " CtrlP

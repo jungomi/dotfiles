@@ -70,7 +70,7 @@ Plug 'elzr/vim-json', { 'for': 'json' }
 Plug 'mxw/vim-jsx', { 'for': 'javascript' }
 " Markdown
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-Plug 'suan/vim-instant-markdown', { 'for': 'markdown' }
+Plug 'shime/vim-livedown', { 'for': 'markdown' }
 " Mustache and handlebars
 Plug 'mustache/vim-mustache-handlebars', { 'for': ['html.handlebars', 'html.mustache'] }
 " Latex

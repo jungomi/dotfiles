@@ -32,9 +32,6 @@ let NERDTreeShowHidden = 1
 " Never change working directory
 let NERDTreeChDirMode = 0
 
-" === Instant markdown preview ===
-let g:instant_markdown_autostart = 0
-
 " === JSON ===
 " Disable concealing json
 let g:vim_json_syntax_conceal = 0
