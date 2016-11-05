@@ -47,7 +47,7 @@ $ make [targets]
 ![Shell dark][shell-dark]
 ![Vim dark][vim-dark]
 
-[shell-dark]: media/screenshot-shell-dark.png
-[shell-light]: media/screenshot-shell-light.png
-[vim-light]: media/screenshot-vim-light.png
-[vim-dark]: media/screenshot-vim-dark.png
+[shell-dark]: screenshots/shell-dark.png
+[shell-light]: screenshots/shell-light.png
+[vim-light]: screenshots/vim-light.png
+[vim-dark]: screenshots/vim-dark.png
