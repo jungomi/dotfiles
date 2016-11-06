@@ -13,7 +13,7 @@ SYMLINK := $(shell find -H . -maxdepth 2 -name "*.$(EXTENSION)")
 BACKUP := $(shell test -d $(BACKUP_DIR) && find -H $(BACKUP_DIR) -name "*.bak")
 
 # Installs all dotfiles and plugins
-default: link gitmodules plugins
+default: link neovim gitmodules plugins
 
 # Runs backup before installing
 safe: backup default
@@ -25,6 +25,12 @@ link: $(addsuffix .link, $(basename $(SYMLINK)))
 %.link: %.$(EXTENSION)
 	if [ -d $(DOT_FILE) ]; then rm -rf $(DOT_FILE); fi
 	ln -snf $(SYMLINK_FILE) $(DOT_FILE)
+
+# Links the vim files to work with NeoVim
+neovim:
+	mkdir -p ~/.config
+	ln -snf ~/.vim ~/.config/nvim
+	ln -snf ~/.vimrc ~/.config/nvim/init.vim
 
 # Makes a backup of the existing dotfiles
 backup: backup_dir $(addsuffix .bak, $(basename $(SYMLINK)))

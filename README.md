@@ -23,6 +23,7 @@ $ make [targets]
             default      # Installs all dotfiles and plugins
             safe         # Runs backup before installing
             link         # Creates symbolic links
+            neovim       # Links the vim files to work with NeoVim
             backup       # Makes a backup of the existing dotfiles
             restore      # Restores the backup files
             clean        # Removes the backup files
