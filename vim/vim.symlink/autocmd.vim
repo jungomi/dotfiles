@@ -2,7 +2,7 @@ if has('autocmd') && !exists('autocommands_loaded')
   " Load autocommands only once
   let autocommands_loaded = 1
 
-  " === File type settings ===
+  " ⚑ File type settings
   " Disable comment continuation when using 'o' or 'O'
   autocmd FileType * setlocal formatoptions-=o
   " Enable java completion
@@ -12,15 +12,15 @@ if has('autocmd') && !exists('autocommands_loaded')
   " Use tags from ~/.tags/<filetype>
   autocmd FileType * exec "setlocal tags+=~/.tags/" . &filetype
 
-  " === Tab settings ===
+  " ⚑ Tab settings
   autocmd FileType python setlocal shiftwidth=4 softtabstop=4 expandtab
   autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
 
-  " === Pane settings ===
+  " ⚑ Pane settings
   " Resize panes when resizing window
   autocmd VimResized * wincmd =
 
-  " === Buffer settings ===
+  " ⚑ Buffer settings
   " Recognise markdown files properly
   autocmd BufRead,BufNewFile *.md set filetype=markdown
   " Refresh trailing whitespace indicator

@@ -1,7 +1,8 @@
-" === Buftabline ===
+" ⚑ Buftabline
 let g:buftabline_numbers = 1
 let g:buftabline_indicators = 1
 
+" ⚑ Neomake
 " Automatically toggle error list
 let g:neomake_open_list = 2
 let g:neomake_list_height = 5
@@ -11,10 +12,10 @@ let g:neomake_warning_sign = {
   \ 'texthl': 'SyntasticWarningSign',
   \ }
 
-" === Gitgutter ===
+" ⚑ Gitgutter
 let g:gitgutter_map_keys = 0
 
-" === CtrlP ===
+" ⚑ CtrlP
 let g:ctrlp_map = '<leader>f'
 let g:ctrlp_cmd = 'CtrlP'
 " Ignore some folders and files for CtrlP indexing
@@ -23,7 +24,7 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\.so$\|\.dat$'
   \ }
 
-" === NERDTree ===
+" ⚑ NERDTree
 let NERDTreeShowBookmarks = 1
 let NERDTreeIgnore = [
   \ '\.pyc', '\~$', '\.swo$', '\.swp$', '\.git$', '\.hg$', '\.svn$', '\.bzr$'
@@ -32,19 +33,19 @@ let NERDTreeShowHidden = 1
 " Never change working directory
 let NERDTreeChDirMode = 0
 
-" === JSON ===
+" ⚑ JSON
 " Disable concealing json
 let g:vim_json_syntax_conceal = 0
 
-" === JSX ===
+" ⚑ JSX
 " Enable for all javascript files
 let g:jsx_ext_required = 0
 
-" === Emmet ===
+" ⚑ Emmet
 let g:user_emmet_leader_key = '<C-E>'
 let g:user_emmet_mode = 'i'
 
-" === Projectionist ===
+" ⚑ Projectionist
 let g:projectionist_heuristics = {
   \   'package.json': {
   \     'src/components/*.js': {
@@ -74,6 +75,6 @@ let g:projectionist_heuristics = {
   \   }
   \ }
 
-" === Undotree ===
+" ⚑ Undotree
 let g:undotree_DiffAutoOpen = 0
 let g:undotree_SetFocusWhenToggle = 1

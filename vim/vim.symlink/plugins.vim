@@ -22,7 +22,7 @@ Plug 'tpope/vim-commentary'
 " Transform between single and multi line
 Plug 'AndrewRadev/splitjoin.vim'
 
-" === Navigation ===
+" ⚑ Navigation
 " File tree
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
 " Fuzzy file finder
@@ -34,14 +34,14 @@ Plug 'tpope/vim-projectionist'
 " Undo Tree
 Plug 'mbbill/undotree'
 
-" === Snippets ===
+" ⚑ Snippets
 " Snippet engine
 Plug 'MarcWeber/vim-addon-mw-utils' | Plug 'tomtom/tlib_vim' | Plug 'garbas/vim-snipmate'
 Plug 'honza/vim-snippets'
 " Expand keywords to HTML
 Plug 'mattn/emmet-vim'
 
-" === Git ===
+" ⚑ Git
 " Wrapper
 Plug 'tpope/vim-fugitive'
 " Diff signs next to line numbers
@@ -49,7 +49,7 @@ Plug 'airblade/vim-gitgutter'
 " GitHub gist
 Plug 'mattn/webapi-vim' | Plug 'mattn/gist-vim'
 
-" === Filetype specific ===
+" ⚑ Filetype specific
 " C
 Plug 'vim-scripts/a.vim', { 'for': ['c', 'cpp', 'objc', 'objcpp'] }
 Plug 'justinmk/vim-syntax-extra', { 'for': 'c' }

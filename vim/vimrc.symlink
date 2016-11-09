@@ -1,6 +1,6 @@
 " vim: set filetype=vim:
 
-" === Load additional settings ===
+" ⚑ Load additional settings
 source ~/.vim/plugins.vim
 source ~/.vim/plugin_settings.vim
 source ~/.vim/autocmd.vim
@@ -17,7 +17,7 @@ set mouse=
 set hidden
 set history=10000
 
-" === Appearance ===
+" ⚑ Appearance
 syntax on
 " Tell vim that the terminal supports 256 colours
 set t_Co=256
@@ -32,7 +32,7 @@ set ttyfast
 set lazyredraw
 set noerrorbells
 
-" === File settings ===
+" ⚑ File settings
 set encoding=utf-8
 " Set spell check to British English
 set spelllang=en_gb
@@ -40,7 +40,7 @@ set spelllang=en_gb
 set autoread
 set title
 
-" === Indentation ===
+" ⚑ Indentation
 " Tab settings, always use 2 spaces (no tabs)
 set tabstop=2
 set softtabstop=2
@@ -52,7 +52,7 @@ set smartindent
 set cindent
 set autoindent
 
-" === Status Line ===
+" ⚑ Status Line
 " Always show status line
 set laststatus=2
 " Abbreviate status bar messages and disable startup page
@@ -71,7 +71,7 @@ set statusline+=%{StatuslineTrailingSpaceWarning()}
 set statusline+=%{StatuslineTabWarning()}
 
 
-" === Line settings ===
+" ⚑ Line settings
 " Visually wrap long lines
 set wrap
 set textwidth=80
@@ -83,7 +83,7 @@ set sidescrolloff=3
 " Highlight current line
 set cursorline
 
-" === Search ===
+" ⚑ Search
 set ignorecase
 " Case sensitive when using uppercase
 set smartcase
@@ -94,16 +94,16 @@ set hlsearch
 set gdefault
 set tags+=.tags
 
-" === Code folding ===
+" ⚑ Code folding
 set foldmethod=syntax
 set nofoldenable
 set foldlevel=10
 
-" === Completion ===
+" ⚑ Completion
 set completeopt=longest,menuone
 set wildmode=list:longest
 
-" === Splits ===
+" ⚑ Splits
 " Split windows open below/right
 set splitbelow
 set splitright
@@ -112,7 +112,7 @@ set diffopt+=vertical
 " Default size for quickfix window
 set previewheight=8
 
-" === Backups ===
+" ⚑ Backups
 " Keep undo history
 "set undofile
 " Centralised backups

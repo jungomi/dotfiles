@@ -14,7 +14,7 @@ nnoremap <leader>sc :set spell!<CR>
 " Markdown table replace line with header separator
 nnoremap <leader>mth :let @m='lvt\|r-f\|@m'<CR>:normal @m<CR>
 
-" === Movement ===
+" ⚑ Movement
 " Move by visual lines
 nnoremap j gj
 nnoremap k gk
@@ -28,7 +28,7 @@ nnoremap <C-y> 3<C-y>
 nnoremap <tab> %
 vnoremap <tab> %
 
-" === Completion menu ===
+" ⚑ Completion menu
 " Movement
 inoremap <expr> j pumvisible() ? "\<C-n>" : "j"
 inoremap <expr> k pumvisible() ? "\<C-p>" : "k"
@@ -37,7 +37,7 @@ inoremap <expr> <Esc> pumvisible() ? "\<C-e>" : "\<Esc>"
 " Code completion with Ctrl-Space
 inoremap <C-@> <C-x><C-o>
 
-" === Disable mappings ===
+" ⚑ Disable mappings
 " Remove help key
 inoremap <F1> <nop>
 nnoremap <F1> <nop>
@@ -45,7 +45,7 @@ vnoremap <F1> <nop>
 " Disable Ex mode
 noremap Q <NOP>
 
-" === Buffer ===
+" ⚑ Buffer
 " Save
 nnoremap <leader>w :w<CR>
 " Abuse tee for sudo save
@@ -55,7 +55,7 @@ nnoremap <leader><leader> <C-^>
 " Create directory of current file
 nnoremap <leader>mkd :!mkdir -p %:h<CR><CR>
 
-" === Clipboard ===
+" ⚑ Clipboard
 " Save
 nnoremap <leader>y "+y
 xnoremap <leader>y "+y
@@ -63,7 +63,7 @@ xnoremap <leader>y "+y
 nnoremap <leader>p "+p
 xnoremap <leader>p "+p
 
-" === Configs ===
+" ⚑ Configs
 " Open configs in a split
 nnoremap <leader>eb :vsp ~/.bashrc<CR>
 nnoremap <leader>et :vsp ~/.tmux.conf<CR>
@@ -72,7 +72,7 @@ nnoremap <leader>ev :vsp $MYVIMRC<CR>
 " Reload vimrc
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
-" === Split windows ===
+" ⚑ Split windows
 " Create horizontal split and switch to it
 nnoremap <leader>T <C-w>s<C-w>j
 " Create vertical split and switch to it
@@ -90,13 +90,13 @@ nnoremap <leader>h :vertical resize -5<CR>
 " Resize all splits evenly
 nnoremap <leader>= <C-w>=
 
-" === tests ===
+" ⚑ tests
 " All
 nnoremap <leader>rta :call RunTest()<CR>
 " Current file only
 nnoremap <leader>rtc :call RunTest('%')<CR>
 
-" === Tags ===
+" ⚑ Tags
 " Go to definition under cursor
 nnoremap <leader>gf <C-]>
 " Show definition under cursor in preview window
@@ -104,7 +104,7 @@ nnoremap <leader>gt <C-W>}
 " Show multiple definition under cursor in preview window
 nnoremap <leader>gT <C-W>g}
 
-" === Plugins ===
+" ⚑ Plugins
 nnoremap <leader>a :Ag<space>
 nnoremap <leader>u :UndotreeToggle<CR>
 " Nerdtree
