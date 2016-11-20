@@ -16,7 +16,6 @@ let g:neomake_warning_sign = {
 let g:gitgutter_map_keys = 0
 
 " ⚑ CtrlP
-let g:ctrlp_map = '<leader>f'
 let g:ctrlp_cmd = 'CtrlP'
 " Ignore some folders and files for CtrlP indexing
 let g:ctrlp_custom_ignore = {
