@@ -24,6 +24,10 @@ alias rmf="rm -rf"
 # Open file with its default application
 alias open="xdg-open"
 
+# Clipboard
+alias pbcopy="xsel --clipboard"
+alias pbpaste="xsel --clipboard --output"
+
 # One of @janmoesen’s ProTip™s
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
   alias "$method"="lwp-request -m '$method'"
