@@ -1,30 +1,37 @@
-if has('autocmd') && !exists('autocommands_loaded')
-  " Load autocommands only once
-  let autocommands_loaded = 1
+if has('autocmd')
+  augroup config_filetype
+    autocmd!
+    " ⚑ File type settings
+    " Disable comment continuation when using 'o' or 'O'
+    autocmd FileType * setlocal formatoptions-=o
+    " Enable java completion
+    autocmd FileType java set omnifunc=javacomplete#Complete
+    " Activate spell checking for relevant files
+    autocmd FileType gitcommit,markdown,tex set spell
+    " Use tags from ~/.tags/<filetype>
+    autocmd FileType * exec "setlocal tags+=~/.tags/" . &filetype
 
-  " ⚑ File type settings
-  " Disable comment continuation when using 'o' or 'O'
-  autocmd FileType * setlocal formatoptions-=o
-  " Enable java completion
-  autocmd FileType java set omnifunc=javacomplete#Complete
-  " Activate spell checking for relevant files
-  autocmd FileType gitcommit,markdown,tex set spell
-  " Use tags from ~/.tags/<filetype>
-  autocmd FileType * exec "setlocal tags+=~/.tags/" . &filetype
+    " ⚑ Tab settings
+    autocmd FileType python setlocal shiftwidth=4 softtabstop=4 expandtab
+    autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
+  augroup END
 
-  " ⚑ Tab settings
-  autocmd FileType python setlocal shiftwidth=4 softtabstop=4 expandtab
-  autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
+  augroup config_buffer
+    autocmd!
+    " ⚑ Pane settings
+    " Resize panes when resizing window
+    autocmd VimResized * wincmd =
 
-  " ⚑ Pane settings
-  " Resize panes when resizing window
-  autocmd VimResized * wincmd =
+    " ⚑ Buffer settings
+    " Recognise markdown files properly
+    autocmd BufRead,BufNewFile *.md set filetype=markdown
+    " Refresh trailing whitespace indicator
+    autocmd BufRead,BufWritePost * unlet! b:statusline_trailing_space_warning
+  augroup END
 
-  " ⚑ Buffer settings
-  " Recognise markdown files properly
-  autocmd BufRead,BufNewFile *.md set filetype=markdown
-  " Refresh trailing whitespace indicator
-  autocmd BufRead,BufWritePost * unlet! b:statusline_trailing_space_warning
-  " Lint files automatically
-  autocmd BufRead,BufWritePost * Neomake
+  augroup config_neomake
+    autocmd!
+    " Lint files automatically
+    autocmd BufRead,BufWritePost * Neomake
+  augroup END
 endif
