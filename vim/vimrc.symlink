@@ -3,7 +3,7 @@
 " ⚑ Load additional settings
 source ~/.vim/plugins.vim
 source ~/.vim/plugin_settings.vim
-source ~/.vim/autocmd.vim
+source ~/.vim/autocommands.vim
 source ~/.vim/functions.vim
 source ~/.vim/mappings.vim
 
