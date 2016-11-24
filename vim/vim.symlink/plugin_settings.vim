@@ -79,6 +79,7 @@ let g:undotree_DiffAutoOpen = 0
 let g:undotree_SetFocusWhenToggle = 1
 
 " ⚑ Markdown
-" Disable keymaps (want `ge` back)
-let g:vim_markdown_no_default_key_mappings = 1
-let g:vim_markdown_new_list_item_indent = 2
+let g:markdown_fenced_languages = [
+      \ 'html', 'python', 'bash=sh', 'ruby', 'javascript', 'js=javascript',
+      \ 'sh', 'css', 'json'
+      \]
