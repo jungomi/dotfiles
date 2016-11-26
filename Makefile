@@ -7,6 +7,11 @@ BACKUP_FILE = $(addprefix $(BACKUP_DIR), $(addsuffix .bak, $(FILE_NAME)))
 DOT_FILE = $(addprefix ~/., $(FILE_NAME))
 EXTENSION = symlink
 FILE_NAME = $(basename $(notdir $<))
+NODE_BIN = $(addsuffix /bin, $(NODE_DIR))
+NODE_DIR = $$HOME/.n
+RVM = $$HOME/.rvm/scripts/rvm
+RUBY_BIN = $$HOME/.rvm/bin
+RUST_BIN = $$HOME/.cargo/bin
 SYMLINK_FILE = $(addprefix $(shell pwd)/, $<)
 
 SYMLINK := $(shell find -H . -maxdepth 2 -name "*.$(EXTENSION)")
@@ -17,6 +22,9 @@ default: link neovim gitmodules plugins
 
 # Runs backup before installing
 safe: backup default
+
+# Installs all environments
+envs: node ruby rust
 
 # Creates symbolic links
 link: $(addsuffix .link, $(basename $(SYMLINK)))
@@ -65,6 +73,38 @@ plugins:
 gitmodules:
 	git submodule update --init
 	echo -e "\r\033[2K[ \033[00;32mDONE\033[0m ] Initialising git modules"
+
+# Installs n with the latest version of Node.js and yarn
+node:
+	curl -L https://git.io/n-install | N_PREFIX=$(NODE_DIR) bash -s -- -n -y
+	echo '' >> ~/.profile
+	echo '# Node' >> ~/.profile
+	echo 'export N_PREFIX="$(NODE_DIR)"' >> ~/.profile
+	echo '[[ :$$PATH: == *":$(NODE_BIN):"* ]] || PATH+=":$(NODE_BIN)"' \
+		>> ~/.profile
+	npm install -g yarn
+	echo -e "\r\033[2K[ \033[00;32mDONE\033[0m ] Installing Node"
+
+# Installs rvm with the latest version of Ruby and bundler
+ruby:
+	curl -sSL https://get.rvm.io | bash -s stable --ignore-dotfiles
+	echo '' >> ~/.profile
+	echo '# Ruby' >> ~/.profile
+	echo 'export PATH="$$PATH:$(RUBY_BIN)"' >> ~/.profile
+	echo '[[ -s "$(RVM)" ]] && source "$(RVM)"' >> ~/.profile
+	rvm install ruby-2.3.3 --default
+	gem install bundler
+	echo -e "\r\033[2K[ \033[00;32mDONE\033[0m ] Installing Ruby"
+
+# Installs rustup with the latest version of Rust and nightly as default
+rust:
+	curl https://sh.rustup.rs -sSf | bash -s -- --no-modify-path \
+		--default-toolchain nightly -y
+	rustup install stable
+	echo '' >> ~/.profile
+	echo '# Rust' >> ~/.profile
+	echo 'export PATH="$$PATH:$(RUST_BIN)"' >> ~/.profile
+	echo -e "\r\033[2K[ \033[00;32mDONE\033[0m ] Installing Rust"
 
 # Shows this help message
 help:
