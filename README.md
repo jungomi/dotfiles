@@ -22,6 +22,7 @@ $ make [targets]
   targets:
             default      # Installs all dotfiles and plugins
             safe         # Runs backup before installing
+            envs         # Installs all environments
             link         # Creates symbolic links
             neovim       # Links the vim files to work with NeoVim
             backup       # Makes a backup of the existing dotfiles
@@ -29,6 +30,9 @@ $ make [targets]
             clean        # Removes the backup files
             plugins      # Installs the vim plugins
             gitmodules   # Initialises git submodules
+            node         # Installs n with the latest version of Node.js and yarn
+            ruby         # Installs rvm with the latest version of Ruby and bundler
+            rust         # Installs rustup with the latest version of Rust and nightly as default
             help         # Shows this help message
 ```
 
