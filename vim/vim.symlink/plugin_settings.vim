@@ -27,6 +27,9 @@ let g:ctrlp_custom_ignore = {
 let g:javascript_plugin_flow = 1
 let g:javascript_plugin_jsdoc = 1
 
+" ⚑ Flow
+let g:flow#enable = 0
+
 " ⚑ JSON
 " Disable concealing json
 let g:vim_json_syntax_conceal = 0
