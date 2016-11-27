@@ -63,14 +63,14 @@ Plug 'othree/html5.vim'
 " Java
 Plug 'artur-shaik/vim-javacomplete2', { 'for': 'java' }
 " JavaScript
-Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'markdown', 'mdnquery'] }
 Plug 'jungomi/vim-mdnquery'
 " JSON
 Plug 'elzr/vim-json', { 'for': 'json' }
 " JSX
 Plug 'mxw/vim-jsx', { 'for': 'javascript' }
 " Markdown
-Plug 'tpope/vim-markdown', { 'for': 'markdown' }
+Plug 'tpope/vim-markdown', { 'for': ['markdown', 'mdnquery'] }
 Plug 'shime/vim-livedown', { 'for': 'markdown' }
 " Mustache and handlebars
 Plug 'mustache/vim-mustache-handlebars', { 'for': ['html.handlebars', 'html.mustache'] }
