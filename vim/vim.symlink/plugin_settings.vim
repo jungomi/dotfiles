@@ -83,3 +83,7 @@ let g:markdown_fenced_languages = [
       \ 'html', 'python', 'bash=sh', 'ruby', 'javascript', 'js=javascript',
       \ 'sh', 'css', 'json', 'vim'
       \]
+
+" ⚑ MdnQuery
+let g:mdnquery_show_on_invoke = 1
+let g:mdnquery_size = 15

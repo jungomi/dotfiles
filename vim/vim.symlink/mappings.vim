@@ -119,3 +119,7 @@ nnoremap <leader>ilp :LLPStartPreview<CR>
 " CtrlP
 nnoremap <leader>ff :CtrlP<CR>
 nnoremap <leader>ft :CtrlPTag<CR>
+" MdnQuery
+nmap <leader>me <Plug>MdnqueryEntry
+nnoremap <leader>mf :call mdnquery#focus()<CR>
+nnoremap <leader>mr :MdnQueryList<CR>

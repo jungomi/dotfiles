@@ -10,6 +10,9 @@ if has('autocmd')
     autocmd FileType gitcommit,markdown,tex set spell
     " Use tags from ~/.tags/<filetype>
     autocmd FileType * exec "setlocal tags+=~/.tags/" . &filetype
+    " MdnQuery buffer <Tab> switches back to previous buffer
+    autocmd FileType mdnquery nnoremap <buffer> <Tab> <C-w>p
+    autocmd FileType mdnquery nnoremap <buffer> q :MdnQueryToggle<CR>
 
     " ⚑ Tab settings
     autocmd FileType python setlocal shiftwidth=4 softtabstop=4 expandtab
