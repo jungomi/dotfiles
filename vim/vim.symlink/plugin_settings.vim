@@ -23,6 +23,10 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\.so$\|\.dat$'
   \ }
 
+" ⚑ JavaScript
+let g:javascript_plugin_flow = 1
+let g:javascript_plugin_jsdoc = 1
+
 " ⚑ JSON
 " Disable concealing json
 let g:vim_json_syntax_conceal = 0
