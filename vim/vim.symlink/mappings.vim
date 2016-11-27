@@ -107,11 +107,6 @@ nnoremap <leader>gT <C-W>g}
 " ⚑ Plugins
 nnoremap <leader>a :Ag<space>
 nnoremap <leader>u :UndotreeToggle<CR>
-" Nerdtree
-nnoremap <leader>nt :NERDTreeToggle<CR>
-" Find current file in tree
-nnoremap <leader>nf :NERDTreeFind<CR>
-nnoremap <leader>nbc :Bookmark<CR>
 " Markdown preview
 nnoremap <leader>mp :LivedownPreview<CR>
 " Instant latex preview

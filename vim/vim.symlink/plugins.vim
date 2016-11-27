@@ -23,8 +23,6 @@ Plug 'tpope/vim-commentary'
 Plug 'AndrewRadev/splitjoin.vim'
 
 " ⚑ Navigation
-" File tree
-Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
 " Fuzzy file finder
 Plug 'ctrlpvim/ctrlp.vim'
 " Mappings for easier navigation

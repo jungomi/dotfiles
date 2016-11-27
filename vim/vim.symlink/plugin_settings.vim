@@ -23,15 +23,6 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\.so$\|\.dat$'
   \ }
 
-" ⚑ NERDTree
-let NERDTreeShowBookmarks = 1
-let NERDTreeIgnore = [
-  \ '\.pyc', '\~$', '\.swo$', '\.swp$', '\.git$', '\.hg$', '\.svn$', '\.bzr$'
-  \ ]
-let NERDTreeShowHidden = 1
-" Never change working directory
-let NERDTreeChDirMode = 0
-
 " ⚑ JSON
 " Disable concealing json
 let g:vim_json_syntax_conceal = 0
