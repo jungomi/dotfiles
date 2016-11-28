@@ -3,3 +3,7 @@ highlight link jsStorageClass jsClassKeyword
 highlight link jsModuleKeywords jsClassKeyword
 highlight link jsModuleOperators jsClassKeyword
 highlight link jsArrowFunction NONE
+highlight link jsImport jsClassKeyword
+highlight link jsFrom jsClassKeyword
+highlight link jsExport jsClassKeyword
+highlight link jsExportDefault jsFuncName
