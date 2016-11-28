@@ -28,6 +28,8 @@ if has('autocmd')
     " ⚑ Buffer settings
     " Recognise markdown files properly
     autocmd BufRead,BufNewFile *.md set filetype=markdown
+    " Eslint without extension should be JSON
+    autocmd BufRead,BufNewFile .eslintrc setlocal filetype=json
     " Refresh trailing whitespace indicator
     autocmd BufRead,BufWritePost * unlet! b:statusline_trailing_space_warning
   augroup END
