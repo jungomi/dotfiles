@@ -74,9 +74,9 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 
 " ⚑ Split windows
 " Create horizontal split and switch to it
-nnoremap <leader>T <C-w>s<C-w>j
+nnoremap <leader>T <C-w>s
 " Create vertical split and switch to it
-nnoremap <leader>t <C-w>v<C-w>l
+nnoremap <leader>t <C-w>v
 " Navigation between windows
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
