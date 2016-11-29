@@ -2,9 +2,6 @@ set nocompatible
 filetype off
 
 call plug#begin('~/.vim/plugged')
-" Colour schemes
-Plug 'chriskempson/base16-vim'
-
 Plug 'rking/ag.vim'
 " Manipulate surrounding parentheses, quotes, etc.
 Plug 'tpope/vim-surround'
