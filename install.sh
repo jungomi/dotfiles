@@ -82,8 +82,6 @@ while getopts ":fyn" opt; do
   esac
 done
 
-echo "Initializing submodules"
-git submodule update --init
 echo "Installing dotfiles"
 link_dotfiles
 echo "Installing vim plugins"

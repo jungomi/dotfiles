@@ -1,4 +1,4 @@
-.PHONY: backup clean gitmodules help link plugins restore safe
+.PHONY: backup clean help link plugins restore safe
 
 .SILENT:
 
@@ -18,7 +18,7 @@ SYMLINK := $(shell find -H . -maxdepth 2 -name "*.$(EXTENSION)")
 BACKUP := $(shell test -d $(BACKUP_DIR) && find -H $(BACKUP_DIR) -name "*.bak")
 
 # Installs all dotfiles and plugins
-default: link neovim gitmodules plugins
+default: link neovim plugins
 
 # Runs backup before installing
 safe: backup default
@@ -68,11 +68,6 @@ clean:
 plugins:
 	vim -u ~/.vim/plugins.vim +PlugInstall +qa
 	echo -e "\r\033[2K[ \033[00;32mDONE\033[0m ] Installing vim plugins"
-
-# Initialises git submodules
-gitmodules:
-	git submodule update --init
-	echo -e "\r\033[2K[ \033[00;32mDONE\033[0m ] Initialising git modules"
 
 # Installs n with the latest version of Node.js and yarn
 node:
