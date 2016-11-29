@@ -10,11 +10,10 @@ cd ~/.dotfiles
 make
 ```
 
-`make` initialises the submodules used, creates symbolic links of every
-file with the `.symlink` extension and installs the vim plugins. If the target
-of the linking already exists, it is overwritten. `make safe` provides a safer
-version, which creates a backup of all existing targets, that can then be
-restored with `make restore`.
+`make` creates symbolic links of every file with the `.symlink` extension and
+installs the Vim plugins. If the target of the linking already exists, it is
+overwritten. `make safe` provides a safer version, which creates a backup of all
+existing targets, that can then be restored with `make restore`.
 
 ```sh
 $ make [targets]
@@ -29,7 +28,6 @@ $ make [targets]
             restore      # Restores the backup files
             clean        # Removes the backup files
             plugins      # Installs the vim plugins
-            gitmodules   # Initialises git submodules
             node         # Installs n with the latest version of Node.js and yarn
             ruby         # Installs rvm with the latest version of Ruby and bundler
             rust         # Installs rustup with the latest version of Rust and nightly as default
