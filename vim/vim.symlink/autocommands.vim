@@ -5,9 +5,9 @@ if has('autocmd')
     " Disable comment continuation when using 'o' or 'O'
     autocmd FileType * setlocal formatoptions-=o
     " Enable java completion
-    autocmd FileType java set omnifunc=javacomplete#Complete
+    autocmd FileType java setlocal omnifunc=javacomplete#Complete
     " Activate spell checking for relevant files
-    autocmd FileType gitcommit,markdown,tex set spell
+    autocmd FileType gitcommit,markdown,tex setlocal spell
     " Use tags from ~/.tags/<filetype>
     autocmd FileType * exec "setlocal tags+=~/.tags/" . &filetype
     " MdnQuery buffer <Tab> switches back to previous buffer
@@ -27,7 +27,7 @@ if has('autocmd')
 
     " ⚑ Buffer settings
     " Recognise markdown files properly
-    autocmd BufRead,BufNewFile *.md set filetype=markdown
+    autocmd BufRead,BufNewFile *.md setlocal filetype=markdown
     " Eslint without extension should be JSON
     autocmd BufRead,BufNewFile .eslintrc setlocal filetype=json
     " Refresh trailing whitespace indicator
