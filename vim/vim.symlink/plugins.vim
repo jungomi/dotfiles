@@ -18,6 +18,7 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-commentary'
 " Transform between single and multi line
 Plug 'AndrewRadev/splitjoin.vim'
+Plug 'editorconfig/editorconfig-vim'
 
 " ⚑ Navigation
 " Fuzzy file finder
