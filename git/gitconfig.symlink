@@ -27,6 +27,12 @@
   autocrlf = input
   safecrlf = warn
   excludesfile = ~/.gitignore
+[url "git@github.com:"]
+  pushInsteadOf = https://github.com/
+  pushInsteadOf = "github:"
+  pushInsteadOf = "git://github.com/"
+[url "git://github.com/"]
+  insteadOf = "github:"
 [color]
   status = auto
   branch = auto
