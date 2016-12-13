@@ -85,6 +85,7 @@ Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 " TypeScript
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
+Plug 'ianks/vim-tsx', { 'for': 'typescript' }
 " Vue
 Plug 'posva/vim-vue', { 'for': 'vue' }
 
