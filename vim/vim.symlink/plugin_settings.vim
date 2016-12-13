@@ -85,3 +85,6 @@ let g:markdown_fenced_languages = [
 " ⚑ MdnQuery
 let g:mdnquery_show_on_invoke = 1
 let g:mdnquery_size = 15
+
+" ⚑ EditorConfig
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
