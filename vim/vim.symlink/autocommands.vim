@@ -29,7 +29,7 @@ if has('autocmd')
     " Recognise markdown files properly
     autocmd BufRead,BufNewFile *.md setlocal filetype=markdown
     " Eslint without extension should be JSON
-    autocmd BufRead,BufNewFile .eslintrc setlocal filetype=json
+    autocmd BufRead,BufNewFile .babelrc,.eslintrc setlocal filetype=json
     " Refresh trailing whitespace indicator
     autocmd BufRead,BufWritePost * unlet! b:statusline_trailing_space_warning
   augroup END
