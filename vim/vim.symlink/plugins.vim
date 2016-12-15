@@ -54,6 +54,8 @@ Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 " CSS
 Plug 'ap/vim-css-color', { 'for': 'css' }
 Plug 'wavded/vim-stylus', { 'for': 'stylus' }
+" Go
+Plug 'fatih/vim-go', { 'for': 'go' }
 " HTML
 Plug 'othree/html5.vim'
 " Java

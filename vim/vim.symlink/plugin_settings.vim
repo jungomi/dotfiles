@@ -88,3 +88,15 @@ let g:mdnquery_size = 15
 
 " ⚑ EditorConfig
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
+" ⚑ Go
+" Enable all highlighting
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+" Fmt only when called and suppress useless error message
+let g:go_fmt_fail_silently = 1
+let g:go_fmt_autosave = 0
