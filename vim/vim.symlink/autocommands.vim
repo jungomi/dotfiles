@@ -30,8 +30,9 @@ if has('autocmd')
     autocmd BufRead,BufNewFile *.md setlocal filetype=markdown
     " Eslint without extension should be JSON
     autocmd BufRead,BufNewFile .babelrc,.eslintrc setlocal filetype=json
-    " Refresh trailing whitespace indicator
+    " Refresh statusline indicators
     autocmd BufRead,BufWritePost * unlet! b:statusline_trailing_space_warning
+    autocmd BufRead,BufWritePost * unlet! b:statusline_tab_warning
   augroup END
 
   augroup config_neomake
