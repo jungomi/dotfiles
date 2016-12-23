@@ -77,7 +77,6 @@ node:
 	echo 'export N_PREFIX="$(NODE_DIR)"' >> ~/.profile
 	echo '[[ :$$PATH: == *":$(NODE_BIN):"* ]] || PATH+=":$(NODE_BIN)"' \
 		>> ~/.profile
-	npm install -g yarn
 	echo -e "\r\033[2K[ \033[00;32mDONE\033[0m ] Installing Node"
 
 # Installs rvm with the latest version of Ruby and bundler
@@ -87,15 +86,12 @@ ruby:
 	echo '# Ruby' >> ~/.profile
 	echo 'export PATH="$$PATH:$(RUBY_BIN)"' >> ~/.profile
 	echo '[[ -s "$(RVM)" ]] && source "$(RVM)"' >> ~/.profile
-	rvm install ruby-2.3.3 --default
-	gem install bundler
 	echo -e "\r\033[2K[ \033[00;32mDONE\033[0m ] Installing Ruby"
 
 # Installs rustup with the latest version of Rust and nightly as default
 rust:
 	curl https://sh.rustup.rs -sSf | bash -s -- --no-modify-path \
 		--default-toolchain nightly -y
-	rustup install stable
 	echo '' >> ~/.profile
 	echo '# Rust' >> ~/.profile
 	echo 'export PATH="$$PATH:$(RUST_BIN)"' >> ~/.profile
