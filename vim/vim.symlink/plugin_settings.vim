@@ -11,6 +11,9 @@ let g:neomake_warning_sign = {
   \ 'text': '⚑',
   \ 'texthl': 'SyntasticWarningSign',
   \ }
+" Makers
+let g:neomake_javascript_enabled_makers = ['eslint', 'flow']
+let g:neomake_jsx_enabled_makers = g:neomake_javascript_enabled_makers
 
 " ⚑ Gitgutter
 let g:gitgutter_map_keys = 0
