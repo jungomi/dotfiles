@@ -36,7 +36,7 @@ bind -t vi-copy v begin-selection
 bind -t vi-copy C-v rectangle-toggle
 bind -t vi-copy y copy-selection
 # Copy to system clipboard
-bind -t vi-copy Y copy-pipe 'xclip -selection clipboard'
+bind -t vi-copy Y copy-pipe 'pbcopy'
 
 # Key Bindings
 # Tile all windows
