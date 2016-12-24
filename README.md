@@ -28,9 +28,9 @@ $ make [targets]
             restore      # Restores the backup files
             clean        # Removes the backup files
             plugins      # Installs the vim plugins
-            node         # Installs n with the latest version of Node.js and yarn
-            ruby         # Installs rvm with the latest version of Ruby and bundler
-            rust         # Installs rustup with the latest version of Rust and nightly as default
+            node         # Installs n and Node.js
+            ruby         # Installs rvm and Ruby
+            rust         # Installs rustup and Rust nightly
             help         # Shows this help message
 ```
 

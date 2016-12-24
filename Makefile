@@ -69,7 +69,7 @@ plugins:
 	vim -u ~/.vim/plugins.vim +PlugInstall +qa
 	echo -e "\r\033[2K[ \033[00;32mDONE\033[0m ] Installing vim plugins"
 
-# Installs n with the latest version of Node.js and yarn
+# Installs n and Node.js
 node:
 	curl -L https://git.io/n-install | N_PREFIX=$(NODE_DIR) bash -s -- -n -y
 	echo '' >> ~/.profile
@@ -79,7 +79,7 @@ node:
 		>> ~/.profile
 	echo -e "\r\033[2K[ \033[00;32mDONE\033[0m ] Installing Node"
 
-# Installs rvm with the latest version of Ruby and bundler
+# Installs rvm and Ruby
 ruby:
 	curl -sSL https://get.rvm.io | bash -s stable --ignore-dotfiles
 	echo '' >> ~/.profile
@@ -88,7 +88,7 @@ ruby:
 	echo '[[ -s "$(RVM)" ]] && source "$(RVM)"' >> ~/.profile
 	echo -e "\r\033[2K[ \033[00;32mDONE\033[0m ] Installing Ruby"
 
-# Installs rustup with the latest version of Rust and nightly as default
+# Installs rustup and Rust nightly
 rust:
 	curl https://sh.rustup.rs -sSf | bash -s -- --no-modify-path \
 		--default-toolchain nightly -y
