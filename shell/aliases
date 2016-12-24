@@ -1,14 +1,19 @@
 # vim: set filetype=sh:
 
-# Color support
-if [ -x /usr/bin/dircolors ]; then
-  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-  alias ls="ls --color=auto"
-  alias la="ls -la --color=auto"
-  alias grep="grep --color=auto"
-  alias fgrep="fgrep --color=auto"
-  alias egrep="egrep --color=auto"
+# Colour support
+if ls --color > /dev/null 2>&1; then
+  # GNU `ls`
+  LS_COLOUR="--color=auto"
+else
+  # OS X `ls`
+  LS_COLOUR="-G"
 fi
+
+alias ls="ls $LS_COLOUR"
+alias la="ls -la $LS_COLOUR"
+alias grep="grep --color=auto"
+alias fgrep="fgrep --color=auto"
+alias egrep="egrep --color=auto"
 
 # Enable sudo for aliases
 alias sudo="sudo "
@@ -21,12 +26,15 @@ alias .....="cd ../../../.."
 alias cdot="cd $DOTFILES"
 alias rmf="rm -rf"
 
-# Open file with its default application
-alias open="xdg-open"
+# Mimic macOS commands on Linux
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+  # Open file with its default application
+  alias open="xdg-open"
 
-# Clipboard
-alias pbcopy="xsel --clipboard"
-alias pbpaste="xsel --clipboard --output"
+  # Clipboard
+  alias pbcopy="xsel --clipboard"
+  alias pbpaste="xsel --clipboard --output"
+fi
 
 # Show prompt and error messages in ed
 alias ed="ed -p '➜ ' -v"
