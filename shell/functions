@@ -65,3 +65,14 @@ publicip() {
 openl() {
   open "http://localhost:$@"
 }
+
+# Clone a git repository and switch to the cloned directory
+clonecd() {
+  local dir
+  if [[ $# -ge 2 ]]; then
+    dir="$2"
+  else
+    dir=$(echo "$1" | sed -e 's#.*/\([^/\.]\+\)\(\.git\)\?$#\1#')
+  fi
+  git clone "$@" && cd "$dir"
+}
