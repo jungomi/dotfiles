@@ -39,6 +39,11 @@ fi
 # Show prompt and error messages in ed
 alias ed="ed -p '➜ ' -v"
 
+# Use hub in place of git, when available
+if command -v hub > /dev/null; then
+  alias git=hub
+fi
+
 # One of @janmoesen’s ProTip™s
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
   alias "$method"="lwp-request -m '$method'"
