@@ -39,6 +39,8 @@ set spelllang=en_gb
 " Detect when a file changed
 set autoread
 set title
+" Fix bash syntax highlighting (substitution etc.)
+let g:is_bash = 1
 
 " ⚑ Indentation
 " Tab settings, always use 2 spaces (no tabs)
