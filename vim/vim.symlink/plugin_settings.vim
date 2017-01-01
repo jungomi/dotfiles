@@ -11,6 +11,8 @@ let g:neomake_warning_sign = {
   \ 'text': '⚑',
   \ 'texthl': 'SyntasticWarningSign',
   \ }
+" Ignore invalid entries (skips empty lines and summary)
+let g:neomake_remove_invalid_entries = 1
 " Makers
 let g:neomake_javascript_enabled_makers = ['eslint', 'flow']
 let g:neomake_jsx_enabled_makers = g:neomake_javascript_enabled_makers
