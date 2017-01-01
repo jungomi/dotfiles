@@ -89,6 +89,8 @@ nnoremap <leader>l :vertical resize +5<CR>
 nnoremap <leader>h :vertical resize -5<CR>
 " Resize all splits evenly
 nnoremap <leader>= <C-w>=
+" Maximise current split
+nnoremap <leader>z <C-w>_<C-w>\|
 
 " ⚑ tests
 " All
