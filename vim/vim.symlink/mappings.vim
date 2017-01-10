@@ -35,7 +35,8 @@ inoremap <expr> k pumvisible() ? "\<C-p>" : "k"
 " Cancel completion with Esc
 inoremap <expr> <Esc> pumvisible() ? "\<C-e>" : "\<Esc>"
 " Code completion with Ctrl-Space
-inoremap <C-@> <C-x><C-o>
+inoremap <C-space> <C-x><C-o>
+imap <C-@> <C-space>
 
 " ⚑ Disable mappings
 " Remove help key
