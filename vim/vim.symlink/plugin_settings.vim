@@ -50,25 +50,37 @@ let g:user_emmet_mode = 'i'
 " ⚑ Projectionist
 let g:projectionist_heuristics = {
   \   'package.json': {
+  \     'src/*.js': {
+  \       'type': 'src',
+  \       'alternate': "test/{}.test.js"
+  \     },
+  \     'lib/*.js': {
+  \       'type': 'lib',
+  \       'alternate': "test/{}.test.js"
+  \     },
   \     'src/components/*.js': {
   \       'type': "component",
-  \       'alternate': "test/components/{}.spec.js"
+  \       'alternate': "test/components/{}.test.js"
   \     },
   \     'src/containers/*.js': {
   \       'type': 'container',
-  \       'alternate': 'test/containers/{}.spec.js'
+  \       'alternate': 'test/containers/{}.test.js'
   \     },
   \     'src/actions/*.js': {
   \       'type': 'action',
-  \       'alternate': 'test/actions/{}.spec.js'
+  \       'alternate': 'test/actions/{}.test.js'
   \     },
   \     'src/reducers/*.js': {
   \       'type': 'reducer',
-  \       'alternate': 'test/reducers/{}.spec.js'
+  \       'alternate': 'test/reducers/{}.test.js'
   \     },
   \     'src/naps/*.js': {
   \       'type': 'nap',
-  \       'alternate': 'test/naps/{}.spec.js'
+  \       'alternate': 'test/naps/{}.test.js'
+  \     },
+  \     'test/*.test.js': {
+  \       'type': 'test',
+  \       'alternate': 'src/{}.js'
   \     },
   \     'test/*.spec.js': {
   \       'type': 'spec',
