@@ -105,3 +105,8 @@ let g:go_highlight_build_constraints = 1
 " Fmt only when called and suppress useless error message
 let g:go_fmt_fail_silently = 1
 let g:go_fmt_autosave = 0
+
+
+" ⚑ JsDoc
+" Make it work with arrow functions
+let g:jsdoc_enable_es6 = 1
