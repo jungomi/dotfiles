@@ -25,6 +25,9 @@ set -sg escape-time 0
 set -g base-index 1
 setw -g pane-base-index 1
 
+# Disable escape sequence when copying (which messes up the screen)
+set-option -g set-clipboard off
+
 # Set status line and copy mode key bindings to vim style
 set -g status-keys vi
 setw -g mode-keys vi
