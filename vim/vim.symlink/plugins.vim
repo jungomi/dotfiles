@@ -2,7 +2,6 @@ set nocompatible
 filetype off
 
 call plug#begin('~/.vim/plugged')
-Plug 'rking/ag.vim'
 " Manipulate surrounding parentheses, quotes, etc.
 Plug 'tpope/vim-surround'
 " Make plugin commands repeatable
