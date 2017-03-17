@@ -121,6 +121,7 @@ nnoremap <leader>fg :GFiles<CR>
 " Files showing up in git status
 nnoremap <leader>fs :GFiles?<CR>
 nnoremap <leader>fc :Commits<CR>
+nnoremap <leader>fp :FilesPreview<CR>
 " MdnQuery
 nmap <leader>me <Plug>MdnqueryEntry
 nnoremap <leader>mf :call mdnquery#focus()<CR>
