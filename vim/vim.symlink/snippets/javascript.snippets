@@ -80,3 +80,21 @@ snippet impd
 	import ${2} from '${1}';${0}
 snippet imp
 	import { ${2} } from '${1}';${0}
+snippet webpack
+	const path = require('path');
+
+	module.exports = {
+		entry: '${1:./src/index.js}',
+		output: {
+			path: path.resolve(__dirname, '${2:dist}'),
+			filename: '${3:bundle.js}'
+		},
+		module: {
+			rules: [
+				{
+					test: /\.${4:js}$/,
+					use: ['${5:babel-loader}']
+				}
+			]
+		}${0}
+	};
