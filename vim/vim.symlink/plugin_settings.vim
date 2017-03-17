@@ -17,14 +17,6 @@ let g:neomake_remove_invalid_entries = 1
 " ⚑ Gitgutter
 let g:gitgutter_map_keys = 0
 
-" ⚑ CtrlP
-let g:ctrlp_cmd = 'CtrlP'
-" Ignore some folders and files for CtrlP indexing
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.sass-cache$|\.hg$\|\.svn$\|\.yardoc\|public$|log\|tmp$\|node_modules$',
-  \ 'file': '\.so$\|\.dat$'
-  \ }
-
 " ⚑ JavaScript
 let g:javascript_plugin_flow = 1
 let g:javascript_plugin_jsdoc = 1

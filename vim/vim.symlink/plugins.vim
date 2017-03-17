@@ -22,7 +22,8 @@ Plug 'editorconfig/editorconfig-vim'
 
 " ⚑ Navigation
 " Fuzzy file finder
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
+Plug 'junegunn/fzf.vim'
 " Mappings for easier navigation
 Plug 'tpope/vim-unimpaired'
 " Navigation for projections.json configurations

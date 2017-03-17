@@ -114,9 +114,13 @@ nnoremap <leader>u :UndotreeToggle<CR>
 nnoremap <leader>mp :LivedownPreview<CR>
 " Instant latex preview
 nnoremap <leader>ilp :LLPStartPreview<CR>
-" CtrlP
-nnoremap <leader>ff :CtrlP<CR>
-nnoremap <leader>ft :CtrlPTag<CR>
+" Fuzzy finder
+nnoremap <leader>ff :Files<CR>
+nnoremap <leader>ft :Tags<CR>
+nnoremap <leader>fg :GFiles<CR>
+" Files showing up in git status
+nnoremap <leader>fs :GFiles?<CR>
+nnoremap <leader>fc :Commits<CR>
 " MdnQuery
 nmap <leader>me <Plug>MdnqueryEntry
 nnoremap <leader>mf :call mdnquery#focus()<CR>
