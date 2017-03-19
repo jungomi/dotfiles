@@ -121,3 +121,5 @@ nnoremap <leader>fp :FilesPreview<CR>
 nmap <leader>me <Plug>MdnqueryEntry
 nnoremap <leader>mf :call mdnquery#focus()<CR>
 nnoremap <leader>mr :MdnQueryList<CR>
+" Toggle linting
+nnoremap <leader>lt :ALEToggle<CR>
