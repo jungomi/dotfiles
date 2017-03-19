@@ -38,6 +38,6 @@ if has('autocmd')
   augroup config_neomake
     autocmd!
     " Lint files automatically
-    autocmd BufRead,BufWritePost * Neomake
+    autocmd BufRead,BufWritePost * if filereadable(expand('%')) == 1 | Neomake | endif
   augroup END
 endif
