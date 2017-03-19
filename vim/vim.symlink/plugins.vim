@@ -9,7 +9,7 @@ Plug 'tpope/vim-repeat'
 " Align text
 Plug 'godlygeek/tabular'
 " Linter
-Plug 'neomake/neomake'
+Plug 'w0rp/ale'
 Plug 'ap/vim-buftabline'
 " Asynchronous calls
 Plug 'skywind3000/asyncrun.vim'

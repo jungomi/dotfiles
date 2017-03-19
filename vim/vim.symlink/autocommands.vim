@@ -33,11 +33,7 @@ if has('autocmd')
     " Refresh statusline indicators
     autocmd BufRead,BufWritePost * unlet! b:statusline_trailing_space_warning
     autocmd BufRead,BufWritePost * unlet! b:statusline_tab_warning
-  augroup END
-
-  augroup config_neomake
-    autocmd!
-    " Lint files automatically
-    autocmd BufRead,BufWritePost * if filereadable(expand('%')) == 1 | Neomake | endif
+    " Lint on reading buffer, disabled on enter because of splits
+    autocmd BufRead * ALELint
   augroup END
 endif

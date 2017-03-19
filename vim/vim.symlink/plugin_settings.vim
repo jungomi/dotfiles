@@ -2,17 +2,19 @@
 let g:buftabline_numbers = 1
 let g:buftabline_indicators = 1
 
-" ⚑ Neomake
-" Automatically toggle error list
-let g:neomake_open_list = 2
-let g:neomake_list_height = 5
-let g:neomake_verbose = 0
-let g:neomake_warning_sign = {
-  \ 'text': '⚑',
-  \ 'texthl': 'SyntasticWarningSign',
-  \ }
-" Ignore invalid entries (skips empty lines and summary)
-let g:neomake_remove_invalid_entries = 1
+" ⚑ Ale
+let g:ale_sign_error = '✖'
+let g:ale_sign_warning = '⚑'
+highlight link ALEWarningSign  SyntasticWarningSign
+highlight link ALEErrorSign SyntasticErrorSign
+let g:ale_echo_msg_format = '%linter%: %s'
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_enter = 0
+let g:ale_open_list = 1
+let g:ale_linters = {
+      \ 'rust': ['rustc']
+      \ }
 
 " ⚑ Gitgutter
 let g:gitgutter_map_keys = 0
