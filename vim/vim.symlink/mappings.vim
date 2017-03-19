@@ -93,7 +93,7 @@ nnoremap <leader>= <C-w>=
 " Maximise current split
 nnoremap <leader>z <C-w>_<C-w>\|
 
-" ⚑ tests
+" ⚑ Tests
 " All
 nnoremap <leader>rta :call RunTest()<CR>
 " Current file only
