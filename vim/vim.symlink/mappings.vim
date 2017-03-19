@@ -83,11 +83,6 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-" Resizing current split
-nnoremap <leader>j :resize +5<CR>
-nnoremap <leader>k :resize -5<CR>
-nnoremap <leader>l :vertical resize +5<CR>
-nnoremap <leader>h :vertical resize -5<CR>
 " Resize all splits evenly
 nnoremap <leader>= <C-w>=
 " Maximise current split
