@@ -117,6 +117,7 @@ nnoremap <leader>fg :GFiles<CR>
 nnoremap <leader>fs :GFiles?<CR>
 nnoremap <leader>fc :Commits<CR>
 nnoremap <leader>fp :FilesPreview<CR>
+nnoremap <leader>fb :Buffers<CR>
 " MdnQuery
 nmap <leader>me <Plug>MdnqueryEntry
 nnoremap <leader>mf :call mdnquery#focus()<CR>
