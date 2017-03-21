@@ -45,10 +45,14 @@ if command -v hub > /dev/null; then
 fi
 
 # Fuzzy finder
-alias fga='git add  $(git -c color.status=always status --short | fzf --multi --ansi --prompt "git add> " --bind alt-a:select-all,alt-d:deselect-all | sed -re "s/.*\s(\S+)$/\1/")'
-alias fgb='git checkout $(git branch -a --color | grep -v "*" | fzf --ansi --prompt "git checkout> ")'
+alias fga='git add  $(git -c color.status=always status --short | \
+  fzf --multi --ansi --bind alt-a:select-all,alt-d:deselect-all \
+   --prompt "git add> "| sed -re "s/.*\s(\S+)$/\1/")'
+alias fgb='git checkout $(git branch -a --color | grep -v "*" | \
+  fzf --ansi --prompt "git checkout> ")'
 alias fgc="fga && git commit -v"
-alias fgs='git show $(git lg | fzf --ansi --multi --prompt "git show> " | sed -re "s/^\W+(\w+)\s.*/\1/")'
+alias fgs='git show $(git lg | fzf --ansi --multi --prompt "git show> " | \
+  sed -re "s/^\W+(\w+)\s.*/\1/")'
 
 # One of @janmoesen’s ProTip™s
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
