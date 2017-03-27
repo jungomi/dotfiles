@@ -96,6 +96,8 @@ set hlsearch
 " Enable 'g' flag in substitutions by default
 set gdefault
 set tags+=.tags
+" Remove tag completion from regular completion (<C-n>)
+set complete-=t
 
 " ⚑ Code folding
 set foldmethod=syntax
