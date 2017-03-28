@@ -54,6 +54,9 @@ alias fgc="fga && git commit -v"
 alias fgs='git show $(git lg | fzf --ansi --multi --prompt "git show> " | \
   sed -re "s/^\W+(\w+)\s.*/\1/")'
 
+# Tags
+alias gentags="ctags -f .tags -R ."
+
 # One of @janmoesen’s ProTip™s
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
   alias "$method"="lwp-request -m '$method'"
