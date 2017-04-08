@@ -67,6 +67,10 @@ bind l select-pane -R
 bind -r C-h select-window -t :-
 bind -r C-l select-window -t :+
 
+# Switch to the previously active window
+# Binding is ' (single quote) but is quoted to not be confused with a string
+bind "'" last-window
+
 # Resize pane
 bind -r H resize-pane -L 5
 bind -r J resize-pane -D 5
