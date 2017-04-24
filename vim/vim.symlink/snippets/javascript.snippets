@@ -48,6 +48,28 @@ snippet reactclass
 	}
 
 	export default `Filename()`;
+snippet preact
+	import { h } from 'preact';
+
+	const `Filename()` = (${1}) => {
+		return (
+			${0}
+		);
+	};
+
+	export default `Filename()`;
+snippet preactclass
+	import { h, Component } from 'react';
+
+	class `Filename()` extends Component {
+		render() {
+			return (
+				${0}
+			);
+		}
+	}
+
+	export default `Filename()`;
 snippet ava
 	import test from 'ava';
 snippet test
