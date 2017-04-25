@@ -53,7 +53,7 @@ Plug 'justinmk/vim-syntax-extra', { 'for': 'c' }
 " Coffescript
 Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 " CSS
-Plug 'ap/vim-css-color', { 'for': 'css' }
+Plug 'ap/vim-css-color'
 Plug 'wavded/vim-stylus', { 'for': 'stylus' }
 " Go
 Plug 'fatih/vim-go', { 'for': 'go' }
