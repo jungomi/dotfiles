@@ -33,7 +33,5 @@ if has('autocmd')
     " Refresh statusline indicators
     autocmd BufRead,BufWritePost * unlet! b:statusline_trailing_space_warning
     autocmd BufRead,BufWritePost * unlet! b:statusline_tab_warning
-    " Lint on reading buffer, disabled on enter because of splits
-    autocmd BufRead * ALELint
   augroup END
 endif
