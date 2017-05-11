@@ -14,9 +14,6 @@ let g:ale_linters = {
       \ 'javascript': ['eslint']		
       \ }
 
-" ⚑ Gitgutter
-let g:gitgutter_map_keys = 0
-
 " ⚑ JavaScript
 let g:javascript_plugin_flow = 1
 let g:javascript_plugin_jsdoc = 1
