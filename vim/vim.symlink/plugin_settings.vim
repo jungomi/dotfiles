@@ -82,7 +82,7 @@ let g:undotree_SetFocusWhenToggle = 1
 " ⚑ Markdown
 let g:markdown_fenced_languages = [
       \ 'html', 'python', 'bash=sh', 'ruby', 'javascript', 'js=javascript',
-      \ 'sh', 'css', 'json', 'vim'
+      \ 'sh', 'css', 'json', 'vim', 'ocaml', 'rust', 'go', 'haskell'
       \]
 
 " ⚑ MdnQuery
