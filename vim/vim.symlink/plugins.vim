@@ -58,7 +58,7 @@ Plug 'wavded/vim-stylus', { 'for': 'stylus' }
 " Go
 Plug 'fatih/vim-go', { 'for': 'go' }
 " Haskell
-Plug 'neovimhaskell/haskell-vim'
+Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
 " HTML
 Plug 'othree/html5.vim'
 " Java
