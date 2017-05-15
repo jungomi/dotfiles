@@ -57,6 +57,8 @@ Plug 'ap/vim-css-color'
 Plug 'wavded/vim-stylus', { 'for': 'stylus' }
 " Go
 Plug 'fatih/vim-go', { 'for': 'go' }
+" Haskell
+Plug 'neovimhaskell/haskell-vim'
 " HTML
 Plug 'othree/html5.vim'
 " Java
