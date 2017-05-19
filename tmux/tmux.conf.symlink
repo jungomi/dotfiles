@@ -71,6 +71,12 @@ bind -r C-l select-window -t :+
 # Binding is ' (single quote) but is quoted to not be confused with a string
 bind "'" last-window
 
+# Jump up to previous prompt (beginning of last command)
+bind c copy-mode\; \
+       send -X start-of-line\; \
+       send -X search-backward "➜"\; \
+       send -X stop-selection
+
 # Resize pane
 bind -r H resize-pane -L 5
 bind -r J resize-pane -D 5
