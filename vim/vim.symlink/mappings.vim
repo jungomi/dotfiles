@@ -103,7 +103,6 @@ nnoremap <leader>gt <C-W>}
 nnoremap <leader>gT <C-W>g}
 
 " ⚑ Plugins
-nnoremap <leader>a :Ag<space>
 nnoremap <leader>u :UndotreeToggle<CR>
 " Markdown preview
 nnoremap <leader>mp :LivedownPreview<CR>
@@ -118,6 +117,7 @@ nnoremap <leader>fs :GFiles?<CR>
 nnoremap <leader>fc :Commits<CR>
 nnoremap <leader>fp :FilesPreview<CR>
 nnoremap <leader>fb :Buffers<CR>
+nnoremap <leader>fr :Rg<space>
 " MdnQuery
 nmap <leader>me <Plug>MdnqueryEntry
 nnoremap <leader>mf :call mdnquery#focus()<CR>

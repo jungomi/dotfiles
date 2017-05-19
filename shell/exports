@@ -25,5 +25,5 @@ export LESS_TERMCAP_us=$'\E[04;38;5;140m' # begin underline
 
 # fzf
 # Use ag instead of find by default, respects .gitignore
-export FZF_DEFAULT_COMMAND='ag -g ""'
+export FZF_DEFAULT_COMMAND='rg --files --hidden --smart-case'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
