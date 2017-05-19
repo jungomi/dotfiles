@@ -39,7 +39,7 @@ bind -T copy-mode-vi v send -X begin-selection
 bind -T copy-mode-vi C-v send -X rectangle-toggle
 bind -T copy-mode-vi y send -X copy-selection-and-cancel
 # Copy to system clipboard
-bind -T copy-mode-vi Y send -X copy-pipe-and-cancel 'xsel --clipboard'
+bind -T copy-mode-vi Y send -X copy-pipe-and-cancel 'bash -ic pbcopy'
 
 # Key Bindings
 # Tile all windows
