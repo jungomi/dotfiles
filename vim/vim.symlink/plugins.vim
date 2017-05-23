@@ -72,6 +72,8 @@ Plug 'heavenshell/vim-jsdoc', { 'for': 'javascript' }
 Plug 'elzr/vim-json', { 'for': 'json' }
 " JSX
 Plug 'mxw/vim-jsx', { 'for': 'javascript' }
+" LLVM
+Plug 'llvm-mirror/llvm', { 'rtp': 'utils/vim', 'for': ['llvm', 'tablegen'] }
 " Markdown
 Plug 'tpope/vim-markdown', { 'for': ['markdown', 'mdnquery'] }
 Plug 'shime/vim-livedown', { 'for': 'markdown' }
