@@ -13,6 +13,7 @@ let g:ale_open_list = 1
 let g:ale_linters = {
       \ 'javascript': ['eslint']
       \ }
+let g:ale_rust_cargo_use_check = 1
 
 " ⚑ JavaScript
 let g:javascript_plugin_flow = 1
