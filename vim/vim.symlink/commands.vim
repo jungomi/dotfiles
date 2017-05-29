@@ -5,6 +5,7 @@ command! -bang -nargs=? -complete=dir FilesPreview
 " Ripgrep search combined with fzf
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>),
+  \   'rg --column --line-number --no-heading --color=always --hidden'
+  \     . ' --smart-case --glob "!.git" ' . shellescape(<q-args>),
   \   0,
   \   <bang>0)
