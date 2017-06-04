@@ -83,7 +83,7 @@ Plug 'mustache/vim-mustache-handlebars', { 'for': ['html.handlebars', 'html.must
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'gi1242/vim-tex-syntax', { 'for': 'tex' }
 " ReasonML
-Plug 'reasonml/vim-reason-loader'
+Plug 'reasonml/vim-reason'
 " Ruby
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'tpope/vim-rake', { 'for': ['ruby', 'eruby'] }
