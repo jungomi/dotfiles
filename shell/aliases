@@ -26,7 +26,7 @@ alias .....="cd ../../../.."
 alias cdot="cd $DOTFILES"
 alias rmf="rm -rf"
 # Remove some common backup files
-alias rmback="rm -f **/*.{bk,bak,orig}"
+alias rmback="rm -f **/*.{bk,bak,orig,old}"
 
 # Mimic macOS commands on Linux
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
