@@ -101,6 +101,8 @@ nnoremap <leader>gf <C-]>
 nnoremap <leader>gt <C-W>}
 " Show multiple definition under cursor in preview window
 nnoremap <leader>gT <C-W>g}
+" Generate/Create tags
+nnoremap <leader>ct :AsyncRun ctags -f .tags -R .<CR>
 
 " ⚑ Plugins
 nnoremap <leader>u :UndotreeToggle<CR>
