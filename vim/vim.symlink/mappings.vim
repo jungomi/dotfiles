@@ -24,9 +24,6 @@ nnoremap gk k
 " Speed up scrolling
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
-" Use tab to move to matching brackets
-nnoremap <tab> %
-xnoremap <tab> %
 
 " ⚑ Completion menu
 " Movement
