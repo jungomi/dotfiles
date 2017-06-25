@@ -123,3 +123,5 @@ nnoremap <leader>mf :call mdnquery#focus()<CR>
 nnoremap <leader>mr :MdnQueryList<CR>
 " Toggle linting
 nnoremap <leader>lt :ALEToggle<CR>
+" Auto fix file configure in g:ale_fixers
+nnoremap <leader>af :ALEFix<CR>
