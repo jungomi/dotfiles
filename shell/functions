@@ -9,8 +9,8 @@ mkcd() {
 # Open git repository in browser
 browserepo() {
   local giturl=$(git config --get remote.origin.url \
-                | sed -e "s/git@//g" -e "s/https:\/\///g" -e "s/:/\//g" \
-                  -e "s/.git$//")
+                | sed -e "s/git@//g" -e "s/https:\/\///g" -e "s/git:\/\///" \
+                  -e "s/:/\//g" -e "s/.git$//")
 
   if [[ -z "$giturl" ]]; then
     echo "ERROR: No git url found"
