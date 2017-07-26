@@ -15,7 +15,7 @@ let g:ale_linters = {
       \ }
 let g:ale_rust_cargo_use_check = 1
 let g:ale_fixers = {
-      \   'javascript': ['eslint'],
+      \   'javascript': ['prettier'],
       \   'reason': [{_ -> DoReasonPrettyPrint()}],
       \   'rust': [{_ -> rustfmt#Format()}],
       \ }
