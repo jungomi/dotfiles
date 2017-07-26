@@ -11,6 +11,9 @@ highlight link jsImport jsClassKeyword
 highlight link jsFrom jsClassKeyword
 highlight link jsExport jsClassKeyword
 highlight link jsExportDefault jsFuncName
+highlight link jsFunction Keyword
+highlight link jsDo Keyword
+highlight link jsRepeat Keyword
 highlight link jsFlowTypeKeyword Keyword
 highlight link flowTypeKeyword Keyword
 highlight link flowTypeIdentifier Function
