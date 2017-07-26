@@ -70,3 +70,8 @@ function! StripTrailingWhitespaces()
     let @/=_s
     call cursor(l, c)
 endfunction
+
+" Show highlight groups of word under cursor
+function! HighlightUnderCursor()
+  echomsg join(map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")'), ', ')
+endfunction
