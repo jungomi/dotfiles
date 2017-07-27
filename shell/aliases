@@ -59,6 +59,9 @@ alias fgs='git show $(git lg | fzf --ansi --multi --prompt "git show> " | \
 # Tags
 alias gentags="ctags -f .tags -R ."
 
+# Run babel-node through yarn in debug mode (Chrome inspect)
+alias bdg="yarn babel-node -- --inspect-brk"
+
 # One of @janmoesen’s ProTip™s
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
   alias "$method"="lwp-request -m '$method'"
