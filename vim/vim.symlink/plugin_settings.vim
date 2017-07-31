@@ -1,5 +1,3 @@
-" ⚑ Buftabline
-let g:buftabline_numbers = 1
 let g:buftabline_indicators = 1
 
 " ⚑ Ale
@@ -13,6 +11,7 @@ let g:ale_open_list = 1
 let g:ale_rust_cargo_use_check = 1
 let g:ale_fixers = {
       \   'javascript': ['prettier'],
+      \   'typescript': ['prettier'],
       \   'reason': [{_ -> DoReasonPrettyPrint()}],
       \   'rust': [{_ -> rustfmt#Format()}],
       \ }
