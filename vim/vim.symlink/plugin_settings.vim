@@ -1,4 +1,6 @@
+" ⚑ Buftabline
 let g:buftabline_indicators = 1
+let g:buftabline_numbers = 1
 
 " ⚑ Ale
 let g:ale_sign_error = '✖'
