@@ -45,6 +45,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 " GitHub gist
 Plug 'mattn/webapi-vim' | Plug 'mattn/gist-vim'
+" Interactive git integration
+Plug 'jreybert/vimagit'
 
 " ⚑ Filetype specific
 " C
