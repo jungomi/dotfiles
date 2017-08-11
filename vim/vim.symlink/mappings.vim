@@ -51,7 +51,7 @@ nnoremap <leader>sw :w !sudo tee % > /dev/null<CR>
 " Switch between last two files
 nnoremap <leader><leader> <C-^>
 " Create directory of current file
-nnoremap <leader>mkd :!mkdir -p %:h<CR><CR>
+nnoremap <leader>mkd :call mkdir(expand('%:h'), 'p')<CR>
 
 " ⚑ Clipboard
 " Save
