@@ -52,6 +52,7 @@ nnoremap <leader>sw :w !sudo tee % > /dev/null<CR>
 nnoremap <leader><leader> <C-^>
 " Create directory of current file
 nnoremap <leader>mkd :call mkdir(expand('%:h'), 'p')<CR>
+nnoremap <leader>mkw :call mkdir(expand('%:h'), 'p')<CR>:write<CR>
 
 " ⚑ Clipboard
 " Save
