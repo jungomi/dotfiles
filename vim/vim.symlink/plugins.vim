@@ -54,6 +54,8 @@ Plug 'vim-scripts/a.vim', { 'for': ['c', 'cpp', 'objc', 'objcpp'] }
 Plug 'justinmk/vim-syntax-extra', { 'for': 'c' }
 " Coffescript
 Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
+" Crystal
+Plug 'rhysd/vim-crystal', { 'for': 'crystal' }
 " CSS
 Plug 'ap/vim-css-color'
 Plug 'wavded/vim-stylus', { 'for': 'stylus' }
