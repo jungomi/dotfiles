@@ -16,6 +16,7 @@ let g:ale_fixers = {
       \   'typescript': ['prettier'],
       \   'reason': [{_ -> DoReasonPrettyPrint()}],
       \   'rust': [{_ -> rustfmt#Format()}],
+      \   'crystal': [{_ -> crystal_lang#format('')}],
       \ }
 
 " ⚑ JavaScript
