@@ -62,6 +62,9 @@ alias gentags="ctags -f .tags -R ."
 # Run babel-node through yarn in debug mode (Chrome inspect)
 alias bdg="yarn babel-node -- --inspect-brk"
 
+# Change absolute paths of current directory into relative paths
+alias relpath='sed -e "s#$(pwd)#.#g"'
+
 # One of @janmoesen’s ProTip™s
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
   alias "$method"="lwp-request -m '$method'"
