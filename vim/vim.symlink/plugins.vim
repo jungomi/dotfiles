@@ -101,6 +101,8 @@ Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'ianks/vim-tsx', { 'for': 'typescript' }
 " Vue
 Plug 'posva/vim-vue', { 'for': 'vue' }
+" Wasm
+Plug 'rhysd/vim-wasm', { 'for': 'wast' }
 
 call plug#end()
 
