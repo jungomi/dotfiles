@@ -108,9 +108,10 @@ let g:go_highlight_build_constraints = 1
 let g:go_fmt_fail_silently = 1
 let g:go_fmt_autosave = 0
 
-" ⚑ GitGutter
-" The default of max signs is 500, that a bit low.
-let g:gitgutter_max_signs = 5000
+" ⚑ Signify
+let g:signify_vcs_list = ['git']
+let g:signify_sign_change = '~'
+
 
 " ⚑ JsDoc
 " Make it work with arrow functions

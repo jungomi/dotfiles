@@ -42,7 +42,7 @@ Plug 'mattn/emmet-vim'
 " Wrapper
 Plug 'tpope/vim-fugitive'
 " Diff signs next to line numbers
-Plug 'airblade/vim-gitgutter'
+Plug 'mhinz/vim-signify'
 " GitHub gist
 Plug 'mattn/webapi-vim' | Plug 'mattn/gist-vim'
 " Interactive git integration
