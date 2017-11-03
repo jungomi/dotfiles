@@ -300,7 +300,7 @@ call <sid>hi("sassMixinName",  gui0D, "", cterm0D, "", "")
 
 " Signify highlighting
 call <sid>hi("SignifySignAdd",     gui0B, gui01, cterm0B, cterm01, "")
-call <sid>hi("SignifySignChange",  gui0D, gui01, cterm0D, cterm01, "")
+call <sid>hi("SignifySignChange",  gui02, gui01, cterm02, cterm01, "")
 call <sid>hi("SignifySignDelete",  gui08, gui01, cterm08, cterm01, "")
 
 " Spelling highlighting
