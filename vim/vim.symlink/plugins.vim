@@ -13,6 +13,8 @@ Plug 'w0rp/ale'
 Plug 'ap/vim-buftabline'
 " Asynchronous calls
 Plug 'skywind3000/asyncrun.vim'
+" Substitute different cases (camelCase, snake_case, etc.) and plurals
+Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-commentary'
 " Transform between single and multi line
