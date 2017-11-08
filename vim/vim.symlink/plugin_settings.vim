@@ -10,7 +10,7 @@ highlight link ALEErrorSign SyntasticErrorSign
 let g:ale_echo_msg_format = '%linter%: %s'
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_open_list = 1
-let g:ale_rust_cargo_use_check = 1
+let g:ale_rust_cargo_check_all_targets = 0
 let g:ale_fixers = {
       \   'javascript': ['prettier'],
       \   'typescript': ['prettier'],
