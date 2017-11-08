@@ -18,6 +18,9 @@ let g:ale_fixers = {
       \   'rust': [{_ -> rustfmt#Format()}],
       \   'crystal': [{_ -> crystal_lang#format('')}],
       \ }
+let g:ale_linters = {
+      \   'rust': ['rls']
+      \ }
 
 " ⚑ JavaScript
 let g:javascript_plugin_flow = 1
