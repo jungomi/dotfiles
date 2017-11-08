@@ -21,6 +21,8 @@ Plug 'tpope/vim-commentary'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'wellle/tmux-complete.vim'
+" Swap two regions of text
+Plug 'tommcdo/vim-exchange'
 
 " ⚑ Navigation
 " Fuzzy file finder
