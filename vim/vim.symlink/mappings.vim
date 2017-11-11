@@ -132,4 +132,3 @@ nnoremap <leader>lh :call LanguageClient_textDocument_hover()<CR>
 nnoremap <leader>ld :call LanguageClient_textDocument_definition()<CR>
 nnoremap <leader>lr :call LanguageClient_textDocument_rename()<CR>
 nnoremap <leader>lf :call LanguageClient_textDocument_formatting()<CR>
-xnoremap <leader>lf :call LanguageClient_textDocument_rangeFormatting()<CR>
