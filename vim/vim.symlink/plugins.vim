@@ -109,6 +109,10 @@ Plug 'posva/vim-vue', { 'for': 'vue' }
 " Wasm
 Plug 'rhysd/vim-wasm', { 'for': 'wast' }
 
+" ⚑ NeoVim specific
+if has('nvim')
+  Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+endif
 call plug#end()
 
 filetype plugin indent on

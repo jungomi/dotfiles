@@ -119,3 +119,15 @@ let g:signify_sign_change = '~'
 " ⚑ JsDoc
 " Make it work with arrow functions
 let g:jsdoc_enable_es6 = 1
+
+" ⚑ LSP
+let g:LanguageClient_autoStart = 1
+" Show diagnostics in location list (each buffer has its own)
+let g:LanguageClient_diagnosticsList = 'location'
+" Disable the diagnostics/linting for now, as ALE does it better
+let g:LanguageClient_diagnosticsEnable = 0
+let g:LanguageClient_serverCommands = {
+      \ 'rust': ['rls'],
+      \ 'ocaml': ['ocaml-language-server', '--stdio'],
+      \ 'reason': ['ocaml-language-server', '--stdio'],
+      \ }
