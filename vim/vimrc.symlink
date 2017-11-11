@@ -32,6 +32,8 @@ set ttyfast
 " Redraw only when needed
 set lazyredraw
 set noerrorbells
+" Leave my cursor alone, mainly NeoVim which changes the cursor in insert mode.
+set guicursor=
 
 " ⚑ File settings
 set encoding=utf-8
