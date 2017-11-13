@@ -123,12 +123,12 @@ nmap <leader>me <Plug>MdnqueryEntry
 nnoremap <leader>mf :call mdnquery#focus()<CR>
 nnoremap <leader>mr :MdnQueryList<CR>
 " Toggle linting
-nnoremap <leader>lt :ALEToggle<CR>
+nnoremap <leader>at :ALEToggle<CR>
 " Auto fix file configure in g:ale_fixers
 nmap <leader>af <Plug>(ale_fix)
 " LSP
 " Show (type) info of the word under the cursor
-nnoremap <leader>lh :call LanguageClient_textDocument_hover()<CR>
+nnoremap <leader>lt :call LanguageClient_textDocument_hover()<CR>
 nnoremap <leader>ld :call LanguageClient_textDocument_definition()<CR>
 nnoremap <leader>lr :call LanguageClient_textDocument_rename()<CR>
 nnoremap <leader>lf :call LanguageClient_textDocument_formatting()<CR>
