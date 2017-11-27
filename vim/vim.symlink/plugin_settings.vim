@@ -20,6 +20,7 @@ let g:ale_fixers = {
       \   'crystal': [{_ -> crystal_lang#format('')}],
       \ }
 let g:ale_linters = {
+      \   'go': ['go build'],
       \   'rust': ['rls']
       \ }
 
