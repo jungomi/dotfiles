@@ -120,6 +120,8 @@ set diffopt+=vertical
 set previewheight=8
 
 " ⚑ Backups
+" Always copy and overwrite file when it's saved (some watch modes require this)
+set backupcopy=yes
 " Keep undo history
 "set undofile
 " Centralised backups
