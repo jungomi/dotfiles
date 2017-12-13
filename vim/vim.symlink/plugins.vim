@@ -51,6 +51,8 @@ Plug 'mhinz/vim-signify'
 Plug 'mattn/webapi-vim' | Plug 'mattn/gist-vim'
 " Interactive git integration
 Plug 'jreybert/vimagit'
+" Show diff when using: git rebase --interactive
+Plug 'hotwatermorning/auto-git-diff'
 
 " ⚑ Filetype specific
 " C
