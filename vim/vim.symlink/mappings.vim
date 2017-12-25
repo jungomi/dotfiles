@@ -68,6 +68,7 @@ nnoremap <leader>eb :vsp ~/.bashrc<CR>
 nnoremap <leader>et :vsp ~/.tmux.conf<CR>
 nnoremap <leader>eg :vsp ~/.gitconfig<CR>
 nnoremap <leader>ev :vsp $MYVIMRC<CR>
+nnoremap <leader>ep :vsp ~/.profile<CR>
 " Reload vimrc
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
