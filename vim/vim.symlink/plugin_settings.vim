@@ -12,6 +12,7 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_open_list = 1
 let g:ale_rust_cargo_check_all_targets = 0
 let g:ale_fixers = {
+      \   'elm': ['format'],
       \   'go': ['gofmt'],
       \   'javascript': ['prettier'],
       \   'typescript': ['prettier'],
@@ -112,6 +113,13 @@ let g:go_highlight_build_constraints = 1
 " Fmt only when called and suppress useless error message
 let g:go_fmt_fail_silently = 1
 let g:go_fmt_autosave = 0
+
+" ⚑ Elm
+" Format only when called and suppress useless error message
+let g:elm_format_fail_silently = 1
+let g:elm_format_autosave = 0
+" Show type signatures in completion menu
+let g:elm_detailed_complete = 1
 
 " ⚑ Signify
 let g:signify_vcs_list = ['git']

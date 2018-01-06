@@ -65,6 +65,8 @@ Plug 'rhysd/vim-crystal', { 'for': 'crystal' }
 " CSS
 Plug 'ap/vim-css-color'
 Plug 'wavded/vim-stylus', { 'for': 'stylus' }
+" Elm
+Plug 'ElmCast/elm-vim', { 'for': 'elm' }
 " Go
 Plug 'fatih/vim-go', { 'for': 'go' }
 " Haskell
