@@ -16,7 +16,7 @@ let g:ale_fixers = {
       \   'go': ['gofmt'],
       \   'javascript': ['prettier'],
       \   'typescript': ['prettier'],
-      \   'reason': [{_ -> DoReasonPrettyPrint()}],
+      \   'reason': ['refmt'],
       \   'rust': [{_ -> rustfmt#Format()}],
       \   'crystal': [{_ -> crystal_lang#format('')}],
       \ }
