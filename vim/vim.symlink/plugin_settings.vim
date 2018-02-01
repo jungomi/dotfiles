@@ -24,6 +24,7 @@ let g:ale_linters = {
       \   'go': ['go build'],
       \   'rust': ['rls']
       \ }
+let g:ale_python_mypy_options = '--ignore-missing-imports'
 
 " ⚑ JavaScript
 let g:javascript_plugin_flow = 1
