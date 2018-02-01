@@ -140,4 +140,5 @@ let g:LanguageClient_serverCommands = {
       \ 'rust': ['rls'],
       \ 'ocaml': ['ocaml-language-server', '--stdio'],
       \ 'reason': ['ocaml-language-server', '--stdio'],
+      \ 'python': ['pyls'],
       \ }
