@@ -102,7 +102,7 @@ set tags+=.tags
 set complete-=t
 
 " ⚑ Code folding
-set foldmethod=syntax
+" set foldmethod=syntax
 set nofoldenable
 set foldlevel=10
 
