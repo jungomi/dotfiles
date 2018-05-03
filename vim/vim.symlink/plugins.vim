@@ -23,6 +23,11 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'wellle/tmux-complete.vim'
 " Swap two regions of text
 Plug 'tommcdo/vim-exchange'
+" LSP
+Plug 'autozimu/LanguageClient-neovim', {
+      \ 'branch': 'next',
+      \ 'do': 'bash install.sh',
+      \ }
 
 " ⚑ Navigation
 " Fuzzy file finder
@@ -113,10 +118,6 @@ Plug 'posva/vim-vue', { 'for': 'vue' }
 " Wasm
 Plug 'rhysd/vim-wasm', { 'for': 'wast' }
 
-" ⚑ NeoVim specific
-if has('nvim')
-  Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
-endif
 call plug#end()
 
 filetype plugin indent on
