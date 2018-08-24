@@ -33,5 +33,7 @@ if has('autocmd')
     " Refresh statusline indicators
     autocmd BufRead,BufWritePost * unlet! b:statusline_trailing_space_warning
     autocmd BufRead,BufWritePost * unlet! b:statusline_tab_warning
+    " Close location list when the associated buffer is closed
+    autocmd QuitPre * if empty(&buftype) | lclose | endif
   augroup END
 endif
