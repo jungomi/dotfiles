@@ -48,8 +48,8 @@ noremap Q <NOP>
 nnoremap <leader>w :w<CR>
 " Abuse tee for sudo save
 nnoremap <leader>sw :w !sudo tee % > /dev/null<CR>
-" Switch between last two files
-nnoremap <leader><leader> <C-^>
+" Switch between last two files and close the location list
+nnoremap <leader><leader> :lclose<CR><C-^>
 " Create directory of current file
 nnoremap <leader>mkd :call mkdir(expand('%:h'), 'p')<CR>
 nnoremap <leader>mkw :call mkdir(expand('%:h'), 'p')<CR>:write<CR>
