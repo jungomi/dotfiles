@@ -35,5 +35,7 @@ if has('autocmd')
     autocmd BufRead,BufWritePost * unlet! b:statusline_tab_warning
     " Close location list when the associated buffer is closed
     autocmd QuitPre * if empty(&buftype) | lclose | endif
+    " Close location list when buffer is no longer visible
+    autocmd BufWinLeave * lclose
   augroup END
 endif
