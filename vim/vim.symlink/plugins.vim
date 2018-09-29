@@ -99,6 +99,8 @@ Plug 'mustache/vim-mustache-handlebars', { 'for': ['html.handlebars', 'html.must
 " Latex
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'gi1242/vim-tex-syntax', { 'for': 'tex' }
+" R
+Plug 'jalvesaq/Nvim-R'
 " ReasonML
 Plug 'reasonml-editor/vim-reason-plus'
 " Ruby
