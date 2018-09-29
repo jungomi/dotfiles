@@ -126,6 +126,14 @@ let g:elm_detailed_complete = 1
 let g:signify_vcs_list = ['git']
 let g:signify_sign_change = '~'
 
+" ⚑ R
+" The terminal should be highlighted as if it were a R file
+let R_hl_term = 1
+let rout_follow_colorscheme = 1
+let Rout_more_colors = 1
+" Show .Rout file in a split, not tab
+let R_routnotab = 1
+let R_objbr_w = 80
 
 " ⚑ JsDoc
 " Make it work with arrow functions
