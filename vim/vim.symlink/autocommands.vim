@@ -15,7 +15,7 @@ if has('autocmd')
     autocmd FileType mdnquery nnoremap <buffer> q :MdnQueryToggle<CR>
 
     " ⚑ Tab settings
-    autocmd FileType python setlocal shiftwidth=4 softtabstop=4 expandtab
+    autocmd FileType python setlocal shiftwidth=4 textwidth=88 softtabstop=4 expandtab
     autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
   augroup END
 
