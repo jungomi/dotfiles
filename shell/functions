@@ -76,3 +76,8 @@ clonecd() {
   fi
   git clone "$@" && cd "$dir"
 }
+
+# Forward port to serveo
+fws() {
+  ssh -R "80:localhost:$@" serveo.net
+}
