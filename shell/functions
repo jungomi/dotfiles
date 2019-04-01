@@ -81,3 +81,8 @@ clonecd() {
 fws() {
   ssh -R "80:localhost:$@" serveo.net
 }
+
+# Forward port to serveo
+fwsa() {
+  autossh -M 0 -R "80:localhost:$@" serveo.net
+}
