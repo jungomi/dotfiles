@@ -92,7 +92,7 @@ Plug 'mxw/vim-jsx', { 'for': 'javascript' }
 Plug 'llvm-mirror/llvm', { 'rtp': 'utils/vim', 'for': ['llvm', 'tablegen'] }
 " Markdown
 Plug 'tpope/vim-markdown', { 'for': ['markdown', 'mdnquery'] }
-Plug 'shime/vim-livedown', { 'for': 'markdown' }
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install', 'for': 'markdown'  }
 Plug 'mzlogin/vim-markdown-toc', { 'for': 'markdown' }
 " Mustache and handlebars
 Plug 'mustache/vim-mustache-handlebars', { 'for': ['html.handlebars', 'html.mustache'] }

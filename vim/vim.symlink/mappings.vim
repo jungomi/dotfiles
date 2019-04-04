@@ -106,7 +106,7 @@ nnoremap <leader>ct :AsyncRun ctags -f .tags -R .<CR>
 " ⚑ Plugins
 nnoremap <leader>u :UndotreeToggle<CR>
 " Markdown preview
-nnoremap <leader>mp :LivedownPreview<CR>
+nnoremap <leader>mp :MarkdownPreview<CR>
 " Instant latex preview
 nnoremap <leader>ilp :LLPStartPreview<CR>
 " Fuzzy finder
