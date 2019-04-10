@@ -37,5 +37,7 @@ if has('autocmd')
     autocmd QuitPre * if empty(&buftype) | lclose | endif
     " Close location list when buffer is no longer visible
     autocmd BufWinLeave * lclose
+    " Refresh diff signs after closing a git buffer
+    autocmd BufWinLeave .git/* SignifyRefresh
   augroup END
 endif
