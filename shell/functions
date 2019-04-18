@@ -89,14 +89,15 @@ fwsa() {
 
 # Forward port to the host fwp
 fwp() {
-  local to=7878
+  local local_port="${1}"
+  local remote_port="${local_port}"
   if [[ -z "${1}" ]]; then
     echo "ERROR: Must specify a port to forward"
     return 1
   fi
 
   if [[ $# -ge 2 ]]; then
-    to="${2}"
+    remote_port="${2}"
   fi
-  ssh -N -R "${to}:localhost:${1}" fwp
+  ssh -N -R "${remote_port}:localhost:${local_port}" fwp
 }
