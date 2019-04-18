@@ -86,3 +86,17 @@ fws() {
 fwsa() {
   autossh -M 0 -R "80:localhost:$@" serveo.net
 }
+
+# Forward port to the host fwp
+fwp() {
+  local to=7878
+  if [[ -z "${1}" ]]; then
+    echo "ERROR: Must specify a port to forward"
+    return 1
+  fi
+
+  if [[ $# -ge 2 ]]; then
+    to="${2}"
+  fi
+  ssh -N -R "${to}:localhost:${1}" fwp
+}
