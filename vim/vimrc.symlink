@@ -81,7 +81,7 @@ set statusline+=%{StatuslineTabWarning()}
 set wrap
 set textwidth=80
 set colorcolumn=+1
-set formatoptions=qrn1
+set formatoptions=1crqnlj
 " Show 3 lines around cursor
 set scrolloff=3
 set sidescrolloff=3
