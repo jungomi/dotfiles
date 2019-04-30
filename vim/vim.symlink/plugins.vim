@@ -69,6 +69,8 @@ Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 Plug 'rhysd/vim-crystal', { 'for': 'crystal' }
 " CSS
 Plug 'ap/vim-css-color'
+" CSV
+Plug 'chrisbra/csv.vim'
 Plug 'wavded/vim-stylus', { 'for': 'stylus' }
 " Elm
 Plug 'ElmCast/elm-vim', { 'for': 'elm' }
