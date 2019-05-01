@@ -25,8 +25,11 @@ set -sg escape-time 0
 set -g base-index 1
 setw -g pane-base-index 1
 
-# Disable escape sequence when copying (which messes up the screen)
-set-option -g set-clipboard off
+# Enable clipboard
+# external: tmux sets the clipboard with the xterm escape sequence
+# on: Additionally, applications may also set the terminal clipboard
+# off: No terminal clipboard will be set.
+set-option -g set-clipboard on
 
 # Set status line and copy mode key bindings to vim style
 set -g status-keys vi
