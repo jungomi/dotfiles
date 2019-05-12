@@ -22,7 +22,8 @@ let g:ale_fixers = {
       \ }
 let g:ale_linters = {
       \   'go': ['go build'],
-      \   'rust': ['rls']
+      \   'rust': ['rls'],
+      \   'cpp': ['cquery']
       \ }
 let g:ale_python_mypy_options = '--ignore-missing-imports'
 
@@ -151,4 +152,5 @@ let g:LanguageClient_serverCommands = {
       \ 'reason': ['ocaml-language-server', '--stdio'],
       \ 'python': ['pyls'],
       \ 'r': ['R', '--slave', '-e', 'languageserver::run()'],
+      \ 'cpp': ['cquery', '--log-file=/tmp/cq.log', '--init={"cacheDirectory":"/tmp/cquery/"}'],
       \ }
