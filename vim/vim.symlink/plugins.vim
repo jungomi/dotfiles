@@ -63,6 +63,7 @@ Plug 'hotwatermorning/auto-git-diff'
 " C
 Plug 'vim-scripts/a.vim', { 'for': ['c', 'cpp', 'objc', 'objcpp'] }
 Plug 'justinmk/vim-syntax-extra', { 'for': 'c' }
+Plug 'bfrg/vim-cpp-modern', { 'for': ['c', 'cpp', 'objc', 'objcpp'] }
 " Coffescript
 Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 " Crystal
