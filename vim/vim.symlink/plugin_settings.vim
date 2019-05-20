@@ -23,9 +23,14 @@ let g:ale_fixers = {
 let g:ale_linters = {
       \   'go': ['go build'],
       \   'rust': ['rls'],
-      \   'cpp': ['cquery']
+      \   'cpp': ['ccls']
       \ }
 let g:ale_python_mypy_options = '--ignore-missing-imports'
+let g:ale_cpp_ccls_init_options = {
+      \   'cache': {
+      \       'directory': '/tmp/ccls/cache',
+      \   },
+      \ }
 
 " ⚑ JavaScript
 let g:javascript_plugin_flow = 1
@@ -152,5 +157,5 @@ let g:LanguageClient_serverCommands = {
       \ 'reason': ['ocaml-language-server', '--stdio'],
       \ 'python': ['pyls'],
       \ 'r': ['R', '--slave', '-e', 'languageserver::run()'],
-      \ 'cpp': ['cquery', '--log-file=/tmp/cq.log', '--init={"cacheDirectory":"/tmp/cquery/"}'],
+      \ 'cpp': ['ccls', '--log-file=/tmp/ccls.log', '--init={"cache":{"directory":"/tmp/ccls/cache"}}'],
       \ }
