@@ -55,6 +55,8 @@ Plug 'hotwatermorning/auto-git-diff'
 
 Plug 'jalvesaq/vimcmdline'
 
+" Save/Open with sudo (replaces the tee sudo trick)
+Plug 'lambdalisue/suda.vim'
 " ⚑ Filetype specific
 " C
 Plug 'vim-scripts/a.vim', { 'for': ['c', 'cpp', 'objc', 'objcpp'] }

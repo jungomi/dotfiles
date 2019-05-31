@@ -46,8 +46,8 @@ noremap Q <NOP>
 " ⚑ Buffer
 " Save
 nnoremap <leader>w :w<CR>
-" Abuse tee for sudo save
-nnoremap <leader>sw :w !sudo tee % > /dev/null<CR>
+" Save current file with sudo
+nnoremap <leader>sw :w suda://%<CR>
 " Switch between last two files
 nnoremap <leader><leader> <C-^>
 " Create directory of current file
