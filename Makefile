@@ -97,6 +97,10 @@ rust:
 	echo 'export PATH="$$PATH:$(RUST_BIN)"' >> ~/.profile
 	echo -e "\r\033[2K[ \033[00;32mDONE\033[0m ] Installing Rust"
 
+macos:
+	./macos.sh
+	echo -e "\r\033[2K[ \033[00;32mDONE\033[0m ] Configuring MacOS"
+
 # Shows this help message
 help:
 	echo "targets:"
