@@ -35,8 +35,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
 Plug 'junegunn/fzf.vim'
 " Mappings for easier navigation
 Plug 'tpope/vim-unimpaired'
-" Navigation for projections.json configurations
-Plug 'tpope/vim-projectionist'
 " Undo Tree
 Plug 'mbbill/undotree'
 
@@ -52,10 +50,6 @@ Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-fugitive'
 " Diff signs next to line numbers
 Plug 'mhinz/vim-signify'
-" GitHub gist
-Plug 'mattn/webapi-vim' | Plug 'mattn/gist-vim'
-" Interactive git integration
-Plug 'jreybert/vimagit'
 " Show diff when using: git rebase --interactive
 Plug 'hotwatermorning/auto-git-diff'
 
