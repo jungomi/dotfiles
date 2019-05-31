@@ -99,6 +99,16 @@ let Rout_more_colors = 1
 let R_routnotab = 1
 let R_objbr_w = 80
 
+" ⚑ Interactive REPL
+let cmdline_follow_colorscheme = 1
+let cmdline_app = {
+      \ 'python': 'ipython'
+      \ }
+" Run in a Tmux pane instead of a terminal buffer
+let g:cmdline_in_buffer = 0
+let cmdline_map_send = '<LocalLeader><Space>'
+let cmdline_map_send_and_stay = '<LocalLeader>l'
+
 " ⚑ JsDoc
 " Make it work with arrow functions
 let g:jsdoc_enable_es6 = 1

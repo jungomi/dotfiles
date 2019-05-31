@@ -53,6 +53,8 @@ Plug 'mhinz/vim-signify'
 " Show diff when using: git rebase --interactive
 Plug 'hotwatermorning/auto-git-diff'
 
+Plug 'jalvesaq/vimcmdline'
+
 " ⚑ Filetype specific
 " C
 Plug 'vim-scripts/a.vim', { 'for': ['c', 'cpp', 'objc', 'objcpp'] }
