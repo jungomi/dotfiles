@@ -60,3 +60,6 @@
   tool = fugitive
 [mergetool "fugitive"]
   cmd = vim +Gdiff $MERGED
+[pull]
+  # Rebase instead of merge by default on pull
+  rebase = true
