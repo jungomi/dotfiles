@@ -265,7 +265,17 @@ defaults write com.apple.commerce AutoUpdate -bool true
 # Prevent Photos from opening automatically when devices are plugged in
 defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 
+# Google Chrome
+# Disable the all too sensitive backswipe on trackpads
+defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false
+defaults write com.google.Chrome.canary AppleEnableSwipeNavigateWithScrolls -bool false
+
+# Disable the all too sensitive backswipe on Magic Mouse
+defaults write com.google.Chrome AppleEnableMouseSwipeNavigateWithScrolls -bool false
+defaults write com.google.Chrome.canary AppleEnableMouseSwipeNavigateWithScrolls -bool false
+
+
 # Kill affected applications
-for app in "Contacts" "Dock" "Finder" "Mail" "Photos" "SystemUIServer"; do
+for app in "Contacts" "Dock" "Finder" "Google Chrome" "Mail" "Photos" "SystemUIServer"; do
   killall "${app}" &> /dev/null
 done
