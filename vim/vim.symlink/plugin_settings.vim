@@ -9,6 +9,7 @@ highlight link ALEWarningSign  SyntasticWarningSign
 highlight link ALEErrorSign SyntasticErrorSign
 let g:ale_echo_msg_format = '%linter%: %s'
 let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_insert_leave = 0
 let g:ale_open_list = 'on_save'
 let g:ale_rust_cargo_check_all_targets = 0
 let g:ale_fixers = {
