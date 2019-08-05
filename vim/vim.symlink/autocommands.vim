@@ -17,6 +17,7 @@ if has('autocmd')
     " ⚑ Tab settings
     autocmd FileType python setlocal shiftwidth=4 textwidth=88 softtabstop=4 expandtab
     autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
+    autocmd FileType csv setlocal noexpandtab
   augroup END
 
   augroup config_buffer
