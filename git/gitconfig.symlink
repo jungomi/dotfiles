@@ -67,3 +67,4 @@
   # Automatically stash uncommited changes before rebasing and apply them back
   # afterwards. Allows rebase on a dirty tree (mainly for git pull --rebase).
   autoStash = true
+  stat = true
