@@ -53,6 +53,8 @@
 [push]
   # Only current branch
   default = current
+  # Automatically push tags with the branch
+  followTags = true
 [grep]
   lineNumber = true
   extendRegexp = true
