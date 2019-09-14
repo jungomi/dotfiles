@@ -8,6 +8,8 @@ if has('autocmd')
     autocmd FileType java setlocal omnifunc=javacomplete#Complete
     " Activate spell checking for relevant files
     autocmd FileType gitcommit,markdown,tex setlocal spell
+    " Prevent some identing, liek if the previous line ended with a comma
+    autocmd FileType gitcommit,markdown,tex,text,csv setlocal nocindent
     " Use tags from ~/.tags/<filetype>
     autocmd FileType * exec "setlocal tags+=~/.tags/" . &filetype
     " MdnQuery buffer <Tab> switches back to previous buffer
