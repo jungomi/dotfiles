@@ -126,9 +126,9 @@ set noswapfile
 " Keep undo history
 set undofile
 " Centralised backups
-set backupdir=~/.vim/backups//
-set directory=~/.vim/swaps//
-set undodir=~/.vim/undo//
+set backupdir=~/.vim/backups/
+set directory=~/.vim/swaps/
+set undodir=~/.vim/undo/
 " Create directories if not already present
 if !isdirectory('~/.vim/backups')
   :silent !mkdir -p ~/.vim/backups > /dev/null 2>&1
