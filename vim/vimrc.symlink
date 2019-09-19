@@ -124,7 +124,7 @@ set previewheight=8
 set backupcopy=yes
 set noswapfile
 " Keep undo history
-"set undofile
+set undofile
 " Centralised backups
 set backupdir=~/.vim/backups//
 set directory=~/.vim/swaps//
