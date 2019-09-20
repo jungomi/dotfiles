@@ -99,3 +99,9 @@ let g:coc_global_extensions = [
       \ 'coc-snippets',
       \ 'coc-highlight',
       \ ]
+
+" Use floating window for Fzf when in NeoVim.
+" Vim will fallback to the regular Fzf layout.
+if has('nvim')
+  let g:fzf_layout = { 'window': 'call FzfFloatingWin()' }
+end

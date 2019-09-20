@@ -109,3 +109,19 @@ function! StatuslineDiagnosticSeparator() abort
   endif
   return ''
 endfunction
+
+function! FzfFloatingWin()
+  let total_height = &lines - 3
+  let height = float2nr(total_height / 3)
+  let width = winwidth('%')
+  let opts = {
+        \ 'relative': 'win',
+        \ 'row': total_height - height,
+        \ 'col': 0,
+        \ 'width': width,
+        \ 'height': height
+        \ }
+
+  let buf = nvim_create_buf(v:false, v:true)
+  let win = nvim_open_win(buf, v:true, opts)
+endfunction
