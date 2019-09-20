@@ -81,22 +81,40 @@ if &background == "dark"
   let ctermBorderFg = cterm03
   let ctermTabActiveBg = "176"
   let ctermTabInactiveBg = cterm04
+
+  " Terminal colours for NeoVim's terminal window
+  let g:terminal_color_0 = "#2d2d2d"
+  let g:terminal_color_1 = "#f2777a"
+  let g:terminal_color_2 = "#99cc99"
+  let g:terminal_color_3 = "#ffcc66"
+  let g:terminal_color_4 = "#6699cc"
+  let g:terminal_color_5 = "#cc99cc"
+  let g:terminal_color_6 = "#66cccc"
+  let g:terminal_color_7 = "#d3d0c8"
+  let g:terminal_color_8 = "#747369"
+  let g:terminal_color_9 = g:terminal_color_1
+  let g:terminal_color_10 = g:terminal_color_2
+  let g:terminal_color_11 = g:terminal_color_3
+  let g:terminal_color_12 = g:terminal_color_4
+  let g:terminal_color_13 = g:terminal_color_5
+  let g:terminal_color_14 = g:terminal_color_6
+  let g:terminal_color_15 = "#f2f0ec"
 else
   " Light theme
   " GUI colour definitions
   let gui00 = "fdf6e3"  " BG
-  let gui01 = "585858"  " Border
+  let gui01 = "444444"  " Border
   let gui02 = "ffdf5f"  " Visual select
   let gui03 = "8e8e8e"  " Comment
   let gui04 = "a09f93"  " PMenu
   let gui05 = "555d60"  " Normal FG
-  let gui06 = "e8e6df"  " Grey
+  let gui06 = "eee8d5"  " Grey
   let gui07 = "fdf6e3"  " White - unused
   let gui08 = "df5f5f"  " Red
   let gui09 = "f99157"  " Orange
   let gui0A = "d6a50b"  " Yellow
   let gui0B = "5faf5f"  " Green
-  let gui0C = "6887ee"  " Bright Blue
+  let gui0C = "51a1a0"  " Bright Blue
   let gui0D = "5f87d7"  " Blue
   let gui0E = "af5faf"  " Magenta
   let gui0F = "d27b53"  " Brown
@@ -111,6 +129,7 @@ else
   let guiBorderFg = guiColumnBg
   let guiTabActiveBg = "d787d7"
   let guiTabInactiveBg = gui06
+  let guiCursorColumn = "e8e6df"
 
   " Terminal colour definitions
   let cterm00 = "15"    " BG
@@ -140,6 +159,24 @@ else
   let ctermBorderFg = ctermColumnBg
   let ctermTabActiveBg = "176"
   let ctermTabInactiveBg = cterm06
+
+  " Terminal colours for NeoVim's terminal window
+  let g:terminal_color_0 = "#555d60"
+  let g:terminal_color_1 = "#df5f5f"
+  let g:terminal_color_2 = "#5faf5f"
+  let g:terminal_color_3 = "#d6a50b"
+  let g:terminal_color_4 = "#5f87d7"
+  let g:terminal_color_5 = "#af5faf"
+  let g:terminal_color_6 = "#51a1a0"
+  let g:terminal_color_7 = "#93a1a1"
+  let g:terminal_color_8 = "#8e8e8e"
+  let g:terminal_color_9 = g:terminal_color_1
+  let g:terminal_color_10 = g:terminal_color_2
+  let g:terminal_color_11 = g:terminal_color_3
+  let g:terminal_color_12 = g:terminal_color_4
+  let g:terminal_color_13 = g:terminal_color_5
+  let g:terminal_color_14 = g:terminal_color_6
+  let g:terminal_color_15 = "#fdf6e3"
 endif
 
 " Theme setup
@@ -151,7 +188,7 @@ let g:colors_name = "theme"
 call <sid>hi("Bold",          "", "", "", "", "bold")
 call <sid>hi("Debug",         gui08, "", cterm08, "", "")
 call <sid>hi("Directory",     gui0D, "", cterm0D, "", "")
-call <sid>hi("Error",         gui01, "", cterm01, "", "")
+call <sid>hi("Error",         gui01, gui08, cterm01, cterm08, "")
 call <sid>hi("ErrorMsg",      gui08, gui00, cterm08, cterm00, "")
 call <sid>hi("Exception",     gui08, "", cterm08, "", "")
 call <sid>hi("FoldColumn",    guiWhite, gui01, ctermWhite, cterm01, "")
@@ -186,8 +223,10 @@ call <sid>hi("ColorColumn",   "", guiColumnBg, "", ctermColumnBg, "none")
 call <sid>hi("CursorColumn",  "", gui06, "", cterm06, "none")
 call <sid>hi("CursorLine",    "", gui06, "", cterm06, "none")
 call <sid>hi("CursorLineNr",  guiBorderFg, gui01, ctermBorderFg, cterm01, "")
-call <sid>hi("PMenu",         gui04, gui01, cterm04, cterm01, "none")
+call <sid>hi("PMenu",         gui05, gui06, cterm05, cterm06, "none")
 call <sid>hi("PMenuSel",      gui01, guiSearch, cterm01, ctermSearch, "")
+call <sid>hi("PMenuSbar",     "", gui06, "", cterm06, "")
+call <sid>hi("PMenuThumb",    "", gui03, "", cterm03, "")
 call <sid>hi("TabLine",       guiBorderFg, gui01, ctermBorderFg, cterm01, "none")
 call <sid>hi("TabLineFill",   guiBorderFg, gui01, ctermBorderFg, cterm01, "none")
 call <sid>hi("TabLineSel",    gui01, guiTabActiveBg, cterm01, ctermTabActiveBg, "none")
@@ -213,7 +252,7 @@ call <sid>hi("PreProc",      gui0D, "", cterm0D, "", "")
 call <sid>hi("Repeat",       gui0E, "", cterm0E, "", "")
 call <sid>hi("Special",      gui0C, "", cterm0C, "", "")
 call <sid>hi("SpecialChar",  gui0F, "", cterm0F, "", "")
-call <sid>hi("Statement",    gui0E, "", cterm0E, "", "")
+call <sid>hi("Statement",    gui0E, "", cterm0E, "", "none")
 call <sid>hi("StorageClass", gui0A, "", cterm0A, "", "")
 call <sid>hi("String",       gui0B, "", cterm0B, "", "")
 call <sid>hi("Structure",    gui0E, "", cterm0E, "", "")
@@ -222,9 +261,27 @@ call <sid>hi("Todo",         gui0E, gui06, cterm0E, cterm06, "none")
 call <sid>hi("Type",         gui0A, "", cterm0A, "", "none")
 call <sid>hi("Typedef",      gui0A, "", cterm0A, "", "")
 
+" ALE highlighting
+call <sid>hi("ALEErrorSign",    gui08, gui01, cterm08, cterm01, "")
+call <sid>hi("ALEWarningSign",  gui0A, gui01, cterm0A, cterm01, "")
+
 " C highlighting
 call <sid>hi("cOperator",   gui0C, "", cterm0C, "", "")
 call <sid>hi("cPreCondit",  gui0E, "", cterm0E, "", "")
+
+" Coc highlighting
+call <sid>hi("CocErrorSign",    gui08, gui01, cterm08, cterm01, "")
+call <sid>hi("CocWarningSign",  gui0A, gui01, cterm0A, cterm01, "")
+call <sid>hi("CocInfoSign",  gui0A, gui01, cterm0A, cterm01, "")
+call <sid>hi("CocHintSign",  gui0A, gui01, cterm0A, cterm01, "")
+call <sid>hi("CocErrorVirtualText",   gui08, "", cterm08, "", "")
+call <sid>hi("CocWarningVirtualText", gui0A, "", cterm0A, "", "")
+call <sid>hi("CocInfoVirtualText", gui0A, "", cterm0A, "", "")
+call <sid>hi("CocHintVirtualText", gui0A, "", cterm0A, "", "")
+call <sid>hi("CocErrorFloat",   gui08, gui06, cterm08, cterm06, "")
+call <sid>hi("CocWarningFloat",   gui0A, gui06, cterm0A, cterm06, "")
+call <sid>hi("CocInfoFloat",   gui0A, gui06, cterm0A, cterm06, "")
+call <sid>hi("CocHintFloat",   gui0A, gui06, cterm0A, cterm06, "")
 
 " CSS highlighting
 call <sid>hi("cssBraces",      gui05, "", cterm05, "", "")
@@ -309,9 +366,13 @@ call <sid>hi("SpellLocal",   "", gui00, "", cterm00, "underline")
 call <sid>hi("SpellCap",     "", gui00, "", cterm00, "underline")
 call <sid>hi("SpellRare",    "", gui00, "", cterm00, "underline")
 
+" Status line highlighting
+call <sid>hi("StatuslineError",  gui08, gui01, cterm08, cterm01, "")
+call <sid>hi("StatuslineWarning",  gui0A, gui01, cterm0A, cterm01, "")
+
 " Syntastic
 call <sid>hi("SyntasticErrorSign",    gui08, gui01, cterm08, cterm01, "")
-call <sid>hi("SyntasticWarningSign",  gui02, gui01, cterm02, cterm01, "")
+call <sid>hi("SyntasticWarningSign",  gui0A, gui01, cterm0A, cterm01, "")
 
 " " Quickfix
 call <sid>hi("qfLineNr", gui0E, gui06, cterm0E, cterm06, "none")

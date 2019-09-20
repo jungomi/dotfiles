@@ -23,6 +23,8 @@ set updatetime=300
 syntax on
 " Tell vim that the terminal supports 256 colours
 set t_Co=256
+" Use true colours
+set termguicolors
 set background=light
 colorscheme theme
 set number
