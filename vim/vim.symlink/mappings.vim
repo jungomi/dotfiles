@@ -119,6 +119,7 @@ nnoremap <leader>fs :GFiles?<CR>
 nnoremap <leader>fc :Commits<CR>
 nnoremap <leader>fp :FilesPreview<CR>
 nnoremap <leader>fb :Buffers<CR>
+nnoremap <leader>fh :History<CR>
 nnoremap <leader>fr :Rg<space>
 " MdnQuery
 nmap <leader>me <Plug>MdnqueryEntry
