@@ -15,6 +15,8 @@ if has('autocmd')
     " MdnQuery buffer <Tab> switches back to previous buffer
     autocmd FileType mdnquery nnoremap <buffer> <Tab> <C-w>p
     autocmd FileType mdnquery nnoremap <buffer> q :MdnQueryToggle<CR>
+    " Disable colour column in quick fix window
+    autocmd FileType qf setlocal colorcolumn=
 
     " ⚑ Tab settings
     autocmd FileType python setlocal shiftwidth=4 textwidth=88 softtabstop=4 expandtab
