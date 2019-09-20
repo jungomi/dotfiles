@@ -8,14 +8,11 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 " Align text
 Plug 'godlygeek/tabular'
-" Linter
-Plug 'dense-analysis/ale'
 Plug 'ap/vim-buftabline'
 " Asynchronous calls
 Plug 'skywind3000/asyncrun.vim'
 " Substitute different cases (camelCase, snake_case, etc.) and plurals
 Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-commentary'
 " Transform between single and multi line
 Plug 'AndrewRadev/splitjoin.vim'
@@ -23,11 +20,8 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'wellle/tmux-complete.vim'
 " Swap two regions of text
 Plug 'tommcdo/vim-exchange'
-" LSP
-Plug 'autozimu/LanguageClient-neovim', {
-      \ 'branch': 'next',
-      \ 'do': 'bash install.sh',
-      \ }
+" Completion, LSP and more extensions (using VSCode extensions)
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " ⚑ Navigation
 " Fuzzy file finder
@@ -39,8 +33,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'mbbill/undotree'
 
 " ⚑ Snippets
-" Snippet engine
-Plug 'MarcWeber/vim-addon-mw-utils' | Plug 'tomtom/tlib_vim' | Plug 'garbas/vim-snipmate'
+" Useful Snippets for many languages
 Plug 'honza/vim-snippets'
 " Expand keywords to HTML
 Plug 'mattn/emmet-vim'
@@ -48,8 +41,6 @@ Plug 'mattn/emmet-vim'
 " ⚑ Git
 " Wrapper
 Plug 'tpope/vim-fugitive'
-" Diff signs next to line numbers
-Plug 'mhinz/vim-signify'
 " Show diff when using: git rebase --interactive
 Plug 'hotwatermorning/auto-git-diff'
 
@@ -66,8 +57,6 @@ Plug 'bfrg/vim-cpp-modern', { 'for': ['c', 'cpp', 'objc', 'objcpp'] }
 Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 " Crystal
 Plug 'rhysd/vim-crystal', { 'for': 'crystal' }
-" CSS
-Plug 'ap/vim-css-color'
 " CSV
 Plug 'chrisbra/csv.vim'
 Plug 'wavded/vim-stylus', { 'for': 'stylus' }
@@ -79,8 +68,6 @@ Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
 " HTML
 Plug 'othree/html5.vim'
-" Java
-Plug 'artur-shaik/vim-javacomplete2', { 'for': 'java' }
 " JavaScript
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'markdown', 'mdnquery'] }
 Plug 'jungomi/vim-mdnquery'

@@ -75,3 +75,37 @@ endfunction
 function! HighlightUnderCursor()
   echomsg join(map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")'), ', ')
 endfunction
+
+" Statusline for a summary of the diagnostics. Used separately to have
+" appropriate syntax highlighting applied to them.
+function! StatuslineWarningStatus() abort
+  let info = get(b:, 'coc_diagnostic_info', {})
+  if get(info, 'warning', 0)
+    return 'W' . info['warning']
+  endif
+  return ''
+endfunction
+
+function! StatuslineErrorStatus() abort
+  let info = get(b:, 'coc_diagnostic_info', {})
+  if get(info, 'error', 0)
+    return 'E' . info['error']
+  endif
+  return ''
+endfunction
+
+function! StatuslineDiagnosticSeparatorBetween() abort
+  let info = get(b:, 'coc_diagnostic_info', {})
+  if get(info, 'error', 0) && get(info, 'warning', 0)
+    return ' '
+  endif
+  return ''
+endfunction
+
+function! StatuslineDiagnosticSeparator() abort
+  let info = get(b:, 'coc_diagnostic_info', {})
+  if get(info, 'error', 0) || get(info, 'warning', 0)
+    return ' — '
+  endif
+  return ''
+endfunction

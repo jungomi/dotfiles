@@ -2,37 +2,6 @@
 let g:buftabline_indicators = 1
 let g:buftabline_numbers = 1
 
-" ⚑ Ale
-let g:ale_sign_error = '✖'
-let g:ale_sign_warning = '⚑'
-highlight link ALEWarningSign  SyntasticWarningSign
-highlight link ALEErrorSign SyntasticErrorSign
-let g:ale_echo_msg_format = '%linter%: %s'
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_insert_leave = 0
-let g:ale_open_list = 'on_save'
-let g:ale_rust_cargo_check_all_targets = 0
-let g:ale_fixers = {
-      \   'elm': ['format'],
-      \   'go': ['gofmt'],
-      \   'javascript': ['prettier'],
-      \   'typescript': ['prettier'],
-      \   'reason': ['refmt'],
-      \   'rust': [{_ -> rustfmt#Format()}],
-      \   'crystal': [{_ -> crystal_lang#format('')}],
-      \ }
-let g:ale_linters = {
-      \   'go': ['go build'],
-      \   'rust': ['rls'],
-      \   'cpp': ['ccls']
-      \ }
-let g:ale_python_mypy_options = '--ignore-missing-imports'
-let g:ale_cpp_ccls_init_options = {
-      \   'cache': {
-      \       'directory': '/tmp/ccls/cache',
-      \   },
-      \ }
-
 " ⚑ JavaScript
 let g:javascript_plugin_flow = 1
 let g:javascript_plugin_jsdoc = 1
@@ -114,17 +83,19 @@ let cmdline_map_send_and_stay = '<LocalLeader>l'
 " Make it work with arrow functions
 let g:jsdoc_enable_es6 = 1
 
-" ⚑ LSP
-let g:LanguageClient_autoStart = 1
-" Show diagnostics in location list (each buffer has its own)
-let g:LanguageClient_diagnosticsList = 'location'
-" Disable the diagnostics/linting for now, as ALE does it better
-let g:LanguageClient_diagnosticsEnable = 0
-let g:LanguageClient_serverCommands = {
-      \ 'rust': ['rls'],
-      \ 'ocaml': ['ocaml-language-server', '--stdio'],
-      \ 'reason': ['ocaml-language-server', '--stdio'],
-      \ 'python': ['pyls'],
-      \ 'r': ['R', '--slave', '-e', 'languageserver::run()'],
-      \ 'cpp': ['ccls', '--log-file=/tmp/ccls.log', '--init={"cache":{"directory":"/tmp/ccls/cache"}}'],
-      \ }
+" ⚑ COC
+" Completion, LSP and various other niceties.
+" Works generally better than standalone Vim plugins, since those are extensions
+" also used in VSCode, and those are especially great for completions.
+" Also just seems a lot cleaner and having those in one place is great.
+let g:coc_global_extensions = [
+      \ 'coc-html',
+      \ 'coc-css',
+      \ 'coc-json',
+      \ 'coc-yaml',
+      \ 'coc-tsserver',
+      \ 'coc-git',
+      \ 'coc-rls',
+      \ 'coc-snippets',
+      \ 'coc-highlight',
+      \ ]

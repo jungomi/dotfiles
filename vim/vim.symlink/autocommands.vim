@@ -4,8 +4,6 @@ if has('autocmd')
     " ⚑ File type settings
     " Disable comment continuation when using 'o' or 'O'
     autocmd FileType * setlocal formatoptions-=o
-    " Enable java completion
-    autocmd FileType java setlocal omnifunc=javacomplete#Complete
     " Activate spell checking for relevant files
     autocmd FileType gitcommit,markdown,tex setlocal spell
     " Prevent some identing, liek if the previous line ended with a comma
@@ -40,9 +38,11 @@ if has('autocmd')
     autocmd BufRead,BufWritePost * unlet! b:statusline_tab_warning
     " Close location list when the associated buffer is closed
     autocmd QuitPre * if empty(&buftype) | lclose | endif
-    " Close location list when buffer is no longer visible
-    autocmd BufWinLeave * lclose
-    " Refresh diff signs after closing a git buffer
-    autocmd BufWinLeave .git/* SignifyRefresh
+  augroup END
+
+  augroup config_user
+    " Show the signature when jumping through the arguments to a function, when
+    " the function is inserted through the completion.
+    autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
   augroup END
 endif

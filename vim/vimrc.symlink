@@ -17,6 +17,7 @@ set mouse=
 " Hide buffers instead of closing
 set hidden
 set history=10000
+set updatetime=300
 
 " ⚑ Appearance
 syntax on
@@ -61,13 +62,18 @@ set autoindent
 " Always show status line
 set laststatus=2
 " Abbreviate status bar messages and disable startup page
-set shortmess=atI
+set shortmess=atIFc
 set ruler
+" Always show the sign gutter
+set signcolumn=yes
 " Buffer number, modified and read only flag
 set statusline=\ [%n]%m%r
 " Truncate point before path to file
 set statusline+=\ %<%f
-" Right align, file type
+" Diagnostic summary
+set statusline+=%{StatuslineDiagnosticSeparator()}%#StatuslineWarning#%{StatuslineWarningStatus()}%*
+set statusline+=%{StatuslineDiagnosticSeparatorBetween()}%#StatuslineError#%{StatuslineErrorStatus()}%*
+" Right align, file format and type
 set statusline+=%=\ %{&ff}\ %y
 " Line, column and percent of file
 set statusline+=\ %(%l,%c\ %P\ %)

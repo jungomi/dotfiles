@@ -27,13 +27,8 @@ nnoremap <C-y> 3<C-y>
 
 " ⚑ Completion menu
 " Movement
-inoremap <expr> j pumvisible() ? "\<C-n>" : "j"
-inoremap <expr> k pumvisible() ? "\<C-p>" : "k"
-" Cancel completion with Esc
-inoremap <expr> <Esc> pumvisible() ? "\<C-e>" : "\<Esc>"
-" Code completion with Ctrl-Space
-inoremap <C-space> <C-x><C-o>
-imap <C-@> <C-space>
+inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "j"
+inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "k"
 
 " ⚑ Disable mappings
 " Remove help key
@@ -129,14 +124,32 @@ nnoremap <leader>fr :Rg<space>
 nmap <leader>me <Plug>MdnqueryEntry
 nnoremap <leader>mf :call mdnquery#focus()<CR>
 nnoremap <leader>mr :MdnQueryList<CR>
-" Toggle linting
-nnoremap <leader>at :ALEToggle<CR>
-" Auto fix file configure in g:ale_fixers
-nmap <leader>af <Plug>(ale_fix)
-" LSP
+
+" Coc
 " Show (type) info of the word under the cursor
-nnoremap <leader>lt :call LanguageClient#textDocument_hover()<CR>
-nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
-nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
-nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
-nnoremap <leader>ls :call LanguageClient#textDocument_signatureHelp()<CR>
+nnoremap <leader>lt :call CocActionAsync('doHover')<CR>
+nmap <leader>ld <Plug>(coc-definition)
+nmap <leader>lr <Plug>(coc-rename)
+" Code actions give you suggestions to fix the warning/error and applies them
+nmap <leader>la <Plug>(coc-codeaction)
+nnoremap <leader>lf :call CocActionAsync('format')<CR>
+nnoremap <leader>ls :call CocActionAsync('showSignatureHelp')<CR>
+" Highlight occurrences of the word under the cursor
+nnoremap <leader>lh :call CocActionAsync('highlight')<CR>
+" Organise imports
+nnoremap <leader>lo :call CocAction('runCommand', 'editor.action.organizeImport')<CR>
+" Navigate diagnostics
+nmap <silent> [d <Plug>(coc-diagnostic-prev)
+nmap <silent> ]d <Plug>(coc-diagnostic-next)
+" Code completion with Ctrl-Space
+inoremap <silent><expr> <C-space> coc#refresh()
+imap <C-@> <C-space>
+" Select completion when menu is open, otherwise trigger snippet completion
+" Invokes <Plug>(coc-snippets-expand-jump) unless the menu is visible.
+imap <silent><expr> <C-l> pumvisible() ? "\<C-y>" : "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>"
+vmap <silent> <C-l> :<C-u>call coc#rpc#request('doKeymap', ['snippets-expand-jump',''])<CR>
+" Navigate Git chunks
+nmap [g <Plug>(coc-git-prevchunk)
+nmap ]g <Plug>(coc-git-nextchunk)
+" Show diff of the Git chunk under the currsor
+nmap <leader>lg <Plug>(coc-git-chunkinfo)
