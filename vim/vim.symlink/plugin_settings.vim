@@ -96,6 +96,7 @@ let g:coc_global_extensions = [
       \ 'coc-tsserver',
       \ 'coc-git',
       \ 'coc-rls',
+      \ 'coc-python',
       \ 'coc-snippets',
       \ 'coc-highlight',
       \ ]
