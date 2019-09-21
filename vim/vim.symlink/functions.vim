@@ -7,6 +7,15 @@ function! OpenQuickfix()
   endif
 endfunction
 
+" Open location list window without switching to it.
+function! OpenLocationList()
+  let win = winnr()
+  lopen
+  if win != winnr()
+    execute win . 'wincmd w'
+  endif
+endfunction
+
 " Runs tests with the appropriate tool for the current filetype.
 " All given parameters are passed to the underlying test framework.
 " Example: RunTest('%', '--verbose') would run the tests for the current file

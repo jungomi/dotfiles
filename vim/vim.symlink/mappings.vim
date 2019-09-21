@@ -81,6 +81,8 @@ nnoremap <C-l> <C-w>l
 nnoremap <leader>= <C-w>=
 " Maximise current split
 nnoremap <leader>z <C-w>_<C-w>\|
+nnoremap <leader>lo :call OpenLocationList()<CR>
+nnoremap <leader>lc :lclose<CR>
 
 " ⚑ Tests
 " All
@@ -138,7 +140,7 @@ nnoremap <leader>ls :call CocActionAsync('showSignatureHelp')<CR>
 " Highlight occurrences of the word under the cursor
 nnoremap <leader>lh :call CocActionAsync('highlight')<CR>
 " Organise imports
-nnoremap <leader>lo :call CocAction('runCommand', 'editor.action.organizeImport')<CR>
+nnoremap <leader>li :call CocAction('runCommand', 'editor.action.organizeImport')<CR>
 " Navigate diagnostics
 nmap <silent> [d <Plug>(coc-diagnostic-prev)
 nmap <silent> ]d <Plug>(coc-diagnostic-next)
