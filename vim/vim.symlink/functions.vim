@@ -10,6 +10,10 @@ endfunction
 " Open location list window without switching to it.
 function! OpenLocationList()
   let win = winnr()
+  if empty(getloclist(win))
+    echomsg 'No location list'
+    return
+  endif
   lopen
   if win != winnr()
     execute win . 'wincmd w'
