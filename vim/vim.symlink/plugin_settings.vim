@@ -88,6 +88,7 @@ let g:jsdoc_enable_es6 = 1
 " Works generally better than standalone Vim plugins, since those are extensions
 " also used in VSCode, and those are especially great for completions.
 " Also just seems a lot cleaner and having those in one place is great.
+" The extensions listed here are automatically installed by Coc.
 let g:coc_global_extensions = [
       \ 'coc-html',
       \ 'coc-css',
