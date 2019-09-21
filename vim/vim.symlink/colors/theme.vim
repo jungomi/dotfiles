@@ -104,7 +104,7 @@ else
   " GUI colour definitions
   let gui00 = "fdf6e3"  " BG
   let gui01 = "444444"  " Border
-  let gui02 = "ffdf5f"  " Visual select
+  let gui02 = "ffd75f"  " Visual select
   let gui03 = "8e8e8e"  " Comment
   let gui04 = "a09f93"  " PMenu
   let gui05 = "555d60"  " Normal FG
