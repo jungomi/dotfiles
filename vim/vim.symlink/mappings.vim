@@ -137,6 +137,7 @@ nmap <leader>lr <Plug>(coc-rename)
 nmap <leader>la <Plug>(coc-codeaction)
 nnoremap <leader>lf :call CocActionAsync('format')<CR>
 nnoremap <leader>ls :call CocActionAsync('showSignatureHelp')<CR>
+inoremap <C-s> <C-o>:call CocActionAsync('showSignatureHelp')<CR>
 " Highlight occurrences of the word under the cursor
 nnoremap <leader>lh :call CocActionAsync('highlight')<CR>
 " Organise imports
