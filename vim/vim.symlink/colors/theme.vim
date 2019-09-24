@@ -125,7 +125,7 @@ else
   let guiDiffChange = "eeeeee"
   let guiDiffDelete = "ffdfdf"
   let guiSearch = gui02
-  let guiFolded = guiWhite
+  let guiFolded = gui06
   let guiBorderFg = guiColumnBg
   let guiTabActiveBg = "d787d7"
   let guiTabInactiveBg = gui06
