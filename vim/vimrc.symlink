@@ -87,6 +87,8 @@ set statusline+=%{StatuslineTabWarning()}
 " ⚑ Line settings
 " Visually wrap long lines
 set wrap
+" Indent visually broken lines to the same level as the actual line
+set breakindent
 set textwidth=80
 set colorcolumn=+1
 set formatoptions=1crqnlj
