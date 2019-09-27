@@ -43,15 +43,35 @@ the existing files, or `-n` to never overwrite them.
 
 ### Light
 
+#### Shell
+
 ![Shell light][shell-light]
+
+#### Vim
+
 ![Vim light][vim-light]
+
+#### Vim Completion
+
+![Vim completion light][vim-completion-light]
 
 ### Dark
 
+#### Shell
+
 ![Shell dark][shell-dark]
+
+#### Vim
+
 ![Vim dark][vim-dark]
+
+#### Vim Completion
+
+![Vim completion dark][vim-completion-dark]
 
 [shell-dark]: screenshots/shell-dark.png
 [shell-light]: screenshots/shell-light.png
 [vim-light]: screenshots/vim-light.png
 [vim-dark]: screenshots/vim-dark.png
+[vim-completion-light]: screenshots/vim-completion-light.png
+[vim-completion-dark]: screenshots/vim-completion-dark.png
