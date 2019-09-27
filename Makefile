@@ -66,7 +66,7 @@ clean:
 
 # Installs the vim plugins
 plugins:
-	vim -u ~/.vim/plugins.vim +PlugInstall +qa
+	nvim -u ~/.vim/plugins.vim +PlugInstall +qa
 	echo -e "\r\033[2K[ \033[00;32mDONE\033[0m ] Installing vim plugins"
 
 # Installs n and Node.js

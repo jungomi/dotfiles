@@ -1,7 +1,7 @@
 # vim: set filetype=sh:
 
 export DOTFILES=$HOME/.dotfiles
-export EDITOR=vim
+export EDITOR=nvim
 
 # Colour scheme
 export COLOUR_SCHEME="$DOTFILES/shell/light-theme.sh"
