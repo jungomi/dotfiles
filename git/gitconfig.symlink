@@ -60,6 +60,9 @@
   extendRegexp = true
 [merge]
   tool = fugitive
+[mergetool]
+  prompt = false
+  keepBackup = false
 [mergetool "fugitive"]
   cmd = nvim +Gdiff $MERGED
 [pull]
