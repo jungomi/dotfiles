@@ -31,6 +31,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-unimpaired'
 " Undo Tree
 Plug 'mbbill/undotree'
+" Smooth scrolling
+Plug 'psliwka/vim-smoothie'
 
 " ⚑ Snippets
 " Useful Snippets for many languages
