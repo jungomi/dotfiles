@@ -27,8 +27,8 @@ nnoremap <C-y> 3<C-y>
 
 " ⚑ Completion menu
 " Movement
-inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "j"
-inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "k"
+inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
+inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 
 " ⚑ Disable mappings
 " Remove help key
