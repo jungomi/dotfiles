@@ -100,6 +100,7 @@ let g:coc_global_extensions = [
       \ 'coc-python',
       \ 'coc-snippets',
       \ 'coc-highlight',
+      \ 'coc-prettier',
       \ ]
 
 " Use floating window for Fzf when in NeoVim.
