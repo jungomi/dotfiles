@@ -103,8 +103,7 @@ Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 " TOML
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 " TypeScript
-Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
-Plug 'ianks/vim-tsx', { 'for': 'typescript' }
+Plug 'HerringtonDarkholme/yats.vim', { 'for': 'typescript' }
 " Vue
 Plug 'posva/vim-vue', { 'for': 'vue' }
 " Wasm
