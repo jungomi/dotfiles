@@ -6,18 +6,29 @@ highlight link typescriptImport typescriptClassKeyword
 highlight link typescriptFrom typescriptClassKeyword
 highlight link typescriptExport typescriptClassKeyword
 highlight link typescriptFuncKeyword Keyword
+highlight link typescriptCastKeyword Keyword
 highlight link typescriptDo Keyword
 highlight link typescriptRepeat Keyword
 highlight link typescriptClassName typescriptFuncName
 highlight link typescriptInterfaceName Identifier
+highlight link typescriptDebugger Identifier
 highlight link typescriptTypeReference Type
 highlight link typescriptProp Function
 highlight link typescriptIdentifierName Function
+highlight link typescriptFunctionMethod Function
 highlight link typescriptConsoleMethod Function
 highlight link typescriptGlobal Constant
+highlight link typescriptNodeGlobal Constant
+highlight link typescriptEncodingGlobal Constant
+highlight link typescriptBOMWindowProp Constant
+highlight link typescriptBOMWindowMethod Function
+highlight link typescriptDOMDocMethod Function
 highlight link tsxTag Function
+highlight link tsxCloseTag tsxTag
+highlight link tsxCloseString tsxCloseTag
 highlight link tsxIntrinsicTagName Function
 
+highlight link typescriptBOM None
 highlight link typescriptBlock NONE
 highlight link typescriptBraces NONE
 highlight link typescriptParens NONE
@@ -26,3 +37,4 @@ highlight link typescriptArrowFunc NONE
 highlight link typescriptArrowFuncDef NONE
 highlight link typescriptOperator NONE
 highlight link typescriptObjectLabel NONE
+highlight link typescriptFileListMethod NONE
