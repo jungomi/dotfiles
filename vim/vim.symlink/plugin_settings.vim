@@ -102,6 +102,9 @@ let g:coc_global_extensions = [
       \ 'coc-highlight',
       \ 'coc-prettier',
       \ ]
+" Jumping between placeholders for snippets.
+let g:coc_snippet_prev = '<c-h>'
+let g:coc_snippet_next = '<c-l>'
 
 " Use floating window for Fzf when in NeoVim.
 " Vim will fallback to the regular Fzf layout.
