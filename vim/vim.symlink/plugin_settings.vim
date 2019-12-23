@@ -101,6 +101,7 @@ let g:coc_global_extensions = [
       \ 'coc-snippets',
       \ 'coc-highlight',
       \ 'coc-prettier',
+      \ 'coc-eslint',
       \ ]
 " Jumping between placeholders for snippets.
 let g:coc_snippet_prev = '<c-h>'
