@@ -103,6 +103,17 @@ Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 " TOML
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 " TypeScript
+" Configuring the highlighting is an absolute nightmare, since yats defines no
+" common highlight group but instead defines 100s of different kinds of methods
+" e.g. typescriptPromiseMethod, typescriptStringMethod etc.
+" and links them directly to Keyword, which makes so no sense at all, since they
+" are not keywords, but should at least link to Function. Either way, if you
+" want to change them you need to re-link all of them, and they are also
+" scattered around the repo, so they are just changed when seen for the first
+" time.
+" Indentation for JSX is also bad.
+" Unfortunately, the alternatives are just as bad and for the syntax
+" highlighting even worse.
 Plug 'HerringtonDarkholme/yats.vim', { 'for': 'typescript' }
 " Vue
 Plug 'posva/vim-vue', { 'for': 'vue' }
