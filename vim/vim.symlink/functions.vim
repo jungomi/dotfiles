@@ -93,10 +93,23 @@ endfunction
 " appropriate syntax highlighting applied to them.
 function! StatuslineWarningStatus() abort
   let info = get(b:, 'coc_diagnostic_info', {})
+  let out = ''
   if get(info, 'warning', 0)
-    return 'W' . info['warning']
+    let out = out . 'W' . info['warning']
   endif
-  return ''
+  if get(info, 'information', 0)
+    if !empty(out)
+      let out = out . ' '
+    endif
+    let out = out . 'I' . info['information']
+  endif
+  if get(info, 'hint', 0)
+    if !empty(out)
+      let out = out . ' '
+    endif
+    let out = out . 'H' . info['hint']
+  endif
+  return out
 endfunction
 
 function! StatuslineErrorStatus() abort
@@ -109,7 +122,7 @@ endfunction
 
 function! StatuslineDiagnosticSeparatorBetween() abort
   let info = get(b:, 'coc_diagnostic_info', {})
-  if get(info, 'error', 0) && get(info, 'warning', 0)
+  if !empty(StatuslineErrorStatus()) && !empty(StatuslineWarningStatus())
     return ' '
   endif
   return ''
@@ -117,7 +130,7 @@ endfunction
 
 function! StatuslineDiagnosticSeparator() abort
   let info = get(b:, 'coc_diagnostic_info', {})
-  if get(info, 'error', 0) || get(info, 'warning', 0)
+  if !empty(StatuslineErrorStatus()) || !empty(StatuslineWarningStatus())
     return ' — '
   endif
   return ''
