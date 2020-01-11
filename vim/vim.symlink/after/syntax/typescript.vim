@@ -44,6 +44,8 @@ highlight link typescriptHeadersMethod typescriptFunctionMethod
 highlight link typescriptDOMEventMethod typescriptFunctionMethod
 highlight link typescriptDOMEventTargetMethod typescriptFunctionMethod
 highlight link typescriptBOMNavigatorProp typescriptFunctionMethod
+highlight link typescriptDOMNodeMethod typescriptFunctionMethod
+highlight link typescriptDOMStorageMethod typescriptFunctionMethod
 highlight link typescriptExceptions Identifier
 
 highlight link typescriptBOM None
@@ -73,3 +75,6 @@ highlight link typescriptJSONStaticMethod NONE
 highlight link typescriptDateStaticMethod NONE
 highlight link typescriptRegExpStaticMethod NONE
 highlight link typescriptMathStaticMethod NONE
+highlight link typescriptPaymentShippingOptionProp NONE
+highlight link typescriptURLUtilsProp NONE
+highlight link typescriptRegExpProp NONE
