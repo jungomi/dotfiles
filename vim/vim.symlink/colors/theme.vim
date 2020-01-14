@@ -361,10 +361,10 @@ call <sid>hi("SignifySignChange",  gui02, gui01, cterm02, cterm01, "")
 call <sid>hi("SignifySignDelete",  gui08, gui01, cterm08, cterm01, "")
 
 " Spelling highlighting
-call <sid>hi("SpellBad",     "", gui00, "", cterm00, "underline")
-call <sid>hi("SpellLocal",   "", gui00, "", cterm00, "underline")
-call <sid>hi("SpellCap",     "", gui00, "", cterm00, "underline")
-call <sid>hi("SpellRare",    "", gui00, "", cterm00, "underline")
+call <sid>hi("SpellBad",     "", "", "", "", "underline")
+call <sid>hi("SpellLocal",   "", "", "", "", "underline")
+call <sid>hi("SpellCap",     "", "", "", "", "underline")
+call <sid>hi("SpellRare",    "", "", "", "", "underline")
 
 " Status line highlighting
 call <sid>hi("StatuslineError",  gui08, gui01, cterm08, cterm01, "")
