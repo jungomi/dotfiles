@@ -127,6 +127,15 @@ nnoremap <leader>fr :Rg<space>
 nmap <leader>me <Plug>MdnqueryEntry
 nnoremap <leader>mf :call mdnquery#focus()<CR>
 nnoremap <leader>mr :MdnQueryList<CR>
+" Asterisk (search word under cursor)
+map *   <Plug>(asterisk-*)
+map #   <Plug>(asterisk-#)
+map g*  <Plug>(asterisk-g*)
+map g#  <Plug>(asterisk-g#)
+map z*  <Plug>(asterisk-z*)
+map gz* <Plug>(asterisk-gz*)
+map z#  <Plug>(asterisk-z#)
+map gz# <Plug>(asterisk-gz#)
 
 " Coc
 " Show (type) info of the word under the cursor

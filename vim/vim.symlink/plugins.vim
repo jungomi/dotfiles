@@ -33,6 +33,8 @@ Plug 'tpope/vim-unimpaired'
 Plug 'mbbill/undotree'
 " Smooth scrolling
 Plug 'psliwka/vim-smoothie'
+" Better search under cursor (smart case, visual *, etc.)
+Plug 'haya14busa/vim-asterisk'
 
 " ⚑ Snippets
 " Useful Snippets for many languages
