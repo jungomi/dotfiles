@@ -12,6 +12,7 @@ highlight link typescriptRepeat Keyword
 highlight link typescriptClassName typescriptFuncName
 highlight link typescriptInterfaceName Identifier
 highlight link typescriptDebugger Identifier
+highlight link typescriptTry Identifier
 highlight link typescriptTypeReference Type
 highlight link typescriptProp Function
 highlight link typescriptIdentifierName Function
@@ -46,6 +47,8 @@ highlight link typescriptDOMEventTargetMethod typescriptFunctionMethod
 highlight link typescriptBOMNavigatorProp typescriptFunctionMethod
 highlight link typescriptDOMNodeMethod typescriptFunctionMethod
 highlight link typescriptDOMStorageMethod typescriptFunctionMethod
+highlight link typescriptPaymentMethod typescriptFunctionMethod
+highlight link typescriptGlobalMethod typescriptFunctionMethod
 highlight link typescriptExceptions Identifier
 
 highlight link typescriptBOM None
