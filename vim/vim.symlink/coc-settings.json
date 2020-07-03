@@ -8,7 +8,8 @@
   "diagnostic.infoSign": "●",
   "diagnostic.hintSign": "○",
   "diagnostic.refreshAfterSave": false,
-  "diagnostic.locationlist": true,
+  "diagnostic.virtualTextCurrentLineOnly": false,
+  "diagnostic.enableMessage": "never",
   "diagnostic.checkCurrentLine": true,
   "git.addedSign.hlGroup": "GitGutterAdd",
   "git.changedSign.hlGroup": "GitGutterChange",
@@ -46,7 +47,6 @@
   "python.formatting.provider": "black",
   "python.linting.flake8Enabled": true,
   "python.linting.mypyEnabled": true,
-  "rust.crate_blacklist": true,
   "languageserver": {
     "ccls": {
       "command": "ccls",
