@@ -107,6 +107,9 @@ let g:coc_global_extensions = [
 let g:coc_snippet_prev = '<c-h>'
 let g:coc_snippet_next = '<c-l>'
 
+" Use default settings for fzf window (removes reverse)
+let g:coc_fzf_opts = []
+
 " Use floating window for Fzf when in NeoVim.
 " Vim will fallback to the regular Fzf layout.
 if has('nvim')

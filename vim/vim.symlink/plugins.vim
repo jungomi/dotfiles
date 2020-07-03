@@ -27,6 +27,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Fuzzy file finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
 Plug 'junegunn/fzf.vim'
+Plug 'antoinemadec/coc-fzf'
 " Mappings for easier navigation
 Plug 'tpope/vim-unimpaired'
 " Undo Tree
