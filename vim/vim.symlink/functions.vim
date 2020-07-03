@@ -11,8 +11,14 @@ endfunction
 function! OpenLocationList()
   let win = winnr()
   if empty(getloclist(win))
-    echomsg 'No location list'
-    return
+    " Populate locations list with Coc Diagnostics
+    CocDiagnostics
+    if empty(getloclist(win))
+      " Coc still opens an empty location list, so close it.
+      lclose
+      echomsg 'No location list'
+      return
+    endif
   endif
   lopen
   if win != winnr()
