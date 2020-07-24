@@ -8,19 +8,16 @@ function! OpenQuickfix()
 endfunction
 
 " Open location list window without switching to it.
-function! OpenLocationList()
+function! OpenDiagnostics()
   let win = winnr()
+  " Populate locations list with Coc Diagnostics
+  CocDiagnostics
   if empty(getloclist(win))
-    " Populate locations list with Coc Diagnostics
-    CocDiagnostics
-    if empty(getloclist(win))
-      " Coc still opens an empty location list, so close it.
-      lclose
-      echomsg 'No location list'
-      return
-    endif
+    " Coc still opens an empty location list, so close it.
+    lclose
+    echomsg 'No location list'
+    return
   endif
-  lopen
   if win != winnr()
     execute win . 'wincmd w'
   endif

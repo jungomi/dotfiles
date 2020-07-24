@@ -81,7 +81,7 @@ nnoremap <C-l> <C-w>l
 nnoremap <leader>= <C-w>=
 " Maximise current split
 nnoremap <leader>z <C-w>_<C-w>\|
-nnoremap <leader>lo :call OpenLocationList()<CR>
+nnoremap <leader>lo :call OpenDiagnostics()<CR>
 nnoremap <leader>lc :lclose<CR>
 
 " ⚑ Tests
