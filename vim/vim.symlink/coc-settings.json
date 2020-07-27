@@ -9,7 +9,7 @@
   "diagnostic.hintSign": "○",
   "diagnostic.refreshAfterSave": false,
   "diagnostic.virtualTextCurrentLineOnly": false,
-  "diagnostic.enableMessage": "never",
+  "diagnostic.enableMessage": "jump",
   "coc.preferences.extensionUpdateCheck": "daily",
   "diagnostic.checkCurrentLine": true,
   "git.addedSign.hlGroup": "GitGutterAdd",
