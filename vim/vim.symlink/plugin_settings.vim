@@ -96,7 +96,7 @@ let g:coc_global_extensions = [
       \ 'coc-yaml',
       \ 'coc-tsserver',
       \ 'coc-git',
-      \ 'coc-rls',
+      \ 'coc-rust-analyzer',
       \ 'coc-python',
       \ 'coc-snippets',
       \ 'coc-highlight',
