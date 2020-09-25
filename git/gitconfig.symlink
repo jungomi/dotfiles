@@ -28,7 +28,6 @@
   safecrlf = warn
   excludesfile = ~/.gitignore
 [url "git@github.com:"]
-  pushInsteadOf = https://github.com/
   pushInsteadOf = "github:"
   pushInsteadOf = "git://github.com/"
 [url "git://github.com/"]
@@ -64,7 +63,8 @@
   prompt = false
   keepBackup = false
 [mergetool "fugitive"]
-  cmd = nvim +Gdiff $MERGED
+  # The ! is for a three way split, as it was the default before with Gdiff.
+  cmd = nvim +Gdiffsplit! $MERGED
 [pull]
   # Rebase instead of merge by default on pull
   rebase = true
@@ -75,3 +75,5 @@
   stat = true
 [stash]
   showPatch = true
+[credential]
+  helper = store

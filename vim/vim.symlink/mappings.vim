@@ -107,10 +107,10 @@ nnoremap <leader>mp :MarkdownPreview<CR>
 " Instant latex preview
 nnoremap <leader>ilp :LLPStartPreview<CR>
 " Git
-nnoremap <leader>gb :Gblame<CR>
+nnoremap <leader>gb :Git blame<CR>
 nnoremap <leader>gc :Gcommit -v<CR>
-nnoremap <leader>gd :Gdiff<CR>
-nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gd :Gdiffsplit<CR>
+nnoremap <leader>gs :Git<CR>
 nnoremap <leader>gw :Gwrite<CR>
 " Fuzzy finder
 nnoremap <leader>ff :Files<CR>
