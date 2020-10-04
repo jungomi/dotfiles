@@ -28,6 +28,7 @@
   safecrlf = warn
   excludesfile = ~/.gitignore
 [url "git@github.com:"]
+  pushInsteadOf = https://github.com/
   pushInsteadOf = "github:"
   pushInsteadOf = "git://github.com/"
 [url "git://github.com/"]
@@ -77,3 +78,5 @@
   showPatch = true
 [credential]
   helper = store
+[init]
+  defaultBranch = main
