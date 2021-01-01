@@ -283,6 +283,7 @@ call <sid>hi("CocWarningFloat",   gui0A, gui06, cterm0A, cterm06, "")
 call <sid>hi("CocInfoFloat",   gui0A, gui06, cterm0A, cterm06, "")
 call <sid>hi("CocHintFloat",   gui0A, gui06, cterm0A, cterm06, "")
 call <sid>hi("CocRustChainingHint", gui0A, "", cterm0A, "", "")
+call <sid>hi("CocRustTypeHint", gui0A, "", cterm0A, "", "")
 
 " CSS highlighting
 call <sid>hi("cssBraces",      gui05, "", cterm05, "", "")
