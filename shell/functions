@@ -101,3 +101,15 @@ fwp() {
   fi
   ssh -N -R "${remote_port}:localhost:${local_port}" fwp
 }
+
+theme() {
+  local style="${1}"
+  if [[ "${style}" == "light"  ]]; then
+    source $COLOUR_SCHEME_LIGHT
+  elif [[ "${style}" == "dark"  ]]; then
+    source $COLOUR_SCHEME_DARK
+  else
+    echo 'ERROR: Theme must be either "light" or "dark"'
+    return 1
+  fi
+}
