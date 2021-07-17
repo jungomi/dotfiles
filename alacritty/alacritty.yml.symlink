@@ -157,29 +157,29 @@ colors:
   # the cursor color will be the inverse of the cell color.
   cursor:
     text: '0xfdf6e3'
-    cursor: '0x666666'
+    cursor: '0x555d60'
 
   # Normal colors
   normal:
-    black:   '0x555d60'
+    black:   '0x515151'
     red:     '0xdf5f5f'
-    green:   '0x5faf5f'
-    yellow:  '0xd89e15'
+    green:   '0x66b766'
+    yellow:  '0xe39a34'
     blue:    '0x5f87d7'
-    magenta: '0xaf5faf'
-    cyan:    '0x51a1a0'
-    white:   '0x93a1a1'
+    magenta: '0xb169b1'
+    cyan:    '0x52a6a5'
+    white:   '0xd3d0c8'
 
   # Bright colors
   bright:
-    black:   '0x8e8e8e'
-    red:     '0xdf5f5f'
-    green:   '0x5faf5f'
-    yellow:  '0xd89e15'
-    blue:    '0x5f87d7'
-    magenta: '0xaf5faf'
-    cyan:    '0x51a1a0'
-    white:   '0xfdf6e3'
+    black:   '0x5b696d'
+    red:     '0xd74059'
+    green:   '0x33a559'
+    yellow:  '0xb77428'
+    blue:    '0x3d78b4'
+    magenta: '0x9d4a95'
+    cyan:    '0x328195'
+    white:   '0xefece7'
 
   # Dim colors
   #
