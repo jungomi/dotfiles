@@ -33,6 +33,3 @@ source $HOME/.dotfiles/shell/exports
 source $HOME/.dotfiles/shell/aliases
 source $HOME/.dotfiles/shell/functions
 source $HOME/.dotfiles/shell/prompt
-
-# Colour scheme
-[[ -s "$COLOUR_SCHEME" ]] && source "$COLOUR_SCHEME"

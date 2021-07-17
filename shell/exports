@@ -3,12 +3,6 @@
 export DOTFILES=$HOME/.dotfiles
 export EDITOR=nvim
 
-# Colour scheme
-export COLOUR_SCHEME_LIGHT="$DOTFILES/shell/light-theme.sh"
-export COLOUR_SCHEME_DARK="$DOTFILES/shell/dark-theme.sh"
-# Default colour scheme
-export COLOUR_SCHEME=$COLOUR_SCHEME_LIGHT
-
 # No duplicate lines or lines starting with a space in the history
 export HISTCONTROL=ignoreboth
 
