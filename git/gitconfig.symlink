@@ -80,3 +80,24 @@
   helper = store
 [init]
   defaultBranch = main
+[pager]
+  diff = delta
+  show = delta
+[diff]
+  # Distinguish blocks that have been moved with different colours
+  colorMoved = default
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  syntax-theme = OneHalfLight
+  line-numbers = true
+  features = side-by-side styles
+[delta "styles"]
+  file-style = italic bold magenta
+  file-decoration-style = none
+  hunk-header-decoration-style = ul ol white
+  line-numbers-left-style = white
+  line-numbers-right-style = white
+  line-numbers-plus-style = bold green
+  line-numbers-minus-style = bold red
+  line-numbers-zero-style = bold white
