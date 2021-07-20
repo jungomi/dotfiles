@@ -104,10 +104,10 @@ ruby:
 	echo '[[ -s "$(RVM)" ]] && source "$(RVM)"' >> ~/.profile
 	echo -e "\r\033[2K[ \033[00;32mDONE\033[0m ]  Installing Ruby"
 
-# Installs rustup and Rust nightly
+# Installs rustup and Rust
 rust:
 	curl https://sh.rustup.rs -sSf | bash -s -- --no-modify-path \
-		--default-toolchain nightly -y
+		--default-toolchain stable -y
 	echo '' >> ~/.profile
 	echo '# Rust' >> ~/.profile
 	echo 'export PATH="$$PATH:$(RUST_BIN)"' >> ~/.profile
