@@ -3,6 +3,8 @@
 export DOTFILES=$HOME/.dotfiles
 export EDITOR=nvim
 
+export INPUTRC="$HOME/.config/readline/inputrc"
+
 # No duplicate lines or lines starting with a space in the history
 export HISTCONTROL=ignoreboth
 

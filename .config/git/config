@@ -26,7 +26,6 @@
   editor = nvim
   autocrlf = input
   safecrlf = warn
-  excludesfile = ~/.gitignore
 [url "git@github.com:"]
   pushInsteadOf = https://github.com/
   pushInsteadOf = "github:"
