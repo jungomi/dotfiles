@@ -9,6 +9,8 @@
 
 node_modules/
 
+.mypy_cache
+
 TAGS
 .TAGS
 tags
