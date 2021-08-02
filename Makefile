@@ -18,7 +18,7 @@ CONFIGS := $(shell find -H $(shell pwd)/.config -mindepth 1 -maxdepth 1 -type d)
 BACKUPS := $(shell test -d $(BACKUP_DIR) && find -H $(BACKUP_DIR) -mindepth 1 -maxdepth 1)
 
 # Installs all dotfiles and plugins
-default: link bash neovim plugins
+default: link bash
 
 # Runs backup before installing
 safe: backup default
@@ -37,12 +37,6 @@ link: config_dir $(addsuffix .link, $(CONFIGS))
 
 config_dir:
 	mkdir -p $(CONFIG_DIR)
-
-# Links the vim files to work with NeoVim
-neovim:
-	mkdir -p ~/.config
-	ln -snf ~/.vim ~/.config/nvim
-	ln -snf ~/.vimrc ~/.config/nvim/init.vim
 
 # Makes a backup of the existing dotfiles
 backup: backup_dir $(addsuffix .bak, $(CONFIGS))
@@ -71,11 +65,6 @@ restore: $(addsuffix .res, $(BACKUPS))
 clean:
 	rm -rf backup/
 	echo -e "\r\033[2K[ \033[00;32mDONE\033[0m ] 🧹 Cleaning backup directory"
-
-# Installs the vim plugins
-plugins:
-	nvim -u ~/.vim/plugins.vim +PlugInstall +qa
-	echo -e "\r\033[2K[ \033[00;32mDONE\033[0m ]  Installing vim plugins"
 
 # Configures Bash
 bash:
