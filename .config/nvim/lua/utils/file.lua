@@ -8,11 +8,11 @@ function M.mkdir_on_save()
     -- Ask if the directory should be created
     -- to avoid accidentally creating a lot of dirs
     local choice = fn.confirm(
-      table.concat{
+      table.concat({
         "Directory `",
         dir,
         "` does not exist.\nDo you want to create it?",
-      },
+      }),
       "&Yes\n&No"
     )
     if choice == 1 then

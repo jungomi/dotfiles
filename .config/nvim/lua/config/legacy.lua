@@ -6,7 +6,7 @@ local M = {}
 
 function M.setup()
   -- Ignore editorconfig for fugitive buffers
-  g.EditorConfig_exclude_patterns = {"fugitive://.*"}
+  g.EditorConfig_exclude_patterns = { "fugitive://.*" }
 
   g.undotree_SetFocusWhenToggle = 1
 

@@ -4,7 +4,7 @@ local git_mappings = require("mappings.git")
 local M = {}
 
 function M.setup()
-  git_signs.setup{
+  git_signs.setup({
     signs = {
       add = { text = " ┃" },
       change = { text = " ┃" },
@@ -13,7 +13,7 @@ function M.setup()
       changedelete = { text = " ≃" },
     },
     current_line_blame_delay = 300,
-  }
+  })
   git_mappings.enable_mappings()
 end
 

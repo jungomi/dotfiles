@@ -4,7 +4,7 @@ local ts_configs = require("nvim-treesitter.configs")
 local ts_spell = require("spellsitter")
 
 function M.setup()
-  ts_configs.setup {
+  ts_configs.setup({
     ensure_installed = "all",
     highlight = {
       enable = true,
@@ -31,12 +31,12 @@ function M.setup()
     playground = {
       enable = true,
     },
-  }
+  })
 
-  ts_spell.setup {
+  ts_spell.setup({
     -- Spell check in these groups
-    captures = {"comment", "string"},
-  }
+    captures = { "comment", "string" },
+  })
 end
 
 return M

@@ -48,7 +48,7 @@ opt.autoindent = true
 opt.splitbelow = true
 opt.splitright = true
 -- Diff vertically
-opt.diffopt:append{"vertical"}
+opt.diffopt:append({ "vertical" })
 
 -- :: Search
 opt.ignorecase = true
@@ -58,11 +58,11 @@ opt.smartcase = true
 opt.gdefault = true
 opt.showmatch = true
 -- Remove tag completion form regular completion (<C-n>)
-opt.complete:remove{"t"}
-opt.tags:append{".tags"}
+opt.complete:remove({ "t" })
+opt.tags:append({ ".tags" })
 
 -- :: Completion
-opt.completeopt = {"longest", "menuone", "noselect"}
+opt.completeopt = { "longest", "menuone", "noselect" }
 opt.wildmode = "longest:full"
 
 -- :: Code folding

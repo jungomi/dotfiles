@@ -35,9 +35,9 @@ end
 function M.autocmd(event, pattern, cmd, opt)
   local options = opt or {}
   -- autocmd[!] [group] event pattern [++once] [++nested] cmd
-  local cmd_parts = {"autocmd"}
+  local cmd_parts = { "autocmd" }
   if options.remove then
-    cmd_parts = {"autocmd!"}
+    cmd_parts = { "autocmd!" }
   end
   if options.group then
     table.insert(cmd_parts, options.group)
@@ -64,9 +64,9 @@ end
 function M.augroup(name, opt)
   local options = opt or {}
   -- augroup[!] name
-  local cmd_parts = {"augroup"}
+  local cmd_parts = { "augroup" }
   if options.remove then
-    cmd_parts = {"augroup!"}
+    cmd_parts = { "augroup!" }
   end
   table.insert(cmd_parts, name)
   vim.cmd(table.concat(cmd_parts, " "))

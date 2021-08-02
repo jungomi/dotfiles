@@ -63,7 +63,6 @@ nmap("]t", "<Cmd>tabnext<CR>")
 nmap("[T", "<Cmd>tabfirst<CR>")
 nmap("]T", "<Cmd>tablast<CR>")
 
-
 -- :: Clipboard
 nmap("<leader>y", [["+y]])
 xmap("<leader>y", [["+y]])
@@ -75,27 +74,27 @@ xmap("<leader>p", [["+p]])
 -- <C-j>
 _G.completion_menu_next = function()
   if vim.fn.pumvisible() == 1 then
-    return t"<C-n>"
+    return t("<C-n>")
   else
-    return t"<C-j>"
+    return t("<C-j>")
   end
 end
 
 -- <C-k>
 _G.completion_menu_prev = function()
   if vim.fn.pumvisible() == 1 then
-    return t"<C-p>"
+    return t("<C-p>")
   else
-    return t"<C-k>"
+    return t("<C-k>")
   end
 end
 
 -- <C-l>
 _G.completion_expand = function()
   if vim.fn.pumvisible() == 1 then
-    return vim.fn["compe#confirm"](t"<C-y>")
+    return vim.fn["compe#confirm"](t("<C-y>"))
   elseif vim.fn["vsnip#available"](1) == 1 then
-    return t"<Plug>(vsnip-expand-or-jump)"
+    return t("<Plug>(vsnip-expand-or-jump)")
   else
     return ""
   end
@@ -104,9 +103,9 @@ end
 -- <C-h>
 _G.snip_prev = function()
   if vim.fn["vsnip#jumpable"](-1) == 1 then
-    return t"<Plug>(vsnip-jump-prev)"
+    return t("<Plug>(vsnip-jump-prev)")
   else
-    return t"<C-h>"
+    return t("<C-h>")
   end
 end
 
