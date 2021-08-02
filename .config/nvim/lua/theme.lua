@@ -295,6 +295,19 @@ local theme = {
     -- Custom statusline for dap-ui (not part of the plugin)
     DapUIStatusline = { fg = colours.grey, bg = colours.bg, gui = "bold" },
   },
+  markdown = {
+    markdownCode = "String",
+    markdownCodeDelimiter = { fg = colours.grey, style = "bold" },
+    markdownLinkText = "Special",
+    markdownListMarker = { fg = colours.cyan, style = "bold" },
+
+    markdownH1Delimiter = "markdownH1",
+    markdownH2Delimiter = "markdownH2",
+    markdownH3Delimiter = "markdownH3",
+    markdownH4Delimiter = "markdownH4",
+    markdownH5Delimiter = "markdownH5",
+    markdownH6Delimiter = "markdownH6",
+  },
 }
 
 local M = {
