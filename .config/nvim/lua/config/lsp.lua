@@ -34,7 +34,25 @@ local LANGS = {
 local additional_configs = {
   -- Empty, because it's built-in
   -- Just here to be activated as it's not part of lsp-install
-  pylsp = {},
+  pylsp = {
+    settings = {
+      pylsp = {
+        plugins = {
+          -- Use flake8 for code style instead of pycodestyle
+          flake8 = {
+            enabled = true,
+          },
+          pycodestyle = {
+            enabled = false,
+          },
+          -- Disable yapf, because black is used for formatting.
+          yapf = {
+            enabled = false,
+          },
+        },
+      },
+    },
+  },
 }
 
 local function extend_lsp_config(name, config)
@@ -78,7 +96,7 @@ function M.setup_servers()
       -- For the nvim lua integration the config needs to extended
       lsp_config[server].setup(lua_dev.setup({ lspconfig = default_config }))
     else
-      lsp_config[server].setup(default_config)
+      lsp_config[server].setup(vim.tbl_deep_extend("force", {}, default_config, additional_configs[server] or {}))
     end
   end
 end
