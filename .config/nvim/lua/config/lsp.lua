@@ -9,6 +9,7 @@ local lsp_kind = require("lspkind")
 local lsp_signature = require("lsp_signature")
 local null_ls = require("null-ls")
 local lua_dev = require("lua-dev")
+local rust_tools = require("rust-tools")
 local compe = require("compe")
 local trouble = require("trouble")
 local lsp_utils = require("utils.lsp")
@@ -136,6 +137,27 @@ function M.setup()
       null_ls.builtins.formatting.stylua.with({
         args = { "--search-parent-directories", "--stdin-filepath", "$FILENAME", "-" },
       }),
+    },
+  })
+
+  rust_tools.setup({
+    tools = {
+      hover_with_actions = true,
+      hover_actions = {
+        auto_focus = true,
+      },
+      inlay_hints = {
+        other_hints_prefix = "  ‣ ",
+        parameter_hints_prefix = "  ⨍",
+        highlight = "LspInlineHint",
+        -- Disable parameter hints, because currently they are not
+        -- showing consistently on every parameter.
+        show_parameter_hints = false,
+      },
+    },
+    server = {
+      on_attach = on_attach,
+      capabilities = capabilities,
     },
   })
 

@@ -8,6 +8,9 @@ function M.setup()
     ensure_installed = "all",
     highlight = {
       enable = true,
+      -- TreeSitter highlighting isn't great for these,
+      -- use regular syntax highlighting instead.
+      disable = { "rust" },
     },
     -- Indentation doesn't work well yet
     indent = {

@@ -157,6 +157,7 @@ local theme = {
     LspDiagnosticsVirtualTextWarning = { fg = colours.orange, style = "italic" },
     LspDiagnosticsVirtualTextInformation = { fg = colours.blue, style = "italic" },
     LspDiagnosticsVirtualTextHint = { fg = colours.cyan, style = "italic" },
+    LspInlineHint = { fg = colours.grey, style = "italic" },
 
     -- Floating window text
     LspDiagnosticsFloatingError = { fg = colours.red },

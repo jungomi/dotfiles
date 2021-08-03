@@ -52,6 +52,8 @@ packer.startup(function(use)
   -- Use other sources for LSP actions
   -- Mainly formatting Lua - not part of the language server for some reason
   use({ "jose-elias-alvarez/null-ls.nvim" })
+  -- Rust integrations
+  use({ "simrat39/rust-tools.nvim", requires = "nvim-lua/plenary.nvim" })
   -- Install language servers automatically
   use({ "kabouzeid/nvim-lspinstall", config = [[require("config.lsp").setup()]] })
 

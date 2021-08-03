@@ -21,6 +21,7 @@ function M.enable_mappings()
   -- Highlight references
   nmap("<leader>lh", "<Cmd>lua vim.lsp.buf.document_highlight()<CR>")
   nmap("<leader>lr", "<Cmd>Lspsaga rename<CR>")
+  nmap("<leader>lg", "<Cmd>lua vim.lsp.buf.hover()<CR>")
   -- Show type info of the word under the cursor
   nmap("<leader>lt", "<Cmd>Lspsaga hover_doc<CR>")
   nmap("<leader>ls", "<Cmd>lua vim.lsp.buf.signature_help()<CR>")
