@@ -15,6 +15,9 @@ autocmd_utils.create_augroups({
     { "FileType", "python", "setlocal shiftwidth=4 textwidth=88 softtabstop=4 expandtab" },
     { "FileType", "make", "setlocal tabstop=8 shiftwidth=8 softtabstop=8 noexpandtab" },
     { "FileType", "csv", "setlocal noexpandtab" },
+
+    -- Trigger completion with Tab in DAP REPL (to make it feel like a REPL)
+    { "FileType", "dap-repl", "inoremap <buffer> <Tab> <C-x><C-o>" },
   },
   config_buffer = {
     -- Resize panes when the window is resized
