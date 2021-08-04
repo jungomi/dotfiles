@@ -49,6 +49,10 @@ local additional_configs = {
           yapf = {
             enabled = false,
           },
+          -- Disable cyclomatic complexity analysis
+          mccabe = {
+            enabled = false,
+          },
         },
       },
     },
