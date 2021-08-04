@@ -23,7 +23,6 @@ local LANGS = {
   "yaml",
   "bash",
   "cmake",
-  "cpp",
   "lua",
   "typescript",
   "latex",
@@ -32,8 +31,13 @@ local LANGS = {
 
 -- LSP Configs that are not in nimv-lspconfig
 local additional_configs = {
-  -- Empty, because it's built-in
-  -- Just here to be activated as it's not part of lsp-install
+  ccls = {
+    init_options = {
+      cache = {
+        directory = "/tmp/ccls"
+      },
+    }
+  },
   pylsp = {
     settings = {
       pylsp = {
