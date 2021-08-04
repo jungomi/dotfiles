@@ -138,6 +138,8 @@ local theme = {
     TSSymbol = { fg = colours.cyan },
     TSVariable = { fg = colours.fg },
     TSTag = { fg = colours.purple },
+
+    yamlTSField = { fg = colours.red },
   },
   lsp = {
     -- Defaults (mostly for fallbacks)
