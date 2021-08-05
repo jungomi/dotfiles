@@ -34,9 +34,9 @@ local additional_configs = {
   ccls = {
     init_options = {
       cache = {
-        directory = "/tmp/ccls"
+        directory = "/tmp/ccls",
       },
-    }
+    },
   },
   pylsp = {
     settings = {
