@@ -131,6 +131,7 @@ function M.overwrite_diagnostic_priority()
   -- Capture original functions, which will be called from the overwritten functions.
   local set_signs = vim.lsp.diagnostic.set_signs
   local set_virtual_text = vim.lsp.diagnostic.set_virtual_text
+  local set_underline = vim.lsp.diagnostic.set_underline
   local function set_signs_limited(diagnostics, bufnr, client_id, sign_ns, opts)
     if not diagnostics then
       return
@@ -147,9 +148,18 @@ function M.overwrite_diagnostic_priority()
     -- Set virtual text with the original (captured) function
     set_virtual_text(filtered_diagnostics, bufnr, client_id, diagnostic_ns, opts)
   end
+  local function set_underline_limited(diagnostics, bufnr, client_id, diagnostic_ns, opts)
+    if not diagnostics then
+      return
+    end
+    local filtered_diagnostics = lsp_utils.filter_diagnostics_per_line_by_severity(diagnostics)
+    -- Set virtual text with the original (captured) function
+    set_underline(filtered_diagnostics, bufnr, client_id, diagnostic_ns, opts)
+  end
   -- Overwrite the functions
   vim.lsp.diagnostic.set_signs = set_signs_limited
   vim.lsp.diagnostic.set_virtual_text = set_virtual_text_limited
+  vim.lsp.diagnostic.set_underline = set_underline_limited
 end
 
 function M.setup()
