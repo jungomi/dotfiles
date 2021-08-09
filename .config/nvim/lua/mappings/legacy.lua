@@ -7,7 +7,7 @@ local M = {}
 
 function M.enable_mappings()
   -- Git
-  nmap("<leader>gc", "<Cmd>Gcommit -v<CR>")
+  nmap("<leader>gc", "<Cmd>Git commit -v<CR>")
   nmap("<leader>gd", "<Cmd>Gdiffsplit<CR>")
   nmap("<leader>gs", "<Cmd>Git<CR>")
 
