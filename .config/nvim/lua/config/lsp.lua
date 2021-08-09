@@ -49,7 +49,10 @@ local additional_configs = {
           pycodestyle = {
             enabled = false,
           },
-          -- Disable yapf, because black is used for formatting.
+          -- Disable autopep8 and yapf, because black is used for formatting.
+          autopep8 = {
+            enabled = false,
+          },
           yapf = {
             enabled = false,
           },
