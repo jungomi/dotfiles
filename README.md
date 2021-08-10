@@ -2,6 +2,12 @@
 
 This is a collection of my configuration files.
 
+Initially, I tried having a config that can be used for both Vim and [NeoVim][neovim] but with
+the release of NeoVim 0.5, which added Lua support and a native LSP client, I decided to drop
+the old Vim compatibility and create a NeoVim config based on Lua. Wherever possible, I tried to
+use as many Lua plugins as possible over VimScript ones, because those either try to support old
+versions of Vim or potentially not use newer features.
+
 ## Installation
 
 ```bash
@@ -10,68 +16,99 @@ cd ~/.dotfiles
 make
 ```
 
-`make` creates symbolic links of every file with the `.symlink` extension and
-installs the Vim plugins. If the target of the linking already exists, it is
-overwritten. `make safe` provides a safer version, which creates a backup of all
-existing targets, that can then be restored with `make restore`.
+`make` creates symbolic links of every directory in the `.config/` directory to `~/.config/`.
+If the target of the linking already exists, it is overwritten.
+`make safe` provides a safer version, which creates a backup of all existing targets, that can then
+be restored with `make restore`.
 
 ```sh
 $ make [targets]
 
   targets:
-            default      # Installs all dotfiles and plugins
-            safe         # Runs backup before installing
-            envs         # Installs all environments
-            link         # Creates symbolic links
-            neovim       # Links the vim files to work with NeoVim
-            backup       # Makes a backup of the existing dotfiles
-            restore      # Restores the backup files
-            clean        # Removes the backup files
-            plugins      # Installs the vim plugins
-            node         # Installs n and Node.js
-            ruby         # Installs rvm and Ruby
-            rust         # Installs rustup and Rust nightly
-            help         # Shows this help message
+        default          # Installs all dotfiles and configures bash
+        safe             # Runs backup before installing
+        envs             # Installs all environments
+        link             # Creates symbolic links
+        backup           # Makes a backup of the existing dotfiles
+        restore          # Restores the backup files
+        clean            # Removes the backup files
+        bash             # Configures Bash
+        node             # Installs n and Node.js
+        ruby             # Installs rvm and Ruby
+        rust             # Installs rustup and Rust
+        macos            # Configures MacOS
+        help             # Shows this help message
 ```
 
-Alternatively the `install.sh` script can be used, which is interactive and will
-ask whether the target of the linking should be overwritten if it already
-exists. Additionally the options `-f` or `-y` can be given to always overwrite
-the existing files, or `-n` to never overwrite them.
+### Patched Font
+
+A font patched with [Nerd Fonts][nerdfonts] is required to display icons properly.
+
+On Linux the patched version of *JetBrains Mono* is used, and on macOS a patched version of *SF Mono*.
+
+## Integrated Tools
+
+The following tools are either frequently used at the command line or integrated into NeoVim for
+a better and more efficient workflow:
+
+- [Fzf][fzf] - Fuzzy finder (used a lot for fuzzy file navigation in NeoVim)
+- [ripgrep (rg)][ripgrep] - Faster and more intuitive grep, which respects .gitignore
+- [fd][fd] - Faster and more intuitive find, which also respects .gitignore
+- [bat][bat] - A *cat(1)* clone with syntax highlighting and Git integration.
+- [delta][delta] - Viewer for (git) diffs with syntax highlighting and side-by-side views
 
 ## Screenshots
 
-### Light
+### Shell + Tmux + Git
 
-#### Shell
+The git diff is displayed using [Delta][delta]
 
-![Shell light][shell-light]
+Tmux icons:
 
-#### Vim
+- 🔎 = A pane is maximized (zoomed) in that window.
+- 🔗 = Panes are synchronised, i.e. all are focused and receive the same inputs.
 
-![Vim light][vim-light]
+![Shell + Tmux + Git][shell-tmux-git]
 
-#### Vim Completion
+### NeoVim
 
-![Vim completion light][vim-completion-light]
+#### Language Server Protocol (LSP)
 
-### Dark
+[Language Server Protocol (LSP)][lsp] integration for diagnostics and other language actions,
+such as formatting, signature help, type hints etc.
 
-#### Shell
+*150% font size for better visibility in the screenshot*
 
-![Shell dark][shell-dark]
+![NeoVim LSP][nvim-lsp]
 
-#### Vim
+#### Completion
 
-![Vim dark][vim-dark]
+Completion with suggestions from [Language Server Protocol (LSP)][lsp], open buffers,
+file paths and more, including support for snippets.
 
-#### Vim Completion
+*150% font size for better visibility in the screenshot*
 
-![Vim completion dark][vim-completion-dark]
+![NeoVim Completion][nvim-completion]
 
-[shell-dark]: screenshots/shell-dark.png
-[shell-light]: screenshots/shell-light.png
-[vim-light]: screenshots/vim-light.png
-[vim-dark]: screenshots/vim-dark.png
-[vim-completion-light]: screenshots/vim-completion-light.png
-[vim-completion-dark]: screenshots/vim-completion-dark.png
+#### Debug Adapter Protocol (DAP)
+
+Debugger using the [Debug Adapter Protocol (DAP)][dap].
+
+*150% font size for better visibility in the screenshot*
+
+![NeoVim DAP][nvim-dap]
+
+
+[bat]: https://github.com/sharkdp/bat
+[dap]: https://microsoft.github.io/debug-adapter-protocol/
+[delta]: https://github.com/dandavison/delta
+[fd]: https://github.com/sharkdp/fd
+[fzf]: https://github.com/junegunn/fzf
+[neovim]: https://neovim.io/
+[nerdfonts]: https://www.nerdfonts.com/
+[nvim-completion]: .github/screenshots/nvim-completion.png
+[nvim-dap]: .github/screenshots/nvim-dap.png
+[nvim-lsp]: .github/screenshots/nvim-lsp.png
+[lsp]: https://microsoft.github.io/language-server-protocol/
+[ripgrep]: https://github.com/BurntSushi/ripgrep
+[shell-tmux-git]: .github/screenshots/shell-tmux-git.png
