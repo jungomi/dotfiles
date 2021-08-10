@@ -17,7 +17,7 @@ RUST_BIN = $$HOME/.cargo/bin
 CONFIGS := $(shell find -H $(shell pwd)/.config -mindepth 1 -maxdepth 1 -type d)
 BACKUPS := $(shell test -d $(BACKUP_DIR) && find -H $(BACKUP_DIR) -mindepth 1 -maxdepth 1)
 
-# Installs all dotfiles and plugins
+# Installs all dotfiles and configures bash
 default: link bash
 
 # Runs backup before installing
