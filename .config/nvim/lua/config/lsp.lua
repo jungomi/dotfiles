@@ -139,7 +139,7 @@ function M.overwrite_diagnostic_priority()
     if not diagnostics then
       return
     end
-    local filtered_diagnostics = lsp_utils.filter_diagnostics_per_line_by_severity(diagnostics)
+    local filtered_diagnostics = lsp_utils.filter_diagnostics_per_line_by_severity(diagnostics, true)
     -- Set signs with the original (captured) function
     set_signs(filtered_diagnostics, bufnr, client_id, sign_ns, opts)
   end
@@ -147,7 +147,7 @@ function M.overwrite_diagnostic_priority()
     if not diagnostics then
       return
     end
-    local filtered_diagnostics = lsp_utils.filter_diagnostics_per_line_by_severity(diagnostics)
+    local filtered_diagnostics = lsp_utils.filter_diagnostics_per_line_by_severity(diagnostics, true)
     -- Set virtual text with the original (captured) function
     set_virtual_text(filtered_diagnostics, bufnr, client_id, diagnostic_ns, opts)
   end
