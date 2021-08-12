@@ -97,7 +97,7 @@ end
 -- <C-l>
 _G.completion_expand = function()
   if vim.fn.pumvisible() == 1 then
-    return vim.fn["compe#confirm"](t("<C-y>"))
+    return vim.fn["compe#confirm"]({ keys = t("<C-y>"), select = true })
   elseif vim.fn["vsnip#available"](1) == 1 then
     return t("<Plug>(vsnip-expand-or-jump)")
   else
