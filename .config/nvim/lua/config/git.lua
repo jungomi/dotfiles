@@ -12,7 +12,9 @@ function M.setup()
       topdelete = { text = " ‾" },
       changedelete = { text = " ≃" },
     },
-    current_line_blame_delay = 300,
+    current_line_blame_opts = {
+      delay = 300,
+    },
   })
   git_mappings.enable_mappings()
 end
