@@ -32,7 +32,6 @@ function M.enable_mappings()
   nmap("[d", "<Cmd>Lspsaga diagnostic_jump_prev<CR>")
   -- Diagnostics list similar to quickfix but better
   nmap("<leader>lq", "<Cmd>TroubleToggle lsp_document_diagnostics<CR>")
-  imap("<C-space>", "compe#complete()", { expr = true })
 end
 
 return M

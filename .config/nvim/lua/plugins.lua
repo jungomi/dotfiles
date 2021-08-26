@@ -43,10 +43,21 @@ packer.startup(function(use)
   -- Highlight current parameter during signature help
   use("ray-x/lsp_signature.nvim")
   -- Completion
-  use("hrsh7th/nvim-compe")
-  use("andersevenrud/compe-tmux")
-  -- Show icons in completion from language servers
-  use("onsails/lspkind-nvim")
+  use({
+    "hrsh7th/nvim-cmp",
+    requires = {
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-calc",
+      "hrsh7th/cmp-nvim-lua",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-vsnip",
+      {
+        "andersevenrud/compe-tmux",
+        branch = "cmp",
+      },
+    },
+  })
   -- Pretty list of diagnostics (quickfix with style)
   use({ "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" })
   -- Use other sources for LSP actions

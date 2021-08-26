@@ -94,17 +94,6 @@ _G.completion_menu_prev = function()
   end
 end
 
--- <C-l>
-_G.completion_expand = function()
-  if vim.fn.pumvisible() == 1 then
-    return vim.fn["compe#confirm"]({ keys = t("<C-y>"), select = true })
-  elseif vim.fn["vsnip#available"](1) == 1 then
-    return t("<Plug>(vsnip-expand-or-jump)")
-  else
-    return ""
-  end
-end
-
 -- <C-h>
 _G.snip_prev = function()
   if vim.fn["vsnip#jumpable"](-1) == 1 then
@@ -119,9 +108,6 @@ cmap("<C-j>", "v:lua.completion_menu_next()", { expr = true })
 imap("<C-k>", "v:lua.completion_menu_prev()", { expr = true })
 cmap("<C-k>", "v:lua.completion_menu_prev()", { expr = true })
 -- Cannot be noremap because they use a <Plug>(...) mapping
-imap("<C-l>", "v:lua.completion_expand()", { expr = true, noremap = false })
-cmap("<C-l>", "v:lua.completion_expand()", { expr = true, noremap = false })
-smap("<C-l>", "v:lua.completion_expand()", { expr = true, noremap = false })
 imap("<C-h>", "v:lua.snip_prev()", { expr = true, noremap = false })
 smap("<C-h>", "v:lua.snip_prev()", { expr = true, noremap = false })
 

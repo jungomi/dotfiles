@@ -5,15 +5,16 @@ local lsp_config = require("lspconfig")
 local server_configs = require("lspconfig/configs")
 local lsp_install = require("lspinstall")
 local lsp_saga = require("lspsaga")
-local lsp_kind = require("lspkind")
 local lsp_signature = require("lsp_signature")
 local null_ls = require("null-ls")
 local lua_dev = require("lua-dev")
 local rust_tools = require("rust-tools")
-local compe = require("compe")
+local cmp = require("cmp")
+local cmp_lsp = require("cmp_nvim_lsp")
 local trouble = require("trouble")
 local lsp_utils = require("utils.lsp")
 local lsp_mappings = require("mappings.lsp")
+local t = require("utils.map").t
 
 local M = {}
 local LANGS = {
@@ -27,6 +28,45 @@ local LANGS = {
   "typescript",
   "latex",
   "dockerfile",
+}
+
+local kind_icons = {
+  Class = "⚛",
+  Color = "",
+  Constant = "",
+  Constructor = "",
+  Enum = "",
+  EnumMember = "",
+  Event = "",
+  Field = "",
+  File = "",
+  Folder = "",
+  Function = "⨍",
+  Interface = "↯",
+  Keyword = "",
+  Method = "⨍",
+  Module = "",
+  Operator = "",
+  Property = "",
+  Reference = "",
+  Snippet = "✐",
+  Struct = "",
+  Text = "",
+  TypeParameter = " ",
+  Unit = "",
+  Value = "",
+  Variable = "≝",
+}
+
+-- Source names to be shown in the completion menu
+local source_names = {
+  path = "File",
+  buffer = "Buff",
+  calc = "Calc",
+  nvim_lsp = "LSP",
+  nvim_lua = "Lua",
+  vsnip = "Snip",
+  tmux = "Tmux",
 }
 
 -- LSP Configs that are not in nimv-lspconfig
@@ -73,16 +113,9 @@ local function extend_lsp_config(name, config)
   end
 end
 
--- Snippets in completion
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.textDocument.completion.completionItem.resolveSupport = {
-  properties = {
-    "documentation",
-    "detail",
-    "additionalTextEdits",
-  },
-}
+-- More capabilities are supported by nvim-cmp, such as Snippets
+capabilities = cmp_lsp.update_capabilities(capabilities)
 
 local function on_attach()
   lsp_signature.on_attach({})
@@ -221,50 +254,70 @@ function M.setup()
   })
 
   -- Completion
-  compe.setup({
-    enabled = true,
-    -- Only complete on demand, not permanently
-    autocomplete = false,
-    source = {
-      path = true,
-      buffer = { menu = "[Buff]" },
-      calc = true,
-      emoji = false,
-      nvim_lsp = true,
-      nvim_lua = true,
-      vsnip = { kind = "✐", menu = "[Snip]" },
-      tmux = { menu = "[Tmux]", all_panes = true },
+  cmp.setup({
+    completion = {
+      autocomplete = false,
     },
-    max_abbr_width = 30,
     documentation = {
       border = "rounded",
     },
-  })
-
-  -- Icons for LSP completion types
-  lsp_kind.init({
-    with_text = false,
-    symbol_map = {
-      Text = "",
-      Method = "⨍",
-      Function = "⨍",
-      Constructor = "",
-      Variable = "≝",
-      Module = "",
-      Property = "",
-      Unit = "🌡",
-      Value = "",
-      Keyword = "",
-      Snippet = "✐",
-      Color = "",
-      File = "",
-      Folder = "",
-      Interface = "↯",
-      Class = "⚛",
-      Struct = "",
-      Enum = "",
-      EnumMember = "",
-      Constant = "",
+    sources = {
+      { name = "path" },
+      {
+        name = "buffer",
+        opts = {
+          get_bufnrs = function()
+            -- Complete from all buffers, not just the current or the visible ones
+            return vim.api.nvim_list_bufs()
+          end,
+        },
+      },
+      { name = "calc" },
+      { name = "nvim_lsp" },
+      { name = "nvim_lua" },
+      { name = "vsnip" },
+      {
+        name = "tmux",
+        opts = {
+          -- Complete from all panes not just the visible ones
+          all_panes = true,
+        },
+      },
+    },
+    formatting = {
+      format = function(entry, vim_item)
+        local icon = kind_icons[vim_item.kind]
+        if icon then
+          vim_item.kind = icon
+        end
+        if entry.source.name then
+          local name = source_names[entry.source.name] or entry.source.name
+          vim_item.kind = string.format("%s [%s]", vim_item.kind, name)
+        end
+        return vim_item
+      end,
+    },
+    snippet = {
+      expand = function(args)
+        -- Complete snippets with vsnip
+        vim.fn["vsnip#anonymous"](args.body)
+      end,
+    },
+    mapping = {
+      ["<C-Space>"] = cmp.mapping.complete(),
+      ["<C-l>"] = cmp.mapping(function()
+        if vim.fn.pumvisible() == 1 then
+          if not cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }) then
+            vim.fn.feedkeys(t("<C-y>"), "n")
+          end
+        elseif vim.fn["vsnip#available"](1) == 1 then
+          vim.fn.feedkeys(t("<Plug>(vsnip-expand-or-jump)"), "")
+        end
+      end, {
+        "i",
+        "s",
+        "c",
+      }),
     },
   })
 
