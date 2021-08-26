@@ -293,7 +293,7 @@ function M.setup()
         end
         if entry.source.name then
           local name = source_names[entry.source.name] or entry.source.name
-          vim_item.kind = string.format("%s [%s]", vim_item.kind, name)
+          vim_item.menu = string.format("[%s]", name)
         end
         return vim_item
       end,
