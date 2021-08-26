@@ -115,6 +115,8 @@ packer.startup(function(use)
   use("machakann/vim-sandwich")
   -- Live preview of markdown files
   use({ "iamcco/markdown-preview.nvim", run = "cd app & yarn install", ft = { "markdown" } })
+  -- Yank over SSH with ANSI OSC52 escape sequence
+  use("ojroques/vim-oscyank")
 
   -- Fzf (fuzzy finder)
   -- Just too good compared to the alternatives.
