@@ -262,7 +262,12 @@ function M.setup()
       border = "rounded",
     },
     sources = {
+      -- The order defines the priority during the completion
+      { name = "nvim_lsp" },
+      { name = "nvim_lua" },
+      { name = "vsnip" },
       { name = "path" },
+      { name = "calc" },
       {
         name = "buffer",
         opts = {
@@ -272,10 +277,6 @@ function M.setup()
           end,
         },
       },
-      { name = "calc" },
-      { name = "nvim_lsp" },
-      { name = "nvim_lua" },
-      { name = "vsnip" },
       {
         name = "tmux",
         opts = {
