@@ -74,8 +74,9 @@ end
 function M.setup()
   buffer_line.setup({
     options = {
-      numbers = "buffer_id",
-      number_style = "none",
+      numbers = function(opts)
+        return string.format("%s.", opts.id)
+      end,
       diagnostics = "nvim_lsp",
       show_buffer_icons = true,
       modified_icon = "",
