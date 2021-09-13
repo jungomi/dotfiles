@@ -21,7 +21,7 @@ function M.setup()
         { id = "breakpoints", size = 0.20 },
         { id = "stacks", size = 0.20 },
       },
-      width = 50,
+      size = 50,
     },
   })
   dap_python.setup()
