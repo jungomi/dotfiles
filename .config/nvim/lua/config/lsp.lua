@@ -69,6 +69,10 @@ local source_names = {
   tmux = "Tmux",
 }
 
+local function on_attach()
+  lsp_signature.on_attach({})
+end
+
 -- LSP Configs that are not in nimv-lspconfig
 local additional_configs = {
   ccls = {
@@ -104,6 +108,15 @@ local additional_configs = {
       },
     },
   },
+  typescript = {
+    on_attach = function(client)
+      -- Disable tsserver formatting because prettier is run with null-ls
+      client.resolved_capabilities.document_formatting = false
+      client.resolved_capabilities.document_range_formatting = false
+      -- Call the default on_attach
+      on_attach()
+    end,
+  },
 }
 
 local function extend_lsp_config(name, config)
@@ -116,10 +129,6 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 -- More capabilities are supported by nvim-cmp, such as Snippets
 capabilities = cmp_lsp.update_capabilities(capabilities)
-
-local function on_attach()
-  lsp_signature.on_attach({})
-end
 
 local default_config = {
   on_attach = on_attach,
@@ -209,6 +218,7 @@ function M.setup()
       null_ls.builtins.formatting.stylua.with({
         args = { "--search-parent-directories", "--stdin-filepath", "$FILENAME", "-" },
       }),
+      null_ls.builtins.formatting.prettier,
     },
   })
 
