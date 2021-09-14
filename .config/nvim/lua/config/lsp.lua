@@ -266,6 +266,9 @@ function M.setup()
 
   -- Completion
   cmp.setup({
+    experimental = {
+      ghost_text = true,
+    },
     completion = {
       autocomplete = false,
     },
