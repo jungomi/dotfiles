@@ -39,7 +39,7 @@ packer.startup(function(use)
   -- :: Language Server (LSP)
   use("neovim/nvim-lspconfig")
   -- Nicer UI for infos such as diagnostics/signature/type/rename
-  use("glepnir/lspsaga.nvim")
+  use("tami5/lspsaga.nvim")
   -- Highlight current parameter during signature help
   use("ray-x/lsp_signature.nvim")
   -- Completion
