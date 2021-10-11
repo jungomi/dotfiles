@@ -90,6 +90,9 @@ local additional_configs = {
           flake8 = {
             enabled = true,
           },
+          pyflakes = {
+            enabled = false,
+          },
           pycodestyle = {
             enabled = false,
           },
