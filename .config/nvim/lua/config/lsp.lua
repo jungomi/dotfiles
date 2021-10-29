@@ -4,7 +4,6 @@ local lsp_config = require("lspconfig")
 -- uses slash (/) and therefore has a different table
 local server_configs = require("lspconfig/configs")
 local lsp_install = require("lspinstall")
-local lsp_saga = require("lspsaga")
 local lsp_signature = require("lsp_signature")
 local null_ls = require("null-ls")
 local lua_dev = require("lua-dev")
@@ -214,7 +213,7 @@ function M.setup()
   M.install_servers(LANGS)
   M.setup_servers()
 
-  null_ls.setup({
+  null_ls.config({
     -- Don't save when calling lsp/format
     save_after_format = false,
     sources = {
@@ -225,6 +224,7 @@ function M.setup()
       null_ls.builtins.diagnostics.eslint,
     },
   })
+  lsp_config["null-ls"].setup({})
 
   rust_tools.setup({
     tools = {
@@ -245,26 +245,6 @@ function M.setup()
       on_attach = on_attach,
       capabilities = capabilities,
     },
-  })
-
-  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-    -- Configure appearance of virtual text diagnostics
-    virtual_text = {
-      prefix = "↪",
-      spacing = 2,
-    },
-  })
-
-  lsp_saga.init_lsp_saga({
-    error_sign = " ",
-    warn_sign = " ",
-    infor_sign = " ",
-    hint_sign = " ",
-    code_action_icon = " ",
-    -- Don't show the virtual text bulb, only the sign
-    code_action_prompt = { virtual_text = false },
-    border_style = "round",
-    rename_prompt_prefix = "﬌",
   })
 
   -- Completion
@@ -322,14 +302,36 @@ function M.setup()
       end,
     },
     mapping = {
-      ["<C-Space>"] = cmp.mapping.complete(),
-      ["<C-l>"] = cmp.mapping(function()
-        if vim.fn.pumvisible() == 1 then
-          if not cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }) then
-            vim.fn.feedkeys(t("<C-y>"), "n")
-          end
+      ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+      ["<C-j>"] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          cmp.select_next_item()
+        else
+          fallback()
+        end
+      end, {
+        "i",
+        "s",
+        "c",
+      }),
+      ["<C-k>"] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          cmp.select_prev_item()
+        else
+          fallback()
+        end
+      end, {
+        "i",
+        "s",
+        "c",
+      }),
+      ["<C-l>"] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true })
         elseif vim.fn["vsnip#available"](1) == 1 then
-          vim.fn.feedkeys(t("<Plug>(vsnip-expand-or-jump)"), "")
+          vim.fn.feedkeys(t("<Plug>(vsnip-expand-or-jump)"))
+        else
+          fallback()
         end
       end, {
         "i",
@@ -344,11 +346,23 @@ function M.setup()
     indent_lines = true,
   })
 
+  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+    -- Configure appearance of virtual text diagnostics
+    virtual_text = {
+      prefix = "↪",
+      spacing = 2,
+    },
+  })
+  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+    -- Configure appearance of floating windows from hover info
+    border = "rounded",
+  })
+
   -- Highlight the line number as well as the diagnostic sign
-  vim.fn.sign_define("LspDiagnosticsSignError", { numhl = "LspDiagnosticsSignError" })
-  vim.fn.sign_define("LspDiagnosticsSignWarning", { numhl = "LspDiagnosticsSignWarning" })
-  vim.fn.sign_define("LspDiagnosticsSignHint", { numhl = "LspDiagnosticsSignHint" })
-  vim.fn.sign_define("LspDiagnosticsSignInformation", { numhl = "LspDiagnosticsSignInformation" })
+  vim.fn.sign_define("LspDiagnosticsSignError", { text = " ", numhl = "LspDiagnosticsSignError" })
+  vim.fn.sign_define("LspDiagnosticsSignWarning", { text = " ", numhl = "LspDiagnosticsSignWarning" })
+  vim.fn.sign_define("LspDiagnosticsSignHint", { text = " ", numhl = "LspDiagnosticsSignHint" })
+  vim.fn.sign_define("LspDiagnosticsSignInformation", { text = " ", numhl = "LspDiagnosticsSignInformation" })
 
   M.overwrite_diagnostic_priority()
 
