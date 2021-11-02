@@ -359,6 +359,11 @@ function M.setup()
   })
 
   -- Highlight the line number as well as the diagnostic sign
+  vim.fn.sign_define("DiagnosticSignError", { text = " ", numhl = "DiagnosticSignError" })
+  vim.fn.sign_define("DiagnosticSignWarn", { text = " ", numhl = "DiagnosticSignWarn" })
+  vim.fn.sign_define("DiagnosticSignHint", { text = " ", numhl = "DiagnosticSignHint" })
+  vim.fn.sign_define("DiagnosticSignInfo", { text = " ", numhl = "DiagnosticSignInfo" })
+  -- For NeoVim 0.5 (they will change to the above in 0.6)
   vim.fn.sign_define("LspDiagnosticsSignError", { text = " ", numhl = "LspDiagnosticsSignError" })
   vim.fn.sign_define("LspDiagnosticsSignWarning", { text = " ", numhl = "LspDiagnosticsSignWarning" })
   vim.fn.sign_define("LspDiagnosticsSignHint", { text = " ", numhl = "LspDiagnosticsSignHint" })

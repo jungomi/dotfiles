@@ -28,19 +28,19 @@ function M.setup()
 
   vim.fn.sign_define(
     "DapBreakpoint",
-    { text = " ", texthl = "LspDiagnosticsSignError", numhl = "LspDiagnosticsSignError" }
+    { text = " ", texthl = "DiagnosticSignError", numhl = "DiagnosticSignError" }
   )
   vim.fn.sign_define(
     "DapBreakpointRejected",
-    { text = " ", texthl = "LspDiagnosticsSignError", numhl = "LspDiagnosticsSignError" }
+    { text = " ", texthl = "DiagnosticSignError", numhl = "DiagnosticSignError" }
   )
   vim.fn.sign_define(
     "DapLogPoint",
-    { text = " ", texthl = "LspDiagnosticsSignInformation", numhl = "LspDiagnosticsSignInformation" }
+    { text = " ", texthl = "DiagnosticSignInfo", numhl = "DiagnosticSignInfo" }
   )
   vim.fn.sign_define(
     "DapStopped",
-    { text = " ", texthl = "LspDiagnosticsSignWarning", numhl = "LspDiagnosticsSignWarning" }
+    { text = " ", texthl = "DiagnosticSignWarn", numhl = "DiagnosticSign" }
   )
 
   vim.g.dap_virtual_text = true
