@@ -327,6 +327,9 @@ local theme = {
     DapUIWatchesValue = { fg = colours.cyan },
 
     NvimDapVirtualText = { fg = colours.grey, style = "italic" },
+    NvimDapVirtualTextChanged = "DiagnosticVirtualTextWarn",
+    NvimDapVirtualTextError = "DiagnosticVirtualTextError",
+    NvimDapVirtualTextInfo = "DiagnosticVirtualTextInfo",
 
     -- Custom statusline for dap-ui (not part of the plugin)
     DapUIStatusline = { fg = colours.grey, bg = colours.bg, gui = "bold" },
