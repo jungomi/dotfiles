@@ -210,6 +210,14 @@ local theme = {
     LspSagaCodeActionTitle = { fg = colours.grey, style = "bold" },
     LspSagaDiagnosticHeader = { fg = colours.grey, style = "bold" },
     LspSagaCodeActionContent = { fg = colours.grey },
+
+    -- Cmp (Completion Menu)
+    CmpItemAbbr = { fg = colours.grey },
+    CmpItemAbbrMatch = { fg = colours.fg },
+    CmpItemAbbrMatchFuzzy = { fg = colours.fg, style = "italic" },
+    CmpItemKind = { fg = colours.grey },
+    -- Name of source, e.g. [LSP]
+    CmpItemMenu = { fg = colours.grey },
   },
   bufferline = {
     -- Three for each kind, because there are three types of buffers with different backgrounds.
