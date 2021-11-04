@@ -77,7 +77,7 @@ packer.startup(function(use)
 
   -- :: Misc
   -- Commenting out code
-  use({ "b3nj5m1n/kommentary", config = [[require("config.comment").setup()]] })
+  use({ "numToStr/Comment.nvim", config = [[require("config.comment").setup()]] })
   -- Smooth scrolling
   use({ "karb94/neoscroll.nvim", config = [[require("config.scrolling").setup()]] })
 

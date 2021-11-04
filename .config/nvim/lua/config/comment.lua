@@ -1,15 +1,16 @@
-local kommentary = require("kommentary.config")
-local comment_mappings = require("mappings.comment")
+local Comment = require("Comment")
+local Comment_utils = require("Comment.utils")
+local ts_comment_context = require("ts_context_commentstring.internal")
 
 local M = {}
 
 function M.setup()
-  vim.g.kommentary_create_default_mappings = false
-  kommentary.configure_language("default", {
-    -- Always use single line comments even when commenting multiple lines
-    prefer_single_line_comments = true,
+  Comment.setup({
+    pre_hook = function(ctx)
+      local comment_type = ctx.ctype == Comment_utils.ctype.line and "__default" or "__multiline"
+      return ts_comment_context.calculate_commentstring({ key = comment_type })
+    end,
   })
-  comment_mappings.enable_mappings()
 end
 
 return M
