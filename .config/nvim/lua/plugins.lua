@@ -64,7 +64,7 @@ packer.startup(function(use)
   -- Rust integrations
   use({ "simrat39/rust-tools.nvim", requires = "nvim-lua/plenary.nvim" })
   -- Install language servers automatically
-  use({ "kabouzeid/nvim-lspinstall", config = [[require("config.lsp").setup()]] })
+  use({ "williamboman/nvim-lsp-installer", config = [[require("config.lsp").setup()]] })
 
   -- Lua to recognise nvim API
   use("folke/lua-dev.nvim")

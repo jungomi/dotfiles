@@ -3,7 +3,8 @@ local lsp_config = require("lspconfig")
 -- Extending it will not work if it's a dot (.) because the source
 -- uses slash (/) and therefore has a different table
 local server_configs = require("lspconfig/configs")
-local lsp_install = require("lspinstall")
+local lsp_installer = require("nvim-lsp-installer")
+local lsp_installer_servers = require("nvim-lsp-installer.servers")
 local lsp_signature = require("lsp_signature")
 local null_ls = require("null-ls")
 local lua_dev = require("lua-dev")
@@ -16,17 +17,17 @@ local lsp_mappings = require("mappings.lsp")
 local t = require("utils.map").t
 
 local M = {}
-local LANGS = {
+local SERVERS = {
   "html",
-  "css",
-  "json",
-  "yaml",
-  "bash",
+  "cssls",
+  "jsonls",
+  "yamlls",
+  "bashls",
   "cmake",
-  "lua",
-  "typescript",
-  "latex",
-  "dockerfile",
+  "sumneko_lua",
+  "tsserver",
+  "texlab",
+  "dockerls",
 }
 
 local kind_icons = {
@@ -72,8 +73,8 @@ local function on_attach()
   lsp_signature.on_attach({})
 end
 
--- LSP Configs that are not in nimv-lspconfig
-local additional_configs = {
+-- LSP custom configs for various servers
+local custom_server_configs = {
   ccls = {
     init_options = {
       cache = {
@@ -110,7 +111,7 @@ local additional_configs = {
       },
     },
   },
-  typescript = {
+  tsserver = {
     on_attach = function(client)
       -- Disable tsserver formatting because prettier is run with null-ls
       client.resolved_capabilities.document_formatting = false
@@ -139,36 +140,40 @@ local default_config = {
 
 -- Setup all installed servers
 function M.setup_servers()
-  lsp_install.setup()
-  local installed_servers = lsp_install.installed_servers()
-  -- Add additional configs that are not installed with lsp-install
-  for name, config in pairs(additional_configs) do
-    extend_lsp_config(name, config)
-    table.insert(installed_servers, name)
-  end
-  for _, server in pairs(installed_servers) do
-    if server == "lua" then
+  lsp_installer.on_server_ready(function(server)
+    local opts = vim.tbl_deep_extend("force", {}, default_config, custom_server_configs[server.name] or {})
+    if server.name == "sumneko_lua" then
       -- For the nvim lua integration the config needs to extended
-      lsp_config[server].setup(lua_dev.setup({ lspconfig = default_config }))
-    else
-      lsp_config[server].setup(vim.tbl_deep_extend("force", {}, default_config, additional_configs[server] or {}))
+      opts = lua_dev.setup({ lspconfig = opts })
+    end
+    server:setup(opts)
+  end)
+
+  -- Setup additional servers that are not installed/handled by lsp-installer
+  for server_name, config in pairs(custom_server_configs) do
+    if not vim.tbl_contains(SERVERS, server_name) then
+      -- Add a new config, the server is not even present in lsp_config
+      extend_lsp_config(server_name, config)
+      local opts = vim.tbl_deep_extend("force", {}, default_config, custom_server_configs[server_name] or {})
+      lsp_config[server_name].setup(opts)
     end
   end
 end
 
 -- Automatically install servers for the specified languages
-function M.install_servers(langs)
-  local installed_servers = lsp_install.installed_servers()
-  for _, lang in pairs(langs) do
-    if not vim.tbl_contains(installed_servers, lang) then
-      lsp_install.install_server(lang)
+function M.install_servers(servers)
+  -- Default to the pre-defined SERVERS if no argument is given
+  servers = servers or SERVERS
+  for _, server_name in pairs(servers) do
+    local server_available, requested_server = lsp_installer_servers.get_server(server_name)
+    if server_available then
+      if not requested_server:is_installed() then
+        requested_server:install()
+      end
+    else
+      error(string.format("LSP server `%s` does not exist and canot be installed", server_name))
     end
   end
-end
-
--- Automatically reload after `:LspInstall <server>`
-lsp_install.post_install_hook = function()
-  M.setup_servers()
 end
 
 -- The diagnostics do not show the one with the highest severity, but instead just shows the latest.
@@ -210,7 +215,16 @@ function M.overwrite_diagnostic_priority()
 end
 
 function M.setup()
-  M.install_servers(LANGS)
+  lsp_installer.settings({
+    ui = {
+      icons = {
+        server_installed = "✓",
+        server_pending = "⟳",
+        server_uninstalled = "",
+      },
+    },
+  })
+  M.install_servers(SERVERS)
   M.setup_servers()
 
   null_ls.config({
