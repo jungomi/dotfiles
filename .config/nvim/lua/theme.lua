@@ -322,6 +322,7 @@ local theme = {
     DapUIThread = { fg = colours.cyan, style = "bold" },
     DapUIType = "Type",
     DapUIVariable = { fg = colours.purple },
+    DapUIModifiedValue = { fg = colours.cyan },
     DapUIWatchesEmpty = { fg = colours.grey },
     DapUIWatchesError = { fg = colours.red },
     DapUIWatchesValue = { fg = colours.cyan },
