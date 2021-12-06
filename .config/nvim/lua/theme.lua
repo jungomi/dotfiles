@@ -147,56 +147,30 @@ local theme = {
     DiagnosticWarn = { fg = colours.orange },
     DiagnosticInfo = { fg = colours.blue },
     DiagnosticHint = { fg = colours.cyan },
-    -- For NeoVim 0.5 (they will change to the above in 0.6)
-    LspDiagnosticsDefaultError = "DiagnosticError",
-    LspDiagnosticsDefaultWarning = "DiagnosticWarn",
-    LspDiagnosticsDefaultInformation = "DiagnosticInfo",
-    LspDiagnosticsDefaultHint = "DiagnosticHint",
 
     -- Signs
     DiagnosticSignError = { fg = colours.red, bg = colours.border },
     DiagnosticSignWarn = { fg = colours.orange, bg = colours.border },
     DiagnosticSignInfo = { fg = colours.blue, bg = colours.border },
     DiagnosticSignHint = { fg = colours.cyan, bg = colours.border },
-    -- For NeoVim 0.5 (they will change to the above in 0.6)
-    LspDiagnosticsSignError = "DiagnosticSignError",
-    LspDiagnosticsSignWarning = "DiagnosticSignWarn",
-    LspDiagnosticsSignInformation = "DiagnosticSignInfo",
-    LspDiagnosticsSignHint = "DiagnosticSignHint",
 
     -- Virtual text
     DiagnosticVirtualTextError = { fg = colours.red, style = "italic" },
     DiagnosticVirtualTextWarn = { fg = colours.orange, style = "italic" },
     DiagnosticVirtualTextInfo = { fg = colours.blue, style = "italic" },
     DiagnosticVirtualTextHint = { fg = colours.cyan, style = "italic" },
-    -- For NeoVim 0.5 (they will change to the above in 0.6)
-    LspDiagnosticsVirtualTextError = "DiagnosticVirtualTextError",
-    LspDiagnosticsVirtualTextWarning = "DiagnosticVirtualTextWarn",
-    LspDiagnosticsVirtualTextInformation = "DiagnosticVirtualTextInfo",
-    LspDiagnosticsVirtualTextHint = "DiagnosticVirtualTextHint",
-    LspInlineHint = { fg = colours.grey, style = "italic" },
 
     -- Floating window text
     DiagnosticFloatingError = { fg = colours.red },
     DiagnosticFloatingWarn = { fg = colours.orange },
     DiagnosticFloatingInfo = { fg = colours.blue },
     DiagnosticFloatingHint = { fg = colours.cyan },
-    -- For NeoVim 0.5 (they will change to the above in 0.6)
-    LspDiagnosticsFloatingError = "DiagnosticFloatingError",
-    LspDiagnosticsFloatingWarning = "DiagnosticFloatingWarn",
-    LspDiagnosticsFloatingInformation = "DiagnosticFloatingInfo",
-    LspDiagnosticsFloatingHint = "DiagnosticFloatingHint",
 
     -- Underline the corresponding text
     DiagnosticUnderlineError = { style = "undercurl", special = colours.red },
     DiagnosticUnderlineWarn = { style = "undercurl", special = colours.orange },
     DiagnosticUnderlineInfo = { style = "undercurl", special = colours.blue },
     DiagnosticUnderlineHint = { style = "undercurl", special = colours.cyan },
-    -- For NeoVim 0.5 (they will change to the above in 0.6)
-    LspDiagnosticsUnderlineError = "DiagnosticUnderlineError",
-    LspDiagnosticsUnderlineWarning = "DiagnosticUnderlineWarn",
-    LspDiagnosticsUnderlineInformation = "DiagnosticUnderlineInfo",
-    LspDiagnosticsUnderlineHint = "DiagnosticUnderlineHint",
 
     -- Highlighting of References
     LspReferenceText = { bg = colours.cursor_line },

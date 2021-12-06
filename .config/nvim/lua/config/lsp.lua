@@ -12,7 +12,6 @@ local rust_tools = require("rust-tools")
 local cmp = require("cmp")
 local cmp_lsp = require("cmp_nvim_lsp")
 local trouble = require("trouble")
-local lsp_utils = require("utils.lsp")
 local lsp_mappings = require("mappings.lsp")
 local t = require("utils.map").t
 
@@ -176,45 +175,15 @@ function M.install_servers(servers)
   end
 end
 
--- The diagnostics do not show the one with the highest severity, but instead just shows the latest.
--- To only show the one with the highest severity, setting the signs / virtual text need to be overwritten
--- to prioritise showing the ones with the highest severity.
-function M.overwrite_diagnostic_priority()
-  -- Capture original functions, which will be called from the overwritten functions.
-  local set_signs = vim.lsp.diagnostic.set_signs
-  local set_virtual_text = vim.lsp.diagnostic.set_virtual_text
-  local set_underline = vim.lsp.diagnostic.set_underline
-  local function set_signs_limited(diagnostics, bufnr, client_id, sign_ns, opts)
-    if not diagnostics then
-      return
-    end
-    local filtered_diagnostics = lsp_utils.filter_diagnostics_per_line_by_severity(diagnostics, true)
-    -- Set signs with the original (captured) function
-    set_signs(filtered_diagnostics, bufnr, client_id, sign_ns, opts)
-  end
-  local function set_virtual_text_limited(diagnostics, bufnr, client_id, diagnostic_ns, opts)
-    if not diagnostics then
-      return
-    end
-    local filtered_diagnostics = lsp_utils.filter_diagnostics_per_line_by_severity(diagnostics, true)
-    -- Set virtual text with the original (captured) function
-    set_virtual_text(filtered_diagnostics, bufnr, client_id, diagnostic_ns, opts)
-  end
-  local function set_underline_limited(diagnostics, bufnr, client_id, diagnostic_ns, opts)
-    if not diagnostics then
-      return
-    end
-    local filtered_diagnostics = lsp_utils.filter_diagnostics_per_line_by_severity(diagnostics)
-    -- Set virtual text with the original (captured) function
-    set_underline(filtered_diagnostics, bufnr, client_id, diagnostic_ns, opts)
-  end
-  -- Overwrite the functions
-  vim.lsp.diagnostic.set_signs = set_signs_limited
-  vim.lsp.diagnostic.set_virtual_text = set_virtual_text_limited
-  vim.lsp.diagnostic.set_underline = set_underline_limited
-end
-
 function M.setup()
+  vim.diagnostic.config({
+    severity_sort = true,
+    virtual_text = {
+      prefix = "↪",
+      spacing = 2,
+    },
+  })
+
   lsp_installer.settings({
     ui = {
       icons = {
@@ -281,7 +250,7 @@ function M.setup()
       { name = "calc" },
       {
         name = "buffer",
-        opts = {
+        option = {
           get_bufnrs = function()
             -- Complete from all buffers, not just the current or the visible ones
             return vim.api.nvim_list_bufs()
@@ -290,7 +259,7 @@ function M.setup()
       },
       {
         name = "tmux",
-        opts = {
+        option = {
           -- Complete from all panes not just the visible ones
           all_panes = true,
         },
@@ -360,30 +329,28 @@ function M.setup()
     indent_lines = true,
   })
 
-  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-    -- Configure appearance of virtual text diagnostics
-    virtual_text = {
-      prefix = "↪",
-      spacing = 2,
-    },
-  })
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
     -- Configure appearance of floating windows from hover info
     border = "rounded",
   })
 
   -- Highlight the line number as well as the diagnostic sign
-  vim.fn.sign_define("DiagnosticSignError", { text = " ", numhl = "DiagnosticSignError" })
-  vim.fn.sign_define("DiagnosticSignWarn", { text = " ", numhl = "DiagnosticSignWarn" })
-  vim.fn.sign_define("DiagnosticSignHint", { text = " ", numhl = "DiagnosticSignHint" })
-  vim.fn.sign_define("DiagnosticSignInfo", { text = " ", numhl = "DiagnosticSignInfo" })
-  -- For NeoVim 0.5 (they will change to the above in 0.6)
-  vim.fn.sign_define("LspDiagnosticsSignError", { text = " ", numhl = "LspDiagnosticsSignError" })
-  vim.fn.sign_define("LspDiagnosticsSignWarning", { text = " ", numhl = "LspDiagnosticsSignWarning" })
-  vim.fn.sign_define("LspDiagnosticsSignHint", { text = " ", numhl = "LspDiagnosticsSignHint" })
-  vim.fn.sign_define("LspDiagnosticsSignInformation", { text = " ", numhl = "LspDiagnosticsSignInformation" })
-
-  M.overwrite_diagnostic_priority()
+  vim.fn.sign_define(
+    "DiagnosticSignError",
+    { text = " ", texthl = "DiagnosticSignError", numhl = "DiagnosticSignError" }
+  )
+  vim.fn.sign_define(
+    "DiagnosticSignWarn",
+    { text = " ", texthl = "DiagnosticSignWarn", numhl = "DiagnosticSignWarn" }
+  )
+  vim.fn.sign_define(
+    "DiagnosticSignHint",
+    { text = " ", texthl = "DiagnosticSignHint", numhl = "DiagnosticSignHint" }
+  )
+  vim.fn.sign_define(
+    "DiagnosticSignInfo",
+    { text = " ", texthl = "DiagnosticSignInfo", numhl = "DiagnosticSignInfo" }
+  )
 
   lsp_mappings.enable_mappings()
 end

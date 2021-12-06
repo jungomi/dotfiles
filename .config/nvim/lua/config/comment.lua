@@ -6,7 +6,7 @@ local M = {}
 
 function M.setup()
   Comment.setup({
-    pre_hook = function(ctx)
+    custom_calculation = function(ctx)
       local comment_type = ctx.ctype == Comment_utils.ctype.line and "__default" or "__multiline"
       return ts_comment_context.calculate_commentstring({ key = comment_type })
     end,

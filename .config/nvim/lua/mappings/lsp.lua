@@ -27,8 +27,8 @@ function M.enable_mappings()
   imap("<C-s>", "<Cmd>lua vim.lsp.buf.signature_help()<CR>")
   nmap("<leader>la", "<Cmd>lua vim.lsp.buf.code_action()<CR>")
   -- Diagnostic navigation
-  nmap("]d", [[<Cmd>lua vim.lsp.diagnostic.goto_next({ popup_opts = { border = "rounded" }})<CR>]])
-  nmap("[d", [[<Cmd>lua vim.lsp.diagnostic.goto_prev({ popup_opts = { border = "rounded" }})<CR>]])
+  nmap("]d", [[<Cmd>lua vim.diagnostic.goto_next({ float = { border = "rounded" }})<CR>]])
+  nmap("[d", [[<Cmd>lua vim.diagnostic.goto_prev({ float = { border = "rounded" }})<CR>]])
   -- Diagnostics list similar to quickfix but better
   nmap("<leader>lq", "<Cmd>TroubleToggle lsp_document_diagnostics<CR>")
 end

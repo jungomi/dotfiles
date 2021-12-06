@@ -50,10 +50,7 @@ packer.startup(function(use)
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-vsnip",
-      {
-        "andersevenrud/compe-tmux",
-        branch = "cmp",
-      },
+      "andersevenrud/cmp-tmux",
     },
   })
   -- Pretty list of diagnostics (quickfix with style)
