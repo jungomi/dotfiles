@@ -25,6 +25,8 @@ packer.startup(function(use)
   })
   -- Highlight colour definitions (e.g. Blue, #555d60)
   use({ "norcalli/nvim-colorizer.lua", config = [[require("colorizer").setup()]] })
+  -- Improved UI for vim.ui.select and vim.ui.input (e.g. floating window for LSP rename)
+  use({ "stevearc/dressing.nvim", config = [[require("dressing").setup({ input = { insert_only = false } })]] })
 
   -- :: TreeSitter
   use("nvim-treesitter/playground")
