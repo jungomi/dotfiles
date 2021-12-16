@@ -196,7 +196,7 @@ function M.setup()
   M.install_servers(SERVERS)
   M.setup_servers()
 
-  null_ls.config({
+  null_ls.setup({
     -- Don't save when calling lsp/format
     save_after_format = false,
     sources = {
@@ -207,7 +207,6 @@ function M.setup()
       null_ls.builtins.diagnostics.eslint,
     },
   })
-  lsp_config["null-ls"].setup({})
 
   rust_tools.setup({
     tools = {
@@ -325,7 +324,7 @@ function M.setup()
   })
 
   trouble.setup({
-    use_lsp_diagnostic_signs = true,
+    use_diagnostic_signs = true,
     indent_lines = true,
   })
 
