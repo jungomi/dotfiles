@@ -30,7 +30,7 @@ function M.enable_mappings()
   nmap("]d", [[<Cmd>lua vim.diagnostic.goto_next({ float = { border = "rounded" }})<CR>]])
   nmap("[d", [[<Cmd>lua vim.diagnostic.goto_prev({ float = { border = "rounded" }})<CR>]])
   -- Diagnostics list similar to quickfix but better
-  nmap("<leader>lq", "<Cmd>TroubleToggle lsp_document_diagnostics<CR>")
+  nmap("<leader>lq", "<Cmd>TroubleToggle document_diagnostics<CR>")
 end
 
 return M
