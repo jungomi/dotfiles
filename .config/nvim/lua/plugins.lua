@@ -62,6 +62,8 @@ packer.startup(function(use)
   use({ "jose-elias-alvarez/null-ls.nvim" })
   -- Rust integrations
   use({ "simrat39/rust-tools.nvim", requires = "nvim-lua/plenary.nvim" })
+  -- Schemas for JSON files to complete/display configurations options
+  use("b0o/SchemaStore.nvim")
   -- Install language servers automatically
   use({ "williamboman/nvim-lsp-installer", config = [[require("config.lsp").setup()]] })
 

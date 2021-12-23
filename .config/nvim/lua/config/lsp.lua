@@ -9,6 +9,7 @@ local lsp_signature = require("lsp_signature")
 local null_ls = require("null-ls")
 local lua_dev = require("lua-dev")
 local rust_tools = require("rust-tools")
+local schemastore = require("schemastore")
 local cmp = require("cmp")
 local cmp_lsp = require("cmp_nvim_lsp")
 local trouble = require("trouble")
@@ -78,6 +79,13 @@ local custom_server_configs = {
     init_options = {
       cache = {
         directory = "/tmp/ccls",
+      },
+    },
+  },
+  jsonls = {
+    settings = {
+      json = {
+        schemas = schemastore.json.schemas(),
       },
     },
   },
