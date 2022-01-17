@@ -114,6 +114,8 @@ packer.startup(function(use)
   use("machakann/vim-sandwich")
   -- Live preview of markdown files
   use({ "iamcco/markdown-preview.nvim", run = "cd app & yarn install", ft = { "markdown" } })
+  -- Generate Table of Contents (ToC) and automatically keep it update to date.
+  use("mzlogin/vim-markdown-toc")
   -- Yank over SSH with ANSI OSC52 escape sequence
   use("ojroques/vim-oscyank")
 
