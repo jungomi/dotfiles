@@ -112,6 +112,8 @@ packer.startup(function(use)
   -- Better feedback (visual and timeout), interactive surroundings, func, double count, etc.
   -- I was reluctant because it maps `s`, but it does make it simpler to use, just need to get used to it.
   use("machakann/vim-sandwich")
+  -- Run shell commands asynchronously
+  use("skywind3000/asyncrun.vim")
   -- Live preview of markdown files
   use({ "iamcco/markdown-preview.nvim", run = "cd app & yarn install", ft = { "markdown" } })
   -- Generate Table of Contents (ToC) and automatically keep it update to date.
