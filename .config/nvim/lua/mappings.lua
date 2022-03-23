@@ -35,11 +35,6 @@ nmap("<C-h>", "<C-w>h")
 nmap("<C-j>", "<C-w>j")
 nmap("<C-k>", "<C-w>k")
 nmap("<C-l>", "<C-w>l")
--- Resize splits
-nmap("<A-h>", "3<C-w><")
-nmap("<A-j>", "3<C-w>-")
-nmap("<A-k>", "3<C-w>+")
-nmap("<A-l>", "3<C-w>>")
 -- Resize all splits evenly
 nmap("<leader>=", "<C-w>=")
 -- Maximise current split
