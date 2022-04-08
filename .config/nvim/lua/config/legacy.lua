@@ -7,6 +7,9 @@ local M = {}
 function M.setup()
   -- Ignore editorconfig for fugitive buffers
   g.EditorConfig_exclude_patterns = { "fugitive://.*" }
+  -- Keep formatoptions, because this adds wrapping automatically, which I only want for comments.
+  -- Particularly in Python, it just breaks everything when automatically wrapping.
+  g.EditorConfig_preserve_formatoptions = 1
 
   g.undotree_SetFocusWhenToggle = 1
 
