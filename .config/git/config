@@ -77,6 +77,10 @@
   showPatch = true
 [credential]
   helper = store
+[gpg]
+  format = ssh
+[gpg.ssh]
+  defaultKeyCommand  = ssh-add -L
 [init]
   defaultBranch = main
 [pager]
