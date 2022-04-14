@@ -245,8 +245,10 @@ function M.setup()
     completion = {
       autocomplete = false,
     },
-    documentation = {
-      border = "rounded",
+    window = {
+      documentation = {
+        border = "rounded",
+      },
     },
     sources = {
       -- The order defines the priority during the completion
