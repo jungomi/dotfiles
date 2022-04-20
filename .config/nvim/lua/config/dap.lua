@@ -40,6 +40,10 @@ function M.setup()
 
   vim.fn.sign_define("DapBreakpoint", { text = " ", texthl = "DiagnosticSignError", numhl = "DiagnosticSignError" })
   vim.fn.sign_define(
+    "DapBreakpointCondition",
+    { text = " ", texthl = "DiagnosticSignError", numhl = "DiagnosticSignError" }
+  )
+  vim.fn.sign_define(
     "DapBreakpointRejected",
     { text = " ", texthl = "DiagnosticSignError", numhl = "DiagnosticSignError" }
   )
