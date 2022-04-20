@@ -219,6 +219,11 @@ local theme = {
     CmpItemMenu = { fg = colours.grey },
   },
   bufferline = {
+    -- Numbers are somehow not correct
+    BufferLineNumbersSelected = { fg = colours.fg, bg = colours.bg, style = "bold" },
+    BufferLineNumbersVisible = {  fg = colours.grey,bg = colours.cursor_line },
+    BufferLineNumbers = {  fg = colours.grey,bg = colours.dark_border },
+
     -- Three for each kind, because there are three types of buffers with different backgrounds.
     -- The names are shortcuts to work around highlight groups counting towards length of the
     -- bufferline, because it counts the number of characters.
