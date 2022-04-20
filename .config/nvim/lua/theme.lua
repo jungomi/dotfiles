@@ -275,6 +275,10 @@ local theme = {
     GitSignsAdd = { fg = colours.green, bg = colours.border },
     GitSignsChange = { fg = colours.blue, bg = colours.border },
     GitSignsDelete = { fg = colours.red, bg = colours.border },
+    -- Inline word diffs
+    GitSignsAddInline = { link = "DiffAdd" },
+    GitSignsChangeInline = { link = "DiffText" },
+    GitSignsDeleteInline = { link = "DiffDelete" },
 
     fugitiveHash = { fg = colours.red },
     fugitiveHeading = { link = "Title" },
