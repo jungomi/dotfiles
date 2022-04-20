@@ -1,4 +1,3 @@
-local highlight = require("utils.highlight").highlight
 local reset_highlight = require("utils.highlight").reset_highlight
 
 local colours = {
@@ -51,17 +50,17 @@ local theme = {
     Yank = { bg = colours.light_orange },
 
     LineNr = { bg = colours.border, fg = colours.grey },
-    CursorLineNr = { bg = colours.border, fg = colours.fg, style = "bold" },
+    CursorLineNr = { bg = colours.border, fg = colours.fg, bold = true },
     SignColumn = { bg = colours.border, fg = colours.grey },
     FoldColumn = { bg = colours.border, fg = colours.grey },
     Folded = { bg = colours.border },
-    qfLineNr = { fg = colours.purple, style = "italic" },
+    qfLineNr = { fg = colours.purple, italic = true },
 
     TabLine = { bg = colours.border, fg = colours.grey },
     TabLineFill = { bg = colours.border, fg = colours.grey },
     TabLineSel = { bg = colours.purple, fg = colours.grey },
 
-    StatusLine = { bg = colours.statusline.active, fg = colours.statusline.text, style = "bold" },
+    StatusLine = { bg = colours.statusline.active, fg = colours.statusline.text, bold = true },
     StatusLineNC = { bg = colours.statusline.inactive, fg = colours.statusline.text },
 
     PMenu = { bg = colours.cursor_line },
@@ -69,21 +68,21 @@ local theme = {
     PMenuSbar = { bg = colours.cursor_line },
     PMenuThumb = { bg = colours.grey },
 
-    ErrorMsg = { fg = colours.red, style = "bold" },
-    ModeMsg = { fg = colours.green, style = "bold" },
-    MoreMsg = { fg = colours.blue, style = "bold" },
-    WarningMsg = { fg = colours.orange, style = "bold" },
-    Question = { fg = colours.blue, style = "bold" },
-    Title = { fg = colours.blue, style = "bold" },
-    Directory = { fg = colours.blue, style = "bold" },
-    healthSuccess = "ModeMsg",
+    ErrorMsg = { fg = colours.red, bold = true },
+    ModeMsg = { fg = colours.green, bold = true },
+    MoreMsg = { fg = colours.blue, bold = true },
+    WarningMsg = { fg = colours.orange, bold = true },
+    Question = { fg = colours.blue, bold = true },
+    Title = { fg = colours.blue, bold = true },
+    Directory = { fg = colours.blue, bold = true },
+    healthSuccess = { link = "ModeMsg" },
 
     MatchParen = { bg = colours.grey, fg = colours.bg },
 
-    SpellBad = { style = "undercurl" },
-    SpellCap = { style = "undercurl" },
-    SpellLocal = { style = "undercurl" },
-    SpellRare = { style = "undercurl" },
+    SpellBad = { undercurl = true },
+    SpellCap = { undercurl = true },
+    SpellLocal = { undercurl = true },
+    SpellRare = { undercurl = true },
   },
   syntax = {
     Boolean = { fg = colours.dark_orange },
@@ -118,21 +117,21 @@ local theme = {
     Todo = { fg = colours.purple },
     Type = { fg = colours.orange },
     Typedef = { fg = colours.orange },
-    Underlined = { style = "underline" },
+    Underlined = { underline = true },
   },
   treesitter = {
     -- Only groups that are not linked to the desired default, rest (mostly TSxxx -> xxx) is skipped
     -- e.g. TSBoolean -> Boolean (skipped)
-    TSConstBuiltin = "Constant",
-    TSConstMacro = "Macro",
-    TSConstructor = "Function",
-    TSError = "Error",
+    TSConstBuiltin = { link = "Constant" },
+    TSConstMacro = { link = "Macro" },
+    TSConstructor = { link = "Function" },
+    TSError = { link = "Error" },
     TSField = { fg = colours.fg },
-    TSFuncBuiltin = "Function",
+    TSFuncBuiltin = { link = "Function" },
     TSInclude = { fg = colours.purple },
     TSKeywordOperator = { fg = colours.purple },
     TSNamespace = { fg = colours.red },
-    TSNote = { fg = colours.cyan, style = "bold" },
+    TSNote = { fg = colours.cyan, bold = true },
     TSParameter = { fg = colours.cyan },
     TSProperty = { fg = colours.cyan },
     TSSymbol = { fg = colours.cyan },
@@ -155,10 +154,10 @@ local theme = {
     DiagnosticSignHint = { fg = colours.cyan, bg = colours.border },
 
     -- Virtual text
-    DiagnosticVirtualTextError = { fg = colours.red, style = "italic" },
-    DiagnosticVirtualTextWarn = { fg = colours.orange, style = "italic" },
-    DiagnosticVirtualTextInfo = { fg = colours.blue, style = "italic" },
-    DiagnosticVirtualTextHint = { fg = colours.cyan, style = "italic" },
+    DiagnosticVirtualTextError = { fg = colours.red, italic = true },
+    DiagnosticVirtualTextWarn = { fg = colours.orange, italic = true },
+    DiagnosticVirtualTextInfo = { fg = colours.blue, italic = true },
+    DiagnosticVirtualTextHint = { fg = colours.cyan, italic = true },
 
     -- Floating window text
     DiagnosticFloatingError = { fg = colours.red },
@@ -167,10 +166,10 @@ local theme = {
     DiagnosticFloatingHint = { fg = colours.cyan },
 
     -- Underline the corresponding text
-    DiagnosticUnderlineError = { style = "undercurl", special = colours.red },
-    DiagnosticUnderlineWarn = { style = "undercurl", special = colours.orange },
-    DiagnosticUnderlineInfo = { style = "undercurl", special = colours.blue },
-    DiagnosticUnderlineHint = { style = "undercurl", special = colours.cyan },
+    DiagnosticUnderlineError = { undercurl = true, special = colours.red },
+    DiagnosticUnderlineWarn = { undercurl = true, special = colours.orange },
+    DiagnosticUnderlineInfo = { undercurl = true, special = colours.blue },
+    DiagnosticUnderlineHint = { undercurl = true, special = colours.cyan },
 
     -- Highlighting of References
     LspReferenceText = { bg = colours.cursor_line },
@@ -179,9 +178,9 @@ local theme = {
 
     -- Trouble
     TroubleIndent = { fg = colours.grey },
-    TroubleCount = { fg = colours.grey, style = "italic" },
+    TroubleCount = { fg = colours.grey, italic = true },
     TroubleFoldIcon = { fg = colours.grey },
-    TroubleLocation = { fg = colours.purple, style = "italic" },
+    TroubleLocation = { fg = colours.purple, italic = true },
     TroubleSignError = { fg = colours.red },
     TroubleSignWarning = { fg = colours.orange },
     TroubleSignInformation = { fg = colours.blue },
@@ -189,40 +188,40 @@ local theme = {
 
     -- Saga
     -- So many unnecessary border/line highlight groups
-    LspSagaAutoPreview = "FloatBorder",
-    LspSagaAutoPreviewBorder = "FloatBorder",
-    LspSagaCodeActionBorder = "FloatBorder",
-    LspSagaDefPreviewBorder = "FloatBorder",
-    LspSagaDiagnosticBorder = "FloatBorder",
-    LspSagaHoverBorder = "FloatBorder",
-    LspSagaLspFinderBorder = "FloatBorder",
-    LspSagaSignatureHelpBorder = "FloatBorder",
-    LspSagaRenameBorder = "FloatBorder",
+    LspSagaAutoPreview = { link = "FloatBorder" },
+    LspSagaAutoPreviewBorder = { link = "FloatBorder" },
+    LspSagaCodeActionBorder = { link = "FloatBorder" },
+    LspSagaDefPreviewBorder = { link = "FloatBorder" },
+    LspSagaDiagnosticBorder = { link = "FloatBorder" },
+    LspSagaHoverBorder = { link = "FloatBorder" },
+    LspSagaLspFinderBorder = { link = "FloatBorder" },
+    LspSagaSignatureHelpBorder = { link = "FloatBorder" },
+    LspSagaRenameBorder = { link = "FloatBorder" },
     LspSagaRenamePromptPrefix = { fg = colours.grey },
-    LspSagaCodeActionTruncateLine = "FloatBorder",
-    LspSagaDiagnosticTruncateLine = "FloatBorder",
-    LspSagaDocTruncateLine = "FloatBorder",
-    LspSagaShTruncateLine = "FloatBorder",
+    LspSagaCodeActionTruncateLine = { link = "FloatBorder" },
+    LspSagaDiagnosticTruncateLine = { link = "FloatBorder" },
+    LspSagaDocTruncateLine = { link = "FloatBorder" },
+    LspSagaShTruncateLine = { link = "FloatBorder" },
     LspSagaLightBulb = { fg = colours.light_orange },
     LspSagaLightBulbSign = { fg = colours.light_orange, bg = colours.border },
     LspSagaFinderSelection = { bg = colours.cursor_line },
-    LspSagaCodeActionTitle = { fg = colours.grey, style = "bold" },
-    LspSagaDiagnosticHeader = { fg = colours.grey, style = "bold" },
+    LspSagaCodeActionTitle = { fg = colours.grey, bold = true },
+    LspSagaDiagnosticHeader = { fg = colours.grey, bold = true },
     LspSagaCodeActionContent = { fg = colours.grey },
 
     -- Cmp (Completion Menu)
     CmpItemAbbr = { fg = colours.grey },
     CmpItemAbbrMatch = { fg = colours.fg },
-    CmpItemAbbrMatchFuzzy = { fg = colours.fg, style = "italic" },
+    CmpItemAbbrMatchFuzzy = { fg = colours.fg, italic = true },
     CmpItemKind = { fg = colours.grey },
     -- Name of source, e.g. [LSP]
     CmpItemMenu = { fg = colours.grey },
   },
   bufferline = {
     -- Numbers are somehow not correct
-    BufferLineNumbersSelected = { fg = colours.fg, bg = colours.bg, style = "bold" },
-    BufferLineNumbersVisible = {  fg = colours.grey,bg = colours.cursor_line },
-    BufferLineNumbers = {  fg = colours.grey,bg = colours.dark_border },
+    BufferLineNumbersSelected = { fg = colours.fg, bg = colours.bg, bold = true },
+    BufferLineNumbersVisible = { fg = colours.grey, bg = colours.cursor_line },
+    BufferLineNumbers = { fg = colours.grey, bg = colours.dark_border },
 
     -- Three for each kind, because there are three types of buffers with different backgrounds.
     -- The names are shortcuts to work around highlight groups counting towards length of the
@@ -249,7 +248,7 @@ local theme = {
     DiffAdd = { bg = colours.light_green },
     DiffChange = { bg = colours.light_blue },
     DiffDelete = { fg = colours.red, bg = colours.light_red },
-    DiffText = { fg = colours.blue, bg = colours.light_blue, style = "bold" },
+    DiffText = { fg = colours.blue, bg = colours.light_blue, bold = true },
 
     -- Colours in git commit messages
     gitcommitSummary = { fg = colours.green },
@@ -257,10 +256,10 @@ local theme = {
     gitcommitHeader = { fg = colours.blue },
     -- Staged files
     gitcommitSelectedFile = { fg = colours.green },
-    gitcommitSelectedType = { fg = colours.green, style = "bold" },
+    gitcommitSelectedType = { fg = colours.green, bold = true },
     -- Unstaged files
     gitcommitDiscardedFile = { fg = colours.orange },
-    gitcommitDiscardedType = { fg = colours.orange, style = "bold" },
+    gitcommitDiscardedType = { fg = colours.orange, bold = true },
     -- Untracked files
     gitcommitUntrackedFile = { fg = colours.red },
 
@@ -278,54 +277,54 @@ local theme = {
     GitSignsDelete = { fg = colours.red, bg = colours.border },
 
     fugitiveHash = { fg = colours.red },
-    fugitiveHeading = "Title",
-    fugitiveSymbolicRef = "Special",
-    fugitiveStagedHeading = { fg = colours.green, style = "bold" },
+    fugitiveHeading = { link = "Title" },
+    fugitiveSymbolicRef = { link = "Special" },
+    fugitiveStagedHeading = { fg = colours.green, bold = true },
     fugitiveStagedModifier = { fg = colours.green },
-    fugitiveUnstagedHeading = { fg = colours.orange, style = "bold" },
+    fugitiveUnstagedHeading = { fg = colours.orange, bold = true },
     fugitiveUnstagedModifier = { fg = colours.orange },
-    fugitiveUntrackedHeading = { fg = colours.red, style = "bold" },
+    fugitiveUntrackedHeading = { fg = colours.red, bold = true },
     fugitiveUntrackedModifier = { fg = colours.red },
   },
   dap = {
-    DapUIBreakpointsPath = "Directory",
+    DapUIBreakpointsPath = { link = "Directory" },
     DapUIBreakpointsInfo = { fg = colours.cyan },
-    DapUIBreakpointsCurrentLine = { fg = colours.fg, style = "bold" },
-    DapUIFloatBorder = "FloatBorder",
+    DapUIBreakpointsCurrentLine = { fg = colours.fg, bold = true },
+    DapUIFloatBorder = { link = "FloatBorder" },
     DapUIFrameName = { fg = colours.purple },
     DapUIDecoration = { fg = colours.cyan },
     DapUILineNumber = { fg = colours.grey },
-    DapUIScope = "Title",
-    DapUISource = "Directory",
-    DapUIStoppedThread = { fg = colours.red, style = "bold" },
-    DapUIThread = { fg = colours.cyan, style = "bold" },
-    DapUIType = "Type",
+    DapUIScope = { link = "Title" },
+    DapUISource = { link = "Directory" },
+    DapUIStoppedThread = { fg = colours.red, bold = true },
+    DapUIThread = { fg = colours.cyan, bold = true },
+    DapUIType = { link = "Type" },
     DapUIVariable = { fg = colours.purple },
     DapUIModifiedValue = { fg = colours.cyan },
     DapUIWatchesEmpty = { fg = colours.grey },
     DapUIWatchesError = { fg = colours.red },
     DapUIWatchesValue = { fg = colours.cyan },
 
-    NvimDapVirtualText = { fg = colours.grey, style = "italic" },
-    NvimDapVirtualTextChanged = "DiagnosticVirtualTextWarn",
-    NvimDapVirtualTextError = "DiagnosticVirtualTextError",
-    NvimDapVirtualTextInfo = "DiagnosticVirtualTextInfo",
+    NvimDapVirtualText = { fg = colours.grey, italic = true },
+    NvimDapVirtualTextChanged = { link = "DiagnosticVirtualTextWarn" },
+    NvimDapVirtualTextError = { link = "DiagnosticVirtualTextError" },
+    NvimDapVirtualTextInfo = { link = "DiagnosticVirtualTextInfo" },
 
     -- Custom statusline for dap-ui (not part of the plugin)
-    DapUIStatusline = { fg = colours.grey, bg = colours.bg, gui = "bold" },
+    DapUIStatusline = { fg = colours.grey, bg = colours.bg, bold = true },
   },
   markdown = {
-    markdownCode = "String",
-    markdownCodeDelimiter = { fg = colours.grey, style = "bold" },
-    markdownLinkText = "Special",
-    markdownListMarker = { fg = colours.cyan, style = "bold" },
+    markdownCode = { link = "String" },
+    markdownCodeDelimiter = { fg = colours.grey, bold = true },
+    markdownLinkText = { link = "Special" },
+    markdownListMarker = { fg = colours.cyan, bold = true },
 
-    markdownH1Delimiter = "markdownH1",
-    markdownH2Delimiter = "markdownH2",
-    markdownH3Delimiter = "markdownH3",
-    markdownH4Delimiter = "markdownH4",
-    markdownH5Delimiter = "markdownH5",
-    markdownH6Delimiter = "markdownH6",
+    markdownH1Delimiter = { link = "markdownH1" },
+    markdownH2Delimiter = { link = "markdownH2" },
+    markdownH3Delimiter = { link = "markdownH3" },
+    markdownH4Delimiter = { link = "markdownH4" },
+    markdownH5Delimiter = { link = "markdownH5" },
+    markdownH6Delimiter = { link = "markdownH6" },
   },
 }
 
@@ -340,7 +339,8 @@ function M.load_theme()
   vim.opt.background = M.background
   for _, definitions in pairs(M.theme) do
     for group, colour in pairs(definitions) do
-      highlight(group, colour)
+      -- Namespace = 0 to apply it globally
+      vim.api.nvim_set_hl(0, group, colour)
     end
   end
 end
