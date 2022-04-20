@@ -1,93 +1,55 @@
 local M = {}
 
-local function combine_if_multiple(input, sep)
-  local separator = sep or ","
-  if type(input) == "table" then
-    return table.concat(input, separator)
-  else
-    return input
-  end
-end
-
 -- Create augroups and run all autocmds in them given as a map
 -- Multiple events/patterns can be given as a list
+-- This is almost identical to using `nvim_create_autocmd` except that the event
+-- is not given as a separate argument but in the table as `event = ...`.
+-- Also takes care of the groups, which is now much easier with the Lua API.
 -- e.g.
--- create_augroups {
---   filetype_settings = {
---     {"FileType", "*", "setlocal colorcolumn=80"},
---     {"FileType", {"gitcommit", "markdown", "tex"}, "setlocal spell"},
+-- create_augroups({
+--   config_filetype = {
+--     {
+--       event = "FileType",
+--       pattern = "*",
+--       command = "setlocal formatoptions-=o",
+--       desc = "Disable comment continuation when using `o` or `O`",
+--     },
+--     {
+--       event = "FileType",
+--       pattern = { "gitcommit", "markdown", "tex", "text" },
+--       command = "setlocal spell",
+--       desc = "Enable spell check for relevant files",
+--     },
 --   },
---   buffer_modification = {
---     {{"BufRead", "BufNewFile"}, "*.md", "setlocal filetype=markdown"},
+--   config_buffer = {
+--     {
+--       event = {"BufRead", "BufNewFile"},
+--       pattern = "*.md",
+--       command = "setlocal filetype=markdown"
+--     },
+--     {
+--       event = "TextYankPost",
+--       pattern = "*",
+--       callback = function()
+--         vim.highlight.on_yank({ higroup = "Yank", timeout = 250 })
+--       end,
+--       desc = "Highlight yanked text",
+--     },
 --   }
--- }
+-- })
 function M.create_augroups(groups)
   for group_name, group in pairs(groups) do
-    M.augroup(group_name)
-    M.remove_autocmd() -- Clears all autocmds in this augroup
+    -- Creates the augroup and also clears all autocmds in it if already exists
+    local group_id = vim.api.nvim_create_augroup(group_name, { clear = true })
     for _, cmd in ipairs(group) do
-      M.autocmd(unpack(cmd))
+      -- Take out the event as it's a separate argument
+      local event = cmd.event
+      cmd.event = nil
+      -- Set the group to the created group, making it part of this group
+      cmd.group = group_id
+      vim.api.nvim_create_autocmd(event, cmd)
     end
-    M.end_augroup()
   end
-end
-
-function M.autocmd(event, pattern, cmd, opt)
-  local options = opt or {}
-  -- autocmd[!] [group] event pattern [++once] [++nested] cmd
-  local cmd_parts = { "autocmd" }
-  if options.remove then
-    cmd_parts = { "autocmd!" }
-  end
-  if options.group then
-    table.insert(cmd_parts, options.group)
-  end
-  -- Event and pattern can be a list of events
-  table.insert(cmd_parts, combine_if_multiple(event))
-  table.insert(cmd_parts, combine_if_multiple(pattern))
-  if options.once then
-    table.insert(cmd_parts, "++once")
-  end
-  if options.nested then
-    table.insert(cmd_parts, "++nested")
-  end
-  table.insert(cmd_parts, cmd)
-  vim.cmd(table.concat(cmd_parts, " "))
-end
-
-function M.remove_autocmd(event, pattern, cmd, opt)
-  local options = opt or {}
-  options.remove = true
-  M.autocmd(event, pattern, cmd, options)
-end
-
-function M.augroup(name, opt)
-  local options = opt or {}
-  -- augroup[!] name
-  local cmd_parts = { "augroup" }
-  if options.remove then
-    cmd_parts = { "augroup!" }
-  end
-  table.insert(cmd_parts, name)
-  vim.cmd(table.concat(cmd_parts, " "))
-end
-
-function M.clear_augroup(name)
-  M.augroup(name)
-  M.remove_autocmd()
-  M.end_augroup()
-end
-
--- Removes the augroup but clears it first to avoid dangling autocmd
-function M.remove_augroup(name, opt)
-  local options = opt or {}
-  options.remove = true
-  M.clear_augroup(name)
-  M.augroup(name, options)
-end
-
-function M.end_augroup()
-  M.augroup("END")
 end
 
 return M

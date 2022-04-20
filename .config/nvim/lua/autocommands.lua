@@ -1,36 +1,109 @@
 local autocmd_utils = require("utils.autocmd")
+local file_utils = require("utils.file")
 
 autocmd_utils.create_augroups({
   config_filetype = {
     -- Disable comment continuation when using 'o' or 'O'
-    { "FileType", "*", "setlocal formatoptions-=o" },
+    {
+      event = "FileType",
+      pattern = "*",
+      command = "setlocal formatoptions-=o",
+      desc = "Disable comment continuation when using `o` or `O`",
+    },
     -- Activate spell checking for relevant files
-    { "FileType", { "gitcommit", "markdown", "tex", "text" }, "setlocal spell" },
+    {
+      event = "FileType",
+      pattern = { "gitcommit", "markdown", "tex", "text" },
+      command = "setlocal spell",
+      desc = "Enable spell check for relevant files",
+    },
     -- Prevent some unwanted indenting like if the previous line ended with a comma
-    { "FileType", { "gitcommit", "markdown", "tex", "text", "csv" }, "setlocal nocindent" },
+    {
+      event = "FileType",
+      pattern = { "gitcommit", "markdown", "tex", "text", "csv" },
+      command = "setlocal nocindent",
+      desc = "Prevent unwanted identing in certain files",
+    },
     -- Disable colour column in quickfix window
-    { "FileType", "qf", "setlocal colorcolumn=" },
+    {
+      event = "FileType",
+      pattern = "qf",
+      command = "setlocal colorcolumn=",
+      desc = "Disable colour column in quickfix",
+    },
 
     -- Tab settings
-    { "FileType", "python", "setlocal shiftwidth=4 textwidth=88 softtabstop=4 expandtab" },
-    { "FileType", "make", "setlocal tabstop=8 shiftwidth=8 softtabstop=8 noexpandtab" },
-    { "FileType", "csv", "setlocal noexpandtab" },
+    {
+      event = "FileType",
+      pattern = "python",
+      command = "setlocal shiftwidth=4 textwidth=88 softtabstop=4 expandtab",
+      desc = "Tab settings for Python",
+    },
+    {
+      event = "FileType",
+      pattern = "make",
+      command = "setlocal tabstop=8 shiftwidth=8 softtabstop=8 noexpandtab",
+      desc = "Tab settings for Makefile",
+    },
+    {
+      event = "FileType",
+      pattern = "csv",
+      command = "setlocal noexpandtab",
+      desc = "Tab for CSV",
+    },
 
     -- Trigger completion with Tab in DAP REPL (to make it feel like a REPL)
-    { "FileType", "dap-repl", "inoremap <buffer> <Tab> <C-x><C-o>" },
+    {
+      event = "FileType",
+      pattern = "dap-repl",
+      command = "inoremap <buffer> <Tab> <C-x><C-o>",
+      desc = "DAP REPL - Trigger completion with Tab",
+    },
   },
   config_buffer = {
     -- Resize panes when the window is resized
-    { "VimResized", "*", "wincmd =" },
+    {
+      event = "VimResized",
+      pattern = "*",
+      command = "wincmd =",
+      desc = "Resize windows when Vim is resized",
+    },
     -- Highlight text that has been copied
-    { "TextYankPost", "*", [[silent! lua vim.highlight.on_yank {higroup = "Yank", timeout = 250}]] },
+    {
+      event = "TextYankPost",
+      pattern = "*",
+      callback = function()
+        vim.highlight.on_yank({ higroup = "Yank", timeout = 250 })
+      end,
+      desc = "Highlight yanked text",
+    },
     -- Clear highlighted references when moving the cursor
-    { "CursorMoved", "*", [[lua vim.lsp.buf.clear_references()]] },
+    {
+      event = "CursorMoved",
+      pattern = "*",
+      callback = vim.lsp.buf.clear_references,
+      desc = "Clear highlighted LSP references when cursor is moved",
+    },
     -- Close location list when the associated buffer is closed
-    { "QuitPre", "*", "if empty(&buftype) | lclose | endif" },
-    { "BufWritePre", "*", [[lua require("utils.file").mkdir_on_save()]] },
+    {
+      event = "QuitPre",
+      pattern = "*",
+      command = "if empty(&buftype) | lclose | endif",
+      desc = "Close location list when associated buffer is closed",
+    },
+    {
+      event = "BufWritePre",
+      pattern = "*",
+      callback = file_utils.mkdir_on_save,
+      desc = "Ensure directories exist when saving a file",
+    },
     -- Refresh colours after any text change, it should do that on its own
     -- but after non-insert mode edits, such as undo, it doesn't.
-    { "TextChanged", "*", "ColorizerAttachToBuffer" },
+    {
+      event = "TextChanged",
+      pattern = "*",
+      command = "ColorizerAttachToBuffer",
+      desc = "Refresh (CSS) colours when text changes",
+    },
   },
 })
