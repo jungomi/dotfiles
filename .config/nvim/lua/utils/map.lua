@@ -1,15 +1,5 @@
-local map_key = vim.api.nvim_set_keymap
-
 local M = {}
-
--- Map keys with noremap by default
-function M.map(mode, lhs, rhs, opts)
-  local options = { noremap = true }
-  if opts then
-    options = vim.tbl_extend("force", options, opts)
-  end
-  map_key(mode, lhs, rhs, options)
-end
+M.map = vim.keymap.set
 
 -- Create aliases for each mode (e.g. nmap)
 -- See :help map-table

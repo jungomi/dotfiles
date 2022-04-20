@@ -5,8 +5,8 @@ local M = {}
 
 function M.enable_mappings()
   -- Cycle through buffers in their visual order
-  nmap("]b", "<Cmd>BufferLineCycleNext<CR>")
-  nmap("[b", "<Cmd>BufferLineCyclePrev<CR>")
+  nmap("]b", "<Cmd>BufferLineCycleNext<CR>", { desc = "Buffer » Previous" })
+  nmap("[b", "<Cmd>BufferLineCyclePrev<CR>", { desc = "Buffer » Next" })
 end
 
 return M

@@ -16,21 +16,25 @@ end
 
 function M.enable_mappings()
   -- Go to definition
-  nmap("<leader>ld", "<Cmd>lua vim.lsp.buf.definition()<CR>")
-  nmap("<leader>lf", "<Cmd>lua vim.lsp.buf.formatting()<CR>")
+  nmap("<leader>ld", vim.lsp.buf.definition, { desc = "LSP » Go to definition" })
+  nmap("<leader>lf", vim.lsp.buf.formatting, { desc = "LSP » Format" })
   -- Highlight references
-  nmap("<leader>lh", "<Cmd>lua vim.lsp.buf.document_highlight()<CR>")
-  nmap("<leader>lr", "<Cmd>lua vim.lsp.buf.rename()<CR>")
+  nmap("<leader>lh", vim.lsp.buf.document_highlight, { desc = "LSP » Highlight references" })
+  nmap("<leader>lr", vim.lsp.buf.rename, { desc = "LSP » Rename" })
   -- Show type info of the word under the cursor
-  nmap("<leader>lt", "<Cmd>lua vim.lsp.buf.hover()<CR>")
-  nmap("<leader>ls", "<Cmd>lua vim.lsp.buf.signature_help()<CR>")
-  imap("<C-s>", "<Cmd>lua vim.lsp.buf.signature_help()<CR>")
-  nmap("<leader>la", "<Cmd>lua vim.lsp.buf.code_action()<CR>")
+  nmap("<leader>lt", vim.lsp.buf.hover, { desc = "LSP » Hover info" })
+  nmap("<leader>ls", vim.lsp.buf.signature_help, { desc = "LSP » Signature" })
+  imap("<C-s>", vim.lsp.buf.signature_help, { desc = "LSP » Signature" })
+  nmap("<leader>la", vim.lsp.buf.code_action, { desc = "LSP » Code actions" })
   -- Diagnostic navigation
-  nmap("]d", [[<Cmd>lua vim.diagnostic.goto_next({ float = { border = "rounded" }})<CR>]])
-  nmap("[d", [[<Cmd>lua vim.diagnostic.goto_prev({ float = { border = "rounded" }})<CR>]])
+  nmap("]d", function()
+    vim.diagnostic.goto_next({ float = { border = "rounded" } })
+  end, { desc = "LSP » Jump to next diagnostic" })
+  nmap("[d", function()
+    vim.diagnostic.goto_prev({ float = { border = "rounded" } })
+  end, { desc = "LSP » Jump to previous diagnostic" })
   -- Diagnostics list similar to quickfix but better
-  nmap("<leader>lq", "<Cmd>TroubleToggle document_diagnostics<CR>")
+  nmap("<leader>lq", "<Cmd>TroubleToggle document_diagnostics<CR>", { desc = "Trouble » Document diagnostics" })
 end
 
 return M

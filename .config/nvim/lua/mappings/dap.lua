@@ -1,3 +1,5 @@
+local dap = require("dap")
+local dap_utils = require("utils.dap")
 local map_utils = require("utils.map")
 local nmap = map_utils.nmap
 
@@ -5,23 +7,23 @@ local M = {}
 
 function M.enable_mappings()
   -- Continue or start debugger if it's not running already
-  nmap("<leader>dc", [[<Cmd>lua require("dap").continue()<CR>]])
+  nmap("<leader>dc", dap.continue, { desc = "Debugger » Continue" })
   -- Breakpoint
-  nmap("<leader>db", [[<Cmd>lua require("dap").toggle_breakpoint()<CR>]])
+  nmap("<leader>db", dap.toggle_breakpoint, { desc = "Debugger » Breakpoint" })
   -- Step
-  nmap("<leader>ds", [[<Cmd>lua require("dap").step_over()<CR>]])
+  nmap("<leader>ds", dap.step_over, { desc = "Debugger » Step over" })
   -- Into
-  nmap("<leader>di", [[<Cmd>lua require("dap").step_into()<CR>]])
+  nmap("<leader>di", dap.step_into, { desc = "Debugger » Step into" })
   -- Out
-  nmap("<leader>do", [[<Cmd>lua require("dap").step_out()<CR>]])
+  nmap("<leader>do", dap.step_out, { desc = "Debugger » Step out" })
   -- Continue to the cursor
-  nmap("<leader>dh", [[<Cmd>lua require("dap").run_to_cursor()<CR>]])
+  nmap("<leader>dh", dap.run_to_cursor, { desc = "Debugger » Continue to cursor" })
   -- Log point (like a breakpoint but log a message when that point is reached)
-  nmap("<leader>dl", [[<Cmd>lua require("utils.dap").set_log_point()<CR>]])
+  nmap("<leader>dl", dap_utils.set_log_point, { desc = "Debugger » Log point" })
   -- Breakpoint with hit count (breaks after hitting n times)
-  nmap("<leader>dt", [[<Cmd>lua require("utils.dap").set_hit_count_breakpoint()<CR>]])
+  nmap("<leader>dt", dap_utils.set_hit_count_breakpoint, { desc = "Debugger » Hit count breakpoint" })
   -- Conditional breakpoint
-  nmap("<leader>dy", [[<Cmd>lua require("utils.dap").set_conditional_breakpoint()<CR>]])
+  nmap("<leader>dy", dap_utils.set_conditional_breakpoint, { desc = "Debugger » Conditional breakpoint" })
 end
 
 return M
