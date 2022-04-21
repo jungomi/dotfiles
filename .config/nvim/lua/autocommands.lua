@@ -77,6 +77,18 @@ autocmd_utils.create_augroups({
       end,
       desc = "Highlight yanked text",
     },
+    -- Copy with OSCYank when using clipboard register
+    {
+      event = "TextYankPost",
+      pattern = "*",
+      callback = function()
+        local event = vim.v.event
+        if event and event.operator == "y" and event.regname == "+" then
+          vim.cmd("OSCYankReg +")
+        end
+      end,
+      desc = "Copy to clipboard with OSCYank when using clipboard register",
+    },
     -- Clear highlighted references when moving the cursor
     {
       event = "CursorMoved",
