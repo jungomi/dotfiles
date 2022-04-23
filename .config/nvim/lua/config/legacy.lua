@@ -41,6 +41,11 @@ function M.setup()
   -- Fzf window at bottom of current window
   g.fzf_layout = { window = { width = 1.0, height = 0.4, relative = true, yoffset = 1.0, border = "top" } }
 
+  -- Set the snippets path to ~/.config/nvim/snippets
+  g.vsnip_snippet_dir = vim.fn.stdpath("config") .. "/snippets"
+  -- Reduce the delay for showing the choice menu
+  g.vsnip_choice_delay = 100
+
   legacy_mappings.enable_mappings()
 end
 

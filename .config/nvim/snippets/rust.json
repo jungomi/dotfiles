@@ -1,0 +1,37 @@
+{
+  "Println": {
+    "prefix": ["pln"],
+    "body": ["println!(\"${1}\");"],
+    "description": "println! with just a string"
+  },
+  "Println with argument": {
+    "prefix": ["pln,"],
+    "body": ["println!(\"${1}\", ${2});"],
+    "description": "println! with argument"
+  },
+  "Println with file name and line number": {
+    "prefix": ["pf"],
+    "body": ["println!(\"${TM_FILENAME}:${TM_LINE_NUMBER} ⇒ ${1}\");"],
+    "description": "println! with file name and line number"
+  },
+  "Println with file name and line number and argument": {
+    "prefix": ["pf,"],
+    "body": ["println!(\"${TM_FILENAME}:${TM_LINE_NUMBER} ⇒ ${1}\", ${2});"],
+    "description": "println! with file name and line number and argument"
+  },
+  "Println Debug": {
+    "prefix": ["pd"],
+    "body": ["println!(\"${2}{:?}\", ${1});"],
+    "description": "println! with debug argument"
+  },
+  "Println Debug (Pretty Print)": {
+    "prefix": ["pdd"],
+    "body": ["println!(\"${2}{:#?}\", ${1});"],
+    "description": "println! with debug argument (pretty print)"
+  },
+  "Println Debug with var equals": {
+    "prefix": ["pd=", "pdv"],
+    "body": ["println!(\"${1} = {:?}\", ${1});"],
+    "description": "println! with variable"
+  }
+}
