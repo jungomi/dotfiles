@@ -93,8 +93,6 @@ end
 local function completion_menu_confirm()
   if vim.fn.pumvisible() == 1 then
     return "<C-y>"
-  else
-    return "<C-l>"
   end
 end
 
@@ -102,8 +100,6 @@ end
 local function snip_prev()
   if vim.fn["vsnip#jumpable"](-1) == 1 then
     return "<Plug>(vsnip-jump-prev)"
-  else
-    return "<C-h>"
   end
 end
 
