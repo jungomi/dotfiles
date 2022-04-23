@@ -361,6 +361,9 @@ function M.setup()
     { text = " ", texthl = "DiagnosticSignInfo", numhl = "DiagnosticSignInfo" }
   )
 
+  -- Lightbulb for code actions
+  vim.fn.sign_define("LightBulbSign", { text = "💡", texthl = "DiagnosticSignWarn" })
+
   lsp_mappings.enable_mappings()
 end
 

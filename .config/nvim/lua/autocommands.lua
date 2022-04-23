@@ -1,3 +1,4 @@
+local lightbulb = require("nvim-lightbulb")
 local autocmd_utils = require("utils.autocmd")
 local file_utils = require("utils.file")
 
@@ -116,6 +117,13 @@ autocmd_utils.create_augroups({
       pattern = "*",
       command = "ColorizerAttachToBuffer",
       desc = "Refresh (CSS) colours when text changes",
+    },
+    -- Update lightbulb sign
+    {
+      event = "CursorHold",
+      pattern = "*",
+      callback = lightbulb.update_lightbulb,
+      desc = "Show a lightbulb sign if a code action is available for the current line",
     },
   },
 })
