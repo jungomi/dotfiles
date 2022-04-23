@@ -59,6 +59,8 @@ packer.startup(function(use)
   use({ "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" })
   -- Show a lightbulb sign if a code action is available for the current line
   use("kosayoda/nvim-lightbulb")
+  -- Progress bar/window for LSP servers
+  use("j-hui/fidget.nvim")
   -- Use other sources for LSP actions
   -- Mainly formatting Lua - not part of the language server for some reason
   use({ "jose-elias-alvarez/null-ls.nvim" })

@@ -13,6 +13,7 @@ local schemastore = require("schemastore")
 local cmp = require("cmp")
 local cmp_lsp = require("cmp_nvim_lsp")
 local trouble = require("trouble")
+local fidget = require("fidget")
 local lsp_mappings = require("mappings.lsp")
 local t = require("utils.map").t
 
@@ -336,6 +337,18 @@ function M.setup()
   trouble.setup({
     use_diagnostic_signs = true,
     indent_lines = true,
+  })
+
+  fidget.setup({
+    text = {
+      spinner = "circle_halves",
+    },
+    timer = {
+      fidget_decay = 1000,
+    },
+    window = {
+      blend = 0,
+    },
   })
 
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
