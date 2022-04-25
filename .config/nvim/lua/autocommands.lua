@@ -1,4 +1,5 @@
-local lightbulb = require("nvim-lightbulb")
+-- lightbulb might not be installed yet, so make sure it doesn't fail
+local _, lightbulb = pcall(require, "nvim-lightbulb")
 local autocmd_utils = require("utils.autocmd")
 local file_utils = require("utils.file")
 
@@ -122,7 +123,8 @@ autocmd_utils.create_augroups({
     {
       event = "CursorHold",
       pattern = "*",
-      callback = lightbulb.update_lightbulb,
+      -- No-op if lightbulb has not been installed yet
+      callback = lightbulb and lightbulb.update_lightbulb or function() end,
       desc = "Show a lightbulb sign if a code action is available for the current line",
     },
   },
