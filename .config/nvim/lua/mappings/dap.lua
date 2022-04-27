@@ -8,6 +8,8 @@ local M = {}
 function M.enable_mappings()
   -- Continue or start debugger if it's not running already
   nmap("<leader>dc", dap.continue, { desc = "Debugger » Continue" })
+  -- Quit the debugger (terminates the session and disconnects)
+  nmap("<leader>dq", dap.terminate, { desc = "Debugger » Quit" })
   -- Breakpoint
   nmap("<leader>db", dap.toggle_breakpoint, { desc = "Debugger » Breakpoint" })
   -- Step
