@@ -33,6 +33,8 @@ packer.startup(function(use)
   use("JoosepAlviste/nvim-ts-context-commentstring")
   -- Spellcheck based on TreeSitter nodes (e.g. comment only)
   use("lewis6991/spellsitter.nvim")
+  -- Generate DocStrings
+  use("danymat/neogen")
   use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", config = [[require("config.treesitter").setup()]] })
 
   -- :: Git

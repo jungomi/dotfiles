@@ -2,6 +2,8 @@ local M = {}
 
 local ts_configs = require("nvim-treesitter.configs")
 local ts_spell = require("spellsitter")
+local neogen = require("neogen")
+local treesitter_mappings = require("mappings.treesitter")
 
 function M.setup()
   ts_configs.setup({
@@ -40,6 +42,13 @@ function M.setup()
     -- Spell check in these groups
     captures = { "comment", "string" },
   })
+
+  neogen.setup({
+    -- Don't go into insert mode after creating the docs
+    input_after_comment = false,
+  })
+
+  treesitter_mappings.enable_mappings()
 end
 
 return M
