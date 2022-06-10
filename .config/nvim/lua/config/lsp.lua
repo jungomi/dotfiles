@@ -119,6 +119,15 @@ local custom_server_configs = {
       },
     },
   },
+  sumneko_lua = {
+    on_attach = function(client)
+      -- Disable sumneko_lua formatting because stylua is run with null-ls
+      client.resolved_capabilities.document_formatting = false
+      client.resolved_capabilities.document_range_formatting = false
+      -- Call the default on_attach
+      on_attach()
+    end,
+  },
   tsserver = {
     on_attach = function(client)
       -- Disable tsserver formatting because prettier is run with null-ls
