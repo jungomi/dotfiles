@@ -226,7 +226,7 @@ function M.setup()
       inlay_hints = {
         other_hints_prefix = "  ‣ ",
         parameter_hints_prefix = "  ⨍",
-        highlight = "LspInlineHint",
+        highlight = "DiagnosticVirtualTextHint",
         -- Disable parameter hints, because currently they are not
         -- showing consistently on every parameter.
         show_parameter_hints = false,
