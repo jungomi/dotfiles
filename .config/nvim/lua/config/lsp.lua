@@ -244,6 +244,14 @@ function M.setup()
     server = {
       on_attach = on_attach,
       capabilities = capabilities,
+      settings = {
+        ["rust-analyzer"] = {
+          checkOnSave = {
+            command = "clippy",
+            allFeatures = true,
+          },
+        },
+      },
     },
   })
 
