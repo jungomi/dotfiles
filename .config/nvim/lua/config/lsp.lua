@@ -29,6 +29,7 @@ local SERVERS = {
   "tsserver",
   "texlab",
   "dockerls",
+  "gopls",
 }
 
 local kind_icons = {
@@ -72,6 +73,14 @@ local source_names = {
 
 local function on_attach()
   lsp_signature.on_attach({})
+end
+
+local function on_attach_no_fmt(client)
+  -- Disable the LSP formatting because a formatter is run with null-ls
+  client.resolved_capabilities.document_formatting = false
+  client.resolved_capabilities.document_range_formatting = false
+  -- Call the default on_attach
+  on_attach()
 end
 
 -- LSP custom configs for various servers
@@ -119,23 +128,14 @@ local custom_server_configs = {
       },
     },
   },
+  gopls = {
+    on_attach = on_attach_no_fmt,
+  },
   sumneko_lua = {
-    on_attach = function(client)
-      -- Disable sumneko_lua formatting because stylua is run with null-ls
-      client.resolved_capabilities.document_formatting = false
-      client.resolved_capabilities.document_range_formatting = false
-      -- Call the default on_attach
-      on_attach()
-    end,
+    on_attach = on_attach_no_fmt,
   },
   tsserver = {
-    on_attach = function(client)
-      -- Disable tsserver formatting because prettier is run with null-ls
-      client.resolved_capabilities.document_formatting = false
-      client.resolved_capabilities.document_range_formatting = false
-      -- Call the default on_attach
-      on_attach()
-    end,
+    on_attach = on_attach_no_fmt,
   },
 }
 
@@ -223,6 +223,8 @@ function M.setup()
       }),
       null_ls.builtins.formatting.prettier,
       null_ls.builtins.diagnostics.eslint,
+      null_ls.builtins.formatting.goimports,
+      null_ls.builtins.formatting.gofumpt,
     },
   })
 
