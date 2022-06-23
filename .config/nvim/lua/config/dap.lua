@@ -12,19 +12,27 @@ local M = {}
 function M.setup()
   dap_ui.setup({
     icons = { expanded = "", collapsed = "" },
-    sidebar = {
-      elements = {
-        {
-          id = "scopes",
-          size = 0.50,
+    layouts = {
+      {
+        elements = {
+          { id = "scopes", size = 0.50 },
+          { id = "watches", size = 0.10 },
+          { id = "breakpoints", size = 0.20 },
+          { id = "stacks", size = 0.20 },
         },
-        { id = "watches", size = 0.10 },
-        { id = "breakpoints", size = 0.20 },
-        { id = "stacks", size = 0.20 },
+        size = 50,
+        position = "left",
       },
-      size = 50,
+      {
+        elements = {
+          "repl",
+        },
+        size = 20,
+        position = "bottom",
+      },
     },
   })
+
   dap_python.setup()
 
   -- Automatically open and close DAP UI when the debugger is started/exited
