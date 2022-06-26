@@ -87,6 +87,12 @@ packer.startup(function(use)
   use({ "numToStr/Comment.nvim", config = [[require("config.comment").setup()]] })
   -- Smooth scrolling
   use({ "karb94/neoscroll.nvim", config = [[require("config.scrolling").setup()]] })
+  -- Custom modes (continuous actions) e.g. resizing mode
+  use({
+    "anuvyklack/hydra.nvim",
+    requires = "anuvyklack/keymap-layer.nvim",
+    config = [[require("config.hydra").setup()]],
+  })
 
   -- >>> Legacy/VimScript plugins <<<
   -- Because there are no alternatives yet or they are just too good
