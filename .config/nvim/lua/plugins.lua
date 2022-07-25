@@ -70,8 +70,10 @@ packer.startup(function(use)
   use({ "simrat39/rust-tools.nvim", requires = "nvim-lua/plenary.nvim" })
   -- Schemas for JSON files to complete/display configurations options
   use("b0o/SchemaStore.nvim")
+  -- A package manager integrated into NeoVim (to install external dependencies)
+  use({ "williamboman/mason.nvim" })
   -- Install language servers automatically
-  use({ "williamboman/nvim-lsp-installer", config = [[require("config.lsp").setup()]] })
+  use({ "williamboman/mason-lspconfig.nvim", config = [[require("config.lsp").setup()]] })
 
   -- Lua to recognise nvim API
   use("folke/lua-dev.nvim")
