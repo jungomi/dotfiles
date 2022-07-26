@@ -87,6 +87,8 @@ packer.startup(function(use)
   -- :: Misc
   -- Commenting out code
   use({ "numToStr/Comment.nvim", config = [[require("config.comment").setup()]] })
+  -- Yank over SSH with ANSI OSC52 escape sequence
+  use("ojroques/nvim-osc52")
   -- Smooth scrolling
   use({ "karb94/neoscroll.nvim", config = [[require("config.scrolling").setup()]] })
   -- Custom modes (continuous actions) e.g. resizing mode
@@ -132,8 +134,6 @@ packer.startup(function(use)
   use({ "iamcco/markdown-preview.nvim", run = "cd app & yarn install", ft = { "markdown" } })
   -- Generate Table of Contents (ToC) and automatically keep it update to date.
   use("mzlogin/vim-markdown-toc")
-  -- Yank over SSH with ANSI OSC52 escape sequence
-  use("ojroques/vim-oscyank")
 
   -- Fzf (fuzzy finder)
   -- Just too good compared to the alternatives.
