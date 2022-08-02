@@ -1,4 +1,6 @@
 local Hydra = require("hydra")
+local dap = require("dap")
+local dap_utils = require("utils.dap")
 local gitsigns = require("gitsigns")
 
 local M = {}
@@ -116,6 +118,48 @@ function M.setup()
         end,
       },
       { "<Enter>", "<cmd>Git<CR>", { exit = true } },
+      { "<Esc>", nil, { exit = true, nowait = true } },
+      { "q", nil, { exit = true, nowait = true } },
+    },
+  })
+
+  Hydra({
+    name = "Debugger",
+    body = "<leader>hd",
+    mode = "n",
+    hint = [[
+ ^ ^                Debugger
+ ^ ^               ‾‾‾‾‾‾‾‾‾‾
+ _c_: Continue            _b_: Toggle breakpoint
+ _h_: Run to cursor       _y_: Conditional breakpoint
+ _s_: Step over           _l_: Log point
+ _i_: Step into           _t_: Hit count breakpoint
+ _o_: Step out        _<C-c>_: Terminate debugger
+ ^
+ ^ ^            _<Esc>_/_q_: Exit
+]],
+    config = {
+      color = "pink",
+      invoke_on_body = true,
+      hint = {
+        position = "bottom",
+        border = "rounded",
+      },
+      on_enter = function()
+        vim.bo.modifiable = false
+      end,
+    },
+    heads = {
+      { "c", dap.continue, { nowait = true } },
+      { "h", dap.run_to_cursor, { nowait = true } },
+      { "s", dap.step_over, { nowait = true } },
+      { "i", dap.step_into, { nowait = true } },
+      { "o", dap.step_out, { nowait = true } },
+      { "b", dap.toggle_breakpoint, { nowait = true } },
+      { "y", dap_utils.set_conditional_breakpoint, { nowait = true } },
+      { "l", dap_utils.set_log_point, { nowait = true } },
+      { "t", dap_utils.set_hit_count_breakpoint, { nowait = true } },
+      { "<C-c>", dap.terminate, { exit = true, nowait = true } },
       { "<Esc>", nil, { exit = true, nowait = true } },
       { "q", nil, { exit = true, nowait = true } },
     },
