@@ -48,9 +48,9 @@ local diagnostic_kinds = {
 }
 
 -- Default styles of the three types of buffers to override unwanted styles
-local hidden = { guifg = colours.grey, guibg = colours.dark_border }
-local visible = { guifg = colours.grey, guibg = colours.cursor_line }
-local selected = { guifg = colours.fg, guibg = colours.bg, gui = "bold" }
+local hidden = { fg = colours.grey, bg = colours.dark_border }
+local visible = { fg = colours.grey, bg = colours.cursor_line }
+local selected = { fg = colours.fg, bg = colours.bg, bold = true, italic = false }
 
 local function diagnostics_indicator(count, level, diagnostics_dict, context)
   local parts = {}
@@ -90,8 +90,8 @@ function M.setup()
       separator_style = { "", "" },
     },
     highlights = {
-      fill = { guibg = colours.dark_border },
-      tab_selected = { guifg = colours.blue, guibg = colours.border, gui = "bold" },
+      fill = { bg = colours.dark_border },
+      tab_selected = { fg = colours.blue, bg = colours.border, bold = true, italic = false },
       buffer_selected = selected,
       buffer_visible = visible,
       background = hidden,
@@ -99,24 +99,34 @@ function M.setup()
       diagnostic_selected = selected,
       error_selected = selected,
       warning_selected = selected,
+      hint_selected = selected,
       info_selected = selected,
       diagnostic_visible = visible,
       error_visible = visible,
       warning_visible = visible,
+      hint_visible = visible,
       info_visible = visible,
       diagnostic = hidden,
       error = hidden,
       warning = hidden,
+      hint = hidden,
       info = hidden,
-      duplicate = { guifg = colours.grey, guibg = colours.dark_border, gui = "italic" },
-      duplicate_visible = { guifg = colours.grey, guibg = colours.cursor_line, gui = "italic" },
-      duplicate_selected = { guifg = colours.grey, guibg = colours.bg, gui = "italic" },
+      duplicate = { fg = colours.grey, bg = colours.dark_border, italic = true },
+      duplicate_visible = { fg = colours.grey, bg = colours.cursor_line, italic = true },
+      duplicate_selected = { fg = colours.grey, bg = colours.bg, italic = true },
       modified = hidden,
       modified_visible = visible,
       modified_selected = selected,
-      pick = { guifg = colours.red, guibg = colours.dark_border },
-      pick_visible = { guifg = colours.red, guibg = colours.cursor_line },
-      pick_selected = { guifg = colours.red, guibg = colours.bg },
+      pick = { fg = colours.red, bg = colours.dark_border },
+      pick_visible = { fg = colours.red, bg = colours.cursor_line },
+      pick_selected = { fg = colours.red, bg = colours.bg },
+      separator = hidden,
+      separator_selected = selected,
+      separator_visible = visible,
+      numbers = hidden,
+      numbers_selected = selected,
+      numbers_visible = visible,
+      indicator_visible = visible,
     },
   })
   buffer_line_mappings.enable_mappings()

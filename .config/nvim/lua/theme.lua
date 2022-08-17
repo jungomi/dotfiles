@@ -218,16 +218,6 @@ local theme = {
     CmpItemMenu = { fg = colours.grey },
   },
   bufferline = {
-    -- Numbers are somehow not correct
-    BufferLineNumbersSelected = { fg = colours.fg, bg = colours.bg, bold = true },
-    BufferLineNumbersVisible = { fg = colours.grey, bg = colours.cursor_line },
-    BufferLineNumbers = { fg = colours.grey, bg = colours.dark_border },
-    -- Don't know why Hints are not correct, but Info are, even though both should be pretty much the same.
-    -- So just link the Hint ones to Info to get what it's supposed to be.
-    BufferLineHintSelected = { link = "BufferLineInfoSelected" },
-    BufferLineHintVisible = { link = "BufferLineInfoVisible" },
-    BufferLineHint = { link = "BufferLineInfo" },
-
     -- Three for each kind, because there are three types of buffers with different backgrounds.
     -- The names are shortcuts to work around highlight groups counting towards length of the
     -- bufferline, because it counts the number of characters.
