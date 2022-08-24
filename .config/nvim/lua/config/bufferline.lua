@@ -86,7 +86,10 @@ function M.setup()
       -- Tab numbers at the right end
       show_tab_indicators = true,
       diagnostics_indicator = diagnostics_indicator,
-      indicator_icon = "▍",
+      indicator = {
+        icon = "▍",
+        style = "icon",
+      },
       separator_style = { "", "" },
     },
     highlights = {
