@@ -8,7 +8,7 @@ opt.hidden = true
 opt.lazyredraw = true
 opt.updatetime = 300
 -- Leave my cursor alone, don't want a different cursor in different modes
-opt.guicursor = ""
+opt.guicursor = "a:block"
 opt.title = true
 opt.shortmess = "atIcF"
 -- Always show the sign gutter
