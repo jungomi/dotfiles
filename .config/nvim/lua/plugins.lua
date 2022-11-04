@@ -76,7 +76,7 @@ packer.startup(function(use)
   use({ "williamboman/mason-lspconfig.nvim", config = [[require("config.lsp").setup()]] })
 
   -- Lua to recognise nvim API
-  use("folke/lua-dev.nvim")
+  use("folke/neodev.nvim")
 
   -- :: Debugger
   use("mfussenegger/nvim-dap")

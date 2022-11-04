@@ -3,7 +3,7 @@ local mason = require("mason")
 local mason_lsp = require("mason-lspconfig")
 local lsp_signature = require("lsp_signature")
 local null_ls = require("null-ls")
-local lua_dev = require("lua-dev")
+local neodev = require("neodev")
 local rust_tools = require("rust-tools")
 local schemastore = require("schemastore")
 local cmp = require("cmp")
@@ -72,12 +72,9 @@ local function on_attach()
 end
 
 local function on_attach_no_fmt(client)
-  -- Disable the LSP formatting because a formatter is run with null-ls
-  client.resolved_capabilities.document_formatting = false
-  client.resolved_capabilities.document_range_formatting = false
   -- For future versions
-  -- client.server_capabilities.documentFormattingProvider = false
-  -- client.server_capabilities.documentRangeFormattingProvider = false
+  client.server_capabilities.documentFormattingProvider = false
+  client.server_capabilities.documentRangeFormattingProvider = false
   -- Call the default on_attach
   on_attach()
 end
@@ -138,9 +135,8 @@ local custom_server_configs = {
   },
 }
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
 -- More capabilities are supported by nvim-cmp, such as Snippets
-capabilities = cmp_lsp.update_capabilities(capabilities)
+local capabilities = cmp_lsp.default_capabilities()
 
 local default_config = {
   on_attach = on_attach,
@@ -149,14 +145,10 @@ local default_config = {
 
 -- Setup all installed servers
 function M.setup_servers()
-  for server_name, config in pairs(custom_server_configs) do
+  for server_name, _ in pairs(custom_server_configs) do
     -- Add a new config, the server is not even present in lsp_config
     -- extend_lsp_config(server_name, config)
     local opts = vim.tbl_deep_extend("force", {}, default_config, custom_server_configs[server_name] or {})
-    if server_name == "sumneko_lua" then
-      -- For the nvim lua integration the config needs to extended
-      opts = lua_dev.setup({ lspconfig = opts })
-    end
     lsp_config[server_name].setup(opts)
   end
 end
@@ -182,6 +174,8 @@ function M.setup()
   mason_lsp.setup({
     ensure_installed = SERVERS,
   })
+
+  neodev.setup({})
   M.setup_servers()
 
   null_ls.setup({

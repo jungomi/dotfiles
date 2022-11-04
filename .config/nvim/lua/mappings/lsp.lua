@@ -5,9 +5,8 @@ local imap = map_utils.imap
 local M = {}
 
 _G.lsp_toggle = function()
-  if next(vim.lsp.buf_get_clients()) == nil then
-    -- No LSP is running in the current buffer,
-    -- therefore try to start one.
+  if next(vim.lsp.get_active_clients()) == nil then
+    -- No LSP is running therefore try to start one.
     vim.api.nvim_command("LspStart")
   else
     vim.api.nvim_command("LspStop")
@@ -17,7 +16,9 @@ end
 function M.enable_mappings()
   -- Go to definition
   nmap("<leader>ld", vim.lsp.buf.definition, { desc = "LSP » Go to definition" })
-  nmap("<leader>lf", vim.lsp.buf.formatting, { desc = "LSP » Format" })
+  nmap("<leader>lf", function()
+    vim.lsp.buf.format({ async = true })
+  end, { desc = "LSP » Format" })
   -- Highlight references
   nmap("<leader>lh", vim.lsp.buf.document_highlight, { desc = "LSP » Highlight references" })
   nmap("<leader>lr", vim.lsp.buf.rename, { desc = "LSP » Rename" })
