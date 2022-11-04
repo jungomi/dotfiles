@@ -120,25 +120,27 @@ local theme = {
     Underlined = { underline = true },
   },
   treesitter = {
-    -- Only groups that are not linked to the desired default, rest (mostly TSxxx -> xxx) is skipped
-    -- e.g. TSBoolean -> Boolean (skipped)
-    TSConstBuiltin = { link = "Constant" },
-    TSConstMacro = { link = "Macro" },
-    TSConstructor = { link = "Function" },
-    TSError = { link = "Error" },
-    TSField = { fg = colours.fg },
-    TSFuncBuiltin = { link = "Function" },
-    TSInclude = { fg = colours.purple },
-    TSKeywordOperator = { fg = colours.purple },
-    TSNamespace = { fg = colours.red },
-    TSNote = { fg = colours.cyan, bold = true },
-    TSParameter = { fg = colours.cyan },
-    TSProperty = { fg = colours.cyan },
-    TSSymbol = { fg = colours.cyan },
-    TSVariable = { fg = colours.fg },
-    TSTag = { fg = colours.purple },
+    -- Only groups that are not linked to the desired default, rest (mostly @xxx -> xxx) is skipped
+    -- This now uses the tree sitter capture groups (@xxx) instead of prefixed ones such as TSxxx.
+    -- e.g. @boolean -> Boolean (skipped)
+    ["@constant.builtin"] = { link = "Constant" },
+    ["@constant.macro"] = { link = "Macro" },
+    ["@constructor"] = { link = "Function" },
+    ["@error"] = { link = "Error" },
+    ["@field"] = { fg = colours.fg },
+    ["@function.builtin"] = { link = "Function" },
+    ["@include"] = { fg = colours.purple },
+    ["@keyword.operator"] = { fg = colours.purple },
+    ["@namespace"] = { fg = colours.red },
+    ["@note"] = { fg = colours.cyan, bold = true },
+    ["@parameter"] = { fg = colours.cyan },
+    ["@property"] = { fg = colours.cyan },
+    ["@symbol"] = { fg = colours.cyan },
+    ["@variable"] = { fg = colours.fg },
+    ["@tag"] = { fg = colours.purple },
 
-    yamlTSField = { fg = colours.red },
+    -- Filetype specific (by adding the .extension at the end)
+    ["@field.yaml"] = { fg = colours.red },
   },
   lsp = {
     -- Defaults (mostly for fallbacks)
