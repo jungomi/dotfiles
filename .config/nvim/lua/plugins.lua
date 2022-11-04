@@ -15,18 +15,32 @@ packer.startup(function(use)
   use({
     "hoob3rt/lualine.nvim",
     requires = "kyazdani42/nvim-web-devicons",
-    config = [[require("config.statusline").setup()]],
+    config = function()
+      require("config.statusline").setup()
+    end,
   })
   -- Buffer/Tabs
   use({
     "akinsho/nvim-bufferline.lua",
     requires = "kyazdani42/nvim-web-devicons",
-    config = [[require("config.bufferline").setup()]],
+    config = function()
+      require("config.bufferline").setup()
+    end,
   })
   -- Highlight colour definitions (e.g. Blue, #555d60)
-  use({ "norcalli/nvim-colorizer.lua", config = [[require("colorizer").setup()]] })
+  use({
+    "norcalli/nvim-colorizer.lua",
+    config = function()
+      require("colorizer").setup()
+    end,
+  })
   -- Improved UI for vim.ui.select and vim.ui.input (e.g. floating window for LSP rename)
-  use({ "stevearc/dressing.nvim", config = [[require("dressing").setup({ input = { insert_only = false } })]] })
+  use({
+    "stevearc/dressing.nvim",
+    config = function()
+      require("dressing").setup({ input = { insert_only = false } })
+    end,
+  })
 
   -- :: TreeSitter
   use("nvim-treesitter/playground")
@@ -35,10 +49,22 @@ packer.startup(function(use)
   use("lewis6991/spellsitter.nvim")
   -- Generate DocStrings
   use("danymat/neogen")
-  use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", config = [[require("config.treesitter").setup()]] })
+  use({
+    "nvim-treesitter/nvim-treesitter",
+    run = ":TSUpdate",
+    config = function()
+      require("config.treesitter").setup()
+    end,
+  })
 
   -- :: Git
-  use({ "lewis6991/gitsigns.nvim", requires = "nvim-lua/plenary.nvim", config = [[require("config.git").setup()]] })
+  use({
+    "lewis6991/gitsigns.nvim",
+    requires = "nvim-lua/plenary.nvim",
+    config = function()
+      require("config.git").setup()
+    end,
+  })
 
   -- :: Language Server (LSP)
   use("neovim/nvim-lspconfig")
@@ -73,7 +99,12 @@ packer.startup(function(use)
   -- A package manager integrated into NeoVim (to install external dependencies)
   use({ "williamboman/mason.nvim" })
   -- Install language servers automatically
-  use({ "williamboman/mason-lspconfig.nvim", config = [[require("config.lsp").setup()]] })
+  use({
+    "williamboman/mason-lspconfig.nvim",
+    config = function()
+      require("config.lsp").setup()
+    end,
+  })
 
   -- Lua to recognise nvim API
   use("folke/neodev.nvim")
@@ -82,20 +113,37 @@ packer.startup(function(use)
   use("mfussenegger/nvim-dap")
   use("mfussenegger/nvim-dap-python")
   use("theHamsta/nvim-dap-virtual-text")
-  use({ "rcarriga/nvim-dap-ui", config = [[require("config.dap").setup()]] })
+  use({
+    "rcarriga/nvim-dap-ui",
+    config = function()
+      require("config.dap").setup()
+    end,
+  })
 
   -- :: Misc
   -- Commenting out code
-  use({ "numToStr/Comment.nvim", config = [[require("config.comment").setup()]] })
+  use({
+    "numToStr/Comment.nvim",
+    config = function()
+      require("config.comment").setup()
+    end,
+  })
   -- Yank over SSH with ANSI OSC52 escape sequence
   use("ojroques/nvim-osc52")
   -- Smooth scrolling
-  use({ "karb94/neoscroll.nvim", config = [[require("config.scrolling").setup()]] })
+  use({
+    "karb94/neoscroll.nvim",
+    config = function()
+      require("config.scrolling").setup()
+    end,
+  })
   -- Custom modes (continuous actions) e.g. resizing mode
   use({
     "anuvyklack/hydra.nvim",
     requires = "anuvyklack/keymap-layer.nvim",
-    config = [[require("config.hydra").setup()]],
+    config = function()
+      require("config.hydra").setup()
+    end,
   })
 
   -- >>> Legacy/VimScript plugins <<<
