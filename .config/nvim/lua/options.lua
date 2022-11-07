@@ -7,6 +7,9 @@ opt.number = true
 opt.hidden = true
 opt.lazyredraw = true
 opt.updatetime = 300
+-- Only enable mouse in command mode, don't want any mouse support really, but that's the
+-- one place it could see myself using it (because other bindings don't really work well)
+opt.mouse = "c"
 -- Leave my cursor alone, don't want a different cursor in different modes
 opt.guicursor = "a:block"
 opt.title = true
