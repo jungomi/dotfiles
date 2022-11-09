@@ -132,12 +132,16 @@ local theme = {
     ["@include"] = { fg = colours.purple },
     ["@keyword.operator"] = { fg = colours.purple },
     ["@namespace"] = { fg = colours.red },
-    ["@note"] = { fg = colours.cyan, bold = true },
     ["@parameter"] = { fg = colours.cyan },
     ["@property"] = { fg = colours.cyan },
     ["@symbol"] = { fg = colours.cyan },
     ["@variable"] = { fg = colours.fg },
     ["@tag"] = { fg = colours.purple },
+    -- Tags in comments, such as TODO or NOTE. Where @text.note is the generic (parent) group.
+    ["@text.note"] = { fg = colours.cyan, bold = true },
+    -- For some reason TODO is also a @text.warning instead of a separate entity.
+    ["@text.warning"] = { fg = colours.purple, bold = true },
+    ["@text.danger"] = { fg = colours.red, bold = true },
 
     -- Filetype specific (by adding the .extension at the end)
     ["@field.yaml"] = { fg = colours.red },
