@@ -26,6 +26,7 @@ local SERVERS = {
   "texlab",
   "dockerls",
   "gopls",
+  "ruff_lsp",
 }
 
 local kind_icons = {
@@ -99,9 +100,9 @@ local custom_server_configs = {
     settings = {
       pylsp = {
         plugins = {
-          -- Use flake8 for code style instead of pycodestyle
+          -- Turn off all linters because ruff is used separately
           flake8 = {
-            enabled = true,
+            enabled = false,
           },
           pyflakes = {
             enabled = false,
@@ -124,6 +125,8 @@ local custom_server_configs = {
       },
     },
   },
+  -- Ruff is used for linting of Python files (much faster than flake8)
+  ruff_lsp = {},
   gopls = {
     on_attach = on_attach_no_fmt,
   },
