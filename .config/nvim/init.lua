@@ -3,4 +3,4 @@ require("mappings")
 require("autocommands")
 require("theme").load_theme()
 -- Load plugins
-require("plugins")
+require("load_plugins")
