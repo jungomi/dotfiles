@@ -12,7 +12,7 @@ return {
   -- Snippets (potential alternative: L3MON4D3/LuaSnip but currently not up to par)
   {
     "hrsh7th/vim-vsnip",
-    depdendencies = {
+    dependencies = {
       "rafamadriz/friendly-snippets",
     },
   },
@@ -68,7 +68,7 @@ return {
     dependencies = {
       {
         "junegunn/fzf",
-        run = function()
+        build = function()
           vim.fn["fzf#install"]()
         end,
       },
