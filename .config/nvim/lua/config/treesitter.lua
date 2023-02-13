@@ -12,7 +12,7 @@ function M.setup()
       enable = true,
       -- TreeSitter highlighting isn't great for these,
       -- use regular syntax highlighting instead.
-      disable = { "rust" },
+      disable = { "rust", "gitcommit" },
     },
     -- Indentation doesn't work well yet
     indent = {

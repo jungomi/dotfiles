@@ -142,6 +142,9 @@ local theme = {
     -- For some reason TODO is also a @text.warning instead of a separate entity.
     ["@text.warning"] = { fg = colours.purple, bold = true },
     ["@text.danger"] = { fg = colours.red, bold = true },
+    -- Diffs within Treesitter such as in git commits
+    ["@text.diff.add"] = { fg = colours.green },
+    ["@text.diff.delete"] = { fg = colours.red },
 
     -- Filetype specific (by adding the .extension at the end)
     ["@field.yaml"] = { fg = colours.red },
