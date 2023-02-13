@@ -21,7 +21,7 @@ local SERVERS = {
   "yamlls",
   "bashls",
   "cmake",
-  "sumneko_lua",
+  "lua_ls",
   "tsserver",
   "texlab",
   "dockerls",
@@ -129,7 +129,7 @@ local custom_server_configs = {
   gopls = {
     on_attach = on_attach_no_fmt,
   },
-  sumneko_lua = {
+  lua_ls = {
     on_attach = on_attach_no_fmt,
   },
   tsserver = {
@@ -284,7 +284,7 @@ function M.setup()
       end,
     },
     mapping = {
-      ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+      ["<C-Space>"] = cmp.mapping(cmp.mapping.complete({}), { "i", "c" }),
       ["<C-j>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
