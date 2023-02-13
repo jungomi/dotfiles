@@ -240,7 +240,7 @@ function M.setup()
         border = "rounded",
       },
     },
-    sources = {
+    sources = cmp.config.sources({
       -- The order defines the priority during the completion
       { name = "nvim_lsp" },
       { name = "nvim_lua" },
@@ -256,6 +256,11 @@ function M.setup()
           end,
         },
       },
+    }, {
+      -- This is a separate group, meaning that it will only be triggered when the
+      -- there is no match from the group above.
+      -- Tmux priority was just way out of order, but I occasionally still use it,
+      -- mostly for something that is not matched anyway.
       {
         name = "tmux",
         option = {
@@ -263,7 +268,7 @@ function M.setup()
           all_panes = true,
         },
       },
-    },
+    }),
     formatting = {
       format = function(entry, vim_item)
         local icon = kind_icons[vim_item.kind]
