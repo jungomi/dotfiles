@@ -26,6 +26,7 @@ local SERVERS = {
   "texlab",
   "dockerls",
   "gopls",
+  -- Ruff is used for linting of Python files (much faster than flake8)
   "ruff_lsp",
 }
 
@@ -125,8 +126,6 @@ local custom_server_configs = {
       },
     },
   },
-  -- Ruff is used for linting of Python files (much faster than flake8)
-  ruff_lsp = {},
   gopls = {
     on_attach = on_attach_no_fmt,
   },
@@ -148,10 +147,15 @@ local default_config = {
 
 -- Setup all installed servers
 function M.setup_servers()
-  for server_name, _ in pairs(custom_server_configs) do
-    -- Add a new config, the server is not even present in lsp_config
-    -- extend_lsp_config(server_name, config)
-    local opts = vim.tbl_deep_extend("force", {}, default_config, custom_server_configs[server_name] or {})
+  local server_configs = vim.deepcopy(custom_server_configs)
+  for _, server_name in ipairs(SERVERS) do
+    if not server_configs[server_name] then
+      -- Use an empty config for the installed servers without a custom config
+      server_configs[server_name] = {}
+    end
+  end
+  for server_name, config in pairs(server_configs) do
+    local opts = vim.tbl_deep_extend("force", {}, default_config, config)
     lsp_config[server_name].setup(opts)
   end
 end
