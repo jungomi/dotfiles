@@ -17,6 +17,13 @@ return {
       require("config.bufferline").setup()
     end,
   },
+  -- Show buffer name similar to a winbar but with floating window
+  {
+    "b0o/incline.nvim",
+    config = function()
+      require("config.winbar").setup()
+    end,
+  },
   -- Highlight colour definitions (e.g. Blue, #555d60)
   {
     "norcalli/nvim-colorizer.lua",
@@ -30,5 +37,15 @@ return {
     config = function()
       require("dressing").setup({ input = { insert_only = false } })
     end,
+  },
+  {
+    "folke/noice.nvim",
+    config = function()
+      require("config.noice").setup()
+    end,
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    },
   },
 }

@@ -5,7 +5,8 @@ opt.syntax = "on"
 opt.termguicolors = true
 opt.number = true
 opt.hidden = true
-opt.lazyredraw = true
+opt.lazyredraw = false
+opt.background = "light"
 opt.updatetime = 300
 -- Only enable mouse in command mode, don't want any mouse support really, but that's the
 -- one place it could see myself using it (because other bindings don't really work well)

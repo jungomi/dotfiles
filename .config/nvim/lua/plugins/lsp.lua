@@ -1,7 +1,5 @@
 return {
   "neovim/nvim-lspconfig",
-  -- Highlight current parameter during signature help
-  "ray-x/lsp_signature.nvim",
   -- Completion
   {
     "hrsh7th/nvim-cmp",
@@ -22,8 +20,6 @@ return {
   },
   -- Show a lightbulb sign if a code action is available for the current line
   "kosayoda/nvim-lightbulb",
-  -- Progress bar/window for LSP servers
-  "j-hui/fidget.nvim",
   -- Use other sources for LSP actions
   -- Mainly formatting Lua - not part of the language server for some reason
   "jose-elias-alvarez/null-ls.nvim",

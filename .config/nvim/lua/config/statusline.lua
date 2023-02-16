@@ -1,6 +1,6 @@
 local lua_line = require("lualine")
 local colours = require("theme").colours
-local dap = require("dap")
+local noice = require("noice")
 
 local M = {}
 
@@ -77,6 +77,11 @@ end
 
 local function right()
   return {
+    {
+      noice.api.status.mode.get,
+      cond = noice.api.status.mode.has,
+      color = { fg = colours.purple, gui = "bold" },
+    },
     { tabs_and_spaces },
     "fileformat",
     "encoding",
@@ -122,18 +127,17 @@ end
 function M.setup()
   lua_line.setup({
     options = {
+      globalstatus = true,
       -- Disable separators
       component_separators = "",
       section_separators = "",
       theme = {
         -- lualine_c is used as left and lualine_x as right
         normal = {
-          b = { fg = colours.statusline.text, bg = colours.bg, gui = "bold" },
-          c = { fg = colours.statusline.text, bg = colours.statusline.active, gui = "bold" },
+          c = { fg = colours.dark_grey, bg = colours.dark_border, gui = "bold" },
         },
         inactive = {
-          b = { fg = colours.statusline.text, bg = colours.bg, gui = "bold" },
-          c = { fg = colours.statusline.text, bg = colours.statusline.inactive },
+          c = { fg = colours.grey, bg = colours.cursor_line },
         },
       },
     },

@@ -1,7 +1,6 @@
 local lsp_config = require("lspconfig")
 local mason = require("mason")
 local mason_lsp = require("mason-lspconfig")
-local lsp_signature = require("lsp_signature")
 local null_ls = require("null-ls")
 local neodev = require("neodev")
 local rust_tools = require("rust-tools")
@@ -9,7 +8,6 @@ local schemastore = require("schemastore")
 local cmp = require("cmp")
 local cmp_lsp = require("cmp_nvim_lsp")
 local trouble = require("trouble")
-local fidget = require("fidget")
 local lsp_mappings = require("mappings.lsp")
 local t = require("utils.map").t
 
@@ -70,7 +68,7 @@ local source_names = {
 }
 
 local function on_attach()
-  lsp_signature.on_attach({})
+  -- Currently empty by default, as the ones used previously are no longer necessary.
 end
 
 local function on_attach_no_fmt(client)
@@ -331,18 +329,6 @@ function M.setup()
   trouble.setup({
     use_diagnostic_signs = true,
     indent_lines = true,
-  })
-
-  fidget.setup({
-    text = {
-      spinner = "circle_halves",
-    },
-    timer = {
-      fidget_decay = 1000,
-    },
-    window = {
-      blend = 0,
-    },
   })
 
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {

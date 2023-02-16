@@ -23,13 +23,8 @@ local colours = {
   border = "#f4efd9",
   cursor_line = "#eee8d5",
 
+  dark_grey = "#7a7a7a",
   dark_border = "#cac4b5",
-
-  statusline = {
-    text = "#bbc2cf",
-    active = "#242b37",
-    inactive = "#485364",
-  },
 }
 
 local theme = {
@@ -60,8 +55,8 @@ local theme = {
     TabLineFill = { bg = colours.border, fg = colours.grey },
     TabLineSel = { bg = colours.purple, fg = colours.grey },
 
-    StatusLine = { bg = colours.statusline.active, fg = colours.statusline.text, bold = true },
-    StatusLineNC = { bg = colours.statusline.inactive, fg = colours.statusline.text },
+    StatusLine = { fg = colours.dark_grey, bg = colours.dark_border, bold = true },
+    StatusLineNC = { fg = colours.grey, bg = colours.cursor_line },
 
     PMenu = { bg = colours.cursor_line },
     PMenuSel = { bg = colours.yellow },
@@ -184,6 +179,9 @@ local theme = {
     LspReferenceText = { bg = colours.cursor_line },
     LspReferenceRead = { bg = colours.cursor_line },
     LspReferenceWrite = { bg = colours.cursor_line },
+
+    -- Signature popup
+    LspSignatureActiveParameter = { link = "Search" },
 
     -- Trouble
     TroubleIndent = { fg = colours.grey },
@@ -333,6 +331,36 @@ local theme = {
     markdownH4Delimiter = { link = "markdownH4" },
     markdownH5Delimiter = { link = "markdownH5" },
     markdownH6Delimiter = { link = "markdownH6" },
+  },
+  notify = {
+    NotifyINFOTitle = { link = "ModeMsg" },
+    NotifyWARNTitle = { link = "DiagnosticWarn" },
+    NotifyERRORTitle = { link = "DiagnosticError" },
+    NotifyTRACETitle = { link = "DiagnosticHint" },
+
+    NotifyINFOIcon = { link = "NotifyINFOTitle" },
+    NotifyWARNIcon = { link = "NotifyWARNTitle" },
+    NotifyERRORIcon = { link = "NotifyERRORTitle" },
+    NotifyTRACEIcon = { link = "NotifyTRACETitle" },
+  },
+  noice = {
+    NoiceCmdlineIcon = { link = "DiagnosticInfo" },
+    NoiceCmdlineIconSearch = { link = "DiagnosticWarn" },
+
+    NoiceCmdlinePopupBorder = { link = "NoiceCmdlineIcon" },
+    NoiceCmdlinePopupBorderSearch = { link = "NoiceCmdlineIconSearch" },
+    NoiceConfirmBorder = { link = "NoiceCmdlinePopupBorder" },
+
+    NoiceMini = { fg = colours.grey, bg = colours.cursor_line },
+    NoiceFormatProgressDone = { fg = colours.grey, bg = colours.dark_border, bold = true },
+    NoiceFormatProgressTodo = { fg = colours.dark_border, bold = true },
+    NoiceLspProgressTitle = { fg = colours.grey },
+    NoiceLspProgressSpinner = { fg = colours.grey, bold = true },
+  },
+  -- Floating Winbar showing buffer name at the top right of the window
+  incline = {
+    InclineNormal = { fg = colours.grey, bg = colours.cursor_line, bold = true },
+    InclineNormalNC = { fg = colours.grey, bg = colours.border },
   },
 }
 
