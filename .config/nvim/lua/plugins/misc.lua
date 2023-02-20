@@ -6,6 +6,21 @@ return {
       require("config.comment").setup()
     end,
   },
+  {
+    "kylechui/nvim-surround",
+    config = function()
+      require("nvim-surround").setup({
+        keymaps = {
+          normal = "sa",
+          normal_cur = "sas",
+          delete = "sd",
+          change = "sr",
+        },
+        -- Don't move to the opening symbol after the action.
+        move_cursor = false,
+      })
+    end,
+  },
   -- Yank over SSH with ANSI OSC52 escape sequence
   "ojroques/nvim-osc52",
   -- Smooth scrolling

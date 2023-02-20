@@ -28,11 +28,6 @@ return {
   "godlygeek/tabular",
   -- Swap two regions of text
   "tommcdo/vim-exchange",
-  -- Manipulate surrounding parentheses, quotes, etc.
-  -- I had used vim-surround for the longest time, but vim-sandwich is just superior.
-  -- Better feedback (visual and timeout), interactive surroundings, func, double count, etc.
-  -- I was reluctant because it maps `s`, but it does make it simpler to use, just need to get used to it.
-  "machakann/vim-sandwich",
   -- Run shell commands asynchronously
   "skywind3000/asyncrun.vim",
   -- Live preview of markdown files
