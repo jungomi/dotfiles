@@ -362,6 +362,9 @@ local theme = {
     InclineNormal = { fg = colours.grey, bg = colours.cursor_line, bold = true },
     InclineNormalNC = { fg = colours.grey, bg = colours.border },
   },
+  which_key = {
+    WhichKey = { link = "Special" },
+  },
 }
 
 local M = {

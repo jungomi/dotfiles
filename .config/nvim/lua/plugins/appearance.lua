@@ -48,4 +48,19 @@ return {
       "rcarriga/nvim-notify",
     },
   },
+  {
+    "folke/which-key.nvim",
+    config = function()
+      require("which-key").setup({
+        plugins = {
+          spelling = {
+            enabled = true,
+          },
+        },
+        window = {
+          border = "single",
+        },
+      })
+    end,
+  },
 }
