@@ -365,6 +365,12 @@ local theme = {
   which_key = {
     WhichKey = { link = "Special" },
   },
+  telescope = {
+    TelescopeResultsDiffAdd = { fg = colours.green, bold = true },
+    TelescopeResultsDiffChange = { fg = colours.orange, bold = true },
+    TelescopeResultsDiffDelete = { fg = colours.red, bold = true },
+    TelescopeResultsDiffUntracked = { fg = colours.red },
+  },
 }
 
 local M = {

@@ -12,22 +12,6 @@ function M.enable_mappings()
   nmap("<leader>gd", "<Cmd>Gdiffsplit<CR>", { desc = "Git » Diff" })
   nmap("<leader>gs", "<Cmd>Git<CR>", { desc = "Git » Status" })
 
-  -- Fzf
-  nmap("<leader>ff", "<Cmd>Files<CR>", { desc = "Fzf » Files" })
-  -- Config files
-  nmap("<leader>fv", string.format("<Cmd>Files %s<CR>", vim.fn.stdpath("config")), { desc = "Fzf » Configs" })
-  -- History of recently opened files
-  nmap("<leader>fh", "<Cmd>History<CR>", { desc = "Fzf » History" })
-  nmap("<leader>fg", "<Cmd>GFiles<CR>", { desc = "Fzf » Git files" })
-  -- Git status
-  nmap("<leader>fs", "<Cmd>GFiles?<CR>", { desc = "Fzf » Git status" })
-  nmap("<leader>fb", "<Cmd>Buffers<CR>", { desc = "Fzf » Buffers" })
-  nmap("<leader>ft", "<Cmd>Tags<CR>", { desc = "Fzf » Tags" })
-  nmap("<leader>fl", "<Cmd>Lines<CR>", { desc = "Fzf » Lines" })
-  nmap("<leader>fm", "<Cmd>Marks<CR>", { desc = "Fzf » Marks" })
-  -- Not <Cmd> because it will only start the command, not execute it
-  nmap("<leader>fr", ":Rg ", { desc = "Fzf » Ripgrep" })
-
   -- Asterisk (search word under cursor)
   map("", "*", "<Plug>(asterisk-*)", { remap = true, desc = "Search » Forward" })
   map("", "#", "<Plug>(asterisk-#)", { remap = true, desc = "Search » Backward" })
