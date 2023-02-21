@@ -1,5 +1,6 @@
 local buffer_line = require("bufferline")
 local buffer_line_mappings = require("mappings.bufferline")
+local scope = require("scope")
 local colours = require("theme").colours
 
 local M = {}
@@ -94,7 +95,8 @@ function M.setup()
     },
     highlights = {
       fill = { bg = colours.dark_border },
-      tab_selected = { fg = colours.blue, bg = colours.border, bold = true, italic = false },
+      tab = { fg = colours.grey, bg = colours.bg },
+      tab_selected = { fg = colours.blue, bg = colours.bg, bold = true, italic = false },
       buffer_selected = selected,
       buffer_visible = visible,
       background = hidden,
@@ -138,6 +140,8 @@ function M.setup()
   vim.api.nvim_create_user_command("B", function(opts)
     buffer_line.go_to_buffer(opts.args)
   end, { nargs = 1, desc = "Buffer » Switch to id" })
+
+  scope.setup()
 
   buffer_line_mappings.enable_mappings()
 end

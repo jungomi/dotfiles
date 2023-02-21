@@ -12,7 +12,11 @@ return {
   -- Buffer/Tabs
   {
     "akinsho/nvim-bufferline.lua",
-    dependencies = { "kyazdani42/nvim-web-devicons" },
+    dependencies = {
+      -- Only show buffers that were used within a tab
+      "tiagovla/scope.nvim",
+      "kyazdani42/nvim-web-devicons",
+    },
     config = function()
       require("config.bufferline").setup()
     end,
