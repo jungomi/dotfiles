@@ -1,6 +1,7 @@
 local lua_line = require("lualine")
 local colours = require("theme").colours
 local noice = require("noice")
+local buffer_state = require("bufferline.state")
 
 local M = {}
 
@@ -11,7 +12,7 @@ local path_style = {
 }
 
 local function buf_nr()
-  return string.format("樂%d ", vim.fn.bufnr())
+  return string.format("樂%d ", buffer_state.current_element_index)
 end
 
 -- Shows indentation settings and trailing whitespaces

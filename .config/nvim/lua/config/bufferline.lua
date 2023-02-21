@@ -75,7 +75,7 @@ function M.setup()
   buffer_line.setup({
     options = {
       numbers = function(opts)
-        return string.format("%s.", opts.id)
+        return string.format("%s.", opts.ordinal)
       end,
       diagnostics = "nvim_lsp",
       show_buffer_icons = true,
@@ -132,6 +132,13 @@ function M.setup()
       indicator_visible = visible,
     },
   })
+
+  -- This kind of replaces :b <id>, as that is much more frequently used than the full :buffer
+  -- as the buffer number is no longer shown, this uses the id shown in the buffer line.
+  vim.api.nvim_create_user_command("B", function(opts)
+    buffer_line.go_to_buffer(opts.args)
+  end, { nargs = 1, desc = "Buffer » Switch to id" })
+
   buffer_line_mappings.enable_mappings()
 end
 
