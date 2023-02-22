@@ -9,6 +9,9 @@ local BOTTOM_THEME = themes.get_ivy({
   sorting_strategy = "descending",
   -- Don't cycle from the last to first entry when reaching the end.
   scroll_strategy = "limit",
+  -- Never jump automatically!
+  -- Whenever there is only 1 result it just jumps instead of opening the finder, that's just annoying.
+  jump_type = "never",
   layout_config = {
     height = 0.4,
     width = 0.9,
@@ -39,6 +42,22 @@ function BOTTOM_THEME:title(title)
   return self:with({ prompt_title = title })
 end
 
+-- Convenience for same title and prefix + icon (also icon can contain string.format parts)
+-- It's the most common occurrence to have the prefix start with the title
+function BOTTOM_THEME:fmt_icon(title, icon, ...)
+  local prefix = title
+  if icon then
+    prefix = string.format("%s %s ", title, string.format(icon, ...))
+  end
+  return self:with({ prompt_title = title, prompt_prefix = prefix })
+end
+
+-- Extend the themes so it can be used with the command:
+-- Telescope <picker> theme=mine
+themes.mine = function(opts)
+  return BOTTOM_THEME:with(opts)
+end
+
 local PALETTE_THEME = themes.get_dropdown({
   -- results_title = false,
   -- preview_title = false,
@@ -58,6 +77,14 @@ local function normalise_dir(path, shorten)
   return normalised
 end
 
+-- Create the function with the picker for standard pickers where the title and icons are given.
+local function fn_with_icon(picker, title, icon, ...)
+  local theme = BOTTOM_THEME:fmt_icon(title, icon, ...)
+  return function()
+    picker(theme)
+  end
+end
+
 local M = {}
 
 function M.enable_mappings()
@@ -70,40 +97,47 @@ function M.enable_mappings()
     builtin.find_files(BOTTOM_THEME:with({ cwd = path }):prefix(normalise_dir(path)):title("Configs"))
   end, { desc = "Fuzzy » Configs" })
   -- History of recently opened files
-  nmap("<leader>fh", function()
-    builtin.oldfiles(BOTTOM_THEME:prefix("History  "):title("History"))
-  end, { desc = "Fuzzy » History" })
-  nmap("<leader>fg", function()
-    builtin.git_files(BOTTOM_THEME:prefix("Git  "):title("Git"))
-  end, { desc = "Fuzzy » Git files" })
+  nmap("<leader>fh", fn_with_icon(builtin.oldfiles, "History", ""), { desc = "Fuzzy » History" })
+  nmap("<leader>fg", fn_with_icon(builtin.git_files, "Git", ""), { desc = "Fuzzy » Git files" })
   -- Git status
-  nmap("<leader>fs", function()
-    builtin.git_status(BOTTOM_THEME:prefix("Git  "):title("Git Status"))
-  end, { desc = "Fuzzy » Git status" })
-  nmap("<leader>fb", function()
-    builtin.buffers(BOTTOM_THEME:prefix("Buffers  "):title("Buffers"))
-  end, { desc = "Fuzzy » Buffers" })
-  nmap("<leader>ft", function()
-    builtin.tags(BOTTOM_THEME:prefix("Tags  "):title("Tags"))
-  end, { desc = "Fuzzy » Tags" })
-  nmap("<leader>fl", function()
-    builtin.current_buffer_fuzzy_find(BOTTOM_THEME:prefix("Lines  "):title("Lines"))
-  end, { desc = "Fuzzy » Lines" })
-  nmap("<leader>fm", function()
-    builtin.marks(BOTTOM_THEME:prefix("Marks  "):title("Marks"))
-  end, { desc = "Fuzzy » Marks" })
-  nmap("<leader>fr", function()
+  nmap("<leader>fs", fn_with_icon(builtin.git_status, "Git Status", ""), { desc = "Fuzzy » Git status" })
+  nmap("<leader>fb", fn_with_icon(builtin.buffers, "Buffers", ""), { desc = "Fuzzy » Buffers" })
+  nmap("<leader>ft", fn_with_icon(builtin.tags, "Tags", ""), { desc = "Fuzzy » Tags" })
+  nmap("<leader>fl", fn_with_icon(builtin.current_buffer_fuzzy_find, "Lines", ""), { desc = "Fuzzy » Lines" })
+  nmap("<leader>fm", fn_with_icon(builtin.marks, "Marks", ""), { desc = "Fuzzy » Marks" })
+  nmap("<leader>fq", fn_with_icon(builtin.diagnostics, "Diagnostics", ""), { desc = "Fuzzy » Diagnostics" })
+  nmap("<leader>fd", fn_with_icon(builtin.lsp_definitions, "Definitions", ""), { desc = "Fuzzy » Definitions" })
+  nmap("<leader>fr", fn_with_icon(builtin.lsp_references, "References", ""), { desc = "Fuzzy » References" })
+  -- These incoming/outgoing calls are rarely supported, so far I've only seen it for Rust, but it's pretty nifty.
+  nmap(
+    "<leader>fi",
+    fn_with_icon(builtin.lsp_incoming_calls, "Incoming Calls", ""),
+    { desc = "Fuzzy » Incoming Calls" }
+  )
+  nmap(
+    "<leader>fo",
+    fn_with_icon(builtin.lsp_outgoing_calls, "Outgoing Calls", ""),
+    { desc = "Fuzzy » Outgoing Calls" }
+  )
+  -- `r` is already taken, and this isn't used much anyway, so `y` not.
+  nmap("<leader>fy", function()
     -- Ask for grep string
     vim.ui.input({ prompt = "Ripgrep" }, function(input)
       input = input or ""
       -- Do not execute ripgrep if the given string is empty
       if input ~= "" then
-        builtin.grep_string(
-          BOTTOM_THEME:with({ search = input }):prefix(string.format("Rg » %s 🔍 ", input)):title("Rg")
-        )
+        builtin.grep_string(BOTTOM_THEME:with({ search = input }):fmt_icon("Rg", "» %s 🔍", input))
       end
     end)
   end, { desc = "Fuzzy » Ripgrep" })
+  -- Resume the last picker wherever it was left off.
+  -- That is probably one of the nicest features that wasn't available in fzf.
+  -- There are so many times were I want to do the exact same, but choose a different result,
+  -- with this it's even better, because it also remembers the state, so the typed filters
+  -- don't need to be repeated, super underrated feature.
+  -- Note: Doesn't need to specify the theme, because it resumes whatever was used, which
+  -- is usually with my theme anyway, but doesn't force it to that theme.
+  nmap("<leader>fa", builtin.resume, { desc = "Fuzzy » Resume" })
 end
 
 return M
