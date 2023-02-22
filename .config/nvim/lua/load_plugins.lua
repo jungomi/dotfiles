@@ -16,6 +16,17 @@ lazy.setup("plugins", {
   install = {
     colorscheme = { "mine" },
   },
+  ui = {
+    border = "single",
+    -- These icons need to be redefined as the defaults are somehow not renedered properly.
+    -- Probably should look at fixing the Nerd font.
+    icons = {
+      cmd = " ",
+      event = "",
+      lazy = " ",
+      start = "",
+    },
+  },
 })
 
 require("config.legacy").setup()

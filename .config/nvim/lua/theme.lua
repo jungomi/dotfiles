@@ -72,6 +72,7 @@ local theme = {
     Directory = { fg = colours.blue, bold = true },
     healthSuccess = { link = "ModeMsg" },
 
+    Conceal = { fg = colours.dark_grey },
     MatchParen = { bg = colours.grey, fg = colours.bg },
 
     SpellBad = { undercurl = true },
@@ -80,6 +81,7 @@ local theme = {
     SpellRare = { undercurl = true },
   },
   syntax = {
+    Bold = { bold = true },
     Boolean = { fg = colours.dark_orange },
     Character = { fg = colours.dark_orange },
     Comment = { fg = colours.grey },
@@ -94,6 +96,7 @@ local theme = {
     Function = { fg = colours.blue },
     Identifier = { fg = colours.blue },
     Include = { fg = colours.blue },
+    Italic = { italic = true },
     Keyword = { fg = colours.purple },
     Label = { fg = colours.orange },
     Macro = { fg = colours.red },
@@ -118,6 +121,7 @@ local theme = {
     -- Only groups that are not linked to the desired default, rest (mostly @xxx -> xxx) is skipped
     -- This now uses the tree sitter capture groups (@xxx) instead of prefixed ones such as TSxxx.
     -- e.g. @boolean -> Boolean (skipped)
+    ["@conceal"] = { link = "Conceal" },
     ["@constant.builtin"] = { link = "Constant" },
     ["@constant.macro"] = { link = "Macro" },
     ["@constructor"] = { link = "Function" },
@@ -126,11 +130,12 @@ local theme = {
     ["@function.builtin"] = { link = "Function" },
     ["@include"] = { fg = colours.purple },
     ["@keyword.operator"] = { fg = colours.purple },
-    ["@namespace"] = { fg = colours.red },
+    ["@namespace"] = { fg = colours.purple },
     ["@parameter"] = { fg = colours.cyan },
     ["@property"] = { fg = colours.cyan },
     ["@symbol"] = { fg = colours.cyan },
     ["@variable"] = { fg = colours.fg },
+    ["@variable.builtin"] = { link = "Constant" },
     ["@tag"] = { fg = colours.purple },
     -- Tags in comments, such as TODO or NOTE. Where @text.note is the generic (parent) group.
     ["@text.note"] = { fg = colours.cyan, bold = true },
@@ -140,9 +145,16 @@ local theme = {
     -- Diffs within Treesitter such as in git commits
     ["@text.diff.add"] = { fg = colours.green },
     ["@text.diff.delete"] = { fg = colours.red },
+    ["@text.environment"] = { link = "@namespace" },
+    ["@text.environment.name"] = { link = "Type" },
+    ["@text.reference"] = { link = "Type" },
+    ["@text.title"] = { link = "Title" },
+    -- Special characters, such as in string interpolation
+    ["@punctuation.special"] = { fg = colours.dark_grey, bold = true },
 
-    -- Filetype specific (by adding the .extension at the end)
+    -- :: Filetype specific (by adding the .extension at the end)
     ["@field.yaml"] = { fg = colours.red },
+    ["@punctuation.special.markdown"] = { link = "@text.title" },
   },
   lsp = {
     -- Defaults (mostly for fallbacks)
@@ -324,6 +336,7 @@ local theme = {
     markdownCodeDelimiter = { fg = colours.grey, bold = true },
     markdownLinkText = { link = "Special" },
     markdownListMarker = { fg = colours.cyan, bold = true },
+    markdownUrl = { fg = colours.dark_grey },
 
     markdownH1Delimiter = { link = "markdownH1" },
     markdownH2Delimiter = { link = "markdownH2" },

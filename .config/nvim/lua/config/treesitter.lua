@@ -12,7 +12,8 @@ function M.setup()
       enable = true,
       -- TreeSitter highlighting isn't great for these,
       -- use regular syntax highlighting instead.
-      disable = { "rust", "gitcommit" },
+      -- For markdown there is markdown_inline, which is superior.
+      disable = { "rust", "gitcommit", "markdown" },
     },
     -- Indentation doesn't work well yet
     indent = {
