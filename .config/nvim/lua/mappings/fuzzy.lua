@@ -13,6 +13,7 @@ local BOTTOM_THEME = themes.get_ivy({
     height = 0.4,
     width = 0.9,
     prompt_position = "bottom",
+    preview_cutoff = 0,
   },
   -- Don't want icons, just use the abbreviations
   git_icons = {
