@@ -1,6 +1,6 @@
 require("options")
 require("mappings")
-require("theme").load_theme()
+vim.cmd("colorscheme mine")
 -- Load plugins
 require("load_plugins")
 -- Autocommands need to be loaded after the plugins are loaded, as they import them.
