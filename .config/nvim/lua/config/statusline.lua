@@ -12,7 +12,10 @@ local path_style = {
 }
 
 local function buf_nr()
-  return string.format("樂%d ", buffer_state.current_element_index)
+  -- The buffer line state needs time to be initialised so when launching nvim it will be nil,
+  -- in order to show something meaningful 1 is used instead, as that is hopefully the only time
+  -- this occurs and on launch it will always be the first buffer.
+  return string.format("樂%d ", buffer_state.current_element_index or 1)
 end
 
 -- Shows indentation settings and trailing whitespaces
