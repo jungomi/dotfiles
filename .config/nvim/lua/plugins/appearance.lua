@@ -28,11 +28,15 @@ return {
       require("config.winbar").setup()
     end,
   },
-  -- Highlight colour definitions (e.g. Blue, #555d60)
+  -- Highlight colour definitions (e.g. #555d60) and colour picker
   {
-    "norcalli/nvim-colorizer.lua",
+    "uga-rosa/ccc.nvim",
     config = function()
-      require("colorizer").setup()
+      require("ccc").setup({
+        highlighter = {
+          auto_enable = true,
+        },
+      })
     end,
   },
   -- Improved UI for vim.ui.select and vim.ui.input (e.g. floating window for LSP rename)

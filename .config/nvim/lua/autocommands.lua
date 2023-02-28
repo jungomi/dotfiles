@@ -112,14 +112,6 @@ autocmd_utils.create_augroups({
       callback = file_utils.mkdir_on_save,
       desc = "Ensure directories exist when saving a file",
     },
-    -- Refresh colours after any text change, it should do that on its own
-    -- but after non-insert mode edits, such as undo, it doesn't.
-    {
-      event = "TextChanged",
-      pattern = "*",
-      command = "ColorizerAttachToBuffer",
-      desc = "Refresh (CSS) colours when text changes",
-    },
     -- Update lightbulb sign
     {
       event = "CursorHold",
