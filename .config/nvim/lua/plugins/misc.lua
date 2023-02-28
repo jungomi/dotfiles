@@ -21,6 +21,14 @@ return {
       })
     end,
   },
+  -- Automatically close brackets
+  -- I mostly want it for blocks when pressing <CR>.
+  {
+    "windwp/nvim-autopairs",
+    config = function()
+      require("config.pairs").setup()
+    end,
+  },
   -- Yank over SSH with ANSI OSC52 escape sequence
   "ojroques/nvim-osc52",
   -- Smooth scrolling
