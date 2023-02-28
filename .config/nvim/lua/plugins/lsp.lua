@@ -20,6 +20,8 @@ return {
   },
   -- Show a lightbulb sign if a code action is available for the current line
   "kosayoda/nvim-lightbulb",
+  -- Virtual lines below instead of just virtual text at the end
+  "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
   -- Use other sources for LSP actions
   -- Mainly formatting Lua - not part of the language server for some reason
   "jose-elias-alvarez/null-ls.nvim",

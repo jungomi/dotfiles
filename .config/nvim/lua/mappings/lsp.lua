@@ -4,12 +4,12 @@ local imap = map_utils.imap
 
 local M = {}
 
-_G.lsp_toggle = function()
-  if next(vim.lsp.get_active_clients()) == nil then
-    -- No LSP is running therefore try to start one.
-    vim.api.nvim_command("LspStart")
+local function toggle_virtual_lines()
+  local cfg = vim.diagnostic.config()
+  if cfg.virtual_text then
+    vim.diagnostic.config({ virtual_text = false, virtual_lines = cfg.config_when_enabled.virtual_lines })
   else
-    vim.api.nvim_command("LspStop")
+    vim.diagnostic.config({ virtual_text = cfg.config_when_enabled.virtual_text, virtual_lines = false })
   end
 end
 
@@ -27,6 +27,7 @@ function M.enable_mappings()
   nmap("<leader>ls", vim.lsp.buf.signature_help, { desc = "LSP » Signature" })
   imap("<C-s>", vim.lsp.buf.signature_help, { desc = "LSP » Signature" })
   nmap("<leader>la", vim.lsp.buf.code_action, { desc = "LSP » Code actions" })
+  nmap("<leader>lv", toggle_virtual_lines, { desc = "LSP » Toggle Virtual Lines" })
   -- Diagnostic navigation
   nmap("]d", function()
     vim.diagnostic.goto_next({ float = { border = "rounded" } })

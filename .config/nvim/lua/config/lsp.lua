@@ -8,6 +8,7 @@ local schemastore = require("schemastore")
 local cmp = require("cmp")
 local cmp_lsp = require("cmp_nvim_lsp")
 local trouble = require("trouble")
+local lsp_lines = require("lsp_lines")
 local lsp_mappings = require("mappings.lsp")
 local t = require("utils.map").t
 
@@ -159,11 +160,19 @@ function M.setup_servers()
 end
 
 function M.setup()
+  local virtual_text = {
+    prefix = "↪",
+    spacing = 2,
+  }
   vim.diagnostic.config({
     severity_sort = true,
-    virtual_text = {
-      prefix = "↪",
-      spacing = 2,
+    virtual_text = virtual_text,
+    -- Disable virtual lines by default, as they will be toggled manually when desired.
+    virtual_lines = false,
+    -- This is used for toggling between them as the default "on" config, the other will be set to false
+    config_when_enabled = {
+      virtual_text = virtual_text,
+      virtual_lines = true, -- { only_current_line = true },
     },
   })
 
@@ -330,6 +339,8 @@ function M.setup()
     use_diagnostic_signs = true,
     indent_lines = true,
   })
+
+  lsp_lines.setup()
 
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
     -- Configure appearance of floating windows from hover info
