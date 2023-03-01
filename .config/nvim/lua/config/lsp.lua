@@ -163,6 +163,13 @@ function M.setup()
   local virtual_text = {
     prefix = "↪",
     spacing = 2,
+    format = function(diag)
+      local parts = { diag.message, "⌁", diag.source }
+      if diag.code then
+        table.insert(parts, string.format("(%s)", diag.code))
+      end
+      return table.concat(parts, " ")
+    end,
   }
   vim.diagnostic.config({
     severity_sort = true,
