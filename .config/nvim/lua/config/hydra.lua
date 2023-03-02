@@ -1,6 +1,7 @@
 local Hydra = require("hydra")
 local dap = require("dap")
 local dap_utils = require("utils.dap")
+local resize = require("utils.resize")
 local gitsigns = require("gitsigns")
 
 local M = {}
@@ -36,10 +37,10 @@ function M.setup()
       timeout = 2500,
     },
     heads = {
-      { "j", "2<C-w>+" },
-      { "k", "2<C-w>-" },
-      { "l", "5<C-w>>" },
-      { "h", "5<C-w><" },
+      { "j", resize.down },
+      { "k", resize.up },
+      { "l", resize.right },
+      { "h", resize.left },
       { "=", "<C-w>=" },
       { "<Esc>", nil, { exit = true, nowait = true } },
       { "q", nil, { exit = true, nowait = true } },
