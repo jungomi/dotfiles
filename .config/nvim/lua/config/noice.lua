@@ -56,7 +56,7 @@ function M.setup()
         filter = {
           event = "msg_show",
           kind = "",
-          find = "^%d+ line less",
+          find = "^%d+ lines?",
         },
         view = "mini",
       },
