@@ -235,6 +235,35 @@ local theme = {
     CmpItemKind = { fg = colours.grey },
     -- Name of source, e.g. [LSP]
     CmpItemMenu = { fg = colours.grey },
+
+    -- :: Semantic tokens
+    ["@lsp.type.attributeBracket"] = { link = "@punctuation.special" },
+    ["@lsp.type.builtinAttribute"] = { link = "Identifier" },
+    ["@lsp.type.enum"] = { link = "@type" },
+    ["@lsp.type.enumMember"] = { link = "@property" },
+    ["@lsp.type.interface"] = { link = "Macro" },
+    ["@lsp.type.parameter"] = { link = "@parameter" },
+    ["@lsp.type.property"] = { link = "@property" },
+    ["@lsp.type.struct"] = { link = "Identifier" },
+    ["@lsp.type.selfKeyword"] = { link = "Constant" },
+    ["@lsp.type.typeAlias"] = { link = "@type" },
+    -- Fallback to the treesitter highlighting for this.
+    -- NOTE: This is not the same as linking it to @variable because treesitter might
+    -- classify it differently based on some basic rules.
+    -- e.g. all caps are Treesitter constants but an LSP variable, because LSP constants
+    -- are the ones marked as const by the language (i.e. not supported by languages like Lua)
+    ["@lsp.type.variable"] = {},
+    -- Default library
+    ["@lsp.typemod.enumMember.defaultLibrary"] = { link = "Constant" },
+    ["@lsp.typemod.function.defaultLibrary"] = { link = "@function.builtin" },
+    ["@lsp.typemod.method.defaultLibrary"] = { link = "@function.builtin" },
+    ["@lsp.typemod.variable.defaultLibrary"] = { link = "@variable.builtin" },
+    -- Mods
+    ["@lsp.mod.crateRoot"] = { link = "Constant" },
+    ["@lsp.mod.documentation"] = { link = "Special" },
+    -- Not quite sure whether I want to add decorations for specific mods
+    -- ["@lsp.mod.declaration"] = { italic = true },
+    -- ["@lsp.mod.global"] = { bold = true },
   },
   bufferline = {
     -- Three for each kind, because there are three types of buffers with different backgrounds.
