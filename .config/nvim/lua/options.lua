@@ -17,6 +17,8 @@ opt.title = true
 opt.shortmess = "atIcF"
 -- Always show the sign gutter
 opt.signcolumn = "yes"
+-- Show the current unfinished command in the statusline
+opt.showcmdloc = "statusline"
 
 -- :: Line settings
 opt.formatoptions = "1crqnlj"

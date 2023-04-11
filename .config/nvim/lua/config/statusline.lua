@@ -81,6 +81,8 @@ end
 
 local function right()
   return {
+    -- Current unfinished command
+    "%S",
     {
       noice.api.status.mode.get,
       cond = noice.api.status.mode.has,
