@@ -125,6 +125,14 @@ local custom_server_configs = {
       },
     },
   },
+  yamlls = {
+    settings = {
+      yaml = {
+        -- Don't enfore key order, no idea why this is enabled by default.
+        keyOrdering = false,
+      },
+    },
+  },
   gopls = {
     on_attach = on_attach_no_fmt,
   },
