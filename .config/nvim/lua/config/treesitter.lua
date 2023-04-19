@@ -1,7 +1,6 @@
 local M = {}
 
 local ts_configs = require("nvim-treesitter.configs")
-local ts_spell = require("spellsitter")
 local neogen = require("neogen")
 local treesitter_mappings = require("mappings.treesitter")
 
@@ -37,11 +36,6 @@ function M.setup()
     playground = {
       enable = true,
     },
-  })
-
-  ts_spell.setup({
-    -- Spell check in these groups
-    captures = { "comment", "string" },
   })
 
   neogen.setup({
