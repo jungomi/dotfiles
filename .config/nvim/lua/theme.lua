@@ -187,6 +187,9 @@ local theme = {
     DiagnosticUnderlineInfo = { undercurl = true, special = colours.blue },
     DiagnosticUnderlineHint = { undercurl = true, special = colours.cyan },
 
+    -- Unused variables / imports
+    DiagnosticUnnecessary = { fg = colours.grey, undercurl = true },
+
     -- Highlighting of References
     LspReferenceText = { bg = colours.cursor_line },
     LspReferenceRead = { bg = colours.cursor_line },
