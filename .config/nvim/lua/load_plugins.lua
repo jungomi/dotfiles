@@ -23,7 +23,7 @@ lazy.setup("plugins", {
     icons = {
       cmd = " ",
       event = "",
-      lazy = " ",
+      lazy = "󰏗 ",
       start = "",
     },
   },

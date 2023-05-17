@@ -31,7 +31,7 @@ local diagnostic_kinds = {
     },
   },
   hint = {
-    icon = "",
+    icon = "󰌵",
     highlight = {
       selected = "HS",
       visible = "HV",
@@ -39,7 +39,7 @@ local diagnostic_kinds = {
     },
   },
   other = {
-    icon = "",
+    icon = "󰌵",
     highlight = {
       selected = "HS",
       visible = "HV",
@@ -80,8 +80,8 @@ function M.setup()
       end,
       diagnostics = "nvim_lsp",
       show_buffer_icons = true,
-      modified_icon = "",
-      -- Don't need the  as I'm not using the mouse anyway
+      modified_icon = "󰃉",
+      -- Don't need the 󰅖 as I'm not using the mouse anyway
       show_close_icon = false,
       show_buffer_close_icons = false,
       -- Tab numbers at the right end

@@ -37,23 +37,23 @@ local kind_icons = {
   Enum = "",
   EnumMember = "",
   Event = "",
-  Field = "",
+  Field = "󰄶",
   File = "",
   Folder = "",
   Function = "⨍",
   Interface = "↯",
-  Keyword = "",
+  Keyword = "󰌆",
   Method = "⨍",
-  Module = "",
-  Operator = "",
+  Module = "󰏗",
+  Operator = "󰆕",
   Property = "",
-  Reference = "",
+  Reference = "󰈇",
   Snippet = "✐",
   Struct = "",
   Text = "",
   TypeParameter = "",
   Unit = "",
-  Value = "",
+  Value = "󰎠",
   Variable = "≝",
 }
 
@@ -373,7 +373,7 @@ function M.setup()
   )
   vim.fn.sign_define(
     "DiagnosticSignHint",
-    { text = " ", texthl = "DiagnosticSignHint", numhl = "DiagnosticSignHint" }
+    { text = " 󰌵", texthl = "DiagnosticSignHint", numhl = "DiagnosticSignHint" }
   )
   vim.fn.sign_define(
     "DiagnosticSignInfo",

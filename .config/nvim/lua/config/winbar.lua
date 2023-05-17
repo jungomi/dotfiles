@@ -9,7 +9,7 @@ local function get_diagnostics(props)
     Error = "",
     Warn = "",
     Info = "",
-    Hint = "",
+    Hint = "󰌵",
   }
 
   local label = {}
@@ -35,7 +35,7 @@ local function render(props)
   table.insert(out, { " " })
   table.insert(out, { name })
   if is_modified then
-    table.insert(out, { "  " })
+    table.insert(out, { "  󰃉" })
   end
   return out
 end

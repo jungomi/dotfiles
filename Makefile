@@ -82,7 +82,7 @@ node:
 	echo 'export N_PREFIX="$(NODE_DIR)"' >> ~/.profile
 	echo '[[ :$$PATH: == *":$(NODE_BIN):"* ]] || PATH+=":$(NODE_BIN)"' \
 		>> ~/.profile
-	echo -e "\r\033[2K[ \033[00;32mDONE\033[0m ]  Installing Node"
+	echo -e "\r\033[2K[ \033[00;32mDONE\033[0m ] 󰎙 Installing Node"
 
 # Installs rvm and Ruby
 ruby:
@@ -105,7 +105,7 @@ rust:
 # Configures MacOS
 macos:
 	./macos.sh
-	echo -e "\r\033[2K[ \033[00;32mDONE\033[0m ]  Configuring MacOS"
+	echo -e "\r\033[2K[ \033[00;32mDONE\033[0m ] 󰀵 Configuring MacOS"
 
 # Shows this help message
 help:

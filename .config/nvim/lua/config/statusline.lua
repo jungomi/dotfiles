@@ -15,14 +15,14 @@ local function buf_nr()
   -- The buffer line state needs time to be initialised so when launching nvim it will be nil,
   -- in order to show something meaningful 1 is used instead, as that is hopefully the only time
   -- this occurs and on launch it will always be the first buffer.
-  return string.format("樂%d ", buffer_state.current_element_index or 1)
+  return string.format("󰑝%d 󰇘", buffer_state.current_element_index or 1)
 end
 
 -- Shows indentation settings and trailing whitespaces
 -- 2 Spaces => Tab:2
--- Tabs => Tab:
--- 2 Spaces, but file contains tabs => Tab:2/
--- Tabs, but file contains spaces => Tab:/2
+-- Tabs => Tab:󰌒
+-- 2 Spaces, but file contains tabs => Tab:2/󰌒
+-- Tabs, but file contains spaces => Tab:󰌒/2
 -- Trailing whitespace => Tab:2
 local function tabs_and_spaces()
   local expand_tab = vim.opt.expandtab:get()
@@ -40,10 +40,10 @@ local function tabs_and_spaces()
     table.insert(parts, num_spaces)
     -- Indenting with spaces, but file has tabs for indentation
     if has_tabs then
-      table.insert(parts, "/")
+      table.insert(parts, "/󰌒")
     end
   else
-    table.insert(parts, "")
+    table.insert(parts, "󰌒")
     -- Indenting with tabs, but file has spaces for indentation
     if has_spaces then
       table.insert(parts, "/")
@@ -61,7 +61,7 @@ local function left()
       "filename",
       path = path_style.relative,
       symbols = {
-        modified = " ",
+        modified = " 󰃉",
         readonly = " ",
       },
     },
@@ -73,7 +73,7 @@ local function left()
         error = " ",
         warn = " ",
         info = " ",
-        hint = " ",
+        hint = "󰌵 ",
       },
     },
   }

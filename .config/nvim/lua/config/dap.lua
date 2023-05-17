@@ -56,7 +56,7 @@ function M.setup()
     { text = " ", texthl = "DiagnosticSignError", numhl = "DiagnosticSignError" }
   )
   vim.fn.sign_define("DapLogPoint", { text = " ", texthl = "DiagnosticSignInfo", numhl = "DiagnosticSignInfo" })
-  vim.fn.sign_define("DapStopped", { text = " ", texthl = "DiagnosticSignWarn", numhl = "DiagnosticSign" })
+  vim.fn.sign_define("DapStopped", { text = " 󰁕", texthl = "DiagnosticSignWarn", numhl = "DiagnosticSign" })
 
   dap_virtual_text.setup({
     text_prefix = "  ‣ ",
