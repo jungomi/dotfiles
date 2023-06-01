@@ -140,7 +140,7 @@ function M.setup()
   vim.api.nvim_create_user_command("B", function(opts)
     -- The second argument is aboslute=true, otherwise the selection counts only the visible buffers, which
     -- does not correspond to the ordinal number if some of the first ones are scrolled off.
-    buffer_line.go_to_buffer(opts.args, true)
+    buffer_line.go_to(opts.args, true)
   end, { nargs = 1, desc = "Buffer » Switch to id" })
 
   scope.setup()
