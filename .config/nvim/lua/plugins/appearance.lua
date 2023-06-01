@@ -28,6 +28,12 @@ return {
       require("config.winbar").setup()
     end,
   },
+  {
+    "dstein64/nvim-scrollview",
+    config = function()
+      require("config.scrollbar").setup()
+    end,
+  },
   -- Highlight colour definitions (e.g. #555d60) and colour picker
   {
     "uga-rosa/ccc.nvim",

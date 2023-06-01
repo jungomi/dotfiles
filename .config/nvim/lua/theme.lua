@@ -407,6 +407,18 @@ local theme = {
     InclineNormal = { fg = colours.grey, bg = colours.cursor_line, bold = true },
     InclineNormalNC = { fg = colours.grey, bg = colours.border },
   },
+  -- Scrollbar
+  scrollview = {
+    Scrollview = { bg = colours.dark_border },
+
+    -- Signs
+    ScrollViewDiagnosticsError = { link = "DiagnosticError" },
+    ScrollViewDiagnosticsWarn = { link = "DiagnosticWarn" },
+    ScrollViewDiagnosticsInfo = { link = "DiagnosticInfo" },
+    ScrollViewDiagnosticsHint = { link = "DiagnosticHint" },
+    ScrollViewSearch = { fg = colours.orange },
+    ScrollViewMarks = { fg = colours.orange, italic = true },
+  },
   which_key = {
     WhichKey = { link = "Special" },
   },
