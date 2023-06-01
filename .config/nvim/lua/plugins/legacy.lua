@@ -15,8 +15,6 @@ return {
       "rafamadriz/friendly-snippets",
     },
   },
-  -- Expand keywords to HTML
-  "mattn/emmet-vim",
   -- Better search under cursor (smart case, visual *, etc.)
   "haya14busa/vim-asterisk",
   -- Save/Open with sudo (replaces the tee sudo trick)

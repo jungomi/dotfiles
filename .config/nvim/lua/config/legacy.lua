@@ -13,9 +13,6 @@ function M.setup()
 
   g.undotree_SetFocusWhenToggle = 1
 
-  g.user_emmet_leader_key = "<C-e>"
-  g.user_emmet_mode = "i"
-
   -- Markdown code blocks highlighting
   g.markdown_fenced_languages = {
     "html",
