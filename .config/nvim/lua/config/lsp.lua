@@ -11,6 +11,7 @@ local trouble = require("trouble")
 local lsp_lines = require("lsp_lines")
 local lsp_mappings = require("mappings.lsp")
 local t = require("utils.map").t
+local icons = require("icons")
 
 local M = {}
 local SERVERS = {
@@ -27,34 +28,6 @@ local SERVERS = {
   "gopls",
   -- Ruff is used for linting of Python files (much faster than flake8)
   "ruff_lsp",
-}
-
-local kind_icons = {
-  Class = "⚛",
-  Color = "",
-  Constant = "",
-  Constructor = "",
-  Enum = "",
-  EnumMember = "",
-  Event = "",
-  Field = "󰄶",
-  File = "",
-  Folder = "",
-  Function = "⨍",
-  Interface = "↯",
-  Keyword = "󰌆",
-  Method = "⨍",
-  Module = "󰏗",
-  Operator = "󰆕",
-  Property = "",
-  Reference = "󰈇",
-  Snippet = "✐",
-  Struct = "",
-  Text = "",
-  TypeParameter = "",
-  Unit = "",
-  Value = "󰎠",
-  Variable = "≝",
 }
 
 -- Source names to be shown in the completion menu
@@ -169,7 +142,7 @@ end
 
 function M.setup()
   local virtual_text = {
-    prefix = "↪",
+    prefix = icons.arrow.hook,
     spacing = 2,
     format = function(diag)
       local parts = { diag.message, "⌁", diag.source }
@@ -193,11 +166,7 @@ function M.setup()
 
   mason.setup({
     ui = {
-      icons = {
-        server_installed = "✓",
-        server_pending = "⟳",
-        server_uninstalled = "",
-      },
+      icons = icons.mason,
     },
   })
   mason_lsp.setup({
@@ -227,8 +196,8 @@ function M.setup()
         auto_focus = true,
       },
       inlay_hints = {
-        other_hints_prefix = "  ‣ ",
-        parameter_hints_prefix = "  ⨍",
+        other_hints_prefix = icons.pad(icons.triangle.tiny, 2, 1),
+        parameter_hints_prefix = icons.pad_left(icons.lsp_kind.Function, 2),
         highlight = "DiagnosticVirtualTextHint",
         -- Disable parameter hints, because currently they are not
         -- showing consistently on every parameter.
@@ -293,7 +262,7 @@ function M.setup()
     }),
     formatting = {
       format = function(entry, vim_item)
-        local icon = kind_icons[vim_item.kind]
+        local icon = icons.lsp_kind[vim_item.kind]
         if icon then
           vim_item.kind = icon
         end
@@ -365,23 +334,23 @@ function M.setup()
   -- Highlight the line number as well as the diagnostic sign
   vim.fn.sign_define(
     "DiagnosticSignError",
-    { text = " ", texthl = "DiagnosticSignError", numhl = "DiagnosticSignError" }
+    { text = icons.pad_left(icons.diagnostic.Error, 1), texthl = "DiagnosticSignError", numhl = "DiagnosticSignError" }
   )
   vim.fn.sign_define(
     "DiagnosticSignWarn",
-    { text = " ", texthl = "DiagnosticSignWarn", numhl = "DiagnosticSignWarn" }
+    { text = icons.pad_left(icons.diagnostic.Warn, 1), texthl = "DiagnosticSignWarn", numhl = "DiagnosticSignWarn" }
   )
   vim.fn.sign_define(
     "DiagnosticSignHint",
-    { text = " 󰌵", texthl = "DiagnosticSignHint", numhl = "DiagnosticSignHint" }
+    { text = icons.pad_left(icons.diagnostic.Hint, 1), texthl = "DiagnosticSignHint", numhl = "DiagnosticSignHint" }
   )
   vim.fn.sign_define(
     "DiagnosticSignInfo",
-    { text = " ", texthl = "DiagnosticSignInfo", numhl = "DiagnosticSignInfo" }
+    { text = icons.pad_left(icons.diagnostic.Info, 1), texthl = "DiagnosticSignInfo", numhl = "DiagnosticSignInfo" }
   )
 
   -- Lightbulb for code actions
-  vim.fn.sign_define("LightBulbSign", { text = "💡", texthl = "DiagnosticSignWarn" })
+  vim.fn.sign_define("LightBulbSign", { text = icons.bulb, texthl = "DiagnosticSignWarn" })
 
   lsp_mappings.enable_mappings()
 end

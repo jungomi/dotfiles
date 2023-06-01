@@ -1,6 +1,7 @@
 local telescope = require("telescope")
 local actions = require("telescope.actions")
 local fuzzy_mappings = require("mappings.fuzzy")
+local icons = require("icons")
 
 local M = {}
 
@@ -23,8 +24,8 @@ function M.setup()
       },
     },
     defaults = {
-      selection_caret = " ",
-      multi_icon = "",
+      selection_caret = icons.pad_right(icons.fold.collapsed, 1),
+      multi_icon = icons.fold.collapsed,
       mappings = {
         i = {
           ["<esc>"] = actions.close,

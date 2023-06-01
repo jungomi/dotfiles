@@ -1,3 +1,5 @@
+local icons = require("icons")
+
 local lazy_path = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazy_path) then
   vim.fn.system({
@@ -21,10 +23,10 @@ lazy.setup("plugins", {
     -- These icons need to be redefined as the defaults are somehow not renedered properly.
     -- Probably should look at fixing the Nerd font.
     icons = {
-      cmd = " ",
-      event = "",
-      lazy = "󰏗 ",
-      start = "",
+      cmd = icons.terminal,
+      event = icons.lightning,
+      lazy = icons.pad_right(icons.lsp_kind.Module, 1),
+      start = icons.triangle.normal,
     },
   },
 })

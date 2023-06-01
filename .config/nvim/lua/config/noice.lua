@@ -1,6 +1,7 @@
 local noice = require("noice")
 local notify = require("notify")
 local colours = require("theme").colours
+local icons = require("icons")
 
 local M = {}
 
@@ -20,8 +21,8 @@ function M.setup()
   noice.setup({
     cmdline = {
       format = {
-        search_down = { icon = "🔍 " },
-        search_up = { icon = "🔍 " },
+        search_down = { icon = string.format("%s %s", icons.magnify, icons.double_angle.down) },
+        search_up = { icon = string.format("%s %s", icons.magnify, icons.double_angle.up) },
       },
     },
     lsp = {

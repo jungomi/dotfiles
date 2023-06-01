@@ -6,12 +6,13 @@ local dap_python = require("dap-python")
 -- uses slash (/) and therefore has a different table.
 local dap_virtual_text = require("nvim-dap-virtual-text")
 local dap_mappings = require("mappings.dap")
+local icons = require("icons")
 
 local M = {}
 
 function M.setup()
   dap_ui.setup({
-    icons = { expanded = "", collapsed = "" },
+    icons = icons.fold,
     layouts = {
       {
         elements = {
@@ -46,22 +47,31 @@ function M.setup()
     dap_ui.close()
   end
 
-  vim.fn.sign_define("DapBreakpoint", { text = " ", texthl = "DiagnosticSignError", numhl = "DiagnosticSignError" })
+  vim.fn.sign_define(
+    "DapBreakpoint",
+    { text = icons.pad_left(icons.dot, 1), texthl = "DiagnosticSignError", numhl = "DiagnosticSignError" }
+  )
   vim.fn.sign_define(
     "DapBreakpointCondition",
-    { text = " ", texthl = "DiagnosticSignError", numhl = "DiagnosticSignError" }
+    { text = icons.pad_left(icons.question, 1), texthl = "DiagnosticSignError", numhl = "DiagnosticSignError" }
   )
   vim.fn.sign_define(
     "DapBreakpointRejected",
-    { text = " ", texthl = "DiagnosticSignError", numhl = "DiagnosticSignError" }
+    { text = icons.pad_left(icons.lightning, 1), texthl = "DiagnosticSignError", numhl = "DiagnosticSignError" }
   )
-  vim.fn.sign_define("DapLogPoint", { text = " ", texthl = "DiagnosticSignInfo", numhl = "DiagnosticSignInfo" })
-  vim.fn.sign_define("DapStopped", { text = " 󰁕", texthl = "DiagnosticSignWarn", numhl = "DiagnosticSign" })
+  vim.fn.sign_define(
+    "DapLogPoint",
+    { text = icons.pad_left(icons.mic, 1), texthl = "DiagnosticSignInfo", numhl = "DiagnosticSignInfo" }
+  )
+  vim.fn.sign_define(
+    "DapStopped",
+    { text = icons.pad_left(icons.arrow.thick, 1), texthl = "DiagnosticSignWarn", numhl = "DiagnosticSign" }
+  )
 
   dap_virtual_text.setup({
-    text_prefix = "  ‣ ",
-    error_prefix = "  ‣ ",
-    info_prefix = "  ‣ ",
+    text_prefix = icons.pad(icons.triangle.tiny, 2, 1),
+    error_prefix = icons.pad(icons.triangle.tiny, 2, 1),
+    info_prefix = icons.pad(icons.triangle.tiny, 2, 1),
   })
 
   dap_mappings.enable_mappings()

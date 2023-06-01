@@ -2,6 +2,7 @@ local lua_line = require("lualine")
 local colours = require("theme").colours
 local noice = require("noice")
 local buffer_state = require("bufferline.state")
+local icons = require("icons")
 
 local M = {}
 
@@ -33,17 +34,17 @@ local function tabs_and_spaces()
 
   local parts = {}
   if has_trailing then
-    table.insert(parts, "")
+    table.insert(parts, icons.dot)
   end
   table.insert(parts, "Tab:")
   if expand_tab then
     table.insert(parts, num_spaces)
     -- Indenting with spaces, but file has tabs for indentation
     if has_tabs then
-      table.insert(parts, "/󰌒")
+      table.insert(parts, "/" .. icons.tab)
     end
   else
-    table.insert(parts, "󰌒")
+    table.insert(parts, icons.tab)
     -- Indenting with tabs, but file has spaces for indentation
     if has_spaces then
       table.insert(parts, "/")
@@ -61,8 +62,8 @@ local function left()
       "filename",
       path = path_style.relative,
       symbols = {
-        modified = " 󰃉",
-        readonly = " ",
+        modified = icons.pad_left(icons.modified, 1),
+        readonly = icons.pad_left(icons.readonly, 1),
       },
     },
     {
@@ -70,10 +71,10 @@ local function left()
       sources = { "nvim_diagnostic" },
       sections = { "error", "warn", "info", "hint" },
       symbols = {
-        error = " ",
-        warn = " ",
-        info = " ",
-        hint = "󰌵 ",
+        error = icons.pad_right(icons.diagnostic.Error, 1),
+        warn = icons.pad_right(icons.diagnostic.Warn, 1),
+        info = icons.pad_right(icons.diagnostic.Info, 1),
+        hint = icons.pad_right(icons.diagnostic.Hint, 1),
       },
     },
   }

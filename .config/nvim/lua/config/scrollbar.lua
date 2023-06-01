@@ -1,7 +1,6 @@
 local scrollview = require("scrollview")
 local scrollbar_mappings = require("mappings.scrollbar")
-
-local right_bar = "🮇"
+local icons = require("icons")
 
 local M = {}
 
@@ -12,21 +11,21 @@ local function setup_gitsigns()
   local add = scrollview.register_sign_spec({
     group = group,
     highlight = "GitSignsAdd",
-    symbol = right_bar,
+    symbol = icons.right_bar,
     priority = 80,
   }).name
 
   local change = scrollview.register_sign_spec({
     group = group,
     highlight = "GitSignsChange",
-    symbol = right_bar,
+    symbol = icons.right_bar,
     priority = 80,
   }).name
 
   local delete = scrollview.register_sign_spec({
     group = group,
     highlight = "GitSignsDelete",
-    symbol = right_bar,
+    symbol = icons.right_bar,
     priority = 80,
   }).name
 
@@ -87,16 +86,15 @@ function M.setup()
     current_only = true,
     winblend = 0,
     signs_on_startup = { "cursor", "diagnostics", "search" },
-    -- Most symbols have a Thin Space (U+2009) in order to keep the icons smaller,
-    -- as these icons use 2 code points to display fully, but the Thin Space pervents that.
-    diagnostics_error_symbol = " ",
-    diagnostics_warn_symbol = " ",
-    diagnostics_info_symbol = " ",
-    diagnostics_hint_symbol = "󰌵 ",
+    -- Most symbols have a Thin Space (U+2009) in order to keep the icons smaller.
+    diagnostics_error_symbol = icons.pad_right(icons.diagnostic.Error, 1, icons.thin_space),
+    diagnostics_warn_symbol = icons.pad_right(icons.diagnostic.Warn, 1, icons.thin_space),
+    diagnostics_info_symbol = icons.pad_right(icons.diagnostic.Info, 1, icons.thin_space),
+    diagnostics_hint_symbol = icons.pad_right(icons.diagnostic.Hint, 1, icons.thin_space),
     cursor_priority = 0,
-    cursor_symbol = " ",
-    search_symbol = right_bar,
-    spell_symbol = " ",
+    cursor_symbol = icons.pad_right(icons.triangle.small, 1, icons.thin_space),
+    search_symbol = icons.right_bar,
+    spell_symbol = icons.pad_right(icons.lsp_kind.Text, 1),
   })
 
   setup_gitsigns()

@@ -2,12 +2,13 @@ local buffer_line = require("bufferline")
 local buffer_line_mappings = require("mappings.bufferline")
 local scope = require("scope")
 local colours = require("theme").colours
+local icons = require("icons")
 
 local M = {}
 
 local diagnostic_kinds = {
   error = {
-    icon = "",
+    icon = icons.diagnostic.Error,
     highlight = {
       selected = "ES",
       visible = "EV",
@@ -15,7 +16,7 @@ local diagnostic_kinds = {
     },
   },
   warning = {
-    icon = "",
+    icon = icons.diagnostic.Warn,
     highlight = {
       selected = "WS",
       visible = "WV",
@@ -23,7 +24,7 @@ local diagnostic_kinds = {
     },
   },
   info = {
-    icon = "",
+    icon = icons.diagnostic.Info,
     highlight = {
       selected = "IS",
       visible = "IV",
@@ -31,7 +32,7 @@ local diagnostic_kinds = {
     },
   },
   hint = {
-    icon = "󰌵",
+    icon = icons.diagnostic.Hint,
     highlight = {
       selected = "HS",
       visible = "HV",
@@ -39,7 +40,7 @@ local diagnostic_kinds = {
     },
   },
   other = {
-    icon = "󰌵",
+    icon = icons.diagnostic.Hint,
     highlight = {
       selected = "HS",
       visible = "HV",
@@ -80,7 +81,7 @@ function M.setup()
       end,
       diagnostics = "nvim_lsp",
       show_buffer_icons = true,
-      modified_icon = "󰃉",
+      modified_icon = icons.modified,
       -- Don't need the 󰅖 as I'm not using the mouse anyway
       show_close_icon = false,
       show_buffer_close_icons = false,
@@ -88,7 +89,7 @@ function M.setup()
       show_tab_indicators = true,
       diagnostics_indicator = diagnostics_indicator,
       indicator = {
-        icon = "▍",
+        icon = icons.bufferline.separator,
         style = "icon",
       },
       separator_style = { "", "" },

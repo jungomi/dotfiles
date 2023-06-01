@@ -1,19 +1,13 @@
 local incline = require("incline")
 local dev_icons = require("nvim-web-devicons")
 local colours = require("theme").colours
+local icons = require("icons")
 
 local M = {}
 
 local function get_diagnostics(props)
-  local icons = {
-    Error = "",
-    Warn = "",
-    Info = "",
-    Hint = "󰌵",
-  }
-
   local label = {}
-  for severity, icon in pairs(icons) do
+  for severity, icon in pairs(icons.diagnostic) do
     local n = #vim.diagnostic.get(props.buf, { severity = vim.diagnostic.severity[string.upper(severity)] })
     if n > 0 then
       table.insert(label, { icon .. " " .. n .. " ", group = "Diagnostic" .. severity })
@@ -29,13 +23,13 @@ local function render(props)
 
   local out = get_diagnostics(props)
   if #out > 0 then
-    table.insert(out, { " ▍ ", guifg = colours.grey })
+    table.insert(out, { icons.pad(icons.bufferline.separator, 1, 1), guifg = colours.grey })
   end
   table.insert(out, { filetype_icon, guifg = colour })
   table.insert(out, { " " })
   table.insert(out, { name })
   if is_modified then
-    table.insert(out, { "  󰃉" })
+    table.insert(out, { icons.pad_left(icons.modified, 2) })
   end
   return out
 end

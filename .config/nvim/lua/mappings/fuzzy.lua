@@ -2,6 +2,7 @@ local themes = require("telescope.themes")
 local builtin = require("telescope.builtin")
 local map_utils = require("utils.map")
 local nmap = map_utils.nmap
+local icons = require("icons")
 
 local BOTTOM_THEME = themes.get_ivy({
   results_title = false,
@@ -97,26 +98,38 @@ function M.enable_mappings()
     builtin.find_files(BOTTOM_THEME:with({ cwd = path }):prefix(normalise_dir(path)):title("Configs"))
   end, { desc = "Fuzzy » Configs" })
   -- History of recently opened files
-  nmap("<leader>fh", fn_with_icon(builtin.oldfiles, "History", ""), { desc = "Fuzzy » History" })
-  nmap("<leader>fg", fn_with_icon(builtin.git_files, "Git", ""), { desc = "Fuzzy » Git files" })
+  nmap("<leader>fh", fn_with_icon(builtin.oldfiles, "History", icons.lsp_kind.File), { desc = "Fuzzy » History" })
+  nmap("<leader>fg", fn_with_icon(builtin.git_files, "Git", icons.git.branch), { desc = "Fuzzy » Git files" })
   -- Git status
-  nmap("<leader>fs", fn_with_icon(builtin.git_status, "Git Status", ""), { desc = "Fuzzy » Git status" })
-  nmap("<leader>fb", fn_with_icon(builtin.buffers, "Buffers", ""), { desc = "Fuzzy » Buffers" })
-  nmap("<leader>ft", fn_with_icon(builtin.tags, "Tags", ""), { desc = "Fuzzy » Tags" })
+  nmap("<leader>fs", fn_with_icon(builtin.git_status, "Git Status", icons.git.branch), { desc = "Fuzzy » Git status" })
+  nmap("<leader>fb", fn_with_icon(builtin.buffers, "Buffers", icons.window), { desc = "Fuzzy » Buffers" })
+  nmap("<leader>ft", fn_with_icon(builtin.tags, "Tags", icons.hash), { desc = "Fuzzy » Tags" })
   nmap("<leader>fl", fn_with_icon(builtin.current_buffer_fuzzy_find, "Lines", ""), { desc = "Fuzzy » Lines" })
-  nmap("<leader>fm", fn_with_icon(builtin.marks, "Marks", ""), { desc = "Fuzzy » Marks" })
-  nmap("<leader>fq", fn_with_icon(builtin.diagnostics, "Diagnostics", ""), { desc = "Fuzzy » Diagnostics" })
-  nmap("<leader>fd", fn_with_icon(builtin.lsp_definitions, "Definitions", ""), { desc = "Fuzzy » Definitions" })
-  nmap("<leader>fr", fn_with_icon(builtin.lsp_references, "References", ""), { desc = "Fuzzy » References" })
+  nmap("<leader>fm", fn_with_icon(builtin.marks, "Marks", icons.location), { desc = "Fuzzy » Marks" })
+  nmap(
+    "<leader>fq",
+    fn_with_icon(builtin.diagnostics, "Diagnostics", icons.lsp_kind.Constructor),
+    { desc = "Fuzzy » Diagnostics" }
+  )
+  nmap(
+    "<leader>fd",
+    fn_with_icon(builtin.lsp_definitions, "Definitions", icons.copyright),
+    { desc = "Fuzzy » Definitions" }
+  )
+  nmap(
+    "<leader>fr",
+    fn_with_icon(builtin.lsp_references, "References", icons.lsp_kind.Reference),
+    { desc = "Fuzzy » References" }
+  )
   -- These incoming/outgoing calls are rarely supported, so far I've only seen it for Rust, but it's pretty nifty.
   nmap(
     "<leader>fi",
-    fn_with_icon(builtin.lsp_incoming_calls, "Incoming Calls", ""),
+    fn_with_icon(builtin.lsp_incoming_calls, "Incoming Calls", icons.incoming),
     { desc = "Fuzzy » Incoming Calls" }
   )
   nmap(
     "<leader>fo",
-    fn_with_icon(builtin.lsp_outgoing_calls, "Outgoing Calls", ""),
+    fn_with_icon(builtin.lsp_outgoing_calls, "Outgoing Calls", icons.outgoing),
     { desc = "Fuzzy » Outgoing Calls" }
   )
   -- `r` is already taken, and this isn't used much anyway, so `y` not.
@@ -126,7 +139,10 @@ function M.enable_mappings()
       input = input or ""
       -- Do not execute ripgrep if the given string is empty
       if input ~= "" then
-        builtin.grep_string(BOTTOM_THEME:with({ search = input }):fmt_icon("Rg", "» %s 🔍", input))
+        builtin.grep_string(
+          BOTTOM_THEME:with({ search = input })
+            :fmt_icon("Rg", "%s %s %s", icons.double_angle.right, input, icons.magnify)
+        )
       end
     end)
   end, { desc = "Fuzzy » Ripgrep" })
