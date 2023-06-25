@@ -9,6 +9,7 @@ local colours = {
   cyan = "#52a6a5",
   yellow = "#ffd75f",
   grey = "#8e8e8e",
+  pink = "#df6ea5",
 
   light_orange = "#f3bd49",
   light_grey = "#d3d0c8",
@@ -445,6 +446,9 @@ local theme = {
     TelescopeResultsDiffChange = { fg = colours.orange, bold = true },
     TelescopeResultsDiffDelete = { fg = colours.red, bold = true },
     TelescopeResultsDiffUntracked = { fg = colours.red },
+  },
+  flash = {
+    FlashLabel = { fg = colours.light_blue, bg = colours.pink, bold = true },
   },
 }
 

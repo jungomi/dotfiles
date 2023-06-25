@@ -15,6 +15,11 @@ return {
           normal_cur = "sas",
           delete = "sd",
           change = "sr",
+          -- Disable some unused ones (they get in the way of mostly operator pending mappings)
+          -- Also mostly line based (i.e. inserting the brackets around the line, instead of around the selection)
+          normal_line = false,
+          normal_cur_line = false,
+          change_line = false,
         },
         -- Don't move to the opening symbol after the action.
         move_cursor = false,

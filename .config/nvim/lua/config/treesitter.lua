@@ -18,15 +18,6 @@ function M.setup()
     indent = {
       enable = false,
     },
-    incremental_selection = {
-      enable = false,
-      keymaps = {
-        init_selection = "gnn",
-        node_incremental = "grn",
-        scope_incremental = "grc",
-        node_decremental = "grm",
-      },
-    },
     -- Setting correct comments for nested languages
     context_commentstring = {
       enable = true,
