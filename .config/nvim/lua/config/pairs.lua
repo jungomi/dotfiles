@@ -1,5 +1,6 @@
 local autopairs = require("nvim-autopairs")
 local Rule = require("nvim-autopairs.rule")
+local pairs_mappings = require("mappings.pairs")
 
 -- Find closing brackets in order to close all open brackets from this line
 -- Baesd on the snippet from the autopairs wiki
@@ -49,6 +50,10 @@ function M.setup()
   autopairs.setup({
     -- Don't go out of insert mode, i.e. keep it a single undo.
     break_undo = false,
+    -- Don't map <CR> because it sometimes triggers when it's undesired and
+    -- undoing that is just annoying.
+    -- Hence a differnt mapping is used to trigger this manually.
+    map_cr = false,
   })
 
   -- Remove the default bracket rules, as I only want them on <CR>
@@ -77,6 +82,8 @@ function M.setup()
     Rule("[", "]"):only_cr(),
     Rule("{", "}"):only_cr(),
   })
+
+  pairs_mappings.enable_mappings()
 end
 
 return M
