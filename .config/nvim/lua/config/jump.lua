@@ -5,11 +5,11 @@ local M = {}
 
 function M.setup()
   flash.setup({
+    label = {
+      after = false,
+      before = true,
+    },
     highlight = {
-      label = {
-        after = false,
-        before = true,
-      },
       backdrop = false,
     },
     modes = {
