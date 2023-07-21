@@ -19,7 +19,9 @@ return {
           -- Also mostly line based (i.e. inserting the brackets around the line, instead of around the selection)
           normal_line = false,
           normal_cur_line = false,
-          change_line = false,
+          -- BUG: cannot set this to false, otherwise the change (sr) mapping doesn't work,
+          -- so just have it on srs which I'll probbably never use, but at least it's not interferring.
+          change_line = "srs",
         },
         -- Don't move to the opening symbol after the action.
         move_cursor = false,
