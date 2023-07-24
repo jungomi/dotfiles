@@ -1,0 +1,45 @@
+{
+  "Breakpoint with custom Debugger": {
+    "prefix": [
+      "dbg"
+    ],
+    "body": [
+      "from debugger import breakpoint",
+      "breakpoint(${1})${0}"
+    ],
+    "description": "breakpoint() with the custom debugger"
+  },
+  "Class with init": {
+    "prefix": [
+      "cls"
+    ],
+    "body": [
+      "class ${1:ClassName}:",
+      "\tdef __init__(self, ${2:arg}):",
+      "\t\t${0:pass}"
+    ],
+    "description": "Dataclass definition"
+  },
+  "Dataclass": {
+    "prefix": [
+      "dcl"
+    ],
+    "body": [
+      "@dataclass",
+      "class ${1:Dataclass}:",
+      "\t${0}"
+    ],
+    "description": "Dataclass definition"
+  },
+  "Doc string": {
+    "prefix": [
+      "doc"
+    ],
+    "body": [
+      "\"\"\"",
+      "${0}",
+      "\"\"\""
+    ],
+    "description": "Doc string"
+  }
+}
