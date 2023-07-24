@@ -16,10 +16,10 @@ function M.enable_mappings()
   vmap("<leader>st", flash.treesitter, { desc = "Jump » Treesitter (Select)" })
 
   omap("r", flash.remote, { desc = "Jump » Remote Execute" })
-  omap("s", function()
+  omap("S", function()
     flash.jump({ search = { multi_window = false }, jump = { inclusive = true, pos = "end" } })
   end, { desc = "Jump » Operator Pending (Inclusive)" })
-  omap("S", function()
+  omap("s", function()
     flash.jump({ search = { multi_window = false }, jump = { inclusive = false, pos = "start" } })
   end, { desc = "Jump » Operator Pending (Exclusive)" })
 end
