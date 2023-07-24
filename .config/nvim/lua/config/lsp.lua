@@ -9,6 +9,7 @@ local cmp = require("cmp")
 local cmp_lsp = require("cmp_nvim_lsp")
 local trouble = require("trouble")
 local lsp_lines = require("lsp_lines")
+local lightbulb = require("nvim-lightbulb")
 local lsp_mappings = require("mappings.lsp")
 local t = require("utils.map").t
 local icons = require("icons")
@@ -326,6 +327,13 @@ function M.setup()
 
   lsp_lines.setup()
 
+  lightbulb.setup({
+    sign = {
+      text = icons.bulb,
+      hl = "DiagnosticSignWarn",
+    },
+  })
+
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
     -- Configure appearance of floating windows from hover info
     border = "rounded",
@@ -348,9 +356,6 @@ function M.setup()
     "DiagnosticSignInfo",
     { text = icons.pad_left(icons.diagnostic.Info, 1), texthl = "DiagnosticSignInfo", numhl = "DiagnosticSignInfo" }
   )
-
-  -- Lightbulb for code actions
-  vim.fn.sign_define("LightBulbSign", { text = icons.bulb, texthl = "DiagnosticSignWarn" })
 
   lsp_mappings.enable_mappings()
 end
