@@ -53,4 +53,8 @@ return {
       require("config.hydra").setup()
     end,
   },
+  {
+    "tzachar/highlight-undo.nvim",
+    opts = {},
+  },
 }

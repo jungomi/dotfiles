@@ -450,6 +450,9 @@ local theme = {
   flash = {
     FlashLabel = { fg = colours.light_blue, bg = colours.pink, bold = true },
   },
+  highlight_undo = {
+    highlightUndo = { link = "Yank" },
+  },
 }
 
 local M = {
