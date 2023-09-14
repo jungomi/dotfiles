@@ -24,14 +24,20 @@ function M.setup()
         enabled = false,
       },
       char = {
+        label = {
+          -- Need to explicitely disable it here, otherwise there is one character before that is highlighted even
+          -- though there is no label there.
+          before = false,
+        },
         highlight = {
           backdrop = false,
-          label = {
-            -- Need to explicitely disable it here, otherwise there is one character before that is highlighted even
-            -- though there is no label there.
-            before = false,
-          },
         },
+        -- Dynamic config options
+        config = function(opts)
+          -- Disable the labels after d/y with a motion.
+          -- "no" is normal - operator pending mode
+          opts.autohide = vim.fn.mode(true):find("no") and (vim.v.operator == "d" or vim.v.operator == "y")
+        end,
       },
     },
   })
