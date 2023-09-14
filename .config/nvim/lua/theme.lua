@@ -453,6 +453,14 @@ local theme = {
   highlight_undo = {
     highlightUndo = { link = "Yank" },
   },
+  glance = {
+    GlanceListNormal = { bg = colours.border },
+    GlancePreviewNormal = { link = "GlanceListNormal" },
+    GlanceFoldIcon = { link = "FoldColumn" },
+    GlanceWinBarTitle = { fg = colours.dark_grey, bg = colours.dark_border, bold = true },
+    GlanceWinBarFilename = { link = "GlanceWinBarTitle" },
+    GlanceWinBarFilepath = { fg = colours.dark_grey, bg = colours.dark_border },
+  },
 }
 
 local M = {

@@ -7,6 +7,7 @@ local schemastore = require("schemastore")
 local cmp = require("cmp")
 local cmp_lsp = require("cmp_nvim_lsp")
 local trouble = require("trouble")
+local glance = require("glance")
 local lsp_lines = require("lsp_lines")
 local lightbulb = require("nvim-lightbulb")
 local lsp_mappings = require("mappings.lsp")
@@ -300,6 +301,27 @@ function M.setup()
     sign = {
       text = icons.bulb,
       hl = "DiagnosticSignWarn",
+    },
+  })
+
+  glance.setup({
+    height = 24,
+    border = {
+      enable = true,
+    },
+    mappings = {
+      list = {
+        ["<C-h>"] = glance.actions.enter_win("preview"),
+        -- It might look weird to have the mapping to select itself, but that's just to overwrite the window
+        -- switching as that would go outside of the glance window into a regular one.
+        ["<C-l>"] = glance.actions.enter_win("list"),
+        ["gq"] = glance.actions.close,
+      },
+      preview = {
+        ["<C-h>"] = glance.actions.enter_win("preview"),
+        ["<C-l>"] = glance.actions.enter_win("list"),
+        ["gq"] = glance.actions.close,
+      },
     },
   })
 

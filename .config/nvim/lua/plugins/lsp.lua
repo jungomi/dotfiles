@@ -20,6 +20,8 @@ return {
   },
   -- Show a lightbulb sign if a code action is available for the current line
   "kosayoda/nvim-lightbulb",
+  -- Preview LSP references / definitions etc in a neat floating window
+  "dnlhc/glance.nvim",
   -- Virtual lines below instead of just virtual text at the end
   "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
   {
