@@ -25,7 +25,7 @@ local colours = {
   cursor_line = "#eee8d5",
 
   dark_grey = "#7a7a7a",
-  dark_border = "#cac4b5",
+  dark_border = "#ddd5c1",
 }
 
 local theme = {
