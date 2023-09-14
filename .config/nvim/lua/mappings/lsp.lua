@@ -1,3 +1,4 @@
+local conform = require("conform")
 local map_utils = require("utils.map")
 local nmap = map_utils.nmap
 local imap = map_utils.imap
@@ -17,7 +18,9 @@ function M.enable_mappings()
   -- Go to definition
   nmap("<leader>ld", vim.lsp.buf.definition, { desc = "LSP » Go to definition" })
   nmap("<leader>lf", function()
-    vim.lsp.buf.format({ async = true })
+    -- Conform will format it just like the LSP and fallback to the LSP if
+    -- no formatter was configured for the given filetype.
+    conform.format({ lsp_fallback = true, async = true })
   end, { desc = "LSP » Format" })
   -- Highlight references
   nmap("<leader>lh", vim.lsp.buf.document_highlight, { desc = "LSP » Highlight references" })

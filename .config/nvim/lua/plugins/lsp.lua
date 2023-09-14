@@ -22,9 +22,21 @@ return {
   "kosayoda/nvim-lightbulb",
   -- Virtual lines below instead of just virtual text at the end
   "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-  -- Use other sources for LSP actions
-  -- Mainly formatting Lua - not part of the language server for some reason
-  "jose-elias-alvarez/null-ls.nvim",
+  {
+    -- Formatter with fallback to LSP formatting
+    -- Makes it easy to use formatters that are not included in the language server
+    -- or allows to take precedence.
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        lua = { "stylua" },
+        javascript = { "prettier" },
+        typescript = { "prettier" },
+        typescriptreact = { "prettier" },
+        go = { "goimports", "gofumpt" },
+      },
+    },
+  },
   -- Rust integrations
   {
     "simrat39/rust-tools.nvim",

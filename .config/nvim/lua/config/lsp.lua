@@ -1,7 +1,6 @@
 local lsp_config = require("lspconfig")
 local mason = require("mason")
 local mason_lsp = require("mason-lspconfig")
-local null_ls = require("null-ls")
 local neodev = require("neodev")
 local rust_tools = require("rust-tools")
 local schemastore = require("schemastore")
@@ -44,14 +43,6 @@ local source_names = {
 
 local function on_attach()
   -- Currently empty by default, as the ones used previously are no longer necessary.
-end
-
-local function on_attach_no_fmt(client)
-  -- For future versions
-  client.server_capabilities.documentFormattingProvider = false
-  client.server_capabilities.documentRangeFormattingProvider = false
-  -- Call the default on_attach
-  on_attach()
 end
 
 -- LSP custom configs for various servers
@@ -106,15 +97,6 @@ local custom_server_configs = {
         keyOrdering = false,
       },
     },
-  },
-  gopls = {
-    on_attach = on_attach_no_fmt,
-  },
-  lua_ls = {
-    on_attach = on_attach_no_fmt,
-  },
-  tsserver = {
-    on_attach = on_attach_no_fmt,
   },
 }
 
@@ -176,19 +158,6 @@ function M.setup()
 
   neodev.setup({})
   M.setup_servers()
-
-  null_ls.setup({
-    -- Don't save when calling lsp/format
-    save_after_format = false,
-    sources = {
-      null_ls.builtins.formatting.stylua.with({
-        args = { "--search-parent-directories", "--stdin-filepath", "$FILENAME", "-" },
-      }),
-      null_ls.builtins.formatting.prettier,
-      null_ls.builtins.diagnostics.eslint,
-      null_ls.builtins.formatting.goimports,
-      null_ls.builtins.formatting.gofumpt,
-    },
   })
 
   rust_tools.setup({
