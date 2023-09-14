@@ -159,7 +159,6 @@ function M.setup()
 
   neodev.setup({})
   M.setup_servers()
-  })
 
   rust_tools.setup({
     tools = {
