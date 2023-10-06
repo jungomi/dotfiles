@@ -68,6 +68,13 @@ function M.setup()
         },
       },
     },
+    textsubjects = {
+      enable = true,
+      prev_selection = "<C-i>",
+      keymaps = {
+        ["<C-o>"] = "textsubjects-smart",
+      },
+    },
   })
 
   neogen.setup({
