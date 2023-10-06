@@ -7,6 +7,7 @@ return {
     end,
     dependencies = {
       "nvim-treesitter/playground",
+      "nvim-treesitter/nvim-treesitter-textobjects",
       "JoosepAlviste/nvim-ts-context-commentstring",
       -- Generate DocStrings
       "danymat/neogen",

@@ -41,10 +41,6 @@ nmap("<leader>z", "<C-w>_<C-w>|", { desc = "Window » Maximise" })
 
 -- :: Navigation
 -- General buffer list navigations, similar to vim-unimpaired
-nmap("[a", "<Cmd>prev<CR>", { desc = "Arguments » Previous" })
-nmap("]a", "<Cmd>next<CR>", { desc = "Arguments » Next" })
-nmap("[A", "<Cmd>first<CR>", { desc = "Arguments » First" })
-nmap("]A", "<Cmd>last<CR>", { desc = "Arguments » Last" })
 nmap("[b", "<Cmd>bprev<CR>", { desc = "Buffer » Previous" })
 nmap("]b", "<Cmd>bnext<CR>", { desc = "Buffer » Next" })
 nmap("[B", "<Cmd>bfirst<CR>", { desc = "Buffer » First" })

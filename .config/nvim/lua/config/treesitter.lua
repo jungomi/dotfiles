@@ -27,6 +27,47 @@ function M.setup()
     playground = {
       enable = true,
     },
+    textobjects = {
+      move = {
+        enable = true,
+        goto_next_start = {
+          ["]c"] = "@class.outer",
+          ["]f"] = "@function.outer",
+        },
+        goto_next_end = {
+          ["]C"] = "@class.outer",
+          ["]F"] = "@function.outer",
+        },
+        goto_previous_start = {
+          ["[c"] = "@class.outer",
+          ["[f"] = "@function.outer",
+        },
+        goto_previous_end = {
+          ["[C"] = "@class.outer",
+          ["[F"] = "@function.outer",
+        },
+      },
+      select = {
+        enable = true,
+        -- Automatically jump forward to textobj if not already on it.
+        lookahead = true,
+        keymaps = {
+          ["ic"] = "@class.outer",
+          ["ac"] = "@class.outer",
+          ["af"] = "@function.outer",
+          ["if"] = "@function.inner",
+        },
+      },
+      swap = {
+        enable = true,
+        swap_next = {
+          ["]a"] = "@parameter.inner",
+        },
+        swap_previous = {
+          ["[a"] = "@parameter.inner",
+        },
+      },
+    },
   })
 
   neogen.setup({
