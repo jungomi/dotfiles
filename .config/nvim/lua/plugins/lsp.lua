@@ -36,6 +36,20 @@ return {
         typescript = { "prettier" },
         typescriptreact = { "prettier" },
         go = { "goimports", "gofumpt" },
+        -- Even though there is a ruff-lsp that does the formatting, it always operates
+        -- on the whole, whereas conform only applies the changes, which preverves marks etc.
+        python = { "ruff_fix_imports", "ruff_format" },
+      },
+      formatters = {
+        -- This is Ruff's fix with the isort rules enforced, which results in them being sorted.
+        -- It is purely used to sort the imports by default, otherwise it would rely on the
+        -- project to have it configured in pyproject.toml.
+        ruff_fix_imports = function()
+          local ruff = vim.deepcopy(require("conform.formatters.ruff_fix"))
+          table.insert(ruff.args, "--extend-select")
+          table.insert(ruff.args, "I")
+          return ruff
+        end,
       },
     },
   },

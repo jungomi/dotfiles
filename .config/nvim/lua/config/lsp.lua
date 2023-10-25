@@ -76,11 +76,17 @@ local custom_server_configs = {
           pycodestyle = {
             enabled = false,
           },
-          -- Disable autopep8 and yapf, because black is used for formatting.
+          -- Disable autopep8, yapf, black and isort because ruff is now used for formatting.
           autopep8 = {
             enabled = false,
           },
           yapf = {
+            enabled = false,
+          },
+          black = {
+            enabled = false,
+          },
+          isort = {
             enabled = false,
           },
           -- Disable cyclomatic complexity analysis
