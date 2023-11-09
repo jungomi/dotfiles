@@ -8,13 +8,6 @@ return {
   "tpope/vim-fugitive",
   -- Show diff when using: git rebase --interactive
   "hotwatermorning/auto-git-diff",
-  -- Snippets (potential alternative: L3MON4D3/LuaSnip but currently not up to par)
-  {
-    "hrsh7th/vim-vsnip",
-    dependencies = {
-      "rafamadriz/friendly-snippets",
-    },
-  },
   -- Better search under cursor (smart case, visual *, etc.)
   "haya14busa/vim-asterisk",
   -- Save/Open with sudo (replaces the tee sudo trick)

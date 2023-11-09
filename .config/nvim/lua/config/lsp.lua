@@ -6,12 +6,13 @@ local rust_tools = require("rust-tools")
 local schemastore = require("schemastore")
 local cmp = require("cmp")
 local cmp_lsp = require("cmp_nvim_lsp")
+local luasnip = require("luasnip")
+local luasnip_vscode = require("luasnip.loaders.from_vscode")
 local trouble = require("trouble")
 local glance = require("glance")
 local lsp_lines = require("lsp_lines")
 local lightbulb = require("nvim-lightbulb")
 local lsp_mappings = require("mappings.lsp")
-local t = require("utils.map").t
 local icons = require("icons")
 
 local M = {}
@@ -38,7 +39,7 @@ local source_names = {
   calc = "Calc",
   nvim_lsp = "LSP",
   nvim_lua = "Lua",
-  vsnip = "Snip",
+  luasnip = "Snip",
   tmux = "Tmux",
 }
 
@@ -211,7 +212,7 @@ function M.setup()
       -- The order defines the priority during the completion
       { name = "nvim_lsp" },
       { name = "nvim_lua" },
-      { name = "vsnip" },
+      { name = "luasnip" },
       { name = "path" },
       { name = "calc" },
       {
@@ -251,8 +252,8 @@ function M.setup()
     },
     snippet = {
       expand = function(args)
-        -- Complete snippets with vsnip
-        vim.fn["vsnip#anonymous"](args.body)
+        -- Complete snippets with luasnip
+        luasnip.lsp_expand(args.body)
       end,
     },
     mapping = {
@@ -282,8 +283,8 @@ function M.setup()
       ["<C-l>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true })
-        elseif vim.fn["vsnip#available"](1) == 1 then
-          vim.fn.feedkeys(t("<Plug>(vsnip-expand-or-jump)"))
+        elseif luasnip.expand_or_jumpable() then
+          luasnip.expand_or_jump()
         else
           fallback()
         end
@@ -294,6 +295,10 @@ function M.setup()
       }),
     },
   })
+
+  -- Load snippets from RTP (from friendly-snippets) and my custom snippets
+  luasnip_vscode.lazy_load()
+  luasnip_vscode.lazy_load({ paths = { vim.fn.stdpath("config") .. "/snippets" } })
 
   trouble.setup({
     use_diagnostic_signs = true,

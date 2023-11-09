@@ -4,7 +4,6 @@ local imap = map_utils.imap
 local cmap = map_utils.cmap
 local vmap = map_utils.vmap
 local xmap = map_utils.xmap
-local smap = map_utils.smap
 
 vim.g.mapleader = ","
 
@@ -92,22 +91,12 @@ local function completion_menu_confirm()
   end
 end
 
--- <C-h>
-local function snip_prev()
-  if vim.fn["vsnip#jumpable"](-1) == 1 then
-    return "<Plug>(vsnip-jump-prev)"
-  end
-end
-
 imap("<C-j>", completion_menu_next, { expr = true }, { desc = "Completion » Down" })
 cmap("<C-j>", completion_menu_next, { expr = true }, { desc = "Completion » Down" })
 imap("<C-k>", completion_menu_prev, { expr = true }, { desc = "Completion » Up" })
 cmap("<C-k>", completion_menu_prev, { expr = true }, { desc = "Completion » Up" })
 imap("<C-l>", completion_menu_confirm, { expr = true }, { desc = "Completion » Confirm" })
 cmap("<C-l>", completion_menu_confirm, { expr = true }, { desc = "Completion » Confirm" })
--- Cannot be noremap because they use a <Plug>(...) mapping
-imap("<C-h>", snip_prev, { expr = true, remap = true }, { desc = "Snippet » Previous" })
-smap("<C-h>", snip_prev, { expr = true, remap = true }, { desc = "Snippet » Previous" })
 
 -- On some systems <C-space> is <C-@> for some reason
 imap("<C-@>", "<C-space>", { remap = true })

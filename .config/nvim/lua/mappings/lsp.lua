@@ -1,7 +1,9 @@
 local conform = require("conform")
+local luasnip = require("luasnip")
 local map_utils = require("utils.map")
 local nmap = map_utils.nmap
 local imap = map_utils.imap
+local smap = map_utils.smap
 
 local M = {}
 
@@ -11,6 +13,13 @@ local function toggle_virtual_lines()
     vim.diagnostic.config({ virtual_text = false, virtual_lines = cfg.config_when_enabled.virtual_lines })
   else
     vim.diagnostic.config({ virtual_text = cfg.config_when_enabled.virtual_text, virtual_lines = false })
+  end
+end
+
+-- <C-h>
+local function snip_prev()
+  if luasnip.jumpable(-1) then
+    luasnip.jump(-1)
   end
 end
 
@@ -45,6 +54,9 @@ function M.enable_mappings()
   nmap("<leader>lgr", "<CMD>Glance references<CR>", { desc = "LSP » Glance » References" })
   nmap("<leader>lgt", "<CMD>Glance type_definitions<CR>", { desc = "LSP » Glance » Type Definitions" })
   nmap("<leader>lgi", "<CMD>Glance implementations<CR>", { desc = "LSP » Glance » Implementations" })
+  -- Snippets
+  imap("<C-h>", snip_prev, { desc = "Snippet » Previous" })
+  smap("<C-h>", snip_prev, { desc = "Snippet » Previous" })
 end
 
 return M
