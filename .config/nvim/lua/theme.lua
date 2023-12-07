@@ -257,6 +257,7 @@ local theme = {
     -- e.g. all caps are Treesitter constants but an LSP variable, because LSP constants
     -- are the ones marked as const by the language (i.e. not supported by languages like Lua)
     ["@lsp.type.variable"] = {},
+    ["@lsp.type.keyword.rust"] = { link = "Keyword" },
     -- Default library
     ["@lsp.typemod.enumMember.defaultLibrary"] = { link = "Constant" },
     ["@lsp.typemod.function.defaultLibrary"] = { link = "@function.builtin" },
