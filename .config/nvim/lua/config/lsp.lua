@@ -2,7 +2,6 @@ local lsp_config = require("lspconfig")
 local mason = require("mason")
 local mason_lsp = require("mason-lspconfig")
 local neodev = require("neodev")
-local rust_tools = require("rust-tools")
 local schemastore = require("schemastore")
 local cmp = require("cmp")
 local cmp_lsp = require("cmp_nvim_lsp")
@@ -167,18 +166,10 @@ function M.setup()
   neodev.setup({})
   M.setup_servers()
 
-  rust_tools.setup({
+  vim.g.rustaceanvim = {
     tools = {
       hover_actions = {
         auto_focus = true,
-      },
-      inlay_hints = {
-        other_hints_prefix = icons.pad(icons.triangle.tiny, 2, 1),
-        parameter_hints_prefix = icons.pad_left(icons.lsp_kind.Function, 2),
-        highlight = "DiagnosticVirtualTextHint",
-        -- Disable parameter hints, because currently they are not
-        -- showing consistently on every parameter.
-        show_parameter_hints = false,
       },
     },
     server = {
@@ -188,12 +179,13 @@ function M.setup()
         ["rust-analyzer"] = {
           checkOnSave = {
             command = "clippy",
+            extraArgs = { "--no-deps" },
             allFeatures = true,
           },
         },
       },
     },
-  })
+  }
 
   -- Completion
   cmp.setup({

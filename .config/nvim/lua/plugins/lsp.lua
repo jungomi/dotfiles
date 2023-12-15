@@ -59,10 +59,7 @@ return {
     },
   },
   -- Rust integrations
-  {
-    "simrat39/rust-tools.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
-  },
+  "mrcjkb/rustaceanvim",
   -- Lua to recognise nvim API
   "folke/neodev.nvim",
   -- Schemas for JSON files to complete/display configurations options
