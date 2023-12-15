@@ -1,6 +1,7 @@
 local M = {}
 
 local ts_configs = require("nvim-treesitter.configs")
+local ts_comment = require("ts_context_commentstring")
 local neogen = require("neogen")
 local treesitter_mappings = require("mappings.treesitter")
 
@@ -17,12 +18,6 @@ function M.setup()
     -- Indentation doesn't work well yet
     indent = {
       enable = false,
-    },
-    -- Setting correct comments for nested languages
-    context_commentstring = {
-      enable = true,
-      -- Don't do it all the time, only when using the commenting plugin
-      enable_autocmd = false,
     },
     playground = {
       enable = true,
@@ -75,6 +70,12 @@ function M.setup()
         ["<C-o>"] = "textsubjects-smart",
       },
     },
+  })
+
+  -- Setting correct comments for nested languages
+  ts_comment.setup({
+    -- Don't do it all the time, only when using the commenting plugin
+    enable_autocmd = false,
   })
 
   neogen.setup({
