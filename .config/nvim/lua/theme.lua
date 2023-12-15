@@ -199,6 +199,9 @@ local theme = {
     -- Signature popup
     LspSignatureActiveParameter = { link = "Search" },
 
+    -- Inlay hints
+    LspInlayHint = { fg = colours.grey, italic = true },
+
     -- Trouble
     TroubleIndent = { fg = colours.grey },
     TroubleCount = { fg = colours.grey, italic = true },

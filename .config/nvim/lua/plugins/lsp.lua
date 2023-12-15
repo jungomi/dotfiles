@@ -58,6 +58,8 @@ return {
       },
     },
   },
+  -- Inlay hints (will be supported natively in nvim 0.10)
+  "lvimuser/lsp-inlayhints.nvim",
   -- Rust integrations
   "mrcjkb/rustaceanvim",
   -- Lua to recognise nvim API

@@ -11,6 +11,7 @@ local trouble = require("trouble")
 local glance = require("glance")
 local lsp_lines = require("lsp_lines")
 local lightbulb = require("nvim-lightbulb")
+local inlay_hints = require("lsp-inlayhints")
 local lsp_mappings = require("mappings.lsp")
 local icons = require("icons")
 
@@ -42,8 +43,9 @@ local source_names = {
   tmux = "Tmux",
 }
 
-local function on_attach()
+local function on_attach(client, bufnr)
   -- Currently empty by default, as the ones used previously are no longer necessary.
+  inlay_hints.on_attach(client, bufnr)
 end
 
 -- LSP custom configs for various servers
@@ -102,6 +104,15 @@ local custom_server_configs = {
       yaml = {
         -- Don't enfore key order, no idea why this is enabled by default.
         keyOrdering = false,
+      },
+    },
+  },
+  lua_ls = {
+    settings = {
+      Lua = {
+        hint = {
+          enable = true,
+        },
       },
     },
   },
@@ -166,6 +177,20 @@ function M.setup()
   neodev.setup({})
   M.setup_servers()
 
+  inlay_hints.setup({
+    inlay_hints = {
+      parameter_hints = {
+        -- Disable parameter hints, because it doesn't work if they are at the end of the line.
+        -- Will enable them once 0.10 is released, which supports true inlay hints.
+        show = false,
+        prefix = icons.pad_left(icons.lsp_kind.Function, 2),
+      },
+      type_hints = {
+        prefix = icons.pad(icons.triangle.tiny, 2, 1),
+        remove_colon_start = true,
+      },
+    },
+  })
   vim.g.rustaceanvim = {
     tools = {
       hover_actions = {

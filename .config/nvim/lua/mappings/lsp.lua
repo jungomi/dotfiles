@@ -1,5 +1,6 @@
 local conform = require("conform")
 local luasnip = require("luasnip")
+local inlay_hints = require("lsp-inlayhints")
 local map_utils = require("utils.map")
 local nmap = map_utils.nmap
 local imap = map_utils.imap
@@ -40,6 +41,7 @@ function M.enable_mappings()
   imap("<C-s>", vim.lsp.buf.signature_help, { desc = "LSP » Signature" })
   nmap("<leader>la", vim.lsp.buf.code_action, { desc = "LSP » Code actions" })
   nmap("<leader>lv", toggle_virtual_lines, { desc = "LSP » Toggle Virtual Lines" })
+  nmap("<leader>li", inlay_hints.toggle, { desc = "LSP » Toggle Inlay Hints" })
   -- Diagnostic navigation
   nmap("]d", function()
     vim.diagnostic.goto_next({ float = { border = "rounded" } })
