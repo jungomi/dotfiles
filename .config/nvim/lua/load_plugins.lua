@@ -19,7 +19,7 @@ lazy.setup("plugins", {
     colorscheme = { "mine" },
   },
   ui = {
-    border = "single",
+    border = "rounded",
     -- These icons need to be redefined as the defaults are somehow not renedered properly.
     -- Probably should look at fixing the Nerd font.
     icons = {

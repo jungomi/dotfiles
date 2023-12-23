@@ -168,6 +168,7 @@ function M.setup()
   mason.setup({
     ui = {
       icons = icons.mason,
+      border = "rounded",
     },
   })
   mason_lsp.setup({
@@ -374,6 +375,9 @@ function M.setup()
     "DiagnosticSignInfo",
     { text = icons.pad_left(icons.diagnostic.Info, 1), texthl = "DiagnosticSignInfo", numhl = "DiagnosticSignInfo" }
   )
+
+  -- Show border around commands like LspInfo
+  require("lspconfig.ui.windows").default_options.border = "rounded"
 
   lsp_mappings.enable_mappings()
 end
