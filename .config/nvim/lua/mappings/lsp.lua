@@ -2,6 +2,7 @@ local conform = require("conform")
 local luasnip = require("luasnip")
 local inlay_hints = require("lsp-inlayhints")
 local map_utils = require("utils.map")
+local ts_utils = require("utils.treesitter")
 local nmap = map_utils.nmap
 local imap = map_utils.imap
 local smap = map_utils.smap
@@ -21,6 +22,17 @@ end
 local function snip_prev()
   if luasnip.jumpable(-1) then
     luasnip.jump(-1)
+  else
+    ts_utils.jump_start_of_node()
+  end
+end
+
+-- <C-l>
+local function snip_next()
+  if luasnip.expand_or_jumpable() then
+    luasnip.expand_or_jump()
+  else
+    ts_utils.jump_end_of_node()
   end
 end
 
@@ -59,6 +71,8 @@ function M.enable_mappings()
   -- Snippets
   imap("<C-h>", snip_prev, { desc = "Snippet » Previous" })
   smap("<C-h>", snip_prev, { desc = "Snippet » Previous" })
+  imap("<C-l>", snip_next, { desc = "Snippet » Next" })
+  smap("<C-l>", snip_next, { desc = "Snippet » Next" })
 end
 
 return M
