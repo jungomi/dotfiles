@@ -225,6 +225,10 @@ function M.setup()
       documentation = {
         border = "rounded",
       },
+      completion = {
+        col_offset = -3,
+        side_padding = 0,
+      },
     },
     sources = cmp.config.sources({
       -- The order defines the priority during the completion
@@ -256,10 +260,11 @@ function M.setup()
       },
     }),
     formatting = {
+      fields = { "kind", "abbr", "menu" },
       format = function(entry, vim_item)
         local icon = icons.lsp_kind[vim_item.kind]
         if icon then
-          vim_item.kind = icon
+          vim_item.kind = string.format(" %s ", icon)
         end
         if entry.source.name then
           local name = source_names[entry.source.name] or entry.source.name
