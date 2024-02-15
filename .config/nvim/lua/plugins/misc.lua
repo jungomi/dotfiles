@@ -57,4 +57,11 @@ return {
     "tzachar/highlight-undo.nvim",
     opts = {},
   },
+  {
+    "stevearc/oil.nvim",
+    config = function()
+      require("config.oil").setup()
+    end,
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+  },
 }
