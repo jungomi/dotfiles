@@ -30,6 +30,8 @@ local SERVERS = {
   "gopls",
   -- Ruff is used for linting of Python files (much faster than flake8)
   "ruff_lsp",
+  -- Zig
+  "zls",
 }
 
 -- Source names to be shown in the completion menu

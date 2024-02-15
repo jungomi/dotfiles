@@ -54,6 +54,14 @@ autocmd_utils.create_augroups({
       command = "setlocal noexpandtab",
       desc = "Tab for CSV",
     },
+    -- BufReadPost and BufNewFile instead of FileType because otherwise it gets overwritten from somehwere,
+    -- don't know why, just again something terrible about the built-in zig support.
+    {
+      event = { "BufReadPost", "BufNewFile" },
+      pattern = "*.zig",
+      command = "setlocal shiftwidth=4 softtabstop=4",
+      desc = "Tab settings for Zig",
+    },
 
     -- Trigger completion with Tab in DAP REPL (to make it feel like a REPL)
     {
