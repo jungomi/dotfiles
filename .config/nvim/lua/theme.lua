@@ -457,6 +457,10 @@ local theme = {
   highlight_undo = {
     highlightUndo = { link = "Yank" },
   },
+  substitute = {
+    SubstituteSubstituted = { link = "Yank" },
+    SubstituteExchange = { link = "Yank" },
+  },
   glance = {
     GlanceListNormal = { bg = colours.border },
     GlancePreviewNormal = { link = "GlanceListNormal" },

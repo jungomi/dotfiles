@@ -64,4 +64,11 @@ return {
     end,
     dependencies = { "nvim-tree/nvim-web-devicons" },
   },
+  -- Swap two regions of text or replace text selected by motion
+  {
+    "gbprod/substitute.nvim",
+    config = function()
+      require("config.substitute").setup()
+    end,
+  },
 }

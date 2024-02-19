@@ -16,8 +16,6 @@ return {
   "mbbill/undotree",
   -- Align text
   "godlygeek/tabular",
-  -- Swap two regions of text
-  "tommcdo/vim-exchange",
   -- Run shell commands asynchronously
   "skywind3000/asyncrun.vim",
   -- Live preview of markdown files
