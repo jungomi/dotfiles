@@ -16,10 +16,10 @@ function M.setup()
       ["<C-l>"] = false,
       ["<C-t>"] = false,
       ["<C-r>"] = "actions.refresh",
-      -- Usual split bindings, instead of theirs
-      ["<C-s>"] = false,
+      -- Usual split binding for horizontal
+      -- Would also like <C-v> for vertical but the problem is that I need visual block selection,
+      -- so will just use the default <C-s> for that.
       ["<C-x>"] = "actions.select_split",
-      ["<C-v>"] = "actions.select_vsplit",
       ["<BS>"] = "actions.parent",
       ["gq"] = "actions.close",
     },
