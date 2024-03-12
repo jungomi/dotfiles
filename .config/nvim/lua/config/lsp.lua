@@ -321,7 +321,11 @@ function M.setup()
 
   -- Load snippets from RTP (from friendly-snippets) and my custom snippets
   luasnip_vscode.lazy_load()
-  luasnip_vscode.lazy_load({ paths = { vim.fn.stdpath("config") .. "/snippets" } })
+  luasnip_vscode.lazy_load({
+    paths = { vim.fn.stdpath("config") .. "/snippets" },
+    -- The priority should be higher than the default VSCode snippets (friendly-snippets).
+    default_priority = 2000,
+  })
 
   trouble.setup({
     use_diagnostic_signs = true,

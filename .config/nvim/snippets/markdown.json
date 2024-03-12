@@ -1,0 +1,22 @@
+{
+  "Code block": {
+    "prefix": [
+      "code"
+    ],
+    "body": [
+      "```${1}",
+      "${2}",
+      "```${0}"
+    ],
+    "description": "Code block"
+  },
+  "Reference": {
+    "prefix": [
+      "ref"
+    ],
+    "body": [
+      "[${1:Name}][${2:ref}]"
+    ],
+    "description": "Link to a reference"
+  }
+}
