@@ -32,6 +32,8 @@ local SERVERS = {
   "ruff_lsp",
   -- Zig
   "zls",
+  -- XML
+  "lemminx",
 }
 
 -- Source names to be shown in the completion menu
