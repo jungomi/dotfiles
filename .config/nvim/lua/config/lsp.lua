@@ -34,6 +34,8 @@ local SERVERS = {
   "zls",
   -- XML
   "lemminx",
+  -- A better version of pyright
+  "basedpyright",
 }
 
 -- Source names to be shown in the completion menu
@@ -65,41 +67,6 @@ local custom_server_configs = {
     settings = {
       json = {
         schemas = schemastore.json.schemas(),
-      },
-    },
-  },
-  pylsp = {
-    settings = {
-      pylsp = {
-        plugins = {
-          -- Turn off all linters because ruff is used separately
-          flake8 = {
-            enabled = false,
-          },
-          pyflakes = {
-            enabled = false,
-          },
-          pycodestyle = {
-            enabled = false,
-          },
-          -- Disable autopep8, yapf, black and isort because ruff is now used for formatting.
-          autopep8 = {
-            enabled = false,
-          },
-          yapf = {
-            enabled = false,
-          },
-          black = {
-            enabled = false,
-          },
-          isort = {
-            enabled = false,
-          },
-          -- Disable cyclomatic complexity analysis
-          mccabe = {
-            enabled = false,
-          },
-        },
       },
     },
   },

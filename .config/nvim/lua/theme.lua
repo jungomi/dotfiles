@@ -261,6 +261,10 @@ local theme = {
     -- are the ones marked as const by the language (i.e. not supported by languages like Lua)
     ["@lsp.type.variable"] = {},
     ["@lsp.type.keyword.rust"] = { link = "Keyword" },
+    -- Classes are mostly linked to Type because without semantic tokens, that's what they would be.
+    -- So it's more about having the consistency, even though it might be helpful to distinguish them.
+    ["@lsp.type.class.python"] = { link = "Type" },
+    ["@lsp.type.namespace.python"] = {},
     -- Default library
     ["@lsp.typemod.enumMember.defaultLibrary"] = { link = "Constant" },
     ["@lsp.typemod.function.defaultLibrary"] = { link = "@function.builtin" },
