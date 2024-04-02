@@ -156,6 +156,8 @@ local theme = {
     -- :: Filetype specific (by adding the .extension at the end)
     ["@field.yaml"] = { fg = colours.red },
     ["@punctuation.special.markdown"] = { link = "@text.title" },
+    ["@module.latex"] = { link = "@namespace" },
+    ["@markup.link.latex"] = { link = "@label.latex" },
   },
   lsp = {
     -- Defaults (mostly for fallbacks)
