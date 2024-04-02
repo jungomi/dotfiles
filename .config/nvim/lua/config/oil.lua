@@ -9,7 +9,9 @@ function M.setup()
       "icon",
       { "size", highlight = "Comment" },
     },
-    lsp_rename_autosave = "unmodified",
+    lsp_file_methods = {
+      autosave_changes = "unmodified",
+    },
     keymaps = {
       -- Don't overwrite my mappings
       ["<C-h>"] = false,
