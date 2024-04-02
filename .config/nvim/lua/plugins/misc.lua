@@ -71,4 +71,10 @@ return {
       require("config.substitute").setup()
     end,
   },
+  {
+    "stevearc/overseer.nvim",
+    config = function()
+      require("config.overseer").setup()
+    end,
+  },
 }
