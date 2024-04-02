@@ -163,30 +163,35 @@ local theme = {
     DiagnosticWarn = { fg = colours.orange },
     DiagnosticInfo = { fg = colours.blue },
     DiagnosticHint = { fg = colours.cyan },
+    DiagnosticOk = { fg = colours.green },
 
     -- Signs
     DiagnosticSignError = { fg = colours.red, bg = colours.border },
     DiagnosticSignWarn = { fg = colours.orange, bg = colours.border },
     DiagnosticSignInfo = { fg = colours.blue, bg = colours.border },
     DiagnosticSignHint = { fg = colours.cyan, bg = colours.border },
+    DiagnosticSignOk = { fg = colours.green, bg = colours.border },
 
     -- Virtual text
     DiagnosticVirtualTextError = { fg = colours.red, italic = true },
     DiagnosticVirtualTextWarn = { fg = colours.orange, italic = true },
     DiagnosticVirtualTextInfo = { fg = colours.blue, italic = true },
     DiagnosticVirtualTextHint = { fg = colours.cyan, italic = true },
+    DiagnosticVirtualTextOk = { fg = colours.green, italic = true },
 
     -- Floating window text
     DiagnosticFloatingError = { fg = colours.red },
     DiagnosticFloatingWarn = { fg = colours.orange },
     DiagnosticFloatingInfo = { fg = colours.blue },
     DiagnosticFloatingHint = { fg = colours.cyan },
+    DiagnosticFloatingOk = { fg = colours.green },
 
     -- Underline the corresponding text
     DiagnosticUnderlineError = { undercurl = true, special = colours.red },
     DiagnosticUnderlineWarn = { undercurl = true, special = colours.orange },
     DiagnosticUnderlineInfo = { undercurl = true, special = colours.blue },
     DiagnosticUnderlineHint = { undercurl = true, special = colours.cyan },
+    DiagnosticUnderlineOk = { undercurl = true, special = colours.cyan },
 
     -- Unused variables / imports
     DiagnosticUnnecessary = { fg = colours.grey, undercurl = true },
@@ -211,6 +216,7 @@ local theme = {
     TroubleSignWarning = { fg = colours.orange },
     TroubleSignInformation = { fg = colours.blue },
     TroubleSignHint = { fg = colours.cyan },
+    TroubleSignOk = { fg = colours.green },
 
     -- Saga
     -- So many unnecessary border/line highlight groups
