@@ -1,4 +1,5 @@
 local overseer = require("overseer")
+local task_editor = require("overseer.task_editor")
 
 local M = {}
 
@@ -15,6 +16,28 @@ function M.watch_cmd(cmd, files)
   })
   task:add_component({ "restart_on_save", paths = files })
   task:start()
+  overseer.open({ enter = false })
+end
+
+function M.run_and_open(opts)
+  overseer.run_template(opts, function(task)
+    if task then
+      overseer.open({ enter = false })
+    end
+  end)
+end
+
+function M.build_task_and_open(opts)
+  opts = opts or { name = "Task Name", cmd = "ls" }
+  local task = overseer.new_task(opts)
+  task_editor.open(task, function(result)
+    if result then
+      task:start()
+      overseer.open({ enter = false })
+    else
+      task:dispose()
+    end
+  end)
 end
 
 return M
