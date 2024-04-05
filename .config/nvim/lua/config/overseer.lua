@@ -1,8 +1,13 @@
 local overseer = require("overseer")
 local overseer_mappings = require("mappings.overseer")
 local tasks = require("config.tasks")
+local gitlab_ci = require("config.tasks.gitlab_ci")
 
 local M = {}
+
+function M.register_tasks()
+  overseer.register_template(gitlab_ci.template_provider)
+end
 
 function M.setup()
   overseer.setup({
@@ -43,6 +48,8 @@ function M.setup()
     nargs = "*",
     complete = "shellcmd",
   })
+
+  M.register_tasks()
 
   overseer_mappings.enable_mappings()
 end
