@@ -25,6 +25,8 @@ function M.setup()
         ["<C-j>"] = false,
         ["<C-u>"] = "ScrollOutputUp",
         ["<C-d>"] = "ScrollOutputDown",
+        ["x"] = "<Cmd>OverseerQuickAction dispose<CR>",
+        ["r"] = "<Cmd>OverseerQuickAction restart<CR>",
       },
     },
     form = {
