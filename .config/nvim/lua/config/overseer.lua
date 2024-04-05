@@ -32,6 +32,8 @@ function M.setup()
         ["<C-d>"] = "ScrollOutputDown",
         ["x"] = "<Cmd>OverseerQuickAction dispose<CR>",
         ["r"] = "<Cmd>OverseerQuickAction restart<CR>",
+        ["-"] = "DecreaseDetail",
+        ["="] = "IncreaseDetail",
       },
     },
     form = {
