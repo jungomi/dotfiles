@@ -143,6 +143,11 @@ local theme = {
     -- For some reason TODO is also a @text.warning instead of a separate entity.
     ["@text.warning"] = { fg = colours.purple, bold = true },
     ["@text.danger"] = { fg = colours.red, bold = true },
+    -- These now look like real comment labels
+    ["@comment.note"] = { fg = colours.cyan, bold = true },
+    ["@comment.todo"] = { fg = colours.purple, bold = true },
+    ["@comment.error"] = { fg = colours.red, bold = true },
+    ["@comment.warning"] = { fg = colours.orange, bold = true },
     -- Diffs within Treesitter such as in git commits
     ["@text.diff.add"] = { fg = colours.green },
     ["@text.diff.delete"] = { fg = colours.red },
