@@ -87,6 +87,17 @@ local custom_server_configs = {
       },
     },
   },
+  basedpyright = {
+    settings = {
+      basedpyright = {
+        -- Set the default type checking mode to standard, because opening a project without any configuration,
+        -- will be full of errors, because most of them don't follow the basic type checking rules, let alone the much
+        -- stricter ones.
+        -- This makes it at least bearable for untyped code bases.
+        typeCheckingMode = "standard",
+      },
+    },
+  },
 }
 
 -- More capabilities are supported by nvim-cmp, such as Snippets
