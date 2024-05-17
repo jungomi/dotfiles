@@ -34,6 +34,7 @@ local theme = {
     NormalFloat = { bg = colours.bg },
     FloatBorder = { bg = colours.bg, fg = colours.grey },
     VertSplit = { fg = colours.orange },
+    WinSeparator = { fg = colours.orange },
 
     Cursor = { bg = colours.fg, fg = colours.bg },
     CursorLine = { bg = colours.cursor_line },
@@ -43,6 +44,7 @@ local theme = {
     VisualNOS = { bg = colours.light_orange },
     Search = { bg = colours.yellow },
     IncSearch = { bg = colours.orange, fg = colours.fg },
+    CurSearch = { bg = colours.light_orange },
     Yank = { bg = colours.light_orange },
 
     LineNr = { bg = colours.border, fg = colours.grey },
