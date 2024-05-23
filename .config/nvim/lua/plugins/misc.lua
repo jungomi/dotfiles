@@ -36,8 +36,6 @@ return {
       require("config.pairs").setup()
     end,
   },
-  -- Yank over SSH with ANSI OSC52 escape sequence
-  "ojroques/nvim-osc52",
   -- Smooth scrolling
   {
     "karb94/neoscroll.nvim",

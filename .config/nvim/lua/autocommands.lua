@@ -1,6 +1,5 @@
 -- lightbulb might not be installed yet, so make sure it doesn't fail
 local _, lightbulb = pcall(require, "nvim-lightbulb")
-local _, osc52 = pcall(require, "osc52")
 local autocmd_utils = require("utils.autocmd")
 local file_utils = require("utils.file")
 
@@ -87,18 +86,6 @@ autocmd_utils.create_augroups({
         vim.highlight.on_yank({ higroup = "Yank", timeout = 250 })
       end,
       desc = "Highlight yanked text",
-    },
-    -- Copy with OSCYank when using clipboard register
-    {
-      event = "TextYankPost",
-      pattern = "*",
-      callback = function()
-        local event = vim.v.event
-        if event and event.operator == "y" and event.regname == "+" then
-          osc52.copy_register("+")
-        end
-      end,
-      desc = "Copy to clipboard with OSCYank when using clipboard register",
     },
     -- Clear highlighted references when moving the cursor
     {
