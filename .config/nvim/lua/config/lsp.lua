@@ -11,11 +11,14 @@ local trouble = require("trouble")
 local glance = require("glance")
 local lsp_lines = require("lsp_lines")
 local lightbulb = require("nvim-lightbulb")
-local inlay_hints = require("lsp-inlayhints")
 local lsp_mappings = require("mappings.lsp")
 local icons = require("icons")
+local autocmd_utils = require("utils.autocmd")
+local str_utils = require("utils.str")
 
-local M = {}
+local M = {
+  inlay_hints_enabled = true,
+}
 local SERVERS = {
   "html",
   "cssls",
@@ -51,7 +54,6 @@ local source_names = {
 
 local function on_attach(client, bufnr)
   -- Currently empty by default, as the ones used previously are no longer necessary.
-  inlay_hints.on_attach(client, bufnr)
 end
 
 -- LSP custom configs for various servers
@@ -147,6 +149,10 @@ function M.setup()
     },
   })
 
+  -- Enable inlay hints, whenever they are available.
+  -- This enables them globaly, rather than having it separate for each buffer.
+  vim.lsp.inlay_hint.enable(M.inlay_hints_enabled)
+
   mason.setup({
     ui = {
       icons = icons.mason,
@@ -160,20 +166,6 @@ function M.setup()
   neodev.setup({})
   M.setup_servers()
 
-  inlay_hints.setup({
-    inlay_hints = {
-      parameter_hints = {
-        -- Disable parameter hints, because it doesn't work if they are at the end of the line.
-        -- Will enable them once 0.10 is released, which supports true inlay hints.
-        show = false,
-        prefix = icons.pad_left(icons.lsp_kind.Function, 2),
-      },
-      type_hints = {
-        prefix = icons.pad(icons.triangle.tiny, 2, 1),
-        remove_colon_start = true,
-      },
-    },
-  })
   vim.g.rustaceanvim = {
     tools = {
       hover_actions = {
@@ -369,6 +361,29 @@ function M.setup()
   require("lspconfig.ui.windows").default_options.border = "rounded"
 
   lsp_mappings.enable_mappings()
+
+  autocmd_utils.create_augroups({
+    config_lsp = {
+      -- Inlay hints are really annoying in insert and visual modes. For example, in insert mode it makes the cursor
+      -- jump ahead when the parameter is added as virtual text. So the easiest is to just disable them during these
+      -- modes and reenable them when exiting.
+      {
+        event = "ModeChanged",
+        pattern = "*",
+        callback = function()
+          local old_mode = vim.v.event.old_mode
+          local new_mode = vim.v.event.new_mode
+          if str_utils.starts_with_one_of(new_mode, { "i", "v", "V", "" }) then
+            M.inlay_hints_enabled = vim.lsp.inlay_hint.is_enabled({})
+            vim.lsp.inlay_hint.enable(false)
+          elseif str_utils.starts_with_one_of(old_mode, { "i", "v", "V", "" }) then
+            vim.lsp.inlay_hint.enable(M.inlay_hints_enabled)
+          end
+        end,
+        desc = "Disable inlay hints in visual and insert mode",
+      },
+    },
+  })
 end
 
 return M

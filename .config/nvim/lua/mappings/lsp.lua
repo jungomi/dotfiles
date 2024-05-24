@@ -1,6 +1,5 @@
 local conform = require("conform")
 local luasnip = require("luasnip")
-local inlay_hints = require("lsp-inlayhints")
 local map_utils = require("utils.map")
 local ts_utils = require("utils.treesitter")
 local nmap = map_utils.nmap
@@ -16,6 +15,12 @@ local function toggle_virtual_lines()
   else
     vim.diagnostic.config({ virtual_text = cfg.config_when_enabled.virtual_text, virtual_lines = false })
   end
+end
+
+-- Toggle the inlay hints, globally if no buffer number is given.
+local function toggle_inlay_hints(buf)
+  local opts = { bufnr = buf } or nil
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(opts), opts)
 end
 
 -- <C-h>
@@ -53,7 +58,7 @@ function M.enable_mappings()
   imap("<C-s>", vim.lsp.buf.signature_help, { desc = "LSP » Signature" })
   nmap("<leader>la", vim.lsp.buf.code_action, { desc = "LSP » Code actions" })
   nmap("<leader>lv", toggle_virtual_lines, { desc = "LSP » Toggle Virtual Lines" })
-  nmap("<leader>li", inlay_hints.toggle, { desc = "LSP » Toggle Inlay Hints" })
+  nmap("<leader>li", toggle_inlay_hints, { desc = "LSP » Toggle Inlay Hints" })
   -- Diagnostic navigation
   nmap("]d", function()
     vim.diagnostic.goto_next({ float = { border = "rounded" } })
