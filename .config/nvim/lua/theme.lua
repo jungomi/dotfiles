@@ -60,6 +60,8 @@ local theme = {
 
     StatusLine = { fg = colours.dark_grey, bg = colours.dark_border, bold = true },
     StatusLineNC = { fg = colours.grey, bg = colours.cursor_line },
+    WinBar = { fg = colours.grey, bg = colours.cursor_line, bold = true },
+    WinBarNC = { fg = colours.grey, bg = colours.border },
 
     PMenu = { bg = colours.cursor_line },
     PMenuSel = { bg = colours.yellow },
@@ -446,8 +448,8 @@ local theme = {
   },
   -- Floating Winbar showing buffer name at the top right of the window
   incline = {
-    InclineNormal = { fg = colours.grey, bg = colours.cursor_line, bold = true },
-    InclineNormalNC = { fg = colours.grey, bg = colours.border },
+    InclineNormal = { link = "WinBar" },
+    InclineNormalNC = { link = "WinBarNC" },
   },
   -- Scrollbar
   scrollview = {
@@ -487,6 +489,73 @@ local theme = {
     GlanceWinBarTitle = { fg = colours.dark_grey, bg = colours.dark_border, bold = true },
     GlanceWinBarFilename = { link = "GlanceWinBarTitle" },
     GlanceWinBarFilepath = { fg = colours.dark_grey, bg = colours.dark_border },
+  },
+  -- Neogit is a bit odd that you can't reset the highlights (to NONE as in empty {}), because it just overwrites that.
+  -- So for some of them they need to be set manually to the desired ones.
+  neogit = {
+    NeogitDiffAdd = { link = "diffAdded" },
+    NeogitDiffAddCursor = { link = "NeogitDiffAdd" },
+    NeogitDiffAddHighlight = { link = "NeogitDiffAdd" },
+
+    NeogitDiffDelete = { link = "diffRemoved" },
+    NeogitDiffDeleteCursor = { link = "NeogitDiffDelete" },
+    NeogitDiffDeleteHighlight = { link = "NeogitDiffDelete" },
+
+    NeogitDiffContext = { bg = colours.bg },
+    NeogitDiffContextCursor = { link = "CursorLine" },
+    NeogitDiffContextHighlight = { link = "NeogitDiffContext" },
+
+    NeogitDiffHeader = { fg = colours.blue, bold = true },
+    NeogitDiffHeaderHighlight = { link = "NeogitDiffHeader" },
+
+    NeogitUntrackedfiles = { fg = colours.red, bold = true },
+    NeogitUnstagedchanges = { fg = colours.orange, bold = true },
+    NeogitStagedchanges = { fg = colours.green, bold = true },
+
+    NeogitChangeAdded = { link = "DiffviewStatusAdded" },
+    NeogitChangeDeleted = { link = "DiffviewStatusDeleted" },
+    NeogitChangeModified = { link = "DiffviewStatusModified" },
+    NeogitChangeUntracked = { link = "DiffviewStatusUntracked" },
+    NeogitChangeNewFile = { link = "NeogitChangeAdded" },
+    NeogitChangeRenamed = { fg = colours.blue, bold = true },
+
+    NeogitHunkHeader = { link = "diffLine" },
+    NeogitHunkHeaderCursor = { link = "NeogitHunkHeader" },
+    NeogitHunkHeaderHighlight = { link = "NeogitHunkHeader" },
+
+    NeogitHunkMergeHeader = { fg = colours.purple, bold = true },
+    NeogitHunkMergeHeaderCursor = { link = "NeogitHunkMergeHeader" },
+    NeogitHunkMergeHeaderHighlight = { link = "NeogitHunkMergeHeader" },
+
+    NeogitStash = { fg = colours.blue, bold = true },
+    NeogitStatusHead = { fg = colours.orange, bold = true },
+
+    NeogitPopupActionKey = { fg = colours.cyan },
+    NeogitPopupSwitchKey = { link = "NeogitPopupActionKey" },
+    NeogitPopupSectionTitle = { fg = colours.orange, bold = true },
+    NeogitPopupSwitchEnabled = { fg = colours.purple, bold = true },
+
+    -- Stop setting these unwanted settings for no reason.
+    NeogitCursorLine = { link = "CursorLine" },
+
+    NeogitFloatHeader = { fg = colours.blue, bold = true },
+    NeogitFloatHeaderHighlight = { link = "NeogitFloatHeader" },
+    NeogitCommitViewHeader = { link = "NeogitFloatHeader" },
+
+    NeogitBranch = { fg = colours.cyan, bold = true },
+    NeogitBranchHead = { link = "NeogitBranch" },
+    NeogitRemote = { link = "NeogitBranch" },
+    NeogitFilePath = { fg = colours.cyan },
+    NeogitObjectId = { fg = colours.pink },
+  },
+  diffview = {
+    DiffviewStatusAdded = { fg = colours.green, bold = true },
+    DiffviewStatusDeleted = { fg = colours.red, bold = true },
+    DiffviewStatusModified = { fg = colours.orange, bold = true },
+    DiffviewStatusUntracked = { fg = colours.light_grey, bold = true },
+    DiffviewFilePanelSelected = { fg = colours.pink, bold = true },
+
+    DiffviewFilePanelFileName = { link = "Normal" },
   },
 }
 

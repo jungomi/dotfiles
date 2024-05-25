@@ -4,8 +4,8 @@ local icons = {
   thin_space = " ",
 
   fold = {
-    expanded = "",
-    collapsed = "",
+    expanded = "",
+    collapsed = "",
   },
   diagnostic = {
     -- These are intentionally uppercase so they can be used to map to the names directly.
@@ -22,6 +22,7 @@ local icons = {
   readonly = "",
   tab = "󰌒",
   question = "",
+  double_question = "⁇",
   dot = "",
   lightning = "",
   mic = "",

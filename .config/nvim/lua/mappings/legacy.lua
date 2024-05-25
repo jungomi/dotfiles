@@ -7,11 +7,6 @@ local xmap = map_utils.xmap
 local M = {}
 
 function M.enable_mappings()
-  -- Git
-  nmap("<leader>gc", "<Cmd>Git commit -v<CR>", { desc = "Git » Commit" })
-  nmap("<leader>gd", "<Cmd>Gdiffsplit<CR>", { desc = "Git » Diff" })
-  nmap("<leader>gs", "<Cmd>Git<CR>", { desc = "Git » Status" })
-
   -- Asterisk (search word under cursor)
   map("", "*", "<Plug>(asterisk-*)", { remap = true, desc = "Search » Forward" })
   map("", "#", "<Plug>(asterisk-#)", { remap = true, desc = "Search » Backward" })
