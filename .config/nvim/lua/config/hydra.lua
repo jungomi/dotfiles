@@ -32,7 +32,9 @@ function M.setup()
       invoke_on_body = true,
       hint = {
         position = "bottom",
-        border = "rounded",
+        float_opts = {
+          border = "rounded",
+        },
       },
       timeout = 2500,
     },
@@ -65,7 +67,9 @@ function M.setup()
       invoke_on_body = true,
       hint = {
         position = "bottom",
-        border = "rounded",
+        float_opts = {
+          border = "rounded",
+        },
       },
       on_enter = function()
         vim.bo.modifiable = false
@@ -144,7 +148,9 @@ function M.setup()
       invoke_on_body = true,
       hint = {
         position = "bottom",
-        border = "rounded",
+        float_opts = {
+          border = "rounded",
+        },
       },
       on_enter = function()
         vim.bo.modifiable = false

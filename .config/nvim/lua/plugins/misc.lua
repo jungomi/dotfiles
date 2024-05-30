@@ -45,8 +45,7 @@ return {
   },
   -- Custom modes (continuous actions) e.g. resizing mode
   {
-    "anuvyklack/hydra.nvim",
-    dependencies = { "anuvyklack/keymap-layer.nvim" },
+    "nvimtools/hydra.nvim",
     config = function()
       require("config.hydra").setup()
     end,
