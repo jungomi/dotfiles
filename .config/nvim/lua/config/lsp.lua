@@ -147,6 +147,21 @@ function M.setup()
       virtual_text = virtual_text,
       virtual_lines = true, -- { only_current_line = true },
     },
+    signs = {
+      text = {
+        [vim.diagnostic.severity.ERROR] = icons.pad_left(icons.diagnostic.Error, 1),
+        [vim.diagnostic.severity.WARN] = icons.pad_left(icons.diagnostic.Warn, 1),
+        [vim.diagnostic.severity.HINT] = icons.pad_left(icons.diagnostic.Hint, 1),
+        [vim.diagnostic.severity.INFO] = icons.pad_left(icons.diagnostic.Info, 1),
+      },
+      -- Highlight the line number as well as the diagnostic sign
+      numhl = {
+        [vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+        [vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
+        [vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
+        [vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
+      },
+    },
   })
 
   -- Enable inlay hints, whenever they are available.
@@ -338,24 +353,6 @@ function M.setup()
     -- Configure appearance of floating windows from hover info
     border = "rounded",
   })
-
-  -- Highlight the line number as well as the diagnostic sign
-  vim.fn.sign_define(
-    "DiagnosticSignError",
-    { text = icons.pad_left(icons.diagnostic.Error, 1), texthl = "DiagnosticSignError", numhl = "DiagnosticSignError" }
-  )
-  vim.fn.sign_define(
-    "DiagnosticSignWarn",
-    { text = icons.pad_left(icons.diagnostic.Warn, 1), texthl = "DiagnosticSignWarn", numhl = "DiagnosticSignWarn" }
-  )
-  vim.fn.sign_define(
-    "DiagnosticSignHint",
-    { text = icons.pad_left(icons.diagnostic.Hint, 1), texthl = "DiagnosticSignHint", numhl = "DiagnosticSignHint" }
-  )
-  vim.fn.sign_define(
-    "DiagnosticSignInfo",
-    { text = icons.pad_left(icons.diagnostic.Info, 1), texthl = "DiagnosticSignInfo", numhl = "DiagnosticSignInfo" }
-  )
 
   -- Show border around commands like LspInfo
   require("lspconfig.ui.windows").default_options.border = "rounded"
