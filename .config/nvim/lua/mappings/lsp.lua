@@ -66,8 +66,13 @@ function M.enable_mappings()
   nmap("[d", function()
     vim.diagnostic.goto_prev({ float = { border = "rounded" } })
   end, { desc = "LSP » Jump to previous diagnostic" })
+  -- Trouble
   -- Diagnostics list similar to quickfix but better
-  nmap("<leader>lq", "<Cmd>TroubleToggle document_diagnostics<CR>", { desc = "Trouble » Document diagnostics" })
+  nmap("<leader>cd", "<Cmd>Trouble diagnostics toggle<CR>", { desc = "Trouble » Diagnostics" })
+  nmap("<leader>cq", "<Cmd>Trouble qflist toggle<CR>", { desc = "Trouble » Quickfix" })
+  nmap("<leader>cl", "<Cmd>Trouble loclist toggle<CR>", { desc = "Trouble » Location List" })
+  nmap("<leader>cs", "<Cmd>Trouble symbols toggle win.size.width=60 pinned=true<CR>", { desc = "Trouble » Symbols" })
+  nmap("<leader>cf", "<Cmd>Trouble focus<CR>", { desc = "Trouble » Focus" })
   -- Glance
   nmap("<leader>lgd", "<CMD>Glance definitions<CR>", { desc = "LSP » Glance » Definitions" })
   nmap("<leader>lgr", "<CMD>Glance references<CR>", { desc = "LSP » Glance » References" })

@@ -223,6 +223,7 @@ local theme = {
     TroubleCount = { fg = colours.grey, italic = true },
     TroubleFoldIcon = { fg = colours.grey },
     TroubleLocation = { fg = colours.purple, italic = true },
+    TroublePos = { fg = colours.purple, italic = true },
     TroubleSignError = { fg = colours.red },
     TroubleSignWarning = { fg = colours.orange },
     TroubleSignInformation = { fg = colours.blue },

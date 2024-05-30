@@ -317,6 +317,14 @@ function M.setup()
   trouble.setup({
     use_diagnostic_signs = true,
     indent_lines = true,
+    keys = {
+      ["="] = "fold_toggle",
+    },
+    icons = {
+      -- Prefer my icons where applicable (to be consistent)
+      -- There are some additional kinds, that will fallback to Trouble's.
+      kinds = icons.lsp_kind,
+    },
   })
 
   lsp_lines.setup()
