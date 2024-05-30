@@ -19,7 +19,7 @@ end
 local function render(props)
   local name = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
   local filetype_icon, colour = dev_icons.get_icon_color(name)
-  local is_modified = vim.api.nvim_buf_get_option(props.buf, "modified")
+  local is_modified = vim.api.nvim_get_option_value("modified", { buf = props.buf })
 
   local out = get_diagnostics(props)
   if #out > 0 then
