@@ -477,7 +477,8 @@ local theme = {
     FlashLabel = { fg = colours.light_blue, bg = colours.pink, bold = true },
   },
   highlight_undo = {
-    highlightUndo = { link = "Yank" },
+    HighlightUndo = { link = "Yank" },
+    HighlightRedo = { link = "HighlightUndo" },
   },
   substitute = {
     SubstituteSubstituted = { link = "Yank" },
