@@ -34,6 +34,9 @@ function M.neogit_status_toggle_file()
 
   current_ui:update()
 
+  -- Move the cursor to the beginning of the item.
+  -- Otherwise staging on the collapsed item will only stage the hunk.
+  instance.buffer:move_cursor(component:row_range_abs())
   vim.cmd("normal! zt")
 end
 
