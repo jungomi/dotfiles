@@ -1,7 +1,6 @@
 local lsp_config = require("lspconfig")
 local mason = require("mason")
 local mason_lsp = require("mason-lspconfig")
-local neodev = require("neodev")
 local schemastore = require("schemastore")
 local cmp = require("cmp")
 local cmp_lsp = require("cmp_nvim_lsp")
@@ -47,7 +46,7 @@ local source_names = {
   buffer = "Buff",
   calc = "Calc",
   nvim_lsp = "LSP",
-  nvim_lua = "Lua",
+  lazydev = "Lua",
   luasnip = "Snip",
   tmux = "Tmux",
 }
@@ -178,7 +177,6 @@ function M.setup()
     ensure_installed = SERVERS,
   })
 
-  neodev.setup({})
   M.setup_servers()
 
   vim.g.rustaceanvim = {
@@ -222,7 +220,9 @@ function M.setup()
     sources = cmp.config.sources({
       -- The order defines the priority during the completion
       { name = "nvim_lsp" },
-      { name = "nvim_lua" },
+      -- Not exactly sure what this one adds here, because it seems that everything
+      -- is just coming from the LSP, but I'll leave it here for now.
+      { name = "lazydev" },
       { name = "luasnip" },
       { name = "path" },
       { name = "calc" },

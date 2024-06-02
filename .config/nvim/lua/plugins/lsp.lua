@@ -60,8 +60,20 @@ return {
   },
   -- Rust integrations
   "mrcjkb/rustaceanvim",
-  -- Lua to recognise nvim API
-  "folke/neodev.nvim",
+  -- Lua LSP to recognise nvim API
+  {
+    "folke/lazydev.nvim",
+    ft = "lua", -- only load on lua files
+    opts = {
+      library = {
+        -- Types for vim.uv, not currently available in upstream neovim.
+        "luvit-meta/library",
+      },
+    },
+    dependencies = {
+      { "Bilal2453/luvit-meta", lazy = true },
+    },
+  },
   -- Schemas for JSON files to complete/display configurations options
   "b0o/SchemaStore.nvim",
   -- A package manager integrated into NeoVim (to install external dependencies)
