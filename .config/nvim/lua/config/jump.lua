@@ -24,6 +24,7 @@ function M.setup()
         enabled = false,
       },
       char = {
+        multi_line = false,
         label = {
           -- Need to explicitely disable it here, otherwise there is one character before that is highlighted even
           -- though there is no label there.
