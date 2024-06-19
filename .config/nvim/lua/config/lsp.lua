@@ -124,17 +124,24 @@ function M.setup_servers()
   end
 end
 
+-- Show the source and code as a suffix for diagnostics.
+-- Note: Float accepts a tuple of of two (msg, highlight) whereas
+-- virtual text only uses the message. But since in lua additional
+-- return values are ignored, this can be used for both.
+local function diagnostic_suffix(diag)
+  local parts = { " ⌁", diag.source }
+  if diag.code then
+    table.insert(parts, string.format("[%s]", diag.code))
+  end
+  local suffix = table.concat(parts, " ")
+  return suffix, "Comment"
+end
+
 function M.setup()
   local virtual_text = {
     prefix = icons.arrow.hook,
     spacing = 2,
-    format = function(diag)
-      local parts = { diag.message, "⌁", diag.source }
-      if diag.code then
-        table.insert(parts, string.format("(%s)", diag.code))
-      end
-      return table.concat(parts, " ")
-    end,
+    suffix = diagnostic_suffix,
   }
   vim.diagnostic.config({
     severity_sort = true,
@@ -163,6 +170,7 @@ function M.setup()
     },
     float = {
       border = "rounded",
+      suffix = diagnostic_suffix,
     },
   })
 
