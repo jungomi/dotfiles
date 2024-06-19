@@ -75,7 +75,7 @@ function M.setup()
 
     -- Show the virtualt text at the end of the line, because inline is way too big for
     -- larger values, such as lists or structs.
-    virt_text_pos = "eol"
+    virt_text_pos = "eol",
   })
 
   dap_mappings.enable_mappings()
