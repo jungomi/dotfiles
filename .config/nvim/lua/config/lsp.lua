@@ -161,6 +161,9 @@ function M.setup()
         [vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
       },
     },
+    float = {
+      border = "rounded",
+    },
   })
 
   -- Enable inlay hints, whenever they are available.

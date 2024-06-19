@@ -48,7 +48,9 @@ function M.enable_mappings()
     -- Conform will format it just like the LSP and fallback to the LSP if
     -- no formatter was configured for the given filetype.
     conform.format({ lsp_fallback = true, async = true })
-  end, { desc = "LSP » Format" })
+  end, {
+    desc = "LSP » Format",
+  })
   -- Highlight references
   nmap("<leader>lh", vim.lsp.buf.document_highlight, { desc = "LSP » Highlight references" })
   nmap("<leader>lr", vim.lsp.buf.rename, { desc = "LSP » Rename" })
@@ -60,12 +62,8 @@ function M.enable_mappings()
   nmap("<leader>lv", toggle_virtual_lines, { desc = "LSP » Toggle Virtual Lines" })
   nmap("<leader>li", toggle_inlay_hints, { desc = "LSP » Toggle Inlay Hints" })
   -- Diagnostic navigation
-  nmap("]d", function()
-    vim.diagnostic.goto_next({ float = { border = "rounded" } })
-  end, { desc = "LSP » Jump to next diagnostic" })
-  nmap("[d", function()
-    vim.diagnostic.goto_prev({ float = { border = "rounded" } })
-  end, { desc = "LSP » Jump to previous diagnostic" })
+  nmap("]d", vim.diagnostic.goto_next, { desc = "LSP » Jump to next diagnostic" })
+  nmap("[d", vim.diagnostic.goto_prev, { desc = "LSP » Jump to previous diagnostic" })
   -- Trouble
   -- Diagnostics list similar to quickfix but better
   nmap("<leader>cd", "<Cmd>Trouble diagnostics toggle<CR>", { desc = "Trouble » Diagnostics" })
