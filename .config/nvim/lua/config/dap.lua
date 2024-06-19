@@ -72,6 +72,10 @@ function M.setup()
     text_prefix = icons.pad(icons.triangle.tiny, 2, 1),
     error_prefix = icons.pad(icons.triangle.tiny, 2, 1),
     info_prefix = icons.pad(icons.triangle.tiny, 2, 1),
+
+    -- Show the virtualt text at the end of the line, because inline is way too big for
+    -- larger values, such as lists or structs.
+    virt_text_pos = "eol"
   })
 
   dap_mappings.enable_mappings()
