@@ -31,3 +31,6 @@ elif command -v rg > /dev/null; then
   export FZF_DEFAULT_COMMAND='rg --files --hidden --smart-case --glob "!.git"'
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 fi
+
+# Layout, sames as the one used in NeoVim (generated from the fzf-lua command)
+export FZF_DEFAULT_OPTS="--color 'hl+:#52a6a5:bold:italic,bg+:#ffd75f,fg+:#555d60,gutter:-1,fg:#555d60,header:#8e8e8e,hl:#52a6a5:bold:italic,info:#8e8e8e,prompt:#5f87d7:bold,spinner:#8e8e8e:bold,marker:#e39a34,pointer:#555d60' --pointer '󰁕' --marker '' --no-bold --separator '―'"
