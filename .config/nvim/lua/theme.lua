@@ -475,6 +475,14 @@ local theme = {
     TelescopeResultsDiffDelete = { fg = colours.red, bold = true },
     TelescopeResultsDiffUntracked = { fg = colours.red },
   },
+  fzf = {
+    FzfLuaHeaderText = { link = "Comment" },
+    FzfLuaHeaderBind = { link = "Special" },
+    FzfLuaBufName = { link = "Statement" },
+    FzfLuaBufNr = { link = "Comment" },
+    FzfLuaPathLineNr = { link = "Special" },
+    FzfLuaTabMarker = { link = "Special" },
+  },
   flash = {
     FlashLabel = { fg = colours.light_blue, bg = colours.pink, bold = true },
   },
