@@ -19,7 +19,7 @@ function M.setup()
       -- When "fg" or "bg" is encountered in the list, it will take the component from the next Highlight Group.
       -- so { "fg", "Comment", "bold" } means { "<fg-colour-of-Comment>", "bold" }
       ["fg"] = { "fg", "Normal" },
-      ["bg"] = { "bg", "Normal" },
+      ["bg"] = { "bg", "WinBar" },
       ["fg+"] = { "fg", "Normal" },
       ["bg+"] = { "bg", "Search" },
       ["hl"] = { "fg", "Special", "bold", "italic" },
@@ -30,17 +30,14 @@ function M.setup()
       ["marker"] = { "bg", "IncSearch" },
       ["spinner"] = { "fg", "Comment", "bold" },
       ["header"] = { "fg", "Comment" },
-      ["gutter"] = "-1",
+      ["gutter"] = { "bg", "WinBar" },
     },
     winopts = {
-      border = { "┬", "─", "─", "", "", "", "", "│" },
+      border = "empty",
       height = 0.4,
       width = 1.0,
       row = 1.0,
       col = 0.5,
-      preview = {
-        scrollbar = "border",
-      },
     },
     keymap = {
       -- These override the default tables completely so you need to specify every single one, can't just add something

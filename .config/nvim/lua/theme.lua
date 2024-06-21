@@ -482,8 +482,9 @@ local theme = {
     FzfLuaBufNr = { link = "Comment" },
     FzfLuaPathLineNr = { link = "Special" },
     FzfLuaTabMarker = { link = "Special" },
-    FzfLuaBorder = { link = "Comment" },
+    FzfLuaBorder = { link = "WinBar" },
     FzfLuaPreviewTitle = { link = "WinBar" },
+    FzfLuaHelpNormal = { link = "CursorLine" },
   },
   flash = {
     FlashLabel = { fg = colours.light_blue, bg = colours.pink, bold = true },
