@@ -142,6 +142,20 @@ function M.setup()
     },
   })
 
+  -- Configure vim.ui.select differently from the regular layout.
+  -- I prefer this in the middle (top-down) rather than the bottom (bottom-up) and also smaller.
+  fzf.register_ui_select({
+    fzf_opts = {
+      ["--layout"] = "reverse",
+    },
+    winopts = {
+      height = 0.6,
+      width = 0.6,
+      row = 0.5,
+      col = 0.5,
+    },
+  }, true)
+
   fuzzy_mappings.enable_mappings()
 end
 
