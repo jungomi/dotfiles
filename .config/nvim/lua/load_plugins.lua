@@ -1,4 +1,5 @@
 local icons = require("icons")
+local borders = require("borders")
 
 local lazy_path = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazy_path) then
@@ -19,7 +20,7 @@ lazy.setup("plugins", {
     colorscheme = { "mine" },
   },
   ui = {
-    border = "rounded",
+    border = borders.default,
     -- These icons need to be redefined as the defaults are somehow not renedered properly.
     -- Probably should look at fixing the Nerd font.
     icons = {

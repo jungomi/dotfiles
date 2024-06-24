@@ -1,5 +1,6 @@
 local oil = require("oil")
 local oil_mappings = require("mappings.oil")
+local borders = require("borders")
 
 local M = {}
 
@@ -26,15 +27,22 @@ function M.setup()
       ["gq"] = "actions.close",
     },
     float = {
+      border = borders.default,
       override = function(conf)
         -- Float at the bottom
         local height = math.ceil(conf.height * 0.45)
         local width = math.ceil(conf.width * 0.95)
         local col = conf.col + (conf.width - width) / 2
-        local row = conf.row + conf.height - height + 1
+        local row = conf.row + conf.height - height
         local opts = { height = height, width = width, col = col, row = row }
         return vim.tbl_extend("force", conf, opts)
       end,
+    },
+    preview = {
+      border = borders.default,
+    },
+    progress = {
+      border = borders.default,
     },
   })
   oil_mappings.enable_mappings()

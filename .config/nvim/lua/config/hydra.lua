@@ -3,6 +3,7 @@ local dap = require("dap")
 local dap_utils = require("utils.dap")
 local resize = require("utils.resize")
 local gitsigns = require("gitsigns")
+local borders = require("borders")
 
 local M = {}
 
@@ -33,7 +34,7 @@ function M.setup()
       hint = {
         position = "bottom",
         float_opts = {
-          border = "rounded",
+          border = borders.default,
         },
       },
       timeout = 2500,
@@ -68,7 +69,7 @@ function M.setup()
       hint = {
         position = "bottom",
         float_opts = {
-          border = "rounded",
+          border = borders.default,
         },
       },
       on_enter = function()
@@ -149,7 +150,7 @@ function M.setup()
       hint = {
         position = "bottom",
         float_opts = {
-          border = "rounded",
+          border = borders.default,
         },
       },
       on_enter = function()

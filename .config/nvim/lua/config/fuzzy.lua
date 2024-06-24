@@ -2,6 +2,7 @@ local fzf = require("fzf-lua")
 local fzf_actions = require("fzf-lua.actions")
 local fuzzy_mappings = require("mappings.fuzzy")
 local icons = require("icons")
+local borders = require("borders")
 
 local M = {}
 
@@ -33,7 +34,7 @@ function M.setup()
       ["gutter"] = { "bg", "WinBar" },
     },
     winopts = {
-      border = "empty",
+      border = borders.default,
       height = 0.4,
       width = 1.0,
       row = 1.0,

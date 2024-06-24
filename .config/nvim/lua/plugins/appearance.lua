@@ -1,3 +1,5 @@
+local borders = require("borders")
+
 return {
   -- Icons for many things, requires a Nerd Font
   "kyazdani42/nvim-web-devicons",
@@ -49,7 +51,9 @@ return {
   {
     "stevearc/dressing.nvim",
     config = function()
-      require("dressing").setup({ input = { insert_only = false } })
+      require("dressing").setup({
+        input = { insert_only = false, border = borders.hover, title_pos = "center", relative = "win" },
+      })
     end,
   },
   {
@@ -72,7 +76,7 @@ return {
           },
         },
         window = {
-          border = "single",
+          border = borders.default,
         },
       })
     end,

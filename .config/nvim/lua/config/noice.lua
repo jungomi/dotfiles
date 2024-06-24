@@ -2,12 +2,13 @@ local noice = require("noice")
 local notify = require("notify")
 local colours = require("theme").colours
 local icons = require("icons")
+local borders = require("borders")
 
 local M = {}
 
 function M.setup()
   notify.setup({
-    background_colour = colours.bg,
+    background_colour = colours.red,
     render = "default",
     stages = "fade",
     timeout = 1500,
@@ -85,6 +86,37 @@ function M.setup()
           find = "%[w%]$",
         },
         view = "mini",
+      },
+    },
+    views = {
+      cmdline_popup = {
+        border = {
+          style = borders.hidden,
+          padding = { 1, 2 },
+        },
+      },
+      cmdline_popupmenu = {
+        border = {
+          style = borders.hidden,
+          padding = { 0, 2, 1, 2 },
+        },
+        win_options = {
+          -- For some reason the highlight group is not applied correctly if it's not specified here.
+          -- Don't know why, that should be default, but whatever.
+          winhighlight = { Normal = "NoiceCmdlinePopup" },
+        },
+      },
+      confirm = {
+        border = {
+          style = borders.hidden,
+          padding = { 1, 2 },
+        },
+      },
+      hover = {
+        border = {
+          style = borders.hover,
+          padding = { 0, 0 },
+        },
       },
     },
   })

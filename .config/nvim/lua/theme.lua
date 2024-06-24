@@ -31,8 +31,9 @@ local colours = {
 local theme = {
   base = {
     Normal = { fg = colours.fg },
-    NormalFloat = { bg = colours.bg },
-    FloatBorder = { bg = colours.bg, fg = colours.grey },
+    NormalFloat = { bg = colours.cursor_line },
+    FloatBorder = { bg = colours.cursor_line, fg = colours.grey },
+    FloatTitle = { bg = colours.cursor_line, fg = colours.blue, bold = true },
     VertSplit = { fg = colours.orange },
     WinSeparator = { fg = colours.orange },
 
@@ -219,6 +220,8 @@ local theme = {
     LspInlayHint = { fg = colours.grey, italic = true },
 
     -- Trouble
+    TroubleNormal = { link = "Normal" },
+    TroubleNormalNC = { link = "TroubleNormal" },
     TroubleIndent = { fg = colours.grey },
     TroubleCount = { fg = colours.grey, italic = true },
     TroubleFoldIcon = { fg = colours.grey },
@@ -439,15 +442,20 @@ local theme = {
     NoiceCmdlineIcon = { link = "DiagnosticInfo" },
     NoiceCmdlineIconSearch = { link = "DiagnosticWarn" },
 
+    NoiceCmdlinePopup = { link = "NormalFloat" },
     NoiceCmdlinePopupBorder = { link = "NoiceCmdlineIcon" },
     NoiceCmdlinePopupBorderSearch = { link = "NoiceCmdlineIconSearch" },
+    NoiceConfirm = { link = "NormalFloat" },
     NoiceConfirmBorder = { link = "NoiceCmdlinePopupBorder" },
+    NoiceFormatConfirm = { link = "LazyButton" },
 
     NoiceMini = { fg = colours.grey, bg = colours.cursor_line },
     NoiceFormatProgressDone = { fg = colours.grey, bg = colours.dark_border, bold = true },
     NoiceFormatProgressTodo = { fg = colours.dark_border, bold = true },
     NoiceLspProgressTitle = { fg = colours.grey },
     NoiceLspProgressSpinner = { fg = colours.grey, bold = true },
+
+    NoiceSplit = { link = "Normal" },
   },
   -- Floating Winbar showing buffer name at the top right of the window
   incline = {
@@ -500,6 +508,9 @@ local theme = {
   glance = {
     GlanceListNormal = { bg = colours.border },
     GlancePreviewNormal = { link = "GlanceListNormal" },
+    GlanceListBorderBottom = { fg = colours.dark_border, bg = colours.border },
+    GlancePreviewBorderBottom = { link = "GlanceListBorderBottom" },
+    GlanceBorderTop = { link = "GlanceListBorderBottom" },
     GlanceFoldIcon = { link = "FoldColumn" },
     GlanceWinBarTitle = { fg = colours.dark_grey, bg = colours.dark_border, bold = true },
     GlanceWinBarFilename = { link = "GlanceWinBarTitle" },
@@ -571,6 +582,10 @@ local theme = {
     DiffviewFilePanelSelected = { fg = colours.pink, bold = true },
 
     DiffviewFilePanelFileName = { link = "Normal" },
+  },
+  lazy = {
+    LazyButton = { bg = colours.dark_border },
+    LazyH1 = { bg = colours.blue, fg = colours.light_blue, bold = true },
   },
 }
 

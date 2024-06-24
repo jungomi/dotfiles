@@ -12,6 +12,7 @@ local lsp_lines = require("lsp_lines")
 local lightbulb = require("nvim-lightbulb")
 local lsp_mappings = require("mappings.lsp")
 local icons = require("icons")
+local borders = require("borders")
 local autocmd_utils = require("utils.autocmd")
 local str_utils = require("utils.str")
 
@@ -169,7 +170,7 @@ function M.setup()
       },
     },
     float = {
-      border = "rounded",
+      border = borders.hover,
       suffix = diagnostic_suffix,
     },
   })
@@ -181,7 +182,7 @@ function M.setup()
   mason.setup({
     ui = {
       icons = icons.mason,
-      border = "rounded",
+      border = borders.default,
     },
   })
   mason_lsp.setup({
@@ -221,7 +222,7 @@ function M.setup()
     },
     window = {
       documentation = {
-        border = "rounded",
+        border = borders.hover,
       },
       completion = {
         col_offset = -3,
@@ -367,14 +368,6 @@ function M.setup()
       },
     },
   })
-
-  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-    -- Configure appearance of floating windows from hover info
-    border = "rounded",
-  })
-
-  -- Show border around commands like LspInfo
-  require("lspconfig.ui.windows").default_options.border = "rounded"
 
   lsp_mappings.enable_mappings()
 
