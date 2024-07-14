@@ -68,17 +68,24 @@ return {
   },
   {
     "folke/which-key.nvim",
-    config = function()
-      require("which-key").setup({
-        plugins = {
-          spelling = {
-            enabled = true,
-          },
+    opts = {
+      delay = function(ctx)
+        local delay = 500
+        if ctx.plugin == "registers" or ctx.plugin == "marks" then
+          -- This is a bit weird, because these are triggered instantly, and I think it is achieved
+          -- by setting ctx.waited == delay, so if it's just added to it, the delay will be correct.
+          return (ctx.waited or 0) + delay
+        end
+        return delay
+      end,
+      plugins = {
+        spelling = {
+          enabled = true,
         },
-        window = {
-          border = borders.default,
-        },
-      })
-    end,
+      },
+      win = {
+        border = borders.default,
+      },
+    },
   },
 }
