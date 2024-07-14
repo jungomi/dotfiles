@@ -8,7 +8,7 @@ local M = {}
 
 function M.setup()
   notify.setup({
-    background_colour = colours.red,
+    background_colour = colours.bg,
     render = "default",
     stages = "fade",
     timeout = 1500,
