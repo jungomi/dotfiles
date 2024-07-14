@@ -101,3 +101,24 @@ fwp() {
   fi
   ssh -N -R "${remote_port}:localhost:${local_port}" fwp
 }
+
+uvenv() {
+  local dir="${1}"
+  if [[ -z "${1}" ]]; then
+    dir=".venv"
+  else
+    dir="${dir}/.venv"
+  fi
+  if [[ -n "${VIRTUAL_ENV}" ]]; then
+    local abs_path=$(realpath "${dir}")
+    if [[ "${abs_path}" == "${VIRTUAL_ENV}" ]]; then
+      echo "Virtual environment ${VIRTUAL_ENV} is already active."
+      return 0
+    fi
+  fi
+  if [[ ! -f "${dir}/bin/activate" ]]; then
+    uv venv "${dir}"
+  fi
+  source "${dir}/bin/activate"
+  echo "Virtual environment ${dir} activated."
+}
