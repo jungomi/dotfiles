@@ -24,9 +24,12 @@ function M.setup()
         enabled = false,
       },
       char = {
+        -- Disable f / t / F / T as it breaks dot repeat, which is infuriating.
+        -- Also I don't see the benefits of this as I disabled the multi line anyway.
+        enabled = false,
         multi_line = false,
         label = {
-          -- Need to explicitely disable it here, otherwise there is one character before that is highlighted even
+          -- Need to explicitly disable it here, otherwise there is one character before that is highlighted even
           -- though there is no label there.
           before = false,
         },
