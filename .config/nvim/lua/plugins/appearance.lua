@@ -93,13 +93,12 @@ return {
   },
   {
     "MeanderingProgrammer/markdown.nvim",
-    name = "render-markdown", -- Only needed if you have another plugin named markdown.nvim
+    name = "render-markdown",
     dependencies = {
-      "nvim-treesitter/nvim-treesitter", -- Mandatory
-      "nvim-tree/nvim-web-devicons", -- Optional but recommended
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons",
     },
     opts = {
-      -- table_style = "normal",
       heading = {
         backgrounds = {},
       },
