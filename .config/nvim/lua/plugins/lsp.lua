@@ -1,3 +1,5 @@
+local icons = require("icons")
+
 return {
   "neovim/nvim-lspconfig",
   -- Completion
@@ -85,5 +87,20 @@ return {
     config = function()
       require("config.lsp").setup()
     end,
+  },
+  {
+    "chrisgrieser/nvim-lsp-endhints",
+    event = "LspAttach",
+    opts = {
+      icons = {
+        type = icons.pad_right(icons.triangle.tiny, 1),
+        parameter = icons.lsp_kind.Function,
+        offspec = icons.pad_right(icons.triangle.tiny, 1),
+        unknown = icons.pad_right(icons.triangle.tiny, 1),
+      },
+      label = {
+        padding = 2,
+      },
+    },
   },
 }

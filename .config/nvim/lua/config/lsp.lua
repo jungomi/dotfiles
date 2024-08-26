@@ -13,8 +13,7 @@ local lightbulb = require("nvim-lightbulb")
 local lsp_mappings = require("mappings.lsp")
 local icons = require("icons")
 local borders = require("borders")
-local autocmd_utils = require("utils.autocmd")
-local str_utils = require("utils.str")
+local inlay_hints = require("utils.inlay_hints")
 
 local M = {
   inlay_hints_enabled = true,
@@ -174,10 +173,6 @@ function M.setup()
       suffix = diagnostic_suffix,
     },
   })
-
-  -- Enable inlay hints, whenever they are available.
-  -- This enables them globaly, rather than having it separate for each buffer.
-  vim.lsp.inlay_hint.enable(M.inlay_hints_enabled)
 
   mason.setup({
     ui = {
@@ -369,30 +364,9 @@ function M.setup()
     },
   })
 
-  lsp_mappings.enable_mappings()
+  inlay_hints.register_autocmd()
 
-  autocmd_utils.create_augroups({
-    config_lsp = {
-      -- Inlay hints are really annoying in insert and visual modes. For example, in insert mode it makes the cursor
-      -- jump ahead when the parameter is added as virtual text. So the easiest is to just disable them during these
-      -- modes and reenable them when exiting.
-      {
-        event = "ModeChanged",
-        pattern = "*",
-        callback = function()
-          local old_mode = vim.v.event.old_mode
-          local new_mode = vim.v.event.new_mode
-          if str_utils.starts_with_one_of(new_mode, { "i", "v", "V", "" }) then
-            M.inlay_hints_enabled = vim.lsp.inlay_hint.is_enabled({})
-            vim.lsp.inlay_hint.enable(false)
-          elseif str_utils.starts_with_one_of(old_mode, { "i", "v", "V", "" }) then
-            vim.lsp.inlay_hint.enable(M.inlay_hints_enabled)
-          end
-        end,
-        desc = "Disable inlay hints in visual and insert mode",
-      },
-    },
-  })
+  lsp_mappings.enable_mappings()
 end
 
 return M
