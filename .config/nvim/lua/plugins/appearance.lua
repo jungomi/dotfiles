@@ -103,6 +103,7 @@ return {
       },
       code = {
         highlight = "CursorLine",
+        highlight_inline = "CursorLine",
       },
       dash = {
         highlight = "Title",
