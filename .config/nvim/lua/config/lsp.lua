@@ -26,7 +26,7 @@ local SERVERS = {
   "bashls",
   "cmake",
   "lua_ls",
-  "tsserver",
+  "ts_ls",
   "texlab",
   "dockerls",
   "gopls",
