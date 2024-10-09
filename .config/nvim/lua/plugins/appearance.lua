@@ -1,4 +1,6 @@
 local borders = require("borders")
+local icons = require("icons")
+local colours = require("theme").colours
 
 return {
   -- Icons for many things, requires a Nerd Font
@@ -113,6 +115,23 @@ return {
       },
       link = {
         highlight = "Comment",
+      },
+    },
+  },
+  {
+    "shellRaining/hlchunk.nvim",
+    opts = {
+      chunk = {
+        enable = true,
+        chars = {
+          right_arrow = icons.triangle.tiny,
+        },
+        duration = 100,
+        delay = 50,
+        style = {
+          { fg = colours.cursor_line },
+          { fg = colours.light_red },
+        },
       },
     },
   },
