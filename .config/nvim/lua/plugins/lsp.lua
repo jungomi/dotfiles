@@ -4,7 +4,9 @@ return {
   "neovim/nvim-lspconfig",
   -- Completion
   {
-    "hrsh7th/nvim-cmp",
+    -- Temporary fork that merged a bunch of PRs including for performance.
+    "iguanacucumber/magazine.nvim",
+    name = "nvim-cmp",
     dependencies = {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-calc",

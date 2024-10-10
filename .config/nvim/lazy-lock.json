@@ -39,7 +39,7 @@
   "nui.nvim": { "branch": "main", "commit": "b58e2bfda5cea347c9d58b7f11cf3012c7b3953f" },
   "nvim-autopairs": { "branch": "master", "commit": "ee297f215e95a60b01fde33275cc3c820eddeebe" },
   "nvim-bufferline.lua": { "branch": "main", "commit": "0b2fd861eee7595015b6561dade52fb060be10c4" },
-  "nvim-cmp": { "branch": "perf-up", "commit": "a475d8b8b282fda2d18f9fbdebba401b405cfecd" },
+  "nvim-cmp": { "branch": "main", "commit": "4aec249cdcef9b269e962bf73ef976181ee7fdd9" },
   "nvim-dap": { "branch": "master", "commit": "7ff6936010b7222fea2caea0f67ed77f1b7c60dd" },
   "nvim-dap-python": { "branch": "master", "commit": "03fe9592409236b9121c03b66a682dfca15a5cac" },
   "nvim-dap-ui": { "branch": "master", "commit": "ffa89839f97bad360e78428d5c740fdad9a0ff02" },
