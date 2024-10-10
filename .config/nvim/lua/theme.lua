@@ -168,6 +168,7 @@ local theme = {
     ["@punctuation.special.markdown"] = { link = "@text.title" },
     ["@module.latex"] = { link = "@namespace" },
     ["@markup.link.latex"] = { link = "@label.latex" },
+    ["@markup.link.label.markdown_inline"] = {},
   },
   lsp = {
     -- Defaults (mostly for fallbacks)
@@ -426,6 +427,36 @@ local theme = {
     markdownH4Delimiter = { link = "markdownH4" },
     markdownH5Delimiter = { link = "markdownH5" },
     markdownH6Delimiter = { link = "markdownH6" },
+  },
+  markview = {
+    MarkviewHeading1 = { link = "markdownH1" },
+    MarkviewHeading2 = { link = "markdownH2" },
+    MarkviewHeading3 = { link = "markdownH3" },
+    MarkviewHeading4 = { link = "markdownH4" },
+    MarkviewHeading5 = { link = "markdownH5" },
+    MarkviewHeading6 = { link = "markdownH6" },
+
+    MarkviewIcon1 = { fg = colours.dark_grey, bg = colours.dark_border },
+    MarkviewIcon2 = { link = "MarkviewIcon1" },
+    MarkviewIcon3 = { link = "MarkviewIcon1" },
+    MarkviewIcon4 = { link = "MarkviewIcon1" },
+    MarkviewIcon5 = { link = "MarkviewIcon1" },
+    MarkviewIcon6 = { link = "MarkviewIcon1" },
+
+    MarkviewIcon1Sign = { bg = colours.border, fg = colours.dark_grey },
+    MarkviewIcon2Sign = { link = "MarkviewIcon1Sign" },
+    MarkviewIcon3Sign = { link = "MarkviewIcon1Sign" },
+    MarkviewIcon4Sign = { link = "MarkviewIcon1Sign" },
+    MarkviewIcon5Sign = { link = "MarkviewIcon1Sign" },
+    MarkviewIcon6Sign = { link = "MarkviewIcon1Sign" },
+
+    MarkviewCode = { link = "CursorLine" },
+    MarkviewInlineCode = { link = "MarkviewCode" },
+    MarkviewCodeInfo = { link = "MarkviewIcon1" },
+
+    MarkviewListItemMinus = { link = "markdownListMarker" },
+    MarkviewListItemPlus = { link = "MarkviewListItemMinus" },
+    MarkviewListItemStar = { link = "MarkviewListItemMinus" },
   },
   notify = {
     NotifyINFOTitle = { link = "ModeMsg" },

@@ -94,29 +94,15 @@ return {
     },
   },
   {
-    "MeanderingProgrammer/render-markdown.nvim",
+    "OXY2DEV/markview.nvim",
+    lazy = false,
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "nvim-tree/nvim-web-devicons",
     },
-    opts = {
-      heading = {
-        backgrounds = { "" },
-      },
-      code = {
-        highlight = "CursorLine",
-        highlight_inline = "CursorLine",
-      },
-      dash = {
-        highlight = "Title",
-      },
-      pipe_table = {
-        row = "Title",
-      },
-      link = {
-        highlight = "Comment",
-      },
-    },
+    config = function()
+      require("config.markdown").setup()
+    end,
   },
   {
     "shellRaining/hlchunk.nvim",
