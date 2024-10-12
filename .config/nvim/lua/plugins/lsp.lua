@@ -5,8 +5,8 @@ return {
   -- Completion
   {
     -- Temporary fork that merged a bunch of PRs including for performance.
-    "iguanacucumber/magazine.nvim",
-    name = "nvim-cmp",
+    "yioneko/nvim-cmp",
+    branch = "perf-up",
     dependencies = {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-calc",
