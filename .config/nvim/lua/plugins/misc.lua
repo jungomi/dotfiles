@@ -74,4 +74,31 @@ return {
       require("config.overseer").setup()
     end,
   },
+  {
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    opts = {
+      bigfile = { enabled = true },
+      quickfile = { enabled = true },
+      notifier = {
+        enabled = true,
+        timeout = 3000,
+        margin = {
+          top = 1,
+        },
+      },
+      statuscolumn = { enabled = false },
+      words = { enabled = false },
+      styles = {
+        notification = {
+          zindex = 50,
+          wo = {
+            winblend = 0,
+            wrap = true,
+          },
+        },
+      },
+    },
+  },
 }

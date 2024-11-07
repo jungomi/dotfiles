@@ -1,24 +1,10 @@
 local noice = require("noice")
-local notify = require("notify")
-local colours = require("theme").colours
 local icons = require("icons")
 local borders = require("borders")
 
 local M = {}
 
 function M.setup()
-  notify.setup({
-    background_colour = colours.bg,
-    render = "default",
-    stages = "fade",
-    timeout = 1500,
-    minimum_width = 20,
-    fps = 60,
-    on_open = function(win)
-      vim.api.nvim_win_set_config(win, { zindex = 50 })
-    end,
-  })
-
   noice.setup({
     cmdline = {
       format = {
