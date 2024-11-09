@@ -51,8 +51,14 @@ function M.enable_mappings()
   nmap("<leader>lr", vim.lsp.buf.rename, { desc = "LSP » Rename" })
   -- Show type info of the word under the cursor
   nmap("<leader>lt", vim.lsp.buf.hover, { desc = "LSP » Hover info" })
-  nmap("<leader>ls", vim.lsp.buf.signature_help, { desc = "LSP » Signature" })
-  imap("<C-s>", vim.lsp.buf.signature_help, { desc = "LSP » Signature" })
+  -- signature help is called in a function rather than given directly, because it will be overwritten by noice.
+  -- If the function is given directly, it can still be the old one, if this was executed before it was patched.
+  nmap("<leader>ls", function()
+    vim.lsp.buf.signature_help()
+  end, { desc = "LSP » Signature" })
+  imap("<C-s>", function()
+    vim.lsp.buf.signature_help()
+  end, { desc = "LSP » Signature" })
   nmap("<leader>la", vim.lsp.buf.code_action, { desc = "LSP » Code actions" })
   nmap("<leader>lv", toggle_virtual_lines, { desc = "LSP » Toggle Virtual Lines" })
   nmap("<leader>li", inlay_hints.cycle, { desc = "LSP » Toggle Inlay Hints" })
