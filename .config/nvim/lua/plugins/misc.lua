@@ -1,3 +1,5 @@
+local borders = require("borders")
+
 return {
   -- Commenting out code
   {
@@ -111,6 +113,15 @@ return {
           wo = {
             winblend = 0,
             wrap = true,
+          },
+        },
+        ["notification.history"] = {
+          width = 0.8,
+          border = borders.default,
+          wo = {
+            winhighlight = "Normal:NormalFloat",
+            number = false,
+            signcolumn = "no",
           },
         },
       },
