@@ -105,6 +105,10 @@ function M.setup()
         ["q"] = false,
         ["gq"] = "Close",
       },
+      rebase_editor = {
+        ["q"] = false,
+        ["gq"] = "Close",
+      },
     },
     signs = {
       -- { CLOSED, OPENED }
