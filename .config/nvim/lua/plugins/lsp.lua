@@ -4,18 +4,14 @@ return {
   "neovim/nvim-lspconfig",
   -- Completion
   {
-    -- Temporary fork that merged a bunch of PRs including for performance.
-    "yioneko/nvim-cmp",
-    branch = "perf-up",
+    "saghen/blink.cmp",
+    lazy = false,
     dependencies = {
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-calc",
-      "hrsh7th/cmp-nvim-lua",
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-path",
+      { "saghen/blink.compat", opts = { impersonate_nvim_cmp = true } },
       "saadparwaiz1/cmp_luasnip",
-      "andersevenrud/cmp-tmux",
+      "rafamadriz/friendly-snippets",
     },
+    build = "cargo build --release",
   },
   {
     "L3MON4D3/LuaSnip",

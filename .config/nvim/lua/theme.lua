@@ -267,6 +267,15 @@ local theme = {
     -- Name of source, e.g. [LSP]
     CmpItemMenu = { fg = colours.grey },
 
+    -- Blink (Completion)
+    BlinkCmpKind = { link = "CmpItemKind" },
+    BlinkCmpLabel = { link = "CmpItemAbbr" },
+    BlinkCmpLabelMatch = { link = "CmpItemAbbrMatch" },
+    BlinkCmpLabelDeprecated = { fg = colours.grey, strikethrough = true },
+    BlinkCmpLabelDetail = { fg = colours.cyan },
+    BlinkCmpLabelDescription = { fg = colours.orange },
+    BlinkCmpSource = { fg = colours.grey },
+
     -- :: Semantic tokens
     ["@lsp.type.attributeBracket"] = { link = "@punctuation.special" },
     ["@lsp.type.builtinAttribute"] = { link = "Identifier" },

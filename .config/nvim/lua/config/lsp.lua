@@ -2,8 +2,7 @@ local lsp_config = require("lspconfig")
 local mason = require("mason")
 local mason_lsp = require("mason-lspconfig")
 local schemastore = require("schemastore")
-local cmp = require("cmp")
-local cmp_lsp = require("cmp_nvim_lsp")
+local blink_cmp = require("blink.cmp")
 local luasnip = require("luasnip")
 local luasnip_vscode = require("luasnip.loaders.from_vscode")
 local trouble = require("trouble")
@@ -42,12 +41,13 @@ local SERVERS = {
 
 -- Source names to be shown in the completion menu
 local source_names = {
-  path = "File",
+  path = "Path",
   buffer = "Buff",
   calc = "Calc",
   nvim_lsp = "LSP",
   lazydev = "Lua",
   luasnip = "Snip",
+  snippets = "Snip",
   tmux = "Tmux",
 }
 
@@ -101,8 +101,8 @@ local custom_server_configs = {
   },
 }
 
--- More capabilities are supported by nvim-cmp, such as Snippets
-local capabilities = cmp_lsp.default_capabilities()
+-- More capabilities are supported by blink.cmp, such as Snippets
+local capabilities = blink_cmp.get_lsp_capabilities()
 
 local default_config = {
   on_attach = on_attach,
@@ -208,109 +208,77 @@ function M.setup()
   }
 
   -- Completion
-  cmp.setup({
-    experimental = {
-      ghost_text = true,
+  blink_cmp.setup({
+    keymap = {
+      ["<C-space>"] = { "show" },
+      ["<C-k>"] = { "select_prev", "fallback" },
+      ["<C-j>"] = { "select_next", "fallback" },
+      ["<C-l>"] = { "select_and_accept", "snippet_forward", "fallback" },
+      ["<C-h>"] = { "snippet_backward", "fallback" },
+      ["<C-b>"] = { "scroll_documentation_up", "fallback" },
+      ["<C-f>"] = { "scroll_documentation_down", "fallback" },
     },
-    completion = {
-      autocomplete = false,
+    accept = {
+      -- Accepting should not break up the undo history, it should be part of a single insert.
+      create_undo_point = false,
+      expand_snippet = function(snippet)
+        -- Complete snippets with luasnip
+        luasnip.lsp_expand(snippet)
+      end,
     },
-    window = {
+    sources = {
+      completion = {
+        enabled_providers = { "lsp", "path", "buffer", "luasnip", "lazydev" },
+      },
+      providers = {
+        buffer = {
+          -- Buffer should always be shown, but with a lower priority as well as a limit.
+          fallback_for = {},
+          max_items = 8,
+          score_offset = -5,
+        },
+        lsp = {
+          fallback_for = { "lazydev" },
+        },
+        lazydev = {
+          name = "LazyDev",
+          module = "lazydev.integrations.blink",
+        },
+        luasnip = {
+          name = "luasnip",
+          module = "blink.compat.source",
+          opts = {},
+        },
+      },
+    },
+    windows = {
+      autocomplete = {
+        auto_show = false,
+        draw = {
+          columns = { { "kind_icon" }, { "label", "label_description", gap = 1 }, { "source" } },
+          components = {
+            source = {
+              ellipsis = false,
+              text = function(ctx)
+                local name = source_names[ctx.item.source_id] or ctx.item.source_name
+                return string.format("[%s]", name)
+              end,
+              highlight = "BlinkCmpSource",
+            },
+          },
+        },
+      },
       documentation = {
         border = borders.hover,
+        auto_show = true,
+        auto_show_delay_ms = 0,
       },
-      completion = {
-        col_offset = -3,
-        side_padding = 0,
+      ghost_text = {
+        enabled = true,
       },
     },
-    sources = cmp.config.sources({
-      -- The order defines the priority during the completion
-      { name = "nvim_lsp" },
-      -- Not exactly sure what this one adds here, because it seems that everything
-      -- is just coming from the LSP, but I'll leave it here for now.
-      { name = "lazydev" },
-      { name = "luasnip" },
-      { name = "path" },
-      { name = "calc" },
-      {
-        name = "buffer",
-        option = {
-          get_bufnrs = function()
-            -- Complete from all buffers, not just the current or the visible ones
-            return vim.api.nvim_list_bufs()
-          end,
-        },
-      },
-    }, {
-      -- This is a separate group, meaning that it will only be triggered when the
-      -- there is no match from the group above.
-      -- Tmux priority was just way out of order, but I occasionally still use it,
-      -- mostly for something that is not matched anyway.
-      {
-        name = "tmux",
-        option = {
-          -- Complete from all panes not just the visible ones
-          all_panes = true,
-        },
-      },
-    }),
-    formatting = {
-      fields = { "kind", "abbr", "menu" },
-      format = function(entry, vim_item)
-        local icon = icons.lsp_kind[vim_item.kind]
-        if icon then
-          vim_item.kind = string.format(" %s ", icon)
-        end
-        if entry.source.name then
-          local name = source_names[entry.source.name] or entry.source.name
-          vim_item.menu = string.format("[%s]", name)
-        end
-        return vim_item
-      end,
-    },
-    snippet = {
-      expand = function(args)
-        -- Complete snippets with luasnip
-        luasnip.lsp_expand(args.body)
-      end,
-    },
-    mapping = {
-      ["<C-Space>"] = cmp.mapping(cmp.mapping.complete({}), { "i", "c" }),
-      ["<C-j>"] = cmp.mapping(function(fallback)
-        if cmp.visible() then
-          cmp.select_next_item()
-        else
-          fallback()
-        end
-      end, {
-        "i",
-        "s",
-        "c",
-      }),
-      ["<C-k>"] = cmp.mapping(function(fallback)
-        if cmp.visible() then
-          cmp.select_prev_item()
-        else
-          fallback()
-        end
-      end, {
-        "i",
-        "s",
-        "c",
-      }),
-      ["<C-l>"] = cmp.mapping(function(fallback)
-        if cmp.visible() then
-          cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true })
-        else
-          fallback()
-        end
-      end, {
-        "i",
-        "s",
-        "c",
-      }),
-    },
+    -- Prefer my icons where applicable (to be consistent)
+    kind_icons = icons.lsp_kind,
   })
 
   -- Load snippets from RTP (from friendly-snippets) and my custom snippets
