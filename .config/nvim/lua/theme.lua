@@ -169,6 +169,7 @@ local theme = {
     ["@module.latex"] = { link = "@namespace" },
     ["@markup.link.latex"] = { link = "@label.latex" },
     ["@markup.link.label.markdown_inline"] = {},
+    ["@attribute.diff"] = { link = "diffLine" },
   },
   lsp = {
     -- Defaults (mostly for fallbacks)
@@ -348,6 +349,10 @@ local theme = {
     diffFile = { fg = colours.cyan },
     diffNewFile = { fg = colours.green },
     diffOldFile = { fg = colours.red },
+
+    -- Same as above, not sure where these come from, but used in some diffs
+    Added = { link = "diffAdded" },
+    Removed = { link = "diffRemoved" },
 
     GitSignsAdd = { fg = colours.green, bg = colours.border },
     GitSignsChange = { fg = colours.blue, bg = colours.border },
