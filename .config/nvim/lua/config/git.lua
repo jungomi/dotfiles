@@ -169,15 +169,15 @@ function M.setup()
       },
       {
         event = "FileType",
-        pattern = "NeogitCommitMessage",
+        -- Neogit now uses the native gitcommit but overwrites some settings...
+        pattern = "gitcommit",
         callback = function(args)
-          -- Enable line numbers for this, because they are always disabled.
-          vim.wo.number = true
           -- HACK: Delay setting the filetype / treesitter, because Neogit first creates the buffer,
           -- then later enables it, which comes after the event has fired (overwriting anything).
           vim.defer_fn(function()
             vim.treesitter.stop()
-            vim.api.nvim_set_option_value("filetype", "gitcommit", { buf = args.buf })
+            -- Enable line numbers for this, because Neogit always disables them after creating the buffer.
+            vim.api.nvim_set_option_value("number", true, { win = args.win })
           end, 100)
         end,
         desc = "Neogit disable treesitter highlights and use regular gitcommit buffer",
