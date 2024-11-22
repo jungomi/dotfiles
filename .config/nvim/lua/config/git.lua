@@ -86,6 +86,8 @@ function M.setup()
     use_per_project_settings = false,
     disable_insert_on_commit = true,
     disable_hint = true,
+    -- Don't show the spinner, it is buggy and also unnecessarily distracting.
+    process_spinner = false,
     mappings = {
       popup = {
         -- Don't touch the navigation mappings ...
