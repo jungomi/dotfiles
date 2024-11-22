@@ -1,5 +1,6 @@
 local neogit = require("neogit")
 local neogit_status = require("neogit.buffers.status")
+local CommitView = require("neogit.buffers.commit_view")
 local diffview = require("diffview")
 local diffview_actions = require("diffview.actions")
 local git_signs = require("gitsigns")
@@ -180,6 +181,41 @@ function M.setup()
           end, 100)
         end,
         desc = "Neogit disable treesitter highlights and use regular gitcommit buffer",
+      },
+      {
+        event = "CursorMoved",
+        pattern = "git-rebase-todo",
+        callback = function()
+          -- This uses vim's regex because Lua doesn't support counts (i.e. {4, 40}).
+          -- The commit is in capture group 1, which is the second element in the list
+          local commit_id = vim.fn.matchlist(vim.api.nvim_get_current_line(), [[^\%(\w\+\>\)\=\s*\(\x\{4,40\}\>\)]])[2]
+          if commit_id == nil then
+            return
+          end
+          if CommitView.is_open() then
+            -- Only change the buffer if it is not the same ID as this also reset scrolls to the top
+            if CommitView.instance.commit_info.commit_arg ~= commit_id then
+              CommitView.instance:update(commit_id)
+              CommitView.instance.buffer:win_exec("normal! gg")
+            end
+          else
+            local curr_win = vim.api.nvim_get_current_win()
+            CommitView.new(commit_id):open("split")
+            vim.api.nvim_set_current_win(curr_win)
+          end
+        end,
+        desc = "Neogit show diff for commit under cursor during interactive rebase",
+      },
+      {
+        -- That seems to be the event that is fired when closing the interactive rebase in Neogit.
+        event = "BufWipeout",
+        pattern = "git-rebase-todo",
+        callback = function()
+          if CommitView.is_open() then
+            CommitView.instance:close()
+          end
+        end,
+        desc = "Neogit close the diff when closing the interactive rebase",
       },
     },
   })

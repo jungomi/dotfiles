@@ -4,8 +4,6 @@ return {
   -- Trying to replace as many as possible in the future, not just because they
   -- were written in VimScript, but many try to support very old versions of
   -- Vim, handling edge cases and potentially not using newer features.
-  -- Show diff when using: git rebase --interactive
-  "hotwatermorning/auto-git-diff",
   -- Better search under cursor (smart case, visual *, etc.)
   "haya14busa/vim-asterisk",
   -- Save/Open with sudo (replaces the tee sudo trick)
