@@ -170,6 +170,7 @@ local theme = {
     ["@markup.link.latex"] = { link = "@label.latex" },
     ["@markup.link.label.markdown_inline"] = {},
     ["@attribute.diff"] = { link = "diffLine" },
+    ["@module.python"] = {},
   },
   lsp = {
     -- Defaults (mostly for fallbacks)
