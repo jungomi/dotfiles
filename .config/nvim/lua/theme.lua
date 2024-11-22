@@ -599,6 +599,7 @@ local theme = {
 
     -- Stop setting these unwanted settings for no reason.
     NeogitCursorLine = { link = "CursorLine" },
+    NeogitCursorLineNr = { link = "CursorLineNr" },
 
     NeogitFloatHeader = { fg = colours.blue, bold = true },
     NeogitFloatHeaderHighlight = { link = "NeogitFloatHeader" },
