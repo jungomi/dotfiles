@@ -41,6 +41,15 @@ function M.neogit_status_toggle_file()
   vim.cmd("normal! zt")
 end
 
+-- Refresh the status buffer, because apparently Neogit just never refreshes it on its own, unless
+-- a specific action has been performed (i.e. only after some of the mappings ared used in the buffer)
+function M.neogit_status_refresh()
+  local instance = neogit_status.instance()
+  if instance ~= nil then
+    instance:refresh()
+  end
+end
+
 function M.setup()
   git_signs.setup({
     signs = {
@@ -159,6 +168,18 @@ function M.setup()
 
   autocmd_utils.create_augroups({
     config_neogit = {
+      {
+        event = "FocusGained",
+        pattern = "*",
+        callback = M.neogit_status_refresh,
+        desc = "Neogit refresh status buffer when nvim gains focus",
+      },
+      {
+        event = "WinEnter",
+        pattern = "NeogitStatus",
+        callback = M.neogit_status_refresh,
+        desc = "Neogit refresh status buffer when entering the status window",
+      },
       {
         event = "FileType",
         pattern = "NeogitStatus",
