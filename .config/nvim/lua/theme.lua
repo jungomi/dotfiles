@@ -47,6 +47,7 @@ local theme = {
     IncSearch = { bg = colours.orange, fg = colours.fg },
     CurSearch = { bg = colours.light_orange },
     Yank = { bg = colours.light_orange },
+    SnippetTabstop = { bg = colours.cursor_line },
 
     LineNr = { bg = colours.border, fg = colours.grey },
     CursorLineNr = { bg = colours.border, fg = colours.fg, bold = true },

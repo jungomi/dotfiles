@@ -7,16 +7,9 @@ return {
     "saghen/blink.cmp",
     lazy = false,
     dependencies = {
-      { "saghen/blink.compat", opts = { impersonate_nvim_cmp = true } },
-      "saadparwaiz1/cmp_luasnip",
       "rafamadriz/friendly-snippets",
     },
     build = "cargo build --release",
-  },
-  {
-    "L3MON4D3/LuaSnip",
-    build = "make install_jsregexp",
-    dependencies = { "rafamadriz/friendly-snippets" },
   },
   -- Pretty list of diagnostics (quickfix with style)
   {

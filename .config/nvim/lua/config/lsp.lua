@@ -3,8 +3,6 @@ local mason = require("mason")
 local mason_lsp = require("mason-lspconfig")
 local schemastore = require("schemastore")
 local blink_cmp = require("blink.cmp")
-local luasnip = require("luasnip")
-local luasnip_vscode = require("luasnip.loaders.from_vscode")
 local trouble = require("trouble")
 local glance = require("glance")
 local lsp_lines = require("lsp_lines")
@@ -221,14 +219,10 @@ function M.setup()
     accept = {
       -- Accepting should not break up the undo history, it should be part of a single insert.
       create_undo_point = false,
-      expand_snippet = function(snippet)
-        -- Complete snippets with luasnip
-        luasnip.lsp_expand(snippet)
-      end,
     },
     sources = {
       completion = {
-        enabled_providers = { "lsp", "path", "buffer", "luasnip", "lazydev" },
+        enabled_providers = { "lsp", "path", "buffer", "snippets", "lazydev" },
       },
       providers = {
         buffer = {
@@ -243,11 +237,6 @@ function M.setup()
         lazydev = {
           name = "LazyDev",
           module = "lazydev.integrations.blink",
-        },
-        luasnip = {
-          name = "luasnip",
-          module = "blink.compat.source",
-          opts = {},
         },
       },
     },
@@ -279,14 +268,6 @@ function M.setup()
     },
     -- Prefer my icons where applicable (to be consistent)
     kind_icons = icons.lsp_kind,
-  })
-
-  -- Load snippets from RTP (from friendly-snippets) and my custom snippets
-  luasnip_vscode.lazy_load()
-  luasnip_vscode.lazy_load({
-    paths = { vim.fn.stdpath("config") .. "/snippets" },
-    -- The priority should be higher than the default VSCode snippets (friendly-snippets).
-    default_priority = 2000,
   })
 
   trouble.setup({

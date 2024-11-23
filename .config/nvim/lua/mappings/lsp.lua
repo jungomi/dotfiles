@@ -1,8 +1,7 @@
 local conform = require("conform")
-local luasnip = require("luasnip")
 local inlay_hints = require("utils.inlay_hints")
 local map_utils = require("utils.map")
-local ts_utils = require("utils.treesitter")
+local snippets = require("utils.snippets")
 local nmap = map_utils.nmap
 local imap = map_utils.imap
 local smap = map_utils.smap
@@ -15,24 +14,6 @@ local function toggle_virtual_lines()
     vim.diagnostic.config({ virtual_text = false, virtual_lines = cfg.config_when_enabled.virtual_lines })
   else
     vim.diagnostic.config({ virtual_text = cfg.config_when_enabled.virtual_text, virtual_lines = false })
-  end
-end
-
--- <C-h>
-local function snip_prev()
-  if luasnip.jumpable(-1) then
-    luasnip.jump(-1)
-  else
-    ts_utils.jump_start_of_node()
-  end
-end
-
--- <C-l>
-local function snip_next()
-  if luasnip.expand_or_jumpable() then
-    luasnip.expand_or_jump()
-  else
-    ts_utils.jump_end_of_node()
   end
 end
 
@@ -78,10 +59,10 @@ function M.enable_mappings()
   nmap("<leader>lgt", "<CMD>Glance type_definitions<CR>", { desc = "LSP » Glance » Type Definitions" })
   nmap("<leader>lgi", "<CMD>Glance implementations<CR>", { desc = "LSP » Glance » Implementations" })
   -- Snippets
-  imap("<C-h>", snip_prev, { desc = "Snippet » Previous" })
-  smap("<C-h>", snip_prev, { desc = "Snippet » Previous" })
-  imap("<C-l>", snip_next, { desc = "Snippet » Next" })
-  smap("<C-l>", snip_next, { desc = "Snippet » Next" })
+  imap("<C-h>", snippets.jump_backward, { desc = "Snippet » Previous" })
+  smap("<C-h>", snippets.jump_backward, { desc = "Snippet » Previous" })
+  imap("<C-l>", snippets.expand_or_jump_forward, { desc = "Snippet » Next" })
+  smap("<C-l>", snippets.expand_or_jump_forward, { desc = "Snippet » Next" })
 end
 
 return M
