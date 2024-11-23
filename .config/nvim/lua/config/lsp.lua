@@ -219,6 +219,9 @@ function M.setup()
     accept = {
       -- Accepting should not break up the undo history, it should be part of a single insert.
       create_undo_point = false,
+      auto_brackets = {
+        enabled = true,
+      }
     },
     sources = {
       completion = {
