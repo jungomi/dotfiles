@@ -72,6 +72,24 @@
   # Automatically stash uncommited changes before rebasing and apply them back
   # afterwards. Allows rebase on a dirty tree (mainly for git pull --rebase).
   autoStash = true
+  # Automatically reorder commits with `squash!`, `fixup!` etc. prefixes.
+  # When an addition was made later that should be merged into a previous commit which can usually
+  # be done in the rebasing by rearranging them then set them to squash, fixup.
+  # This just rearranges and sets them to the corresponding command automatically.
+  # fixup! <commit-hash or exact-commit-message>
+  # Creates:
+  #   - pick <original-hash>
+  #   - fixup <fix-commit>
+  #   - ... other commits
+  autoSquash = true
+  # Updates all branches that were stacked upon a commit that will be rebased.
+  # This is really helpful if you need an extra fix of a earlier branch, but another
+  # branch builds on top of it.
+  # So if the earlier branch is rebased with the fix, the others would need to be rebase on top
+  # of the modified branch. Very useful in combination with the autoSquash above.
+  # It can be done automatically with updateRefs.
+  # I don't see a scenario where I don't want this, but there is always the `--no-update-refs` option.
+  updateRefs = true
   stat = true
 [stash]
   showPatch = true
