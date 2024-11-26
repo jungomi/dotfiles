@@ -56,13 +56,15 @@
   lineNumber = true
   extendRegexp = true
 [merge]
-  tool = fugitive
+  tool = nvim
 [mergetool]
   prompt = false
   keepBackup = false
-[mergetool "fugitive"]
-  # The ! is for a three way split, as it was the default before with Gdiff.
-  cmd = nvim +Gdiffsplit! $MERGED
+[mergetool "nvim"]
+  # Currently using diffview.nvim, but that doesn't support resolving merge conflicts one at a time,
+  # so this will open all at once.
+  # Not great for the use of `git mergetool`, so I probably just directly in nvim.
+  cmd = nvim -c DiffviewOpen
 [pull]
   # Rebase instead of merge by default on pull
   rebase = true
