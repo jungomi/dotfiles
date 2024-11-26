@@ -17,8 +17,7 @@
   day = "!git lg --since=midnight --author=\"$(git config user.name)\""
 
   # Delete branches already merged into main
-  delete-merged = "!git checkout main --quiet && git branch --merged \
-    | grep -v main | xargs -n 1 git branch -d"
+  delete-merged = "!git checkout main --quiet && git branch --merged | grep -v main | xargs -n 1 git branch -d"
 
   # Amend to the latest commit with the same message
   amend = commit --amend --reuse-message=HEAD
