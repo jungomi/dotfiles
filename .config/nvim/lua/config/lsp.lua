@@ -216,12 +216,44 @@ function M.setup()
       ["<C-b>"] = { "scroll_documentation_up", "fallback" },
       ["<C-f>"] = { "scroll_documentation_down", "fallback" },
     },
-    accept = {
-      -- Accepting should not break up the undo history, it should be part of a single insert.
-      create_undo_point = false,
-      auto_brackets = {
+    completion = {
+      trigger = {
+        -- Disable automatic completion
+        show_on_keyword = false,
+        show_on_trigger_character = false,
+      },
+      accept = {
+        -- Accepting should not break up the undo history, it should be part of a single insert.
+        create_undo_point = false,
+        auto_brackets = {
+          enabled = true,
+        },
+      },
+      menu = {
+        draw = {
+          columns = { { "kind_icon" }, { "label", "label_description", gap = 1 }, { "source" } },
+          components = {
+            source = {
+              ellipsis = false,
+              text = function(ctx)
+                local name = source_names[ctx.item.source_id] or ctx.item.source_name
+                return string.format("[%s]", name)
+              end,
+              highlight = "BlinkCmpSource",
+            },
+          },
+        },
+      },
+      documentation = {
+        auto_show = true,
+        auto_show_delay_ms = 0,
+        window = {
+          border = borders.hover,
+        },
+      },
+      ghost_text = {
         enabled = true,
-      }
+      },
     },
     sources = {
       completion = {
@@ -243,34 +275,10 @@ function M.setup()
         },
       },
     },
-    windows = {
-      autocomplete = {
-        auto_show = false,
-        draw = {
-          columns = { { "kind_icon" }, { "label", "label_description", gap = 1 }, { "source" } },
-          components = {
-            source = {
-              ellipsis = false,
-              text = function(ctx)
-                local name = source_names[ctx.item.source_id] or ctx.item.source_name
-                return string.format("[%s]", name)
-              end,
-              highlight = "BlinkCmpSource",
-            },
-          },
-        },
-      },
-      documentation = {
-        border = borders.hover,
-        auto_show = true,
-        auto_show_delay_ms = 0,
-      },
-      ghost_text = {
-        enabled = true,
-      },
+    appearance = {
+      -- Prefer my icons where applicable (to be consistent)
+      kind_icons = icons.lsp_kind,
     },
-    -- Prefer my icons where applicable (to be consistent)
-    kind_icons = icons.lsp_kind,
   })
 
   trouble.setup({
