@@ -63,6 +63,33 @@ return {
     end,
     dependencies = { "nvim-tree/nvim-web-devicons" },
   },
+  -- Interactive search and replace
+  {
+    "MagicDuck/grug-far.nvim",
+    opts = {
+      startInInsertMode = false,
+      windowCreationCommand = "botright split",
+      -- Unlisted buffer and fully deleted when closed.
+      -- I don't want it in the buffer/jump history as after a restart
+      -- of nvim, it would just give an invalid buffer.
+      transient = true,
+      resultsSeparatorLineChar = "─",
+      resultLocation = {
+        -- Leave enough space at the end for the scrollbar
+        numberLabelFormat = " [%d]   ",
+      },
+      keymaps = {
+        abort = { n = "<C-c>" },
+        close = { n = "gq" },
+        historyOpen = { n = "<C-q>" },
+        openLocation = { n = "<C-o>" },
+        replace = { n = "<C-x>" },
+        syncLine = { n = "<C-l>" },
+        syncLocations = { n = "<C-s>" },
+        toggleShowCommand = { n = "<C-p>" },
+      },
+    },
+  },
   -- Swap two regions of text or replace text selected by motion
   {
     "gbprod/substitute.nvim",

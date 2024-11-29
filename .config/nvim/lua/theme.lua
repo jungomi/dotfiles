@@ -635,6 +635,13 @@ local theme = {
     LazyButton = { bg = colours.dark_border },
     LazyH1 = { bg = colours.blue, fg = colours.light_blue, bold = true },
   },
+  grugfar = {
+    GrugFarResultsMatch = { link = "LspReferenceText" },
+    GrugFarInputLabel = { link = "DiagnosticSignInfo" },
+    GrugFarResultsHeader = { link = "SignColumn" },
+    GrugFarResultsStats = { link = "GrugFarResultsHeader" },
+    GrugFarResultsCmdHeader = { link = "Title" },
+  },
 }
 
 local M = {

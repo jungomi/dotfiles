@@ -1,3 +1,4 @@
+local grugfar = require("grug-far")
 local substitute = require("substitute")
 local exchange = require("substitute.exchange")
 local map_utils = require("utils.map")
@@ -18,6 +19,9 @@ function M.enable_mappings()
   nmap("sxx", exchange.line, { desc = "Substitute » Exchange » Line" })
   nmap("sxc", exchange.cancel, { desc = "Substitute » Exchange » Cancel" })
   xmap("sx", exchange.visual, { desc = "Substitute » Exchange » Visual" })
+
+  -- Interactive search and replace
+  nmap("<leader>rg", grugfar.open, { desc = "Substitute » GrugFar" })
 end
 
 return M
