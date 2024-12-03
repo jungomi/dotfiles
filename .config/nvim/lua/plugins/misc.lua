@@ -109,7 +109,7 @@ return {
     lazy = false,
     opts = {
       bigfile = { enabled = true },
-      quickfile = { enabled = true },
+      quickfile = { enabled = false },
       notifier = {
         enabled = true,
         timeout = 3000,
