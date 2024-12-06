@@ -90,6 +90,7 @@ return {
         unknown = icons.pad_right(icons.triangle.tiny, 1),
       },
       label = {
+        truncateAtChars = 45,
         padding = 2,
       },
     },
