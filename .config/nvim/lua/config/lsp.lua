@@ -215,12 +215,15 @@ function M.setup()
       ["<C-h>"] = { "snippet_backward", "fallback" },
       ["<C-b>"] = { "scroll_documentation_up", "fallback" },
       ["<C-f>"] = { "scroll_documentation_down", "fallback" },
+      ["<C-c>"] = { "cancel", "fallback" },
     },
     completion = {
       trigger = {
         -- Disable automatic completion
-        show_on_keyword = false,
-        show_on_trigger_character = false,
+        show_on_keyword = true,
+        show_on_trigger_character = true,
+        -- Don't show them when in the snippet
+        show_in_snippet = false,
       },
       accept = {
         -- Accepting should not break up the undo history, it should be part of a single insert.
@@ -230,6 +233,7 @@ function M.setup()
         },
       },
       menu = {
+        auto_show = false,
         draw = {
           columns = { { "kind_icon" }, { "label", "label_description", gap = 1 }, { "source" } },
           components = {
@@ -256,22 +260,20 @@ function M.setup()
       },
     },
     sources = {
-      completion = {
-        enabled_providers = { "lsp", "path", "buffer", "snippets", "lazydev" },
-      },
+      default = { "lsp", "path", "buffer", "snippets", "lazydev" },
       providers = {
         buffer = {
-          -- Buffer should always be shown, but with a lower priority as well as a limit.
-          fallback_for = {},
           max_items = 8,
           score_offset = -5,
         },
         lsp = {
-          fallback_for = { "lazydev" },
+          -- Buffer should always be shown, but with a lower priority (listed as a fallback by default)
+          fallbacks = {},
         },
         lazydev = {
           name = "LazyDev",
           module = "lazydev.integrations.blink",
+          fallbacks = { "lsp" },
         },
       },
     },
