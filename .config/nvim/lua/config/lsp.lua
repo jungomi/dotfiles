@@ -261,6 +261,8 @@ function M.setup()
     },
     sources = {
       default = { "lsp", "path", "buffer", "snippets", "lazydev" },
+      -- Disable command line completion at it breaks tab
+      cmdline = {},
       providers = {
         buffer = {
           max_items = 8,
