@@ -1,0 +1,63 @@
+font-size = 11.5
+adjust-cell-width = 0
+adjust-cell-height = -1
+adjust-underline-thickness = -1
+adjust-underline-position = -2
+
+cursor-style = block
+cursor-style-blink = false
+
+window-padding-y = 0
+
+# Always start maximised
+# This is silly, but that's the only way to achieve it.
+window-width = 9999
+window-height = 9999
+
+macos-icon = custom-style
+macos-icon-frame = plastic
+macos-icon-ghost-color = #fdf6e3
+macos-icon-screen-color = #555d60
+macos-option-as-alt = true
+macos-titlebar-proxy-icon = hidden
+
+# Theme
+foreground = #555d60
+background = #fdf6e3
+selection-foreground = #efece7
+selection-background = #555d60
+cursor-color = #555d60
+cursor-text = #efece7
+
+# Normal
+palette = 0=#515151
+palette = 1=#df5f5f
+palette = 2=#66b766
+palette = 3=#e39a34
+palette = 4=#5f87d7
+palette = 5=#b169b1
+palette = 6=#52a6a5
+palette = 7=#d3d0c8
+
+# Bright
+palette = 8=#5b696d
+palette = 9=#d74059
+palette = 10=#33a559
+palette = 11=#b77428
+palette = 12=#3d78b4
+palette = 13=#9d4a95
+palette = 14=#328195
+palette = 15=#efece7
+
+
+# Not sure why I defined these, since I'll never use them.
+keybind = super+b=jump_to_prompt:-1
+keybind = super+d=jump_to_prompt:1
+#keybind = super+h=goto_split:left
+keybind = super+j=goto_split:next
+keybind = super+k=goto_split:previous
+#keybind = super+l=goto_split:right
+keybind = super+shift+h=new_split:left
+keybind = super+shift+j=new_split:down
+keybind = super+shift+k=new_split:up
+keybind = super+shift+l=new_split:right
