@@ -25,19 +25,25 @@ be restored with `make restore`.
 $ make [targets]
 
   targets:
-        default          # Installs all dotfiles and configures bash
-        safe             # Runs backup before installing
-        envs             # Installs all environments
-        link             # Creates symbolic links
-        backup           # Makes a backup of the existing dotfiles
-        restore          # Restores the backup files
-        clean            # Removes the backup files
-        bash             # Configures Bash
-        node             # Installs n and Node.js
-        ruby             # Installs rvm and Ruby
-        rust             # Installs rustup and Rust
-        macos            # Configures MacOS
-        help             # Shows this help message
+        default                  Installs all dotfiles and configures bash
+        safe                     Runs backup before installing
+        envs                     Installs all environments
+        link                     Creates symbolic links
+        backup                   Makes a backup of the existing dotfiles
+        restore                  Restores the backup files
+        clean                    Removes the backup files
+        bash                     Configures Bash
+        node                     Installs n and Node.js
+        ruby                     Installs rvm and Ruby
+        rust                     Installs rustup and Rust
+        cargo-subcommands        Subcommands for cargo that are provided as crates
+        bob                      Installs bob and nvim
+        macos                    Configures MacOS
+        tools                    Various command line tools (atuin, delta, rg, uv, z)
+        atuin                    Atuin for fuzzy finding shell completion
+        zoxide                   z, a smart cd
+        completions              Generate the shell completions for many installed tools
+        help                     Shows this help message
 ```
 
 ### Patched Font
