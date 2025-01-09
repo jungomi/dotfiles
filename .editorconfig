@@ -8,6 +8,10 @@ insert_final_newline = true
 indent_style = space
 indent_size = 2
 
+[Makefile]
+# Must use tabs for makefiles
+indent_style = tab
+
 [*.py]
 indent_size = 4
 # Default of black
