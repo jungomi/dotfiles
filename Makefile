@@ -4,6 +4,7 @@
 
 BACKUP_DIR = backup/
 BACKUP_DEST = $(addprefix $(BACKUP_DIR), $(CONFIG_NAME))
+BOB_NVIM_BIN = $$HOME/.local/share/bob/nvim-bin
 CONFIG_DIR ?= $$HOME/.config/
 CONFIG_DEST = $(addprefix $(CONFIG_DIR), $(CONFIG_NAME))
 CONFIG_NAME = $(notdir $<)
@@ -101,6 +102,20 @@ rust:
 	echo '# Rust' >> ~/.profile
 	echo 'export PATH="$$PATH:$(RUST_BIN)"' >> ~/.profile
 	echo -e "\r\033[2K[ \033[00;32mDONE\033[0m ]  Installing Rust"
+
+# Subcommands for cargo that are provided as crates
+cargo-subcommands:
+	if cargo binstall -V &> /dev/null; then echo -e "\r\033[2K[ \033[00;32m✔\033[0m ] cargo binstall $$(cargo binstall -V) already installed"; else cargo install cargo-binstall; fi
+	if cargo install-update -V &> /dev/null; then echo -e "\r\033[2K[ \033[00;32m✔\033[0m ] $$(cargo install-update -V) already installed"; else cargo install cargo-update; fi
+
+# Installs bob and nvim
+bob: cargo-subcommands
+	cargo binstall bob-nvim
+	bob use stable
+	echo '' >> ~/.profile
+	echo '# Bob (nvim)' >> ~/.profile
+	echo 'export PATH="$$PATH:$(BOB_NVIM_BIN)"' >> ~/.profile
+	echo -e "\r\033[2K[ \033[00;32mDONE\033[0m ]  Installing bob and nvim"
 
 # Configures MacOS
 macos:
