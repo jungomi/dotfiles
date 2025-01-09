@@ -163,5 +163,5 @@ completions:
 # Shows this help message
 help:
 	echo "targets:"
-	sed -n -e "/^[[:alpha:]]\+:/{G;s/^\(.*\):.*\n/\t\1\t/;p;d;};" \
+	sed -n -e "/^[[:alpha:]-]\+:/{G;s/^\(.*\):.*\n/\t\1 /;p;d;};" \
 		-e "x" Makefile | column -t -s "#" -o "	"
