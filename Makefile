@@ -5,6 +5,7 @@
 BACKUP_DIR = backup/
 BACKUP_DEST = $(addprefix $(BACKUP_DIR), $(CONFIG_NAME))
 BOB_NVIM_BIN = $$HOME/.local/share/bob/nvim-bin
+COMPLETIONS_DIR= $$HOME/.local/share/bash-completion/completions
 CONFIG_DIR ?= $$HOME/.config/
 CONFIG_DEST = $(addprefix $(CONFIG_DIR), $(CONFIG_NAME))
 CONFIG_NAME = $(notdir $<)
@@ -148,6 +149,16 @@ zoxide:
 	echo '' >> ~/.profile
 	echo '# z (smart cd)' >> ~/.profile
 	echo 'eval "$$(zoxide init bash)"' >> ~/.profile
+
+# Generate the shell completions for many installed tools
+completions:
+	mkdir $(COMPLETIONS_DIR) -p
+	command -v atuin &> /dev/null && atuin gen-completions --shell bash > $(COMPLETIONS_DIR)/atuin
+	command -v bob &> /dev/null && bob complete bash > $(COMPLETIONS_DIR)/bob
+	command -v rg &> /dev/null && rg --generate complete-bash > $(COMPLETIONS_DIR)/rg
+	command -v rustup &> /dev/null && rustup completions bash > $(COMPLETIONS_DIR)/rustup
+	command -v rustup &> /dev/null && rustup completions bash cargo > $(COMPLETIONS_DIR)/cargo
+	command -v uv &> /dev/null && uv generate-shell-completion bash > $(COMPLETIONS_DIR)/uv
 
 # Shows this help message
 help:
