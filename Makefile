@@ -122,6 +122,33 @@ macos:
 	./macos.sh
 	echo -e "\r\033[2K[ \033[00;32mDONE\033[0m ] 󰀵 Configuring MacOS"
 
+# Various command line tools (atuin, delta, rg, uv, z)
+tools: cargo-subcommands atuin zoxide
+	command -v delta &> /dev/null || cargo binstall git-delta
+	command -v rg &> /dev/null || cargo binstall ripgrep
+	command -v uv &> /dev/null ||  curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Atuin for fuzzy finding shell completion
+atuin:
+	curl -L https://raw.githubusercontent.com/rcaloras/bash-preexec/master/bash-preexec.sh -o ~/.bash-preexec.sh
+	curl --proto '=https' --tlsv1.2 -LsSf https://github.com/atuinsh/atuin/releases/latest/download/atuin-installer.sh | ATUIN_NO_MODIFY_PATH=1 sh
+	echo '' >> ~/.profile
+	echo '# atuin' >> ~/.profile
+	echo '[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh' >> ~/.profile
+	echo '. "$$HOME/.atuin/bin/env"' >> ~/.profile
+	echo 'eval "$$(atuin init bash --disable-up-arrow)"' >> ~/.profile
+	echo '# Restore the / in vim mode to do regular search rather than use atuin' >> ~/.profile
+	echo '# This allows a combination to use both, which I prefer for certain situtations.' >> ~/.profile
+	echo $$'bind -m vi-command \'"/": vi-search\'' >> ~/.profile
+	echo -e "\r\033[2K[ \033[00;32mDONE\033[0m ] Installing atuin"
+
+# z, a smart cd
+zoxide:
+	curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+	echo '' >> ~/.profile
+	echo '# z (smart cd)' >> ~/.profile
+	echo 'eval "$$(zoxide init bash)"' >> ~/.profile
+
 # Shows this help message
 help:
 	echo "targets:"
