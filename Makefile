@@ -123,9 +123,10 @@ macos:
 	./macos.sh
 	echo -e "\r\033[2K[ \033[00;32mDONE\033[0m ] 󰀵 Configuring MacOS"
 
-# Various command line tools (atuin, delta, rg, uv, z)
+# Various command line tools (atuin, delta, fd, rg, uv, z)
 tools: cargo-subcommands atuin zoxide
 	command -v delta &> /dev/null || cargo binstall git-delta
+	command -v fd &> /dev/null || cargo binstall fd-find
 	command -v rg &> /dev/null || cargo binstall ripgrep
 	command -v uv &> /dev/null ||  curl -LsSf https://astral.sh/uv/install.sh | sh
 
