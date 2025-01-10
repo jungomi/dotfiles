@@ -9,6 +9,8 @@ COMPLETIONS_DIR= $$HOME/.local/share/bash-completion/completions
 CONFIG_DIR ?= $$HOME/.config/
 CONFIG_DEST = $(addprefix $(CONFIG_DIR), $(CONFIG_NAME))
 CONFIG_NAME = $(notdir $<)
+MINIFORGE_BIN = $(addsuffix /bin, $(MINIFORGE_DIR))
+MINIFORGE_DIR = $$HOME/miniforge3
 NODE_BIN = $(addsuffix /bin, $(NODE_DIR))
 NODE_DIR = $$HOME/.n
 RVM = $$HOME/.rvm/scripts/rvm
@@ -26,7 +28,7 @@ default: link bash
 safe: backup default
 
 # Installs all environments
-envs: node ruby rust
+envs: node python ruby rust
 
 # Creates symbolic links
 link: config_dir $(addsuffix .link, $(CONFIGS))
@@ -85,6 +87,17 @@ node:
 	echo '[[ :$$PATH: == *":$(NODE_BIN):"* ]] || PATH+=":$(NODE_BIN)"' \
 		>> ~/.profile
 	echo -e "\r\033[2K[ \033[00;32mDONE\033[0m ] 󰎙 Installing Node"
+
+# Installs conda (miniforge) and Python
+python:
+	curl -LO "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$$(uname)-$$(uname -m).sh"
+	# -b stands for batch (non-interactive)
+	bash Miniforge3-$$(uname)-$$(uname -m).sh -b -p $(MINIFORGE_DIR)
+	rm Miniforge3-$$(uname)-$$(uname -m).sh
+	echo '' >> ~/.profile
+	echo '# Conda (miniforge)' >> ~/.profile
+	echo 'eval "$$($(MINIFORGE_BIN)/conda shell.bash hook)"' >> ~/.profile
+	echo -e "\r\033[2K[ \033[00;32mDONE\033[0m ]  Installing Python"
 
 # Installs rvm and Ruby
 ruby:
