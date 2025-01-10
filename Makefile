@@ -123,8 +123,8 @@ macos:
 	./macos.sh
 	echo -e "\r\033[2K[ \033[00;32mDONE\033[0m ] 󰀵 Configuring MacOS"
 
-# Various command line tools (atuin, delta, fd, rg, uv, z)
-tools: cargo-subcommands atuin zoxide
+# Various command line tools (delta, fd, rg, uv)
+tools: cargo-subcommands
 	command -v delta &> /dev/null || cargo binstall -y git-delta
 	command -v fd &> /dev/null || cargo binstall -y fd-find
 	command -v rg &> /dev/null || cargo binstall -y ripgrep
