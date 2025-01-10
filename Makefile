@@ -111,7 +111,7 @@ cargo-subcommands:
 
 # Installs bob and nvim
 bob: cargo-subcommands
-	cargo binstall bob-nvim
+	cargo binstall -y bob-nvim
 	bob use stable
 	echo '' >> ~/.profile
 	echo '# Bob (nvim)' >> ~/.profile
@@ -125,9 +125,9 @@ macos:
 
 # Various command line tools (atuin, delta, fd, rg, uv, z)
 tools: cargo-subcommands atuin zoxide
-	command -v delta &> /dev/null || cargo binstall git-delta
-	command -v fd &> /dev/null || cargo binstall fd-find
-	command -v rg &> /dev/null || cargo binstall ripgrep
+	command -v delta &> /dev/null || cargo binstall -y git-delta
+	command -v fd &> /dev/null || cargo binstall -y fd-find
+	command -v rg &> /dev/null || cargo binstall -y ripgrep
 	command -v uv &> /dev/null ||  curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # Atuin for fuzzy finding shell completion
