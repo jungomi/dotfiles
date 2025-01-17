@@ -32,7 +32,7 @@ default: link bash
 safe: backup default
 
 # Installs all environments
-envs: node python ruby rust
+envs: node python rust
 
 # Creates symbolic links
 link: config_dir $(addsuffix .link, $(CONFIGS))
