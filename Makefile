@@ -2,6 +2,9 @@
 
 .SILENT:
 
+# Some commands require bash, but by default it uses /bin/sh
+SHELL := /usr/bin/env bash
+
 BACKUP_DIR = backup/
 BACKUP_DEST = $(addprefix $(BACKUP_DIR), $(CONFIG_NAME))
 BOB_NVIM_BIN = $$HOME/.local/share/bob/nvim-bin
