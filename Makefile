@@ -5,6 +5,7 @@
 # Some commands require bash, but by default it uses /bin/sh
 SHELL := /usr/bin/env bash
 
+ATUIN_BIN = $$HOME/.atuin/bin
 BACKUP_DIR = backup/
 BACKUP_DEST = $(addprefix $(BACKUP_DIR), $(CONFIG_NAME))
 BOB_NVIM_BIN = $$HOME/.local/share/bob/nvim-bin
@@ -153,7 +154,7 @@ atuin:
 	echo '' >> ~/.profile
 	echo '# atuin' >> ~/.profile
 	echo '[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh' >> ~/.profile
-	echo '. "$$HOME/.atuin/bin/env"' >> ~/.profile
+	echo 'export PATH="$$PATH:$(ATUIN_BIN)"' >> ~/.profile
 	echo 'eval "$$(atuin init bash --disable-up-arrow)"' >> ~/.profile
 	echo '# Restore the / in vim mode to do regular search rather than use atuin' >> ~/.profile
 	echo '# This allows a combination to use both, which I prefer for certain situtations.' >> ~/.profile
