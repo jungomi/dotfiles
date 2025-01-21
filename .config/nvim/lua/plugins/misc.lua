@@ -63,6 +63,13 @@ return {
     end,
     dependencies = { "nvim-tree/nvim-web-devicons" },
   },
+  {
+    "refractalize/oil-git-status.nvim",
+    dependencies = {
+      "stevearc/oil.nvim",
+    },
+    opts = {},
+  },
   -- Interactive search and replace
   {
     "MagicDuck/grug-far.nvim",

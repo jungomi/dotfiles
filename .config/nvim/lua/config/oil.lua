@@ -44,6 +44,9 @@ function M.setup()
     progress = {
       border = borders.default,
     },
+    win_options = {
+      signcolumn = "auto:2",
+    },
   })
   oil_mappings.enable_mappings()
 end
