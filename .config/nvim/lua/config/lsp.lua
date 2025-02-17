@@ -217,6 +217,10 @@ function M.setup()
       ["<C-f>"] = { "scroll_documentation_down", "fallback" },
       ["<C-c>"] = { "cancel", "fallback" },
     },
+    -- Disable command line completion at it breaks tab
+    cmdline = {
+      enabled = false,
+    },
     completion = {
       trigger = {
         -- Disable automatic completion
@@ -261,8 +265,6 @@ function M.setup()
     },
     sources = {
       default = { "lsp", "path", "buffer", "snippets", "lazydev" },
-      -- Disable command line completion at it breaks tab
-      cmdline = {},
       providers = {
         buffer = {
           max_items = 8,
