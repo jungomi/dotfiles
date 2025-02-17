@@ -219,7 +219,13 @@ function M.setup()
     },
     -- Disable command line completion at it breaks tab
     cmdline = {
-      enabled = false,
+      enabled = true,
+      keymap = {
+        ["<C-space>"] = { "show" },
+        ["<C-k>"] = { "select_prev", "fallback" },
+        ["<C-j>"] = { "select_next", "fallback" },
+        ["<C-l>"] = { "select_and_accept", "fallback" },
+      },
     },
     completion = {
       trigger = {
@@ -251,6 +257,15 @@ function M.setup()
             },
           },
         },
+        -- Almost the same as the default, but slightly moved to take padding of noice into account.
+        cmdline_position = function()
+          if vim.g.ui_cmdline_pos ~= nil then
+            local pos = vim.g.ui_cmdline_pos -- (1, 0)-indexed
+            return { pos[1], pos[2] - 3 }
+          end
+          local height = (vim.o.cmdheight == 0) and 1 or vim.o.cmdheight
+          return { vim.o.lines - height, 0 }
+        end,
       },
       documentation = {
         auto_show = true,
