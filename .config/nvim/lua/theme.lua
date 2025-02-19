@@ -556,6 +556,8 @@ local theme = {
     GlanceListNormal = { bg = colours.border },
     GlancePreviewNormal = { link = "GlanceListNormal" },
     GlanceListBorderBottom = { fg = colours.dark_border, bg = colours.border },
+    GlanceListCursorLine = { link = "CursorLine" },
+    GlancePreviewCursorLine = { link = "GlanceListCursorLine" },
     GlancePreviewBorderBottom = { link = "GlanceListBorderBottom" },
     GlanceBorderTop = { link = "GlanceListBorderBottom" },
     GlanceFoldIcon = { link = "FoldColumn" },
