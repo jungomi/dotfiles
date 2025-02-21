@@ -30,9 +30,14 @@ return {
     opts = {
       formatters_by_ft = {
         lua = { "stylua" },
+        css = { "prettier" },
+        markdown = { "prettier" },
         javascript = { "prettier" },
+        json = { "prettier" },
+        jsonc = { "prettier" },
         typescript = { "prettier" },
         typescriptreact = { "prettier" },
+        yaml = { "prettier" },
         go = { "goimports", "gofumpt" },
         -- Even though there is a ruff-lsp that does the formatting, it always operates
         -- on the whole, whereas conform only applies the changes, which preverves marks etc.
