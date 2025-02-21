@@ -473,6 +473,12 @@ local theme = {
     MarkviewListItemMinus = { link = "markdownListMarker" },
     MarkviewListItemPlus = { link = "MarkviewListItemMinus" },
     MarkviewListItemStar = { link = "MarkviewListItemMinus" },
+
+    MarkviewBlockQuoteOk = { link = "DiagnosticOk" },
+    MarkviewBlockQuoteNote = { link = "DiagnosticInfo" },
+    MarkviewBlockQuoteWarn = { link = "DiagnosticWarn" },
+    MarkviewBlockQuoteError = { link = "DiagnosticError" },
+    MarkviewBlockQuoteSpecial = { fg = colours.purple },
   },
   notify = {
     NotifyINFOTitle = { link = "ModeMsg" },
