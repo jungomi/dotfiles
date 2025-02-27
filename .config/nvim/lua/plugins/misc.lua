@@ -117,6 +117,9 @@ return {
     opts = {
       bigfile = { enabled = true },
       quickfile = { enabled = false },
+      image = {
+        enabled = true,
+      },
       notifier = {
         enabled = true,
         timeout = 3000,
