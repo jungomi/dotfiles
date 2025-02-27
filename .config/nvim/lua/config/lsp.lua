@@ -221,6 +221,7 @@ function M.setup()
     cmdline = {
       enabled = true,
       keymap = {
+        preset = "none",
         ["<C-space>"] = { "show" },
         ["<C-k>"] = { "select_prev", "fallback" },
         ["<C-j>"] = { "select_next", "fallback" },
@@ -245,7 +246,14 @@ function M.setup()
       menu = {
         auto_show = false,
         draw = {
-          columns = { { "kind_icon" }, { "label", "label_description", gap = 1 }, { "source" } },
+          columns = function(ctx)
+            if ctx.mode == "cmdline" then
+              -- Don't show the icon / source in the cmdline since there is only one source.
+              return { { "label", "label_description", gap = 1 } }
+            else
+              return { { "kind_icon" }, { "label", "label_description", gap = 1 }, { "source" } }
+            end
+          end,
           components = {
             source = {
               ellipsis = false,
