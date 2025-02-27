@@ -65,6 +65,9 @@ function M.setup()
         ["ctrl-x"] = fzf_actions.file_split,
         ["ctrl-v"] = fzf_actions.file_vsplit,
         ["ctrl-t"] = fzf_actions.file_tabedit,
+        -- Show hidden files / git ignored files
+        ["ctrl-h"] = { fzf_actions.toggle_hidden },
+        ["ctrl-g"] = { fzf_actions.toggle_ignore },
       },
       buffers = {
         ["default"] = fzf_actions.buf_edit,
