@@ -83,7 +83,7 @@ autocmd_utils.create_augroups({
       event = "TextYankPost",
       pattern = "*",
       callback = function()
-        vim.highlight.on_yank({ higroup = "Yank", timeout = 250 })
+        vim.hl.on_yank({ higroup = "Yank", timeout = 250 })
       end,
       desc = "Highlight yanked text",
     },

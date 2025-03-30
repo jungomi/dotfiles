@@ -44,8 +44,12 @@ function M.enable_mappings()
   nmap("<leader>lv", toggle_virtual_lines, { desc = "LSP » Toggle Virtual Lines" })
   nmap("<leader>li", inlay_hints.cycle, { desc = "LSP » Toggle Inlay Hints" })
   -- Diagnostic navigation
-  nmap("]d", vim.diagnostic.goto_next, { desc = "LSP » Jump to next diagnostic" })
-  nmap("[d", vim.diagnostic.goto_prev, { desc = "LSP » Jump to previous diagnostic" })
+  nmap("]d", function()
+    vim.diagnostic.jump({ count = 1, float = true })
+  end, { desc = "LSP » Jump to next diagnostic" })
+  nmap("[d", function()
+    vim.diagnostic.jump({ count = -1, float = true })
+  end, { desc = "LSP » Jump to previous diagnostic" })
   -- Trouble
   -- Diagnostics list similar to quickfix but better
   nmap("<leader>cd", "<Cmd>Trouble diagnostics toggle<CR>", { desc = "Trouble » Diagnostics" })

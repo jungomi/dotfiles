@@ -5,7 +5,6 @@ local schemastore = require("schemastore")
 local blink_cmp = require("blink.cmp")
 local trouble = require("trouble")
 local glance = require("glance")
-local lsp_lines = require("lsp_lines")
 local lightbulb = require("nvim-lightbulb")
 local lsp_mappings = require("mappings.lsp")
 local icons = require("icons")
@@ -322,8 +321,6 @@ function M.setup()
       kinds = icons.lsp_kind,
     },
   })
-
-  lsp_lines.setup()
 
   lightbulb.setup({
     sign = {
