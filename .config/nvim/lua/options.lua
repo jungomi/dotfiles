@@ -34,7 +34,7 @@ opt.sidescrolloff = 3
 -- Highlight current line
 opt.cursorline = true
 -- Don't show ~ for non-existing lines at end of buffer
-opt.fillchars = { eob = " ", fold = " ", foldopen = "", foldsep = "┃", foldclose = "" }
+opt.fillchars = { eob = " ", fold = " ", foldopen = "", foldsep = "┃", foldclose = "", diff = "╱" }
 
 -- :: File settings
 opt.encoding = "utf-8"

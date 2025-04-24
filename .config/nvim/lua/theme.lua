@@ -336,7 +336,7 @@ local theme = {
   git = {
     DiffAdd = { bg = colours.light_green },
     DiffChange = { bg = colours.light_blue },
-    DiffDelete = { fg = colours.red, bg = colours.light_red },
+    DiffDelete = { fg = colours.light_grey },
     DiffText = { fg = colours.blue, bg = colours.light_blue, bold = true },
 
     -- Colours in git commit messages
