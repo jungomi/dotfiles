@@ -22,6 +22,20 @@ function M.setup()
       corner_right = "",
     },
     markdown = {
+      code_blocks = {
+        diff = {
+          block_hl = function(_, line)
+            if line:match("^%+") and not line:match("^%+%+%+") then
+              return "MarkviewDiffAdd"
+            elseif line:match("^%-") and not line:match("^%-%-%-") then
+              return "MarkviewDiffDelete"
+            else
+              return "MarkviewCode"
+            end
+          end,
+          pad_hl = "MarkviewCode",
+        },
+      },
       list_items = {
         marker_minus = { add_padding = false, text = "•" },
         marker_plus = { add_padding = false, text = "◆" },

@@ -371,7 +371,9 @@ local theme = {
     -- Inline word diffs
     GitSignsAddInline = { link = "DiffAdd" },
     GitSignsChangeInline = { link = "DiffText" },
-    GitSignsDeleteInline = { link = "DiffDelete" },
+    GitSignsDeleteInline = { bg = colours.light_red },
+    GitSignsDeletePreview = { fg = colours.red },
+    GitSignsDeleteVirtLn = { link = "GitSignsDeletePreview" },
 
     fugitiveHash = { fg = colours.red },
     fugitiveHeading = { link = "Title" },
@@ -479,6 +481,9 @@ local theme = {
     MarkviewBlockQuoteWarn = { link = "DiagnosticWarn" },
     MarkviewBlockQuoteError = { link = "DiagnosticError" },
     MarkviewBlockQuoteSpecial = { fg = colours.purple },
+
+    MarkviewDiffAdd = { bg = colours.light_green },
+    MarkviewDiffDelete = { bg = colours.light_red },
   },
   notify = {
     NotifyINFOTitle = { link = "ModeMsg" },
