@@ -107,6 +107,9 @@
 [diff]
   # Distinguish blocks that have been moved with different colours
   colorMoved = default
+  # Better diffs with easily overlapping changes (e.g. if-else branch swaps with another if statement)
+  # Might be slower than the default algorihtm, but in general is much better and for my needs it's still fast.
+  algorithm = histogram
 [interactive]
   diffFilter = delta --color-only
 [delta]
