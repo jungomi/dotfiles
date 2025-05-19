@@ -61,7 +61,14 @@ autocmd_utils.create_augroups({
       command = "setlocal shiftwidth=4 softtabstop=4",
       desc = "Tab settings for Zig",
     },
-
+    {
+      event = "FileType",
+      pattern = "codecompanion",
+      callback = function()
+        vim.treesitter.start(0, "markdown")
+      end,
+      desc = "Enable Markdown syntax highlighting in Coecompanion chat buffers",
+    },
     -- Trigger completion with Tab in DAP REPL (to make it feel like a REPL)
     {
       event = "FileType",

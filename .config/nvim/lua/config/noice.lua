@@ -106,6 +106,12 @@ function M.setup()
       },
     },
   })
+
+  -- Needs to be queued on the event loop as it depends on the config being available from Noice,
+  -- but the setup of Noice defers it to the event loop itself.
+  vim.schedule(function()
+    require("utils.noice_codecompanion_progress").setup()
+  end)
 end
 
 return M

@@ -13,6 +13,8 @@ function M.setup()
     highlight_groups = theme.markview,
     preview = {
       hybrid_modes = { "n", "no" },
+      filetypes = { "markdown", "codecompanion" },
+      ignore_buftypes = {},
     },
     code_blocks = {
       pad_amount = 1,
