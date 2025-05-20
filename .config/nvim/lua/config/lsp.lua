@@ -1,4 +1,3 @@
-local lsp_config = require("lspconfig")
 local mason = require("mason")
 local mason_lsp = require("mason-lspconfig")
 local schemastore = require("schemastore")
@@ -48,12 +47,8 @@ local source_names = {
   tmux = "Tmux",
 }
 
-local function on_attach(client, bufnr)
-  -- Currently empty by default, as the ones used previously are no longer necessary.
-end
-
 -- LSP custom configs for various servers
-local custom_server_configs = {
+local server_configs = {
   ccls = {
     init_options = {
       cache = {
@@ -96,28 +91,23 @@ local custom_server_configs = {
       },
     },
   },
-}
-
--- More capabilities are supported by blink.cmp, such as Snippets
-local capabilities = blink_cmp.get_lsp_capabilities()
-
-local default_config = {
-  on_attach = on_attach,
-  capabilities = capabilities,
+  ["rust-analyzer"] = {
+    settings = {
+      ["rust-analyzer"] = {
+        checkOnSave = {
+          command = "clippy",
+          extraArgs = { "--no-deps" },
+          allFeatures = true,
+        },
+      },
+    },
+  },
 }
 
 -- Setup all installed servers
-function M.setup_servers()
-  local server_configs = vim.deepcopy(custom_server_configs)
-  for _, server_name in ipairs(SERVERS) do
-    if not server_configs[server_name] then
-      -- Use an empty config for the installed servers without a custom config
-      server_configs[server_name] = {}
-    end
-  end
+function M.configure_servers()
   for server_name, config in pairs(server_configs) do
-    local opts = vim.tbl_deep_extend("force", {}, default_config, config)
-    lsp_config[server_name].setup(opts)
+    vim.lsp.config(server_name, config)
   end
 end
 
@@ -181,25 +171,12 @@ function M.setup()
     ensure_installed = SERVERS,
   })
 
-  M.setup_servers()
+  M.configure_servers()
 
   vim.g.rustaceanvim = {
     tools = {
       hover_actions = {
         auto_focus = true,
-      },
-    },
-    server = {
-      on_attach = on_attach,
-      capabilities = capabilities,
-      settings = {
-        ["rust-analyzer"] = {
-          checkOnSave = {
-            command = "clippy",
-            extraArgs = { "--no-deps" },
-            allFeatures = true,
-          },
-        },
       },
     },
   }
