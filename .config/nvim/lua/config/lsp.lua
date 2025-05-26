@@ -263,7 +263,7 @@ function M.setup()
       },
     },
     sources = {
-      default = { "lsp", "path", "buffer", "snippets", "lazydev" },
+      default = { "lsp", "path", "buffer", "snippets", "lazydev", "emoji" },
       providers = {
         buffer = {
           max_items = 8,
@@ -277,6 +277,10 @@ function M.setup()
           name = "LazyDev",
           module = "lazydev.integrations.blink",
           fallbacks = { "lsp" },
+        },
+        emoji = {
+          module = "blink-emoji",
+          name = "Emoji",
         },
       },
     },
