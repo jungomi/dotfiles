@@ -145,6 +145,7 @@ tools: cargo-subcommands
 	command -v delta &> /dev/null || cargo binstall -y git-delta
 	command -v fd &> /dev/null || cargo binstall -y fd-find
 	command -v rg &> /dev/null || cargo binstall -y ripgrep
+	command -v tree-sitter &> /dev/null || cargo binstall -y tree-sitter-cli
 	command -v uv &> /dev/null ||  curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # Atuin for fuzzy finding shell completion
