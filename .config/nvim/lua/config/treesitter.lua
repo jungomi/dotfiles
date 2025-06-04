@@ -1,74 +1,27 @@
-local M = {}
-
-local ts_configs = require("nvim-treesitter.configs")
+local treesitter = require("nvim-treesitter")
+local treesitter_objects = require("nvim-treesitter-textobjects")
 local ts_comment = require("ts_context_commentstring")
 local neogen = require("neogen")
 local treesitter_mappings = require("mappings.treesitter")
+local autocmd_utils = require("utils.autocmd")
+
+local M = {
+  -- TreeSitter highlighting isn't great for these,
+  -- use regular syntax highlighting instead.
+  -- For markdown there is markdown_inline, which is superior.
+  disable_highlight = { "rust", "gitcommit" },
+  disable_indent = {},
+}
 
 function M.setup()
-  ts_configs.setup({
-    ensure_installed = "all",
-    highlight = {
-      enable = true,
-      -- TreeSitter highlighting isn't great for these,
-      -- use regular syntax highlighting instead.
-      -- For markdown there is markdown_inline, which is superior.
-      disable = { "rust", "gitcommit", "markdown" },
-    },
-    -- Indentation doesn't work well yet
-    indent = {
-      enable = false,
-    },
-    playground = {
-      enable = true,
-    },
-    textobjects = {
-      move = {
-        enable = true,
-        goto_next_start = {
-          ["]c"] = "@class.outer",
-          ["]f"] = "@function.outer",
-        },
-        goto_next_end = {
-          ["]C"] = "@class.outer",
-          ["]F"] = "@function.outer",
-        },
-        goto_previous_start = {
-          ["[c"] = "@class.outer",
-          ["[f"] = "@function.outer",
-        },
-        goto_previous_end = {
-          ["[C"] = "@class.outer",
-          ["[F"] = "@function.outer",
-        },
-      },
-      select = {
-        enable = true,
-        -- Automatically jump forward to textobj if not already on it.
-        lookahead = true,
-        keymaps = {
-          ["ic"] = "@class.outer",
-          ["ac"] = "@class.outer",
-          ["af"] = "@function.outer",
-          ["if"] = "@function.inner",
-        },
-      },
-      swap = {
-        enable = true,
-        swap_next = {
-          ["]a"] = "@parameter.inner",
-        },
-        swap_previous = {
-          ["[a"] = "@parameter.inner",
-        },
-      },
-    },
-    textsubjects = {
-      enable = true,
-      prev_selection = "<C-i>",
-      keymaps = {
-        ["<C-o>"] = "textsubjects-smart",
-      },
+  vim.schedule(function()
+    treesitter.install("all")
+  end)
+
+  treesitter_objects.setup({
+    select = {
+      -- Automatically jump to the next textobject if not already on it.
+      lookahead = true,
     },
   })
 
@@ -84,6 +37,34 @@ function M.setup()
   })
 
   treesitter_mappings.enable_mappings()
+
+  autocmd_utils.create_augroups({
+    config_treesitter = {
+      {
+        event = "FileType",
+        pattern = "*",
+        callback = function(ev)
+          local installed_languages = treesitter.get_installed()
+          if vim.tbl_contains(installed_languages, ev.match) then
+            if not vim.tbl_contains(M.disable_highlight, ev.match) then
+              vim.treesitter.start(ev.buf)
+            end
+            if not vim.tbl_contains(M.disable_indent, ev.match) then
+              -- Enable indentation through tree-sitter. It caused a lot of issues the first time I tried,
+              -- but that has been many years now, and it seems to be fine. And even fixes weird
+              -- indentation in Python.
+              vim.api.nvim_set_option_value(
+                "indentexpr",
+                "v:lua.require('nvim-treesitter').indentexpr()",
+                { buf = ev.buf }
+              )
+            end
+          end
+        end,
+        desc = "Treesitter enable highlight and indentation for installed languages",
+      },
+    },
+  })
 end
 
 return M

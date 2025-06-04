@@ -2,13 +2,12 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
+    branch = "main",
     config = function()
       require("config.treesitter").setup()
     end,
     dependencies = {
-      "nvim-treesitter/playground",
-      "nvim-treesitter/nvim-treesitter-textobjects",
-      "RRethy/nvim-treesitter-textsubjects",
+      { "nvim-treesitter/nvim-treesitter-textobjects", branch = "main" },
       "JoosepAlviste/nvim-ts-context-commentstring",
       -- Generate DocStrings
       "danymat/neogen",
