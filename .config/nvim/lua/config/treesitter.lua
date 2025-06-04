@@ -8,8 +8,9 @@ local autocmd_utils = require("utils.autocmd")
 local M = {
   -- TreeSitter highlighting isn't great for these,
   -- use regular syntax highlighting instead.
-  -- For markdown there is markdown_inline, which is superior.
-  disable_highlight = { "rust", "gitcommit" },
+  -- Markdown is disabled because it has some terrible conceals (e.g. the code fences),
+  -- which interferes with markview.
+  disable_highlight = { "rust", "gitcommit", "markdown" },
   disable_indent = {},
 }
 
