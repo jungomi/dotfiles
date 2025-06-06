@@ -1,21 +1,32 @@
 local code_companion = require("codecompanion")
+local code_compnaion_extensions = require("codecompanion._extensions")
 local llm_mappings = require("mappings.llm")
 local borders = require("borders")
 
-local M = {}
+local M = {
+  -- Extensions that should not be loaded on startup, since they might use unnecessary resources,
+  -- even though they are rarely used in the first place.
+  lazy_extensions = {
+    mcphub = {
+      callback = "mcphub.extensions.codecompanion",
+      opts = {
+        show_result_in_chat = true,
+        make_vars = true,
+        make_slash_commands = true,
+      },
+    },
+  },
+}
+
+function M.load_lazy_extensions()
+  for name, cfg in pairs(M.lazy_extensions) do
+    code_compnaion_extensions.load_extension(name, cfg)
+  end
+end
 
 function M.setup()
   code_companion.setup({
-    extensions = {
-      mcphub = {
-        callback = "mcphub.extensions.codecompanion",
-        opts = {
-          show_result_in_chat = true,
-          make_vars = true,
-          make_slash_commands = true,
-        },
-      },
-    },
+    extensions = {},
     display = {
       chat = {
         intro_message = "Press g? to show key maps",
@@ -63,9 +74,6 @@ function M.setup()
   })
 
   llm_mappings.enable_mappings()
-
-  -- local NoiceCodecompanionProgress = require("utils.noice_codecompanion_progress")
-  -- NoiceCodecompanionProgress.setup()
 end
 
 return M
