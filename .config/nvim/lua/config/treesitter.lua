@@ -32,11 +32,7 @@ local function create_autocmd_callback(lang)
       -- Enable indentation through tree-sitter. It caused a lot of issues the first time I tried,
       -- but that has been many years now, and it seems to be fine. And even fixes weird
       -- indentation in Python.
-      vim.api.nvim_set_option_value(
-        "indentexpr",
-        "v:lua.require('nvim-treesitter').indentexpr()",
-        { buf = ev.buf }
-      )
+      vim.api.nvim_set_option_value("indentexpr", [[v:lua.require("nvim-treesitter").indentexpr()]], { buf = ev.buf })
     end
   end
 end
@@ -48,21 +44,26 @@ end
 -- like a cleaner solution.
 function M.enable_autocmds()
   local installed_languages = treesitter.get_installed()
-  local autocmds = vim.iter(installed_languages):map(function(lang)
-        local filetypes = vim.treesitter.language.get_filetypes(lang)
-        return vim.iter(filetypes):map(function(ft)
+  local autocmds = vim
+    .iter(installed_languages)
+    :map(function(lang)
+      local filetypes = vim.treesitter.language.get_filetypes(lang)
+      return vim
+        .iter(filetypes)
+        :map(function(ft)
           return {
             event = "FileType",
             pattern = ft,
             callback = create_autocmd_callback(lang),
             desc = string.format("Treesitter enable highlight and indentation for %s (lang=%s)", ft, lang),
           }
-        end):totable()
-      end)
-      :flatten(1)
-      :totable()
+        end)
+        :totable()
+    end)
+    :flatten(1)
+    :totable()
   autocmd_utils.create_augroups({
-    config_treesitter = autocmds
+    config_treesitter = autocmds,
   })
 end
 
