@@ -30,7 +30,8 @@ return {
       formatters_by_ft = {
         lua = { "stylua" },
         css = { "prettier" },
-        markdown = { "prettier" },
+        -- injected means it runs the appropriate formatter for code blocks.
+        markdown = { "prettier", "injected" },
         javascript = { "prettier" },
         json = { "prettier" },
         jsonc = { "prettier" },
