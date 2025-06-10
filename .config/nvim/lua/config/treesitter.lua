@@ -11,7 +11,8 @@ local M = {
   -- Markdown is disabled because it has some terrible conceals (e.g. the code fences),
   -- which interferes with markview.
   disable_highlight = { "rust", "gitcommit", "markdown" },
-  disable_indent = {},
+  -- Latex indent from treesitter is terrible, it never indents a scope, so everything is flat.
+  disable_indent = { "latex" },
 }
 
 -- A simple wrapper to create the autocmd based on the language.
