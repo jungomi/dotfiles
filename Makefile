@@ -171,7 +171,7 @@ zoxide:
 
 # Generate the shell completions for many installed tools
 completions:
-	mkdir $(COMPLETIONS_DIR) -p
+	mkdir -p $(COMPLETIONS_DIR)
 	command -v atuin &> /dev/null && atuin gen-completions --shell bash > $(COMPLETIONS_DIR)/atuin
 	command -v bob &> /dev/null && bob complete bash > $(COMPLETIONS_DIR)/bob
 	command -v rg &> /dev/null && rg --generate complete-bash > $(COMPLETIONS_DIR)/rg
