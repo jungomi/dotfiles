@@ -634,6 +634,8 @@ local theme = {
     NeogitRemote = { link = "NeogitBranch" },
     NeogitFilePath = { fg = colours.cyan },
     NeogitObjectId = { fg = colours.pink },
+
+    NeogitActiveItem = { link = "Visual" },
   },
   diffview = {
     DiffviewStatusAdded = { fg = colours.green, bold = true },
