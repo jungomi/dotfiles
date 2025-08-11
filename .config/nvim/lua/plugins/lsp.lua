@@ -100,4 +100,12 @@ return {
       },
     },
   },
+  {
+    "chomosuke/typst-preview.nvim",
+    ft = "typst",
+    opts = {},
+    keys = {
+      { "<leader>mp", "<cmd>TypstPreview<cr>", desc = "Typst Preview", ft = "typst" },
+    },
+  }
 }

@@ -33,6 +33,8 @@ local SERVERS = {
   "lemminx",
   -- A better version of pyright
   "basedpyright",
+  -- Typst
+  "tinymist",
 }
 
 -- Source names to be shown in the completion menu

@@ -61,6 +61,7 @@
   "tabular": { "branch": "master", "commit": "12437cd1b53488e24936ec4b091c9324cafee311" },
   "template-string.nvim": { "branch": "main", "commit": "da5f326b65fb74fd068aa1d8b55461b64c8fb23b" },
   "trouble.nvim": { "branch": "main", "commit": "85bedb7eb7fa331a2ccbecb9202d8abba64d37b3" },
+  "typst-preview.nvim": { "branch": "master", "commit": "dea4525d5420b7c32eebda7de15a6beb9d6574fa" },
   "undotree": { "branch": "master", "commit": "b951b87b46c34356d44aa71886aecf9dd7f5788a" },
   "vim-asterisk": { "branch": "master", "commit": "77e97061d6691637a034258cc415d98670698459" },
   "vim-markdown-toc": { "branch": "master", "commit": "aa9cc3b07791db5cbe5f29d661763bc0eb4fb7c1" },
