@@ -107,5 +107,5 @@ return {
     keys = {
       { "<leader>mp", "<cmd>TypstPreview<cr>", desc = "Typst Preview", ft = "typst" },
     },
-  }
+  },
 }
