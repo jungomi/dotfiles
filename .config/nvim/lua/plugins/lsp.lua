@@ -42,6 +42,7 @@ return {
         -- Even though there is a ruff-lsp that does the formatting, it always operates
         -- on the whole, whereas conform only applies the changes, which preverves marks etc.
         python = { "ruff_fix_imports", "ruff_format" },
+        typst = { "typstyle" },
       },
       formatters = {
         -- This is Ruff's fix with the isort rules enforced, which results in them being sorted.
