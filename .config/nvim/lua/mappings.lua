@@ -1,4 +1,5 @@
 local map_utils = require("utils.map")
+local map = map_utils.map
 local nmap = map_utils.nmap
 local imap = map_utils.imap
 local cmap = map_utils.cmap
@@ -130,3 +131,8 @@ imap("<F1>", "")
 nmap("<F1>", "")
 vmap("<F1>", "")
 nmap("Q", "")
+
+-- For some reason the default of Tab is now to jump in snippets.
+-- Just give me my regular tab.
+map({ "i", "s" }, "<Tab>", "<Tab>")
+map({ "i", "s" }, "<S-Tab>", "<S-Tab>")

@@ -194,6 +194,9 @@ function M.setup()
       ["<C-b>"] = { "scroll_documentation_up", "fallback" },
       ["<C-f>"] = { "scroll_documentation_down", "fallback" },
       ["<C-c>"] = { "cancel", "fallback" },
+      -- Don't use Tab to jump in snippets.
+      ["<Tab>"] = false,
+      ["<S-Tab>"] = false,
     },
     -- Disable command line completion at it breaks tab
     cmdline = {
