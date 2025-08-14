@@ -13,6 +13,10 @@
       {
         "language": "rust",
         "path": "./rust.json"
+      },
+      {
+        "language": "typst",
+        "path": "./typst.json"
       }
     ]
   }
