@@ -24,7 +24,6 @@ local SERVERS = {
   "ts_ls",
   "texlab",
   "dockerls",
-  "gopls",
   -- Ruff is used for linting of Python files (much faster than flake8)
   "ruff",
   -- Zig
