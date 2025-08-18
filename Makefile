@@ -88,8 +88,7 @@ node:
 	echo '' >> ~/.profile
 	echo '# Node' >> ~/.profile
 	echo 'export N_PREFIX="$(NODE_DIR)"' >> ~/.profile
-	echo '[[ :$$PATH: == *":$(NODE_BIN):"* ]] || PATH+=":$(NODE_BIN)"' \
-		>> ~/.profile
+	echo '[[ :$$PATH: == *":$(NODE_BIN):"* ]] || PATH+=":$(NODE_BIN)"' >> ~/.profile
 	echo -e "\r\033[2K[ \033[00;32mDONE\033[0m ] 󰎙 Installing Node"
 
 # Installs conda (miniforge) and Python
@@ -108,7 +107,7 @@ ruby:
 	curl -sSL https://get.rvm.io | bash -s stable --ignore-dotfiles
 	echo '' >> ~/.profile
 	echo '# Ruby' >> ~/.profile
-	echo 'export PATH="$$PATH:$(RUBY_BIN)"' >> ~/.profile
+	echo 'export PATH="$(RUBY_BIN):$$PATH:"' >> ~/.profile
 	echo '[[ -s "$(RVM)" ]] && source "$(RVM)"' >> ~/.profile
 	echo -e "\r\033[2K[ \033[00;32mDONE\033[0m ]  Installing Ruby"
 
@@ -118,7 +117,7 @@ rust:
 		--default-toolchain stable -y
 	echo '' >> ~/.profile
 	echo '# Rust' >> ~/.profile
-	echo 'export PATH="$$PATH:$(RUST_BIN)"' >> ~/.profile
+	echo 'export PATH="$(RUST_BIN):$$PATH:"' >> ~/.profile
 	echo -e "\r\033[2K[ \033[00;32mDONE\033[0m ]  Installing Rust"
 
 # Subcommands for cargo that are provided as crates
@@ -132,7 +131,7 @@ bob: cargo-subcommands
 	bob use stable
 	echo '' >> ~/.profile
 	echo '# Bob (nvim)' >> ~/.profile
-	echo 'export PATH="$$PATH:$(BOB_NVIM_BIN)"' >> ~/.profile
+	echo 'export PATH="$(BOB_NVIM_BIN):$$PATH:"' >> ~/.profile
 	echo -e "\r\033[2K[ \033[00;32mDONE\033[0m ]  Installing bob and nvim"
 
 # Configures MacOS
