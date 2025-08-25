@@ -16,15 +16,9 @@ function M.setup()
       filetypes = { "markdown", "codecompanion" },
       ignore_buftypes = {},
     },
-    code_blocks = {
-      pad_amount = 1,
-    },
-    inline_codes = {
-      corner_left = "",
-      corner_right = "",
-    },
     markdown = {
       code_blocks = {
+        pad_amount = 1,
         diff = {
           block_hl = function(_, line)
             if line:match("^%+") and not line:match("^%+%+%+") then
@@ -44,6 +38,12 @@ function M.setup()
         marker_star = { add_padding = false, text = "★" },
         marker_dot = { add_padding = false },
         marker_parenthesis = { add_padding = false },
+      },
+    },
+    markdown_inline = {
+      inline_codes = {
+        corner_left = "",
+        corner_right = "",
       },
     },
   })
