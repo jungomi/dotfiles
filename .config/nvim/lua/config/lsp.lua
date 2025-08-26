@@ -104,6 +104,11 @@ local server_configs = {
       },
     },
   },
+  tinymist = {
+    settings = {
+      formatterMode = "typstyle",
+    },
+  },
 }
 
 -- Setup all installed servers
