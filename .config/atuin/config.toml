@@ -1,0 +1,6 @@
+# Don't run the command on accept, just insert it into the command line.
+enter_accept = false
+
+# Setting the height to 0 means it uses the alternate screen and therefore the output of the terminal is restored
+# after exiting the history instead of pushing up the number of lines in order to get enough space.
+inline_height = 0
