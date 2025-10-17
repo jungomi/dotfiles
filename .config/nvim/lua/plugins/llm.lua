@@ -1,7 +1,15 @@
 return {
   {
     "zbirenbaum/copilot.lua",
-    opts = {},
+    opts = {
+      server_opts_overrides = {
+        settings = {
+          telemetry = {
+            telemetryLevel = "off",
+          },
+        },
+      },
+    },
   },
   {
     "ravitemer/mcphub.nvim",
