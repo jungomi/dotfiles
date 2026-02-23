@@ -61,8 +61,9 @@ nmap("]T", "<Cmd>tablast<CR>", { desc = "Tab » Last" })
 -- :: Clipboard
 nmap("<leader>y", [["+y]], { desc = "Clipboard » Copy" })
 xmap("<leader>y", [["+y]], { desc = "Clipboard » Copy" })
-nmap("<leader>p", [["+p]], { desc = "Clipboard » Paste" })
-xmap("<leader>p", [["+p]], { desc = "Clipboard » Paste" })
+-- remap = true to make it work with smart paste who overwrites the paste
+nmap("<leader>p", [["+p]], { remap = true }, { desc = "Clipboard » Paste" })
+xmap("<leader>p", [["+p]], { remap = true }, { desc = "Clipboard » Paste" })
 
 -- :: Completion Menu
 -- Completion menu mappings need a workaround for the term escaping in Lua

@@ -164,4 +164,10 @@ return {
       },
     },
   },
+  -- Automatically adjust indent for pasted code, particularly useful for Python where the formatter cannot
+  -- guess that you wanted to have it indented as a part of a nested block.
+  {
+    "nemanjamalesija/smart-paste.nvim",
+    opts = {},
+  },
 }
