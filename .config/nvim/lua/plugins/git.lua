@@ -20,7 +20,7 @@ return {
         icons = {
           folder_closed = " ",
           folder_open = " ",
-        }
+        },
       },
       diff = {
         -- Need ours to be on the left, don't know why VSCode flipped it.
@@ -42,9 +42,9 @@ return {
           accept_all_current = "<leader>cT",
           diffget_incoming = "<leader>co",
           diffget_current = "<leader>ct",
-        }
-      }
-    }
+        },
+      },
+    },
   },
   {
     "lewis6991/gitsigns.nvim",
