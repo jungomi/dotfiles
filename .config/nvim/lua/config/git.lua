@@ -1,8 +1,6 @@
 local neogit = require("neogit")
 local neogit_status = require("neogit.buffers.status")
 local CommitView = require("neogit.buffers.commit_view")
-local diffview = require("diffview")
-local diffview_actions = require("diffview.actions")
 local git_signs = require("gitsigns")
 local icons = require("icons")
 local git_mappings = require("mappings.git")
@@ -61,22 +59,6 @@ function M.setup()
     },
     current_line_blame_opts = {
       delay = 300,
-    },
-  })
-
-  diffview.setup({
-    keymaps = {
-      view = {
-        { "n", "gq", "<Cmd>DiffviewClose<CR>", { desc = "Close the Diff View" } },
-      },
-      file_panel = {
-        { "n", "gq", "<Cmd>DiffviewClose<CR>", { desc = "Close the Diff View" } },
-        { "n", "l", diffview_actions.open_fold, { desc = "Expand fold" } },
-        { "n", "=", diffview_actions.toggle_fold, { desc = "Toggle fold" } },
-      },
-      file_history_panel = {
-        { "n", "gq", "<Cmd>DiffviewClose<CR>", { desc = "Close the Diff View" } },
-      },
     },
   })
 

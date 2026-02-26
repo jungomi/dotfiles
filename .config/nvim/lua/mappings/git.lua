@@ -12,7 +12,7 @@ function M.enable_mappings()
   nmap("<leader>gp", "<Cmd>Gitsigns preview_hunk<CR>", { desc = "Git » Preview hunk diff" })
 
   -- Diffview without the untracked files (-uno)
-  nmap("<leader>gd", "<Cmd>DiffviewOpen -uno<CR>", { desc = "Git » Diff" })
+  nmap("<leader>gd", "<Cmd>CodeDiff<CR>", { desc = "Git » Diff" })
   -- Open Git status for git repo of current file.
   nmap("<leader>gs", function()
     local git_dir = vim.fs.root(0, ".git")

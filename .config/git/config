@@ -61,10 +61,7 @@
   prompt = false
   keepBackup = false
 [mergetool "nvim"]
-  # Currently using diffview.nvim, but that doesn't support resolving merge conflicts one at a time,
-  # so this will open all at once.
-  # Not great for the use of `git mergetool`, so I probably just directly in nvim.
-  cmd = nvim -c DiffviewOpen
+  cmd = nvim "$MERGED" -c "CodeDiff merge \"$MERGED\""
 [pull]
   # Rebase instead of merge by default on pull
   rebase = true

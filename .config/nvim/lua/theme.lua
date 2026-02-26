@@ -648,6 +648,9 @@ local theme = {
 
     DiffviewFilePanelFileName = { link = "Normal" },
   },
+  codediff = {
+    CodeDiffFiller = { link = "DiffDelete" },
+  },
   lazy = {
     LazyButton = { bg = colours.dark_border },
     LazyH1 = { bg = colours.blue, fg = colours.light_blue, bold = true },
