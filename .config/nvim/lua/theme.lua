@@ -447,12 +447,14 @@ local theme = {
     markdownH6Delimiter = { link = "markdownH6" },
   },
   markview = {
-    MarkviewHeading1 = { link = "markdownH1" },
-    MarkviewHeading2 = { link = "markdownH2" },
-    MarkviewHeading3 = { link = "markdownH3" },
-    MarkviewHeading4 = { link = "markdownH4" },
-    MarkviewHeading5 = { link = "markdownH5" },
-    MarkviewHeading6 = { link = "markdownH6" },
+    -- These are the headings a MarkviewHeadingX link to them.
+    -- Changing the highlight of MarkviewHeadingX does not work anymore.
+    MarkviewPalette1 = { link = "markdownH1" },
+    MarkviewPalette2 = { link = "markdownH2" },
+    MarkviewPalette3 = { link = "markdownH3" },
+    MarkviewPalette4 = { link = "markdownH4" },
+    MarkviewPalette5 = { link = "markdownH5" },
+    MarkviewPalette6 = { link = "markdownH6" },
 
     MarkviewIcon1 = { fg = colours.dark_grey, bg = colours.dark_border },
     MarkviewIcon2 = { link = "MarkviewIcon1" },
