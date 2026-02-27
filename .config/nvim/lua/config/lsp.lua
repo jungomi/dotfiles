@@ -20,7 +20,7 @@ local SERVERS = {
   "yamlls",
   "bashls",
   "cmake",
-  "lua_ls",
+  "emmylua_ls",
   "ts_ls",
   "texlab",
   "dockerls",

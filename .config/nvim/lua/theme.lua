@@ -310,6 +310,8 @@ local theme = {
     -- Not quite sure whether I want to add decorations for specific mods
     -- ["@lsp.mod.declaration"] = { italic = true },
     -- ["@lsp.mod.global"] = { bold = true },
+    -- Disable keyword semantic tokens for Lua since EmmyLuaLs treats true/false as keywords.
+    ["@lsp.type.keyword.lua"] = {},
   },
   bufferline = {
     -- Three for each kind, because there are three types of buffers with different backgrounds.
