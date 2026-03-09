@@ -457,6 +457,13 @@ local theme = {
     MarkviewPalette4 = { link = "markdownH4" },
     MarkviewPalette5 = { link = "markdownH5" },
     MarkviewPalette6 = { link = "markdownH6" },
+    -- Need to disable the Bg aswell for some reason.
+    MarkviewPalette1Bg = {},
+    MarkviewPalette2Bg = {},
+    MarkviewPalette3Bg = {},
+    MarkviewPalette4Bg = {},
+    MarkviewPalette5Bg = {},
+    MarkviewPalette6Bg = {},
 
     MarkviewIcon1 = { fg = colours.dark_grey, bg = colours.dark_border },
     MarkviewIcon2 = { link = "MarkviewIcon1" },
