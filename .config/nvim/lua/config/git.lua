@@ -84,6 +84,7 @@ function M.setup()
         ["gl"] = "LogPopup",
       },
       status = {
+        ["$"] = false,
         ["q"] = false,
         ["gq"] = "Close",
         ["{"] = false,
@@ -94,6 +95,7 @@ function M.setup()
         -- otherwise it crashes, because Neogit is terribly designed for customisability.
         ["<M-U>"] = "OpenOrScrollUp",
         ["<M-D>"] = "OpenOrScrollDown",
+        ["<M-$>"] = "CommandHistory",
       },
       commit_editor = {
         ["q"] = false,
