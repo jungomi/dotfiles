@@ -593,10 +593,12 @@ local theme = {
     NeogitDiffAdd = { link = "diffAdded" },
     NeogitDiffAddCursor = { link = "NeogitDiffAdd" },
     NeogitDiffAddHighlight = { link = "NeogitDiffAdd" },
+    NeogitDiffAddInline = { bg = colours.light_green },
 
     NeogitDiffDelete = { link = "diffRemoved" },
     NeogitDiffDeleteCursor = { link = "NeogitDiffDelete" },
     NeogitDiffDeleteHighlight = { link = "NeogitDiffDelete" },
+    NeogitDiffDeleteInline = { bg = colours.light_red },
 
     NeogitDiffContext = { bg = colours.bg },
     NeogitDiffContextCursor = { link = "CursorLine" },
