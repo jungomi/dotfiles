@@ -7,10 +7,11 @@ return {
     "saghen/blink.cmp",
     lazy = false,
     dependencies = {
+      "saghen/blink.lib",
       "rafamadriz/friendly-snippets",
-      "moyiz/blink-emoji.nvim",
+      -- NOTE(blink-v2): Doesn't support Blink v2
+      -- "moyiz/blink-emoji.nvim",
     },
-    build = "cargo build --release",
   },
   -- Pretty list of diagnostics (quickfix with style)
   {

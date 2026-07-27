@@ -188,6 +188,8 @@ function M.setup()
   }
 
   -- Completion
+  -- Make sure the dependencies are built.
+  blink_cmp.build():pwait()
   blink_cmp.setup({
     keymap = {
       ["<C-space>"] = { "show" },
@@ -272,7 +274,15 @@ function M.setup()
       },
     },
     sources = {
-      default = { "lsp", "path", "buffer", "snippets", "lazydev", "emoji" },
+      default = {
+        "lsp",
+        "path",
+        "buffer",
+        "snippets",
+        "lazydev",
+        -- NOTE(blink-v2): Doesn't support blink v2.
+        -- "emoji"
+      },
       providers = {
         buffer = {
           max_items = 8,
