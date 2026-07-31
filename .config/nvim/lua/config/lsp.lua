@@ -30,8 +30,8 @@ local SERVERS = {
   "zls",
   -- XML
   "lemminx",
-  -- A better version of pyright
-  "basedpyright",
+  -- Python type checker (submodule of ruff)
+  "ty",
   -- Typst
   "tinymist",
 }
