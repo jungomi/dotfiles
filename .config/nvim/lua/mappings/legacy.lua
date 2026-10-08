@@ -26,9 +26,6 @@ function M.enable_mappings()
   -- Sandwich (unbind `s` to avoid conflicts / operator pending timeout)
   nmap("s", "")
   xmap("s", "")
-
-  -- Live markdown preview
-  nmap("<leader>mp", "<Cmd>MarkdownPreview<CR>", { desc = "Markdown preview" })
 end
 
 return M

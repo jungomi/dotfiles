@@ -109,4 +109,20 @@ return {
       { "<leader>mp", "<cmd>TypstPreviewToggle<cr>", desc = "Typst Preview", ft = "typst" },
     },
   },
+  -- Markdown preview
+  {
+    "selimacerbas/mdkite.nvim",
+    dependencies = { "selimacerbas/kitehost.nvim" },
+    opts = {
+      -- Default is "takeover" which uses the same port.
+      -- Currently quite like that.
+      -- instance_mode = "multi",
+      default_theme = "light",
+      debounce_ms = 150,
+      bottom_padding = 0.7,
+    },
+    keys = {
+      { "<leader>mp", "<cmd>MdKite start<cr>", desc = "Markdown Preview", ft = "markdown" },
+    },
+  },
 }

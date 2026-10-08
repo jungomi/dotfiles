@@ -12,12 +12,6 @@ return {
   "mbbill/undotree",
   -- Align text
   "godlygeek/tabular",
-  -- Live preview of markdown files
-  {
-    "iamcco/markdown-preview.nvim",
-    build = "cd app & yarn install",
-    ft = { "markdown" },
-  },
   -- Generate Table of Contents (ToC) and automatically keep it update to date.
   "mzlogin/vim-markdown-toc",
 }
