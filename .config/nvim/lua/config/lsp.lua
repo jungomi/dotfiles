@@ -21,7 +21,7 @@ local SERVERS = {
   "bashls",
   "cmake",
   "emmylua_ls",
-  "ts_ls",
+  "tsc",
   "texlab",
   "dockerls",
   -- Ruff is used for linting of Python files (much faster than flake8)
