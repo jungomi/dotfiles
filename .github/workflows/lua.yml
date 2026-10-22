@@ -21,5 +21,6 @@ jobs:
         uses: JohnnyMorganz/stylua-action@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          version: latest
           # Check with the global stylua config
           args: --check -f .config/stylua/stylua.toml . .config/
