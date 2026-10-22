@@ -139,8 +139,8 @@ bun:
 	curl -fsSL https://bun.com/install | bash
 	echo '' >> ~/.profile
 	echo '# Bun' >> ~/.profile
-	echo 'export BUN_INSTALL="$HOME/.bun"' >> ~/.profile
-	echo 'export PATH="$BUN_INSTALL/bin:$PATH"' >> ~/.profile
+	echo 'export BUN_INSTALL="$$HOME/.bun"' >> ~/.profile
+	echo 'export PATH="$$BUN_INSTALL/bin:$$PATH"' >> ~/.profile
 	echo -e "\r\033[2K[ \033[00;32mDONE\033[0m ]  Installing Bun"
 
 # Install uv
