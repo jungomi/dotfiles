@@ -143,6 +143,11 @@ bun:
 	echo 'export PATH="$BUN_INSTALL/bin:$PATH"' >> ~/.profile
 	echo -e "\r\033[2K[ \033[00;32mDONE\033[0m ]  Installing Bun"
 
+# Install uv
+uv:
+	command -v uv &> /dev/null ||  curl -LsSf https://astral.sh/uv/install.sh | sh
+	echo -e "\r\033[2K[ \033[00;32mDONE\033[0m ] Installing uv"
+
 # Configures MacOS
 macos:
 	./macos.sh
@@ -154,7 +159,6 @@ tools: cargo-subcommands
 	command -v fd &> /dev/null || cargo binstall -y fd-find
 	command -v rg &> /dev/null || cargo binstall -y ripgrep
 	command -v tree-sitter &> /dev/null || cargo binstall -y tree-sitter-cli
-	command -v uv &> /dev/null ||  curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # Atuin for fuzzy finding shell completion
 atuin:
