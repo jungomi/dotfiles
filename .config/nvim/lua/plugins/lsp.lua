@@ -87,6 +87,13 @@ local lspconfig_spec = {
           },
         },
       },
+      emmylua_ls = {
+        settings = {
+          -- For some reason this having a default messes up lazydev.nvim
+          -- Setting it to nil allows lazydev to overwrite it.
+          emmylua = vim.NIL,
+        },
+      },
       basedpyright = {
         settings = {
           basedpyright = {
