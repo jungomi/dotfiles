@@ -81,3 +81,33 @@ opt.swapfile = false
 opt.undofile = true
 -- Always copy and overwrite file when it's saved (some watch modes require this)
 opt.backupcopy = "yes"
+
+-- :: Filetype specific globals
+-- Why that is a thing is beyond me.
+-- Not only is it enabled by default, it somehow is installed without any plugin.
+-- First of all, I hate autoformat on save, but to make matters worse, it will
+-- also open a quickfix window with an error and at some point even that failed miserably.
+-- This is truly one of the worst defaults.
+vim.g.zig_fmt_autosave = 0
+
+-- Markdown code blocks highlighting
+vim.g.markdown_fenced_languages = {
+  "html",
+  "python",
+  "py=python",
+  "bash=sh",
+  "ruby",
+  "javascript",
+  "js=javascript",
+  "typescript",
+  "ts=typescript",
+  "lua",
+  "sh",
+  "css",
+  "json",
+  "vim",
+  "ocaml",
+  "rust",
+  "go",
+  "haskell",
+}

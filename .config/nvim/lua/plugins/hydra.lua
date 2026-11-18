@@ -1,13 +1,17 @@
-local Hydra = require("hydra")
-local dap = require("dap")
-local dap_utils = require("utils.dap")
-local resize = require("utils.resize")
-local gitsigns = require("gitsigns")
 local borders = require("borders")
 
-local M = {}
+local M = {
+  -- Custom modes (continuous actions) e.g. resizing mode
+  "nvimtools/hydra.nvim",
+}
 
-function M.setup()
+function M.config()
+  local Hydra = require("hydra")
+  local dap = require("dap")
+  local dap_utils = require("utils.dap")
+  local resize = require("utils.resize")
+  local gitsigns = require("gitsigns")
+
   -- I tend to use `pink` heads, which allow other keys that are not defined
   -- within the mode to be passed through, which allows things like moving
   -- across windows while remaining in resize mode, meaning that it does not
@@ -21,12 +25,12 @@ function M.setup()
     body = "<leader>hr",
     mode = "n",
     hint = [[
- ^ ^ ^ ^         Resize
- ^ ^ ^ ^        ‾‾‾‾‾‾‾‾
- _h_,_l_: Horizontal   _j_,_k_: Vertical
- ^ _=_ ^: Equalise
- ^
- ^ ^ ^ ^      _<Esc>_/_q_: Exit
+^ ^ ^ ^         Resize
+^ ^ ^ ^        ‾‾‾‾‾‾‾‾
+_h_,_l_: Horizontal   _j_,_k_: Vertical
+^ _=_ ^: Equalise
+^
+^ ^ ^ ^      _<Esc>_/_q_: Exit
 ]],
     config = {
       color = "pink",
@@ -55,13 +59,13 @@ function M.setup()
     body = "<leader>hg",
     mode = "n",
     hint = [[
- ^ ^                 ^ ^                Git
- ^ ^                 ^ ^               ‾‾‾‾‾
- _J_: Next hunk      _s_: Stage hunk        _d_: Toggle deleted     _b_: Blame line
- _K_: Prev hunk      _u_: Undo stage hunk   _w_: Toggle word diff   _B_: Blame line (full)
- _p_: Preview hunk
- ^
- ^ ^                 _<Enter>_: Fugitive    _<Esc>_/_q_: Exit
+^ ^                 ^ ^                Git
+^ ^                 ^ ^               ‾‾‾‾‾
+_J_: Next hunk      _s_: Stage hunk        _d_: Toggle deleted     _b_: Blame line
+_K_: Prev hunk      _u_: Undo stage hunk   _w_: Toggle word diff   _B_: Blame line (full)
+_p_: Preview hunk
+^
+^ ^                 _<Enter>_: Fugitive    _<Esc>_/_q_: Exit
 ]],
     config = {
       color = "pink",
@@ -134,15 +138,15 @@ function M.setup()
     body = "<leader>hd",
     mode = "n",
     hint = [[
- ^ ^                Debugger
- ^ ^               ‾‾‾‾‾‾‾‾‾‾
- _c_: Continue            _b_: Toggle breakpoint
- _h_: Run to cursor       _y_: Conditional breakpoint
- _s_: Step over           _l_: Log point
- _i_: Step into           _t_: Hit count breakpoint
- _o_: Step out        _<C-c>_: Terminate debugger
- ^
- ^ ^            _<Esc>_/_q_: Exit
+^ ^                Debugger
+^ ^               ‾‾‾‾‾‾‾‾‾‾
+_c_: Continue            _b_: Toggle breakpoint
+_h_: Run to cursor       _y_: Conditional breakpoint
+_s_: Step over           _l_: Log point
+_i_: Step into           _t_: Hit count breakpoint
+_o_: Step out        _<C-c>_: Terminate debugger
+^
+^ ^            _<Esc>_/_q_: Exit
 ]],
     config = {
       color = "pink",

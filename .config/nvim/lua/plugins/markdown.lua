@@ -1,18 +1,20 @@
-local markview = require("markview")
-local markdown_mappings = require("mappings.markdown")
 local theme = require("theme").theme
 local autocmd_utils = require("utils.autocmd")
+local nmap = require("utils.map").nmap
 
-local M = {}
+local M = {
+  -- Markdown live preview
+  "OXY2DEV/markview.nvim",
+}
 
-function M.fix_theme()
+local function fix_theme()
   for group, colour in pairs(theme.markview) do
     vim.api.nvim_set_hl(0, group, colour)
   end
 end
 
-function M.setup()
-  markview.setup({
+function M.config()
+  require("markview").setup({
     -- Thankfully I defined them in a neat table, so that it can literally be reused as is.
     highlight_groups = theme.markview,
     preview = {
@@ -51,7 +53,6 @@ function M.setup()
       },
     },
   })
-  markdown_mappings.enable_mappings()
 
   -- For some reason markview started ignoring the highlight groups that are statically defined in the theme,
   -- and just overwrites them at run time.
@@ -61,11 +62,16 @@ function M.setup()
       {
         event = "User",
         pattern = "MarkviewEnable",
-        callback = M.fix_theme,
+        callback = fix_theme,
         desc = "Markview fix theme for overwritten heading highlights",
       },
     },
   })
+end
+
+function M.keys()
+  nmap("<leader>ms", "<Cmd>Markview splitToggle<CR>", { desc = "Markview » Split Toggle" })
+  nmap("<leader>mh", "<Cmd>Markview hybridToggle<CR>", { desc = "Markview » Hybrid Mode Toggle" })
 end
 
 return M

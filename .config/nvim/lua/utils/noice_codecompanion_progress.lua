@@ -83,12 +83,13 @@ function NoiceCodecompanionProgress.update()
 end
 
 function NoiceCodecompanionProgress.setup()
-  NoiceCodecompanionProgress.update =
-    Util.interval(Config.options.lsp.progress.throttle, NoiceCodecompanionProgress._update, {
-      enabled = function()
-        return not vim.tbl_isempty(NoiceCodecompanionProgress._progress)
-      end,
-    })
+  local throttle = (Config.options.lsp and Config.options.lsp.progress and Config.options.lsp.progress.throttle)
+    or (1000 / 60)
+  NoiceCodecompanionProgress.update = Util.interval(throttle, NoiceCodecompanionProgress._update, {
+    enabled = function()
+      return not vim.tbl_isempty(NoiceCodecompanionProgress._progress)
+    end,
+  })
 
   autocmd_utils.create_augroups({
     noice_codecompnaion_progress = {

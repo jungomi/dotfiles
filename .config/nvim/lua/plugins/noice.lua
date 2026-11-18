@@ -1,11 +1,13 @@
-local noice = require("noice")
 local icons = require("icons")
 local borders = require("borders")
 
-local M = {}
+local M = {
+  -- Experimental UI replacement
+  "folke/noice.nvim",
+}
 
-function M.setup()
-  noice.setup({
+function M.config()
+  require("noice").setup({
     cmdline = {
       format = {
         search_down = { icon = string.format("%s %s", icons.magnify, icons.double_angle.down) },

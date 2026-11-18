@@ -137,3 +137,7 @@ nmap("Q", "")
 -- Just give me my regular tab.
 map({ "i", "s" }, "<Tab>", "<Tab>")
 map({ "i", "s" }, "<S-Tab>", "<S-Tab>")
+
+-- Sandwich (unbind `s` to avoid conflicts / operator pending timeout)
+nmap("s", "")
+xmap("s", "")

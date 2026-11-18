@@ -1,12 +1,13 @@
-local scrollview = require("scrollview")
-local scrollview_gitsigns = require("scrollview.contrib.gitsigns")
-local scrollbar_mappings = require("mappings.scrollbar")
 local icons = require("icons")
+local nmap = require("utils.map").nmap
 
-local M = {}
+local M = {
+  -- Scrollbar
+  "dstein64/nvim-scrollview",
+}
 
-function M.setup()
-  scrollview.setup({
+function M.config()
+  require("scrollview").setup({
     current_only = true,
     winblend = 0,
     signs_on_startup = { "cursor", "diagnostics", "search" },
@@ -21,13 +22,20 @@ function M.setup()
     spell_symbol = icons.pad_right(icons.lsp_kind.Text, 1),
   })
 
-  scrollview_gitsigns.setup({
+  require("scrollview.contrib.gitsigns").setup({
     add_symbol = icons.right_bar,
     change_symbol = icons.right_bar,
     delete_symbol = icons.right_bar,
   })
+end
 
-  scrollbar_mappings.enable_mappings()
+function M.keys()
+  -- Navigation to signs
+  nmap("]v", "<Cmd>ScrollViewNext<CR>", { desc = "Scrollbar » Jump to next sign" })
+  nmap("[v", "<Cmd>ScrollViewPrev<CR>", { desc = "Scrollbar » Jump to previous sign" })
+  nmap("[V", "<Cmd>ScrollViewFirst<CR>", { desc = "Scrollbar » Jump to first sign" })
+  nmap("]V", "<Cmd>ScrollViewLast<CR>", { desc = "Scrollbar » Jump to last sign" })
+  nmap("<leader>sv", "<Cmd>ScrollViewToggle spell<CR>", { desc = "Scrollbar » Toggle Spell Signs" })
 end
 
 return M

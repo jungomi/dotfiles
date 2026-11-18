@@ -1,10 +1,11 @@
-local buffer_line = require("bufferline")
-local buffer_line_mappings = require("mappings.bufferline")
-local scope = require("scope")
 local colours = require("theme").colours
 local icons = require("icons")
+local nmap = require("utils.map").nmap
 
-local M = {}
+local bufferline_spec = {
+  -- Buffer/Tabs
+  "akinsho/nvim-bufferline.lua",
+}
 
 local diagnostic_kinds = {
   error = {
@@ -73,7 +74,9 @@ local function diagnostics_indicator(count, level, diagnostics_dict, context)
   return table.concat(parts)
 end
 
-function M.setup()
+function bufferline_spec.config()
+  local buffer_line = require("bufferline")
+
   buffer_line.setup({
     options = {
       numbers = function(opts)
@@ -143,10 +146,19 @@ function M.setup()
     -- does not correspond to the ordinal number if some of the first ones are scrolled off.
     buffer_line.go_to(opts.args, true)
   end, { nargs = 1, desc = "Buffer » Switch to id" })
-
-  scope.setup()
-
-  buffer_line_mappings.enable_mappings()
 end
 
-return M
+function bufferline_spec.keys()
+  -- Cycle through buffers in their visual order
+  nmap("]b", "<Cmd>BufferLineCycleNext<CR>", { desc = "Buffer » Previous" })
+  nmap("[b", "<Cmd>BufferLineCyclePrev<CR>", { desc = "Buffer » Next" })
+end
+
+return {
+  bufferline_spec,
+  -- Only show buffers that were used within a tab
+  {
+    "tiagovla/scope.nvim",
+    opts = {},
+  },
+}

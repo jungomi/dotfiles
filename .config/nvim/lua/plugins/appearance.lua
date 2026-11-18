@@ -5,121 +5,81 @@ local colours = require("theme").colours
 return {
   -- Icons for many things, requires a Nerd Font
   "kyazdani42/nvim-web-devicons",
-  -- Status line
-  {
-    "hoob3rt/lualine.nvim",
-    dependencies = { "kyazdani42/nvim-web-devicons" },
-    config = function()
-      require("config.statusline").setup()
-    end,
-  },
-  -- Buffer/Tabs
-  {
-    "akinsho/nvim-bufferline.lua",
-    dependencies = {
-      -- Only show buffers that were used within a tab
-      "tiagovla/scope.nvim",
-      "kyazdani42/nvim-web-devicons",
-    },
-    config = function()
-      require("config.bufferline").setup()
-    end,
-  },
-  -- Show buffer name similar to a winbar but with floating window
-  {
-    "b0o/incline.nvim",
-    config = function()
-      require("config.winbar").setup()
-    end,
-  },
-  {
-    "dstein64/nvim-scrollview",
-    config = function()
-      require("config.scrollbar").setup()
-    end,
-  },
+
   -- Highlight colour definitions (e.g. #555d60) and colour picker
   {
     "uga-rosa/ccc.nvim",
-    config = function()
-      require("ccc").setup({
-        highlighter = {
-          auto_enable = true,
-        },
-      })
-    end,
+    opts = {
+      highlighter = {
+        auto_enable = true,
+      },
+    },
   },
+
   -- Improved UI for vim.ui.select and vim.ui.input (e.g. floating window for LSP rename)
   {
     "stevearc/dressing.nvim",
     config = function()
       require("dressing").setup({
-        input = { insert_only = false, border = borders.hover, title_pos = "center", relative = "win" },
+        input = {
+          insert_only = false,
+          border = borders.hover,
+          title_pos = "center",
+          relative = "win",
+        },
       })
     end,
   },
-  {
-    "folke/noice.nvim",
-    config = function()
-      require("config.noice").setup()
-    end,
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "folke/snacks.nvim",
-    },
-  },
+
+  "MunifTanjim/nui.nvim",
+
+  -- Keymap hints popup
   {
     "folke/which-key.nvim",
-    opts = {
-      delay = function(ctx)
-        local delay = 500
-        if ctx.plugin == "registers" or ctx.plugin == "marks" then
-          -- This is a bit weird, because these are triggered instantly, and I think it is achieved
-          -- by setting ctx.waited == delay, so if it's just added to it, the delay will be correct.
-          return (ctx.waited or 0) + delay
-        end
-        return delay
-      end,
-      defer = function(ctx)
-        return vim.list_contains({ "<C-V>", "V", "v" }, ctx.mode)
-      end,
-      plugins = {
-        spelling = {
-          enabled = true,
-        },
-      },
-      win = {
-        border = borders.default,
-      },
-    },
-  },
-  {
-    "OXY2DEV/markview.nvim",
-    lazy = false,
-    -- Needs to be loaded before treesitter otherwise it shows a warning.
-    priority = 49,
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-    },
     config = function()
-      require("config.markdown").setup()
+      require("which-key").setup({
+        delay = function(ctx)
+          local delay = 500
+          if ctx.plugin == "registers" or ctx.plugin == "marks" then
+            -- This is a bit weird, because these are triggered instantly, and I think it is achieved
+            -- by setting ctx.waited == delay, so if it's just added to it, the delay will be correct.
+            return (ctx.waited or 0) + delay
+          end
+          return delay
+        end,
+        defer = function(ctx)
+          return vim.list_contains({ "<C-V>", "V", "v" }, ctx.mode)
+        end,
+        plugins = {
+          spelling = {
+            enabled = true,
+          },
+        },
+        win = {
+          border = borders.default,
+        },
+      })
     end,
   },
+
+  -- Highlight active indent chunk
   {
     "shellRaining/hlchunk.nvim",
-    opts = {
-      chunk = {
-        enable = true,
-        chars = {
-          right_arrow = icons.triangle.tiny,
+    config = function()
+      require("hlchunk").setup({
+        chunk = {
+          enable = true,
+          chars = {
+            right_arrow = icons.triangle.tiny,
+          },
+          duration = 100,
+          delay = 50,
+          style = {
+            { fg = colours.cursor_line },
+            { fg = colours.light_red },
+          },
         },
-        duration = 100,
-        delay = 50,
-        style = {
-          { fg = colours.cursor_line },
-          { fg = colours.light_red },
-        },
-      },
-    },
+      })
+    end,
   },
 }

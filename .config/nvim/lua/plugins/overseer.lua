@@ -1,16 +1,20 @@
-local overseer = require("overseer")
-local overseer_mappings = require("mappings.overseer")
-local tasks = require("config.tasks")
-local gitlab_ci = require("config.tasks.gitlab_ci")
+local nmap = require("utils.map").nmap
 
-local M = {}
+local M = {
+  -- Task runner
+  "stevearc/overseer.nvim",
+}
 
 function M.register_tasks()
+  local overseer = require("overseer")
+  local gitlab_ci = require("utils.tasks.gitlab_ci")
   overseer.register_template(gitlab_ci.template_provider)
 end
 
-function M.setup()
-  overseer.setup({
+function M.config()
+  local tasks = require("utils.tasks")
+
+  require("overseer").setup({
     task_list = {
       default_detail = 2,
       direction = "bottom",
@@ -52,8 +56,29 @@ function M.setup()
   })
 
   M.register_tasks()
+end
 
-  overseer_mappings.enable_mappings()
+function M.keys()
+  local overseer = require("overseer")
+  local tasks = require("utils.tasks")
+
+  nmap("<leader>ot", function()
+    overseer.toggle({ enter = false })
+  end, { desc = "Overseer » Toggle" })
+  nmap("<leader>or", tasks.run_and_open, { desc = "Overseer » Run a task" })
+  nmap("<leader>oc", tasks.build_task_and_open, { desc = "Overseer » Create a task with the builder" })
+  nmap("<leader>oa", "<Cmd>OverseerTaskAction<CR>", { desc = "Overseer » Action" })
+  nmap("<leader>ow", function()
+    vim.ui.input({ prompt = "Watch Command", completion = "shellcmd" }, function(input)
+      input = input or ""
+      -- Do not execute it if the given string is empty
+      if input ~= "" then
+        tasks.watch_cmd(input)
+      end
+    end)
+  end, {
+    desc = "Overseer » Run and watch a shell command as a task",
+  })
 end
 
 return M

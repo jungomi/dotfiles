@@ -1,6 +1,10 @@
-local autopairs = require("nvim-autopairs")
-local Rule = require("nvim-autopairs.rule")
-local pairs_mappings = require("mappings.pairs")
+local imap = require("utils.map").imap
+
+local M = {
+  -- Automatically close brackets
+  -- I mostly want it for blocks when pressing <CR>.
+  "windwp/nvim-autopairs",
+}
 
 -- Find closing brackets in order to close all open brackets from this line
 -- Baesd on the snippet from the autopairs wiki
@@ -44,9 +48,10 @@ local function get_closing_for_line(line)
   return closing_chars
 end
 
-local M = {}
+function M.config()
+  local autopairs = require("nvim-autopairs")
+  local Rule = require("nvim-autopairs.rule")
 
-function M.setup()
   autopairs.setup({
     -- Don't go out of insert mode, i.e. keep it a single undo.
     break_undo = false,
@@ -82,8 +87,16 @@ function M.setup()
     Rule("[", "]"):only_cr(),
     Rule("{", "}"):only_cr(),
   })
+end
 
-  pairs_mappings.enable_mappings()
+function M.keys()
+  local autopairs = require("nvim-autopairs")
+
+  -- CR with autopairs
+  -- replace_keycodes needs to be set to false, because autopairs escape it themselves and returns it.
+  imap("<C-f>", function()
+    return autopairs.autopairs_cr()
+  end, { expr = true, replace_keycodes = false, desc = "Pairs » CR with autopairs" })
 end
 
 return M

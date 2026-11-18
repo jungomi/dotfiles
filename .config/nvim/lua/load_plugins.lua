@@ -1,43 +1,34 @@
-local icons = require("icons")
-local borders = require("borders")
+-- Register package lifecycle hooks before adding packages
+local hooks = function(ev)
+  local name, kind = ev.data.spec.name, ev.data.kind
 
-local lazy_path = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.uv.fs_stat(lazy_path) then
-  vim
-    .system({
-      "git",
-      "clone",
-      "--filter=blob:none",
-      "https://github.com/folke/lazy.nvim.git",
-      "--branch=stable", -- latest stable release
-      lazy_path,
-    })
-    :wait()
+  -- Update treesitter parsers on treesitter update
+  if name == "nvim-treesitter" and kind == "update" then
+    if not ev.data.active then
+      vim.cmd.packadd("nvim-treesitter")
+    end
+    vim.cmd("TSUpdate")
+  end
+
+  -- Install/update mcphub CLI dependency
+  if name == "mcphub.nvim" and (kind == "install" or kind == "update") then
+    vim.system({ "npm", "install", "-g", "mcp-hub@latest" })
+  end
 end
-vim.opt.rtp:prepend(lazy_path)
 
-local lazy = require("lazy")
-lazy.setup({
-  spec = {
-    -- Plugins are in defined in the plugins/ directory
-    { import = "plugins" },
-  },
-  install = {
-    colorscheme = { "mine" },
-  },
-  ui = {
-    border = borders.default,
-    -- These icons need to be redefined as the defaults are somehow not renedered properly.
-    -- Probably should look at fixing the Nerd font.
-    icons = {
-      cmd = icons.terminal,
-      event = icons.lightning,
-      lazy = icons.pad_right(icons.lsp_kind.Module, 1),
-      start = icons.triangle.normal,
-    },
-  },
-})
+vim.api.nvim_create_autocmd("PackChanged", { callback = hooks })
 
-require("config.legacy").setup()
+local pack = require("utils.pack")
+
+-- Collect specs from all modules in plugins/
+local dir = vim.fs.joinpath(vim.fn.stdpath("config"), "lua", "plugins")
+local specs = {}
+for name, type in vim.fs.dir(dir) do
+  if type == "file" and name:match("%.lua$") then
+    table.insert(specs, require("plugins." .. name:gsub("%.lua$", "")))
+  end
+end
+
+pack.load(specs)
 
 return {}

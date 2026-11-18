@@ -1,10 +1,10 @@
-local lua_line = require("lualine")
 local colours = require("theme").colours
-local noice = require("noice")
-local buffer_state = require("bufferline.state")
 local icons = require("icons")
 
-local M = {}
+local M = {
+  -- Status line
+  "hoob3rt/lualine.nvim",
+}
 
 local path_style = {
   filename = 0,
@@ -13,6 +13,7 @@ local path_style = {
 }
 
 local function buf_nr()
+  local buffer_state = require("bufferline.state")
   -- The buffer line state needs time to be initialised so when launching nvim it will be nil,
   -- in order to show something meaningful 1 is used instead, as that is hopefully the only time
   -- this occurs and on launch it will always be the first buffer.
@@ -81,6 +82,7 @@ local function left()
 end
 
 local function right()
+  local noice = require("noice")
   return {
     -- Current unfinished command
     "%S",
@@ -131,8 +133,8 @@ local function dap_repl_statusline()
   }
 end
 
-function M.setup()
-  lua_line.setup({
+function M.config()
+  require("lualine").setup({
     options = {
       globalstatus = true,
       -- Disable separators

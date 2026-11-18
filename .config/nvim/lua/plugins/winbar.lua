@@ -1,9 +1,10 @@
-local incline = require("incline")
-local dev_icons = require("nvim-web-devicons")
 local colours = require("theme").colours
 local icons = require("icons")
 
-local M = {}
+local M = {
+  -- Show buffer name similar to a winbar but with floating window
+  "b0o/incline.nvim",
+}
 
 local function get_diagnostics(props)
   local label = {}
@@ -17,6 +18,7 @@ local function get_diagnostics(props)
 end
 
 local function render(props)
+  local dev_icons = require("nvim-web-devicons")
   local name = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
   local filetype_icon, colour = dev_icons.get_icon_color(name)
   local is_modified = vim.api.nvim_get_option_value("modified", { buf = props.buf })
@@ -34,10 +36,10 @@ local function render(props)
   return out
 end
 
-function M.setup()
+function M.config()
   -- Doesn't use winbar directly but creates a floating window version of it.
   -- It's nice because it doesn't use up a line just for the buffer info.
-  incline.setup({
+  require("incline").setup({
     window = {
       margin = { horizontal = 0, vertical = 0 },
       padding = 2,
