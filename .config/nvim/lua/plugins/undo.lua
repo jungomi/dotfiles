@@ -14,6 +14,25 @@ return {
     "XXiaoA/atone.nvim",
     config = function()
       local utils = require("atone.utils")
+      local actions = require("atone.actions")
+
+      -- Focus the window containing the code that atone refers to
+      actions.actions.focus_code = {
+        function()
+          local core = require("atone.core")
+          local win = core._source_win
+          if not (win and vim.api.nvim_win_is_valid(win) and vim.api.nvim_win_get_buf(win) == core.attach_buf) then
+            local bufwin = vim.fn.bufwinid(core.attach_buf)
+            if bufwin ~= -1 then
+              win = bufwin
+            end
+          end
+          if win and vim.api.nvim_win_is_valid(win) then
+            vim.api.nvim_set_current_win(win)
+          end
+        end,
+        "Focus code window",
+      }
 
       -- Track the saved state sequence number whenever a buffer is read or written,
       -- and refresh Atone automatically if the tree is currently open.
@@ -68,6 +87,10 @@ return {
         keymaps = {
           tree = {
             quit = { "<C-C>", "gq" },
+            focus_code = "<Tab>",
+          },
+          auto_diff = {
+            focus_code = "<Tab>",
           },
           help = {
             quit_help = { "<Esc>", "<C-c>", "gq" },
