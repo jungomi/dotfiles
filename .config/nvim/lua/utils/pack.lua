@@ -60,16 +60,13 @@ local function flatten_spec(specs, out)
       table.insert(out, normalise_spec(item))
     elseif type(item) == "table" then
       if item.src or (type(item[1]) == "string" and #item == 1) then
-        ---@cast item PackSpec
         table.insert(out, normalise_spec(item))
       elseif type(item[1]) == "string" and #item > 1 then
-        ---@cast item PackSpec
         table.insert(out, normalise_spec(item))
         for i = 2, #item do
           table.insert(out, normalise_spec(item[i]))
         end
       else
-        ---@cast item PackSpecList
         flatten_spec(item, out)
       end
     end
