@@ -111,7 +111,6 @@ return {
     end,
   },
 
-
   -- Interactive search and replace
   {
     "MagicDuck/grug-far.nvim",
