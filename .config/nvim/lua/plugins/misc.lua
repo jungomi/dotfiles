@@ -111,11 +111,6 @@ return {
     end,
   },
 
-  -- Highlight changes on undo
-  {
-    "tzachar/highlight-undo.nvim",
-    opts = {},
-  },
 
   -- Interactive search and replace
   {

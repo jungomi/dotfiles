@@ -32,16 +32,6 @@ return {
     end,
   },
 
-  -- Undo tree
-  {
-    "mbbill/undotree",
-    config = function()
-      vim.g.undotree_SetFocusWhenToggle = 1
-    end,
-    keys = function()
-      nmap("<leader>u", "<Cmd>UndotreeToggle<CR>", { desc = "Undotree » Toggle" })
-    end,
-  },
 
   -- Align text
   "godlygeek/tabular",

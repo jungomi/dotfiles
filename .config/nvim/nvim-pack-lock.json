@@ -8,6 +8,10 @@
       "rev": "e8c3d2225d6bf5e2cbe414952c247d7a3411849b",
       "src": "https://github.com/b0o/SchemaStore.nvim"
     },
+    "atone.nvim": {
+      "rev": "f0f92d6e639d97e1fa653bc69807ed839c390023",
+      "src": "https://github.com/XXiaoA/atone.nvim"
+    },
     "blink.cmp": {
       "rev": "3d3631f641e6e9b60066f269f435d23c524ceeb0",
       "src": "https://github.com/saghen/blink.cmp"
@@ -257,10 +261,6 @@
     "typst-preview.nvim": {
       "rev": "b231e0e318378782b210ab57aaf7d81d3b0eea12",
       "src": "https://github.com/chomosuke/typst-preview.nvim"
-    },
-    "undotree": {
-      "rev": "6fa6b57cda8459e1e4b2ca34df702f55242f4e4d",
-      "src": "https://github.com/mbbill/undotree"
     },
     "vim-asterisk": {
       "rev": "77e97061d6691637a034258cc415d98670698459",
