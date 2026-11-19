@@ -258,10 +258,6 @@
       "rev": "b231e0e318378782b210ab57aaf7d81d3b0eea12",
       "src": "https://github.com/chomosuke/typst-preview.nvim"
     },
-    "vim-asterisk": {
-      "rev": "77e97061d6691637a034258cc415d98670698459",
-      "src": "https://github.com/haya14busa/vim-asterisk"
-    },
     "vim-markdown-toc": {
       "rev": "66026b323379c9a712c6169cd43153216acef090",
       "src": "https://github.com/mzlogin/vim-markdown-toc"
