@@ -19,7 +19,4 @@ return {
 
   -- Align text
   "godlygeek/tabular",
-
-  -- Generate Table of Contents (ToC) and automatically keep it update to date.
-  "mzlogin/vim-markdown-toc",
 }

@@ -67,11 +67,15 @@ function M.config()
       },
     },
   })
+
+  -- Table of Contents
+  require("utils.toc").setup()
 end
 
 function M.keys()
   nmap("<leader>ms", "<Cmd>Markview splitToggle<CR>", { desc = "Markview » Split Toggle" })
   nmap("<leader>mh", "<Cmd>Markview hybridToggle<CR>", { desc = "Markview » Hybrid Mode Toggle" })
+  nmap("<leader>mt", "<Cmd>Toc<CR>", { desc = "Markdown » Table of Contents" })
 end
 
 return M

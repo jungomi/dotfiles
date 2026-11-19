@@ -258,10 +258,6 @@
       "rev": "b231e0e318378782b210ab57aaf7d81d3b0eea12",
       "src": "https://github.com/chomosuke/typst-preview.nvim"
     },
-    "vim-markdown-toc": {
-      "rev": "66026b323379c9a712c6169cd43153216acef090",
-      "src": "https://github.com/mzlogin/vim-markdown-toc"
-    },
     "which-key.nvim": {
       "rev": "3aab2147e74890957785941f0c1ad87d0a44c15a",
       "src": "https://github.com/folke/which-key.nvim"
