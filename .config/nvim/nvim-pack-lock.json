@@ -97,7 +97,7 @@
       "src": "https://github.com/Bilal2453/luvit-meta"
     },
     "markview.nvim": {
-      "rev": "9cd60a0ea05217e390126a5c29e0d2e323cc537f",
+      "rev": "a6dbc5a4a4828b474c81fbcec11546cbd9000e3b",
       "src": "https://github.com/OXY2DEV/markview.nvim"
     },
     "mason-lspconfig.nvim": {
