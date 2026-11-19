@@ -39,6 +39,8 @@ opt.fillchars = { eob = " ", fold = " ", foldopen = "", foldsep = "┃", fold
 -- :: File settings
 opt.encoding = "utf-8"
 opt.spelllang = "en_gb"
+-- Automatically download missing spell files without modal prompt
+require("nvim.spellfile").config({ confirm = false })
 
 -- :: Indentation
 opt.expandtab = true
