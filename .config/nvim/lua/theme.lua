@@ -526,6 +526,12 @@ local theme = {
 
     NoiceSplit = { link = "Normal" },
   },
+  snacks = {
+    SnacksInputBorder = { link = "FloatBorder" },
+    SnacksInputIcon = { link = "SnacksInputTitle" },
+    SnacksInputNormal = { link = "NormalFloat" },
+    SnacksInputTitle = { link = "FloatTitle" },
+  },
   -- Floating Winbar showing buffer name at the top right of the window
   incline = {
     InclineNormal = { link = "WinBar" },

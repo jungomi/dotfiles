@@ -12,6 +12,8 @@ function M.config()
     image = {
       enabled = true,
     },
+    -- Improved UI for vim.ui.input
+    input = { enable = true },
     notifier = {
       enabled = true,
       timeout = 3000,
@@ -51,6 +53,15 @@ function M.config()
           winhighlight = "Normal:NormalFloat",
           number = false,
           signcolumn = "no",
+        },
+      },
+      input = {
+        border = borders.hover,
+        relative = "cursor",
+        wo = {
+          -- There is a small slither before the icon which is the LineNr column
+          -- even if there are no numbers.
+          winhighlight = "LineNr:SnacksInputIcon",
         },
       },
     },

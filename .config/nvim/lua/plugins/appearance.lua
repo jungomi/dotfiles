@@ -16,21 +16,6 @@ return {
     },
   },
 
-  -- Improved UI for vim.ui.select and vim.ui.input (e.g. floating window for LSP rename)
-  {
-    "stevearc/dressing.nvim",
-    config = function()
-      require("dressing").setup({
-        input = {
-          insert_only = false,
-          border = borders.hover,
-          title_pos = "center",
-          relative = "win",
-        },
-      })
-    end,
-  },
-
   "MunifTanjim/nui.nvim",
 
   -- Keymap hints popup
