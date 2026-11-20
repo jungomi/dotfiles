@@ -238,10 +238,6 @@
       "rev": "0d2077398552f069abccbd964a26dd7cd26882cd",
       "src": "https://github.com/gbprod/substitute.nvim"
     },
-    "suda.vim": {
-      "rev": "c492741b4679b3cdd4d9e34138209784e061d916",
-      "src": "https://github.com/lambdalisue/suda.vim"
-    },
     "template-string.nvim": {
       "rev": "d3a26d3c449a97c44891a31736a101b60b64cf2b",
       "src": "https://github.com/axelvc/template-string.nvim"

@@ -18,3 +18,8 @@ local table_utils = require("utils.table")
 table_utils.setup()
 nmap("st", table_utils.format, { desc = "Table » Format" })
 xmap("st", table_utils.format, { desc = "Table » Format (visual)" })
+
+-- Sudo write
+local sudo_utils = require("utils.sudo")
+sudo_utils.setup()
+nmap("<leader>sw", sudo_utils.write, { desc = "File » Save with sudo" })
