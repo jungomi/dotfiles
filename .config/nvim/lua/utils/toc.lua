@@ -429,11 +429,15 @@ function M.find_existing_toc(bufnr, headings, _)
 end
 
 --- Update existing Table of Contents in buffer, respecting existing settings
----@param bufnr integer
+---@param bufnr? integer|table
 ---@param opts? table
 ---@return boolean Whether the TOC was updated
 function M.update(bufnr, opts)
-  bufnr = bufnr == 0 and vim.api.nvim_get_current_buf() or bufnr
+  if type(bufnr) == "table" and opts == nil then
+    opts = bufnr
+    bufnr = 0
+  end
+  bufnr = (bufnr == nil or bufnr == 0) and vim.api.nvim_get_current_buf() or bufnr
   opts = opts or {}
 
   local headings = M.get_headings(bufnr)
@@ -529,10 +533,14 @@ function M.update(bufnr, opts)
 end
 
 --- Insert TOC at cursor position or update if one already exists
----@param bufnr integer
+---@param bufnr? integer|table
 ---@param opts? table
 function M.insert(bufnr, opts)
-  bufnr = bufnr == 0 and vim.api.nvim_get_current_buf() or bufnr
+  if type(bufnr) == "table" and opts == nil then
+    opts = bufnr
+    bufnr = 0
+  end
+  bufnr = (bufnr == nil or bufnr == 0) and vim.api.nvim_get_current_buf() or bufnr
   opts = opts or {}
 
   local headings = M.get_headings(bufnr)
@@ -604,11 +612,15 @@ function M.insert(bufnr, opts)
 end
 
 --- Delete existing Table of Contents in buffer
----@param bufnr integer
+---@param bufnr? integer|table
 ---@param opts? table
 ---@return boolean Whether the TOC was deleted
 function M.delete(bufnr, opts)
-  bufnr = bufnr == 0 and vim.api.nvim_get_current_buf() or bufnr
+  if type(bufnr) == "table" and opts == nil then
+    opts = bufnr
+    bufnr = 0
+  end
+  bufnr = (bufnr == nil or bufnr == 0) and vim.api.nvim_get_current_buf() or bufnr
   opts = opts or {}
 
   local headings = M.get_headings(bufnr)
@@ -640,6 +652,9 @@ function M.delete(bufnr, opts)
   end
   return true
 end
+
+-- Alias for insert
+M.create = M.insert
 
 --- Parse command arguments into action and option dictionary
 --- Supports subcommands: `insert`, `update`, `delete`

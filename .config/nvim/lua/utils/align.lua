@@ -429,22 +429,63 @@ end
 
 --- Visual mode alignment handler
 function M.align_visual()
-  -- Exit visual mode cleanly to set '< and '> marks
-  local esc = vim.api.nvim_replace_termcodes("<Esc>", true, false, true)
-  vim.api.nvim_feedkeys(esc, "nx", false)
+  return M.align()
+end
 
-  local bufnr = vim.api.nvim_get_current_buf()
-  local start_line = vim.api.nvim_buf_get_mark(bufnr, "<")[1]
-  local end_line = vim.api.nvim_buf_get_mark(bufnr, ">")[1]
+--- High-level Lua entry point for text alignment
+--- Can be called directly from keymaps (Normal or Visual mode) or programmatic Lua scripts.
+--- If delimiter is provided, aligns immediately; otherwise prompts with selection highlight.
+---@param arg1? table|integer|string opts, start_line, or delimiter
+---@param arg2? integer|table end_line or opts
+---@param arg3? table opts
+---@return boolean
+function M.align(arg1, arg2, arg3)
+  local start_line, end_line, opts
+
+  if type(arg1) == "number" and type(arg2) == "number" then
+    start_line = arg1
+    end_line = arg2
+    opts = arg3 or {}
+  elseif type(arg1) == "string" then
+    opts = type(arg2) == "table" and arg2 or {}
+    opts.delimiter = arg1
+  elseif type(arg1) == "table" then
+    opts = vim.deepcopy(arg1)
+    start_line = opts.start_line
+    end_line = opts.end_line
+  else
+    opts = {}
+  end
+
+  local bufnr = opts.bufnr or vim.api.nvim_get_current_buf()
+  local mode = vim.fn.mode()
+
+  if not start_line or not end_line then
+    if mode:match("[vV\22]") then
+      local esc = vim.api.nvim_replace_termcodes("<Esc>", true, false, true)
+      vim.api.nvim_feedkeys(esc, "nx", false)
+      start_line = vim.api.nvim_buf_get_mark(bufnr, "<")[1]
+      end_line = vim.api.nvim_buf_get_mark(bufnr, ">")[1]
+    else
+      local cur = vim.api.nvim_win_get_cursor(0)[1]
+      start_line = cur
+      end_line = cur
+    end
+  end
 
   if start_line == 0 or end_line == 0 then
-    return
+    return false
   end
   if start_line > end_line then
     start_line, end_line = end_line, start_line
   end
 
-  M.prompt_and_align(bufnr, start_line, end_line)
+  if opts.delimiter and opts.delimiter ~= "" then
+    return M.align_range(bufnr, start_line, end_line, opts)
+  else
+    M.prompt_and_align(bufnr, start_line, end_line, opts)
+    return true
+  end
 end
 
 --- Autocompletion handler for :Align command

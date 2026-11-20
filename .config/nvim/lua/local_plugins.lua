@@ -9,8 +9,9 @@ require("utils.align").setup({
 })
 
 -- Markdown Table of Contents
-require("utils.toc").setup()
-nmap("<leader>mt", "<Cmd>Toc<CR>", { desc = "Markdown » Table of Contents" })
+local toc_utils = require("utils.toc")
+toc_utils.setup()
+nmap("<leader>mt", toc_utils.insert, { desc = "Markdown » Table of Contents" })
 
 -- Markdown Tables
 local table_utils = require("utils.table")
