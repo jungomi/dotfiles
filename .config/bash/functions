@@ -67,14 +67,35 @@ openl() {
 }
 
 # Clone a git repository and switch to the cloned directory
+# Usage: clonecd <[owner/]repo|url> [dir] [flags...]
 clonecd() {
-  local dir
-  if [[ $# -ge 2 ]]; then
-    dir="$2"
-  else
-    dir=$(echo "$1" | sed -e 's#.*/\([^/\.]\+\)\(\.git\)\?$#\1#')
+  if [[ $# -eq 0 || "$1" == "-h" || "$1" == "--help" ]]; then
+    echo "Usage: clonecd <[owner/]repo|url> [dir] [flags...]"
+    return 1
   fi
-  git clone "$@" && cd "$dir"
+
+  local repo="$1"
+  shift
+  local dir=""
+  if [[ $# -gt 0 && "$1" != -* ]]; then
+    dir="$1"
+    # Expand `~` manually (needed if the target dir was quoted)
+    dir="${dir/#\~/$HOME}"
+    shift
+  else
+    # No taget dir was given, so extract the name of the repo.
+    dir="${repo%/}"
+    dir="${dir%.git}"
+    dir="${dir##*/}"
+  fi
+
+  # GitHub URLs or shorthand ([owner/]repo) use the gh CLI if available.
+  if [[ "$repo" == *github.com* || "$repo" =~ ^([a-zA-Z0-9_.-]+/)?[a-zA-Z0-9_.-]+$ ]]; then
+    gh repo clone "$repo" "$dir" "$@"
+  else
+    git clone "$repo" "$dir" "$@"
+  fi
+  cd "$dir"
 }
 
 # Forward port to serveo
