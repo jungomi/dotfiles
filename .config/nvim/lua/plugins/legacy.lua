@@ -16,7 +16,4 @@ return {
       nmap("<leader>sw", "<Cmd>w suda://%<CR>", { desc = "Save with sudo" })
     end,
   },
-
-  -- Align text
-  "godlygeek/tabular",
 }
