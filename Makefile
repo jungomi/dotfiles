@@ -186,6 +186,7 @@ completions:
 	mkdir -p $(COMPLETIONS_DIR)
 	command -v atuin &> /dev/null && atuin gen-completions --shell bash > $(COMPLETIONS_DIR)/atuin
 	command -v bob &> /dev/null && bob complete bash > $(COMPLETIONS_DIR)/bob
+	command -v rex &> /dev/null && rex completion bash > $(COMPLETIONS_DIR)/rex
 	command -v rg &> /dev/null && rg --generate complete-bash > $(COMPLETIONS_DIR)/rg
 	command -v rustup &> /dev/null && rustup completions bash > $(COMPLETIONS_DIR)/rustup
 	command -v rustup &> /dev/null && rustup completions bash cargo > $(COMPLETIONS_DIR)/cargo
