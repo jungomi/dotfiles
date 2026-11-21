@@ -148,6 +148,13 @@ uv:
 	command -v uv &> /dev/null ||  curl -LsSf https://astral.sh/uv/install.sh | sh
 	echo -e "\r\033[2K[ \033[00;32mDONE\033[0m ] Installing uv"
 
+worktrunk: cargo-subcommands
+	cargo binstall -y worktrunk
+	echo '' >> ~/.profile
+	echo '# wt (worktrunk)' >> ~/.profile
+	echo 'eval "$$(wt config shell init bash)"' >> ~/.profile
+	echo -e "\r\033[2K[ \033[00;32mDONE\033[0m ]  Installing wt (worktrunk)"
+
 # Configures MacOS
 macos:
 	./macos.sh

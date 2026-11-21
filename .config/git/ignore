@@ -29,3 +29,6 @@ rusty-tags.*
 *.cab
 *.iso
 *.tar
+
+# Worktrees
+.wt

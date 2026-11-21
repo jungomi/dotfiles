@@ -1,0 +1,2 @@
+# Keep the worktrees inside the repo in `/.wt/`
+worktree-path = "{{ repo_path }}/.wt/{{ branch | sanitize }}"
