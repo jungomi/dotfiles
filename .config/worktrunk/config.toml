@@ -1,2 +1,7 @@
 # Keep the worktrees inside the repo in `/.wt/`
 worktree-path = "{{ repo_path }}/.wt/{{ branch | sanitize }}"
+
+[merge]
+# Keep commits instead of squashing before merge.
+# I have no idea why you would want that in a local branch.
+squash = false
