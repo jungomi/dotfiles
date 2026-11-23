@@ -148,6 +148,7 @@ uv:
 	command -v uv &> /dev/null ||  curl -LsSf https://astral.sh/uv/install.sh | sh
 	echo -e "\r\033[2K[ \033[00;32mDONE\033[0m ] Installing uv"
 
+# Install wt (worktrunk)
 worktrunk: cargo-subcommands
 	cargo binstall -y worktrunk
 	echo '' >> ~/.profile
