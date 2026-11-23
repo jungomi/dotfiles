@@ -25,32 +25,36 @@ be restored with `make restore`.
 $ make [targets]
 
   targets:
-        default                  Installs all dotfiles and configures bash
-        safe                     Runs backup before installing
-        envs                     Installs all environments
-        link                     Creates symbolic links
-        backup                   Makes a backup of the existing dotfiles
-        restore                  Restores the backup files
-        clean                    Removes the backup files
-        bash                     Configures Bash
-        node                     Installs n and Node.js
-        ruby                     Installs rvm and Ruby
-        rust                     Installs rustup and Rust
-        cargo-subcommands        Subcommands for cargo that are provided as crates
-        bob                      Installs bob and nvim
-        macos                    Configures MacOS
-        tools                    Various command line tools (atuin, delta, rg, uv, z)
-        atuin                    Atuin for fuzzy finding shell completion
-        zoxide                   z, a smart cd
-        completions              Generate the shell completions for many installed tools
-        help                     Shows this help message
+          default              Installs all dotfiles and configures bash
+          safe                 Runs backup before installing
+          envs                 Installs all environments
+          link                 Creates symbolic links
+          backup               Makes a backup of the existing dotfiles
+          restore              Restores the backup files
+          clean                Removes the backup files
+          bash                 Configures Bash
+          node                 Installs n and Node.js
+          python               Installs conda (miniforge) and Python
+          ruby                 Installs rvm and Ruby
+          rust                 Installs rustup and Rust
+          cargo-subcommands    Subcommands for cargo that are provided as crates
+          bob                  Installs bob and nvim
+          bun                  Install bun
+          uv                   Install uv
+          worktrunk            Install wt (worktrunk)
+          macos                Configures MacOS
+          tools                Various command line tools (delta, fd, rg, uv)
+          atuin                Atuin for fuzzy finding shell completion
+          zoxide               z, a smart cd
+          completions          Generate the shell completions for many installed tools
+          help                 Shows this help message
 ```
 
 ### Patched Font
 
 A font patched with [Nerd Fonts][nerdfonts] is required to display icons properly.
 
-On Linux the patched version of *JetBrains Mono* is used, and on macOS a patched version of *SF Mono*.
+On Linux the patched version of _JetBrains Mono_ is used, and on macOS a patched version of _SF Mono_.
 
 ## Integrated Tools
 
@@ -60,7 +64,7 @@ a better and more efficient workflow:
 - [Fzf][fzf] - Fuzzy finder (used a lot for fuzzy file navigation in NeoVim)
 - [ripgrep (rg)][ripgrep] - Faster and more intuitive grep, which respects .gitignore
 - [fd][fd] - Faster and more intuitive find, which also respects .gitignore
-- [bat][bat] - A *cat(1)* clone with syntax highlighting and Git integration.
+- [bat][bat] - A _cat(1)_ clone with syntax highlighting and Git integration.
 - [delta][delta] - Viewer for (git) diffs with syntax highlighting and side-by-side views
 
 ## Screenshots
@@ -83,7 +87,7 @@ Tmux icons:
 [Language Server Protocol (LSP)][lsp] integration for diagnostics and other language actions,
 such as formatting, signature help, type hints etc.
 
-*150% font size for better visibility in the screenshot*
+_150% font size for better visibility in the screenshot_
 
 ![NeoVim LSP][nvim-lsp]
 
@@ -92,7 +96,7 @@ such as formatting, signature help, type hints etc.
 Completion with suggestions from [Language Server Protocol (LSP)][lsp], open buffers,
 file paths and more, including support for snippets.
 
-*150% font size for better visibility in the screenshot*
+_150% font size for better visibility in the screenshot_
 
 ![NeoVim Completion][nvim-completion]
 
@@ -100,10 +104,9 @@ file paths and more, including support for snippets.
 
 Debugger using the [Debug Adapter Protocol (DAP)][dap].
 
-*150% font size for better visibility in the screenshot*
+_150% font size for better visibility in the screenshot_
 
 ![NeoVim DAP][nvim-dap]
-
 
 [bat]: https://github.com/sharkdp/bat
 [dap]: https://microsoft.github.io/debug-adapter-protocol/
