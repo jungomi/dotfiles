@@ -5,8 +5,25 @@ name = "Michael Jungo"
 email = "michaeljungo92@gmail.com"
 
 [ui]
-pager = "delta"
 diff-formatter = ":git"
+diff-instructions = false
+diff-editor = "codediff"
+
+# Important: This is only for diffs (e.g. `jj split`) not merge conflicts.
+# The merge-ditor is not compatible with codediff.
+# Workaround: Just launch codediff manually (it's literally just that `jj resolve` sucks).
+[merge-tools.codediff]
+program = "nvim"
+edit-args = ["-c", "CodeDiff --exit-on-close dir $left $right"]
+
+# Use delta as a pager only for the commands that provide a diff.
+# Other commands would work fine with delta, but this is mainly due
+# to the fact that I want to not clear the screen on other commands,
+# but delta does by default (which I want for the diffs).
+[[--scope]]
+--when.commands = ["diff", "show", "interdiff", "op diff", "op show"]
+[--scope.ui]
+pager = "delta"
 
 [aliases]
 lg = ["log", "-T", "lg"]
