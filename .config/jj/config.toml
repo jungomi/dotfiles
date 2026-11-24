@@ -38,16 +38,6 @@ pull = [
     "-c",
     "jj git fetch && jj rebase -d 'trunk()'",
 ]
-# Move closest ancestor bookmark up to @- (or @ if @- is empty)
-# This is basically what everyone uses to bring move the git branch to the most recent commit.
-tug = [
-    "bookmark",
-    "move",
-    "--from",
-    "closest_bookmark(@-)",
-    "--to",
-    "closest_pushable(@)",
-]
 # Like `git switch -` return back to the previously checked out commit.
 # Taken from: https://github.com/jj-vcs/jj/discussions/8423
 - = [
@@ -103,11 +93,12 @@ z = [
 
 [revsets]
 log = "present(@) | ancestors(immutable_heads().., 10) | ancestors(present(trunk()), 10)"
+bookmark-advance-to = "closest_pushable(@)"
 
 [revset-aliases]
 junk = '(mutable() & empty()) ~ working_copies() ~ parents(..) ~ bookmarks()'
 'closest_bookmark(to)' = 'heads(::to & bookmarks())'
-'closest_pushable(to)' = 'heads(::to & mutable() & ~description(exact:"") & (~empty() | merges()))'
+'closest_pushable(to)' = 'heads(::to & ~description(exact:"") & (~empty() | merges()))'
 
 [templates]
 log = "builtin_log_detailed"
