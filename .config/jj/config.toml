@@ -5,6 +5,8 @@ name = "Michael Jungo"
 email = "michaeljungo92@gmail.com"
 
 [ui]
+# Make status the default command
+default-command = "status"
 diff-formatter = ":git"
 diff-instructions = false
 diff-editor = "codediff"
@@ -66,3 +68,8 @@ if(root,
 "decorations" = { fg = "magenta", bold = true }
 "decorations bookmarks" = { fg = "yellow", bold = true }
 "decorations working_copies" = { fg = "magenta", bold = true }
+# jj status
+"diff summary added" = { fg = "green", bold = true }
+"diff summary modified" = { fg = "yellow", bold = true }
+"diff summary renamed" = { fg = "yellow", bold = true }
+"diff summary removed" = { fg = "red", bold = true }
