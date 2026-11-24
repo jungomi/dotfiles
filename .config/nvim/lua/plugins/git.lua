@@ -211,6 +211,9 @@ local neogit_spec = {
         },
       },
     })
+
+    -- Show jj diffs in separate buffer for `jj desc`.
+    require("utils.jj_diff").setup()
   end,
   keys = function()
     -- Open Git status for git repo of current file.

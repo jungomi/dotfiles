@@ -97,15 +97,6 @@ junk = '(mutable() & empty()) ~ working_copies() ~ parents(..) ~ bookmarks()'
 'closest_bookmark(to)' = 'heads(::to & bookmarks())'
 'closest_pushable(to)' = 'heads(::to & mutable() & ~description(exact:"") & (~empty() | merges()))'
 
-[templates]
-draft_commit_description = '''
-concat(
-  builtin_draft_commit_description,
-  "\nJJ: ignore-rest\n",
-  diff.git(),
-)
-'''
-
 [template-aliases]
 # This is similar to my `git lg` output
 lg = '''
