@@ -29,6 +29,15 @@ pager = "delta"
 
 [aliases]
 lg = ["log", "-T", "lg"]
+# Fetch from remote and rebase local mutable commits onto updated trunk(), basically `git pull`.
+pull = [
+    "util",
+    "exec",
+    "--",
+    "bash",
+    "-c",
+    "jj git fetch && jj rebase -d 'trunk()'",
+]
 # Move closest ancestor bookmark up to @- (or @ if @- is empty)
 # This is basically what everyone uses to bring move the git branch to the most recent commit.
 tug = [
@@ -92,10 +101,16 @@ z = [
     "jj-z",
 ]
 
+[revsets]
+log = "present(@) | ancestors(immutable_heads().., 10) | ancestors(present(trunk()), 10)"
+
 [revset-aliases]
 junk = '(mutable() & empty()) ~ working_copies() ~ parents(..) ~ bookmarks()'
 'closest_bookmark(to)' = 'heads(::to & bookmarks())'
 'closest_pushable(to)' = 'heads(::to & mutable() & ~description(exact:"") & (~empty() | merges()))'
+
+[templates]
+log = "builtin_log_detailed"
 
 [template-aliases]
 # This is similar to my `git lg` output
