@@ -1,0 +1,51 @@
+#:schema https://docs.jj-vcs.dev/latest/config-schema.json
+
+[user]
+name = "Michael Jungo"
+email = "michaeljungo92@gmail.com"
+
+[ui]
+pager = "delta"
+diff-formatter = ":git"
+
+[aliases]
+lg = ["log", "-T", "lg"]
+
+[template-aliases]
+# This is similar to my `git lg` output
+lg = '''
+if(root,
+  format_root_commit(self),
+  separate(" ",
+    change_id.shortest(8),
+    commit_id.shortest(7),
+    "-",
+    label("relative_time", "(" ++ committer.timestamp().ago() ++ ")"),
+    if(description,
+      description.first_line(),
+      label(if(empty, "empty"), description_placeholder)
+    ),
+    label("author_name", "- " ++ coalesce(author.name(), author.email(), "(no name)")),
+    label("decorations", separate(" ",
+      bookmarks,
+      tags,
+      working_copies,
+      if(conflict, label("conflict", "(conflict)")),
+      if(empty, label("empty", "(empty)")),
+    )),
+  ) ++ "\n"
+)
+'''
+
+[colors]
+"change_id" = { fg = "magenta", bold = true }
+"commit_id" = { fg = "blue", bold = true }
+"relative_time" = { fg = "green", bold = true }
+"relative_time committer timestamp ago" = { fg = "green", bold = true }
+"author_name" = { fg = "cyan" }
+"author_name author name" = { fg = "cyan" }
+"author_name author email" = { fg = "cyan" }
+"description placeholder" = { fg = "bright black", italic = true }
+"decorations" = { fg = "magenta", bold = true }
+"decorations bookmarks" = { fg = "yellow", bold = true }
+"decorations working_copies" = { fg = "magenta", bold = true }
