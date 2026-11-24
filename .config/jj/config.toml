@@ -38,6 +38,10 @@ pull = [
     "-c",
     "jj git fetch && jj rebase -d 'trunk()'",
 ]
+# Just too lazy for an extra subcommand.
+push = ["git", "push"]
+clone = ["git", "clone"]
+init = ["git", "init"]
 # Like `git switch -` return back to the previously checked out commit.
 # Taken from: https://github.com/jj-vcs/jj/discussions/8423
 - = [
