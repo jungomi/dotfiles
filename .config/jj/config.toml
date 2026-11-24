@@ -29,6 +29,73 @@ pager = "delta"
 
 [aliases]
 lg = ["log", "-T", "lg"]
+# Move closest ancestor bookmark up to @- (or @ if @- is empty)
+# This is basically what everyone uses to bring move the git branch to the most recent commit.
+tug = [
+    "bookmark",
+    "move",
+    "--from",
+    "closest_bookmark(@-)",
+    "--to",
+    "closest_pushable(@)",
+]
+# Like `git switch -` return back to the previously checked out commit.
+# Taken from: https://github.com/jj-vcs/jj/discussions/8423
+- = [
+    "util",
+    "exec",
+    "--",
+    "bash",
+    "-c",
+    """
+    resolve () { jj log --no-graph -r@ -T'change_id.short() ++ "\\n"' "$@"; }
+    current=$(resolve)
+    jj op log --no-graph -T 'id.short() ++ "\\n"' | while read op; do
+        old=$(resolve --at-op $op)
+        if [[ $old != $current ]]; then
+            if ! jj edit $old 2>/dev/null; then
+                old_commit=$(jj evolog -r $old --at-op $op --no-graph -T 'commit_id.short()')
+                jj edit $old_commit
+            fi
+            exit 0
+        fi
+    done
+    """,
+    "jj-back",
+]
+# Interactively pick any commit from the log with fzf
+fzf = [
+    "util",
+    "exec",
+    "--",
+    "bash",
+    "-c",
+    """
+    jj lg --no-graph --color=always  \
+      | fzf --ansi --no-sort --preview 'jj show --color=always {1}' \
+      | awk '{print $1}'
+    """,
+]
+# Wrapper alias that reuses `jj fzf` and appends the chosen rev provided command.
+# Example: `jj z squash -t` ==> `jj z squash -t $(jj fzf)`
+z = [
+    "util",
+    "exec",
+    "--",
+    "bash",
+    "-c",
+    """
+    set -euo pipefail
+    rev=$(jj fzf)
+    [ -n "$rev" ] && exec jj "$@" "$rev"
+    """,
+    "jj-z",
+]
+
+[revset-aliases]
+junk = '(mutable() & empty()) ~ working_copies() ~ parents(..) ~ bookmarks()'
+'closest_bookmark(to)' = 'heads(::to & bookmarks())'
+'closest_pushable(to)' = 'heads(::to & mutable() & ~description(exact:"") & (~empty() | merges()))'
 
 [template-aliases]
 # This is similar to my `git lg` output
