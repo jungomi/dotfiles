@@ -21,18 +21,32 @@ rex.bind("ctrl+a>shift+1", "pane.move_to_new_tab")
 -- Tabs (windows)
 rex.bind("ctrl+a>n", "client.tab.new")
 rex.bind("ctrl+a>ctrl+h", "client.tab.previous")
+-- j/k just for the vertical view (sidebar)
+rex.bind("ctrl+a>ctrl+j", "client.tab.next")
+rex.bind("ctrl+a>ctrl+k", "client.tab.previous")
 rex.bind("ctrl+a>ctrl+l", "client.tab.next")
 rex.bind("ctrl+a>,", "client.tab.rename")
 -- rex.bind("ctrl+a>'", "client.tab.recent")
+-- Even though cmd+<num> is the native way, I still find myself
+-- trying to use the tmux way for now.
+for i = 1, 9 do
+  rex.bind("ctrl+a>" .. i, "client.tab.goto", { index = i })
+end
 
+-- Sessions
+rex.bind("ctrl+a>s", "session.switch")
+rex.bind("ctrl+a>.", "session.rename")
+
+rex.bind("ctrl+a>shift+;", "client.palette.toggle")
+rex.bind("ctrl+a>w", "pane.go_to")
 rex.bind("ctrl+a>v", "pane.copy_mode.enter")
 
 -- :: Modes
 -- Move mode
 rex.mode("move", { exclusive = true })
 rex.bind("ctrl+a>m", "client.mode.enter", { name = "move" })
-rex.bind("move/escape", "client.mode.exit")
-rex.bind("move/q", "client.mode.exit")
+rex.bind("move/escape", "client.mode.exit_all")
+rex.bind("move/q", "client.mode.exit_all")
 rex.bind("move/h", "pane.move", { direction = "left" })
 rex.bind("move/j", "pane.move", { direction = "down" })
 rex.bind("move/k", "pane.move", { direction = "up" })
@@ -41,12 +55,13 @@ rex.bind("move/ctrl+h", "client.tab.move", { direction = "backward" })
 rex.bind("move/ctrl+l", "client.tab.move", { direction = "forward" })
 rex.bind("move/shift+1", "pane.move_to_new_tab")
 rex.bind("move/f", "pane.float")
+rex.bind("move/r", "client.mode.enter", { name = "resize" })
 
 -- Resize mode
 rex.mode("resize", { exclusive = true })
 rex.bind("ctrl+a>r", "client.mode.enter", { name = "resize" })
-rex.bind("resize/escape", "client.mode.exit")
-rex.bind("resize/q", "client.mode.exit")
+rex.bind("resize/escape", "client.mode.exit_all")
+rex.bind("resize/q", "client.mode.exit_all")
 rex.bind("resize/h", "pane.resize", { direction = "left" })
 rex.bind("resize/j", "pane.resize", { direction = "down" })
 rex.bind("resize/k", "pane.resize", { direction = "up" })
@@ -56,3 +71,4 @@ rex.bind("resize/shift+j", "pane.resize", { amount = 15, direction = "down" })
 rex.bind("resize/shift+k", "pane.resize", { amount = 15, direction = "up" })
 rex.bind("resize/shift+l", "pane.resize", { amount = 15, direction = "right" })
 rex.bind("resize/=", "pane.balance")
+rex.bind("resize/m", "client.mode.enter", { name = "move" })
