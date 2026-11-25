@@ -1,3 +1,5 @@
+require("actions")
+
 -- To make `cltr+a` work (double send)
 rex.bind("ctrl+a>ctrl+a", "pane.send_key", { key = "ctrl+a" })
 
@@ -55,7 +57,7 @@ rex.bind("move/ctrl+h", "client.tab.move", { direction = "backward" })
 rex.bind("move/ctrl+l", "client.tab.move", { direction = "forward" })
 rex.bind("move/shift+1", "pane.move_to_new_tab")
 rex.bind("move/f", "pane.float")
-rex.bind("move/r", "client.mode.enter", { name = "resize" })
+rex.bind("move/r", "mode_takeover", { name = "resize" })
 
 -- Resize mode
 rex.mode("resize", { exclusive = true })
@@ -71,4 +73,4 @@ rex.bind("resize/shift+j", "pane.resize", { amount = 15, direction = "down" })
 rex.bind("resize/shift+k", "pane.resize", { amount = 15, direction = "up" })
 rex.bind("resize/shift+l", "pane.resize", { amount = 15, direction = "right" })
 rex.bind("resize/=", "pane.balance")
-rex.bind("resize/m", "client.mode.enter", { name = "move" })
+rex.bind("resize/m", "mode_takeover", { name = "move" })
