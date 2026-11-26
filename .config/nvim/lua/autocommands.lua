@@ -15,7 +15,7 @@ autocmd_utils.create_augroups({
     -- Activate spell checking for relevant files
     {
       event = "FileType",
-      pattern = { "gitcommit", "markdown", "tex", "text" },
+      pattern = { "gitcommit", "jjdescription", "markdown", "tex", "text" },
       command = "setlocal spell",
       desc = "Enable spell check for relevant files",
     },
