@@ -20,6 +20,7 @@ local M = {}
 ---@field [1]? string Plugin repository URL or "user/repo"
 ---@field [integer] PackSpecItem Additional companion specs in array
 ---@field src? string Full URL or source to package
+---@field dir? string Local directory path for direct loading (bypasses vim.pack)
 ---@field name? string Name of package directory
 ---@field version? string Branch, tag, or commit to checkout
 ---@field branch? string Alternative alias for version
@@ -31,20 +32,32 @@ local M = {}
 ---@alias PackSpecItem string|PackSpec
 ---@alias PackSpecList (PackSpecItem|PackSpecList)[]
 
---- Normalise a spec into a table with src, name, version
+--- Normalise a spec into a table with src/dir, name, version
 ---@param item PackSpecItem A plugin spec as string or table
 ---@return PackSpec Normalised plugin spec
 local function normalise_spec(item)
   if type(item) == "string" then
-    local src = item:match("^https?://") and item or ("https://github.com/" .. item)
-    return { src = src, name = src:gsub("%.git$", ""):match("[^/]+$") }
+    item = { src = item }
   end
+
+  if item.dir then
+    local dir = vim.fn.expand(item.dir):gsub("/+$", "")
+    item.dir = dir
+    item.name = item.name or dir:match("[^/]+$")
+    return item
+  end
+
   local src = item.src or item[1]
-  if src and not src:match("^https?://") and not src:match("^git@") and src:match("/") then
-    src = "https://github.com/" .. src
+  if src then
+    if src:match("^file://~/") then
+      src = "file://" .. vim.fn.expand("~") .. src:sub(9)
+    elseif not src:match("^[%w+.-]+://") and not src:match("^git@") and src:match("/") then
+      src = "https://github.com/" .. src
+    end
+    item.src = src
+    item.name = item.name or src:gsub("/+$", ""):gsub("%.git$", ""):match("[^/]+$")
   end
-  item.src = src
-  item.name = item.name or (src and src:gsub("%.git$", ""):match("[^/]+$"))
+
   item.version = item.branch or item.version
   return item
 end
@@ -59,7 +72,7 @@ local function flatten_spec(specs, out)
     if type(item) == "string" then
       table.insert(out, normalise_spec(item))
     elseif type(item) == "table" then
-      if item.src or (type(item[1]) == "string" and #item == 1) then
+      if item.src or item.dir or (type(item[1]) == "string" and #item == 1) then
         table.insert(out, normalise_spec(item))
       elseif type(item[1]) == "string" and #item > 1 then
         table.insert(out, normalise_spec(item))
@@ -100,10 +113,14 @@ end
 function M.load(specs)
   local list = flatten_spec(specs)
 
-  -- Deduplicate and register with vim.pack.add
+  -- Deduplicate and register with vim.pack.add (or prepend local dir to rtp)
   local pack_specs, seen = {}, {}
   for _, spec in ipairs(list) do
-    if spec.src and not seen[spec.name] then
+    if spec.dir and spec.name and not seen[spec.name] then
+      seen[spec.name] = true
+      -- A local dir is not handled by vim.pack, so it neesd to be added to the runtime path.
+      vim.opt.rtp:prepend(spec.dir)
+    elseif spec.src and spec.name and not seen[spec.name] then
       seen[spec.name] = true
       table.insert(pack_specs, { src = spec.src, name = spec.name, version = spec.version })
     end
@@ -118,10 +135,23 @@ function M.load(specs)
       if type(spec.config) == "function" then
         spec.config()
       elseif spec.opts ~= nil then
-        local mod_name = spec.main or spec.name:gsub("%.nvim$", ""):gsub("%.lua$", "")
-        local ok, mod = pcall(require, mod_name)
-        if not ok and mod_name:match("^nvim%-") then
-          ok, mod = pcall(require, mod_name:gsub("^nvim%-", ""))
+        local base = spec.main or spec.name:gsub("%.nvim$", ""):gsub("%.lua$", "")
+        -- Try multiple common module naming schemes based on the repo.
+        -- In particular, dashes (-) are usually replaced by underscores (_).
+        -- And having `nvim` as a suffix/prefix is excluded from the module name.
+        local candidates = spec.main and { base }
+          or {
+            base,
+            (base:gsub("^nvim%-", "")),
+            (base:gsub("%-nvim$", "")),
+            (base:gsub("%-", "_")),
+          }
+        local ok, mod
+        for _, mod_name in ipairs(candidates) do
+          ok, mod = pcall(require, mod_name)
+          if ok then
+            break
+          end
         end
         if ok and type(mod.setup) == "function" then
           local opts = type(spec.opts) == "function" and spec.opts() or (spec.opts == true and {} or spec.opts)
